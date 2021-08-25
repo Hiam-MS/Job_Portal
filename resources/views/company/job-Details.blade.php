@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  lang="ar">
+<html dir="rtl" lang="ar">
 
 
 <head>
@@ -15,8 +15,8 @@
 	<meta name="format-detection" content="telephone=no">
 	
 	<!-- FAVICONS ICON -->
-	<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
-	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+	<link rel="icon" href="{{ asset('images/favicon.ico')}}" type="image/x-icon" />
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png')}}" />
 	
 	<!-- PAGE TITLE HERE -->
 	<title>JobBoard - HTML Template</title>
@@ -30,30 +30,29 @@
 	<![endif]-->
 	
 	<!-- STYLESHEETS -->
-	<link rel="stylesheet" type="text/css" href="css/plugins.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/templete.css">
-	<link class="skin" rel="stylesheet" type="text/css" href="css/skin/skin-1.css">
-	<link rel="stylesheet" href="plugins/datepicker/css/bootstrap-datetimepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/plugins.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/templete.css')}}">
+	<link class="skin" rel="stylesheet" type="text/css" href="{{ asset('css/skin/skin-1.css')}}">
+	<link rel="stylesheet" href="{{ asset('plugins/datepicker/css/bootstrap-datetimepicker.min.css')}}"/>
 	<!-- Revolution Slider Css -->
-	<link rel="stylesheet" type="text/css" href="plugins/revolution/revolution/css/layers.css">
-	<link rel="stylesheet" type="text/css" href="plugins/revolution/revolution/css/settings.css">
-	<link rel="stylesheet" type="text/css" href="plugins/revolution/revolution/css/navigation.css">
+	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/revolution/css/layers.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/revolution/css/settings.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/revolution/css/navigation.css')}}">
 	<!-- Revolution Navigation Style -->
 </head>
 <body id="bg">
 <div class="page-wraper">
 
 	<!-- header -->
-    <!-- header -->
-    <header dir="rtl" lang="ar" class="site-header mo-left header fullwidth">
+    <header class="site-header mo-left header fullwidth">
 		<!-- main header -->
         <div class="sticky-header main-bar-wraper navbar-expand-lg">
             <div class="main-bar clearfix">
                 <div class="container clearfix">
                     <!-- website logo -->
                     <div class="logo-header mostion">
-						<a href="index-2.html"><img src="images/logo.png" class="logo" alt=""></a>
+						<a href="index-2.html"><img src="{{ asset('images/logo.png')}}" class="logo" alt=""></a>
 					</div>
                     <!-- nav toggle button -->
                     <!-- nav toggle button -->
@@ -79,13 +78,13 @@
                     <!-- main nav -->
                     <div class="header-nav navbar-collapse collapse justify-content-start" id="navbarNavDropdown">
                         <ul class="nav navbar-nav">
-							<!-- <li class="active">
+							<li class="active">
 								<a href="index-3.html">الرئيسية </i></a>
-								<ul class="sub-menu">
+								<!--<ul class="sub-menu">
 									<li><a href="index-2.html" class="dez-page">Home 1</a></li>
 									<li><a href="index-3.html" class="dez-page">Home 2</a></li>
 								</ul>
-							</li> -->
+							</li>-->
 							<li>
 								<a href="#">التسجيل في الموقع <i class="fa fa-chevron-down"></i></a>
 								<ul class="sub-menu">
@@ -110,7 +109,17 @@
 									
 								</ul>
 							</li>
-						
+							 <!--<li>
+								<a href="#">Blog <i class="fa fa-chevron-down"></i></a>
+								<ul class="sub-menu">
+									<li><a href="blog-classic.html" class="dez-page">Classic</a></li>
+									<li><a href="blog-classic-sidebar.html" class="dez-page">Classic Sidebar</a></li>
+									<li><a href="blog-detailed-grid.html" class="dez-page">Detailed Grid</a></li>
+									<li><a href="blog-detailed-grid-sidebar.html" class="dez-page">Detailed Grid Sidebar</a></li>
+									<li><a href="blog-left-img.html" class="dez-page">Left Image Sidebar</a></li>
+									<li><a href="blog-details.html" class="dez-page">Blog Details</a></li>
+								</ul> -->
+							</li>
 						</ul>			
                     </div>
                 </div>
@@ -120,19 +129,24 @@
     </header>
     <!-- header END -->
     <!-- Content -->
+    @csrf
+    
+
+    
     <div class="page-content bg-white">
         <!-- inner page banner -->
         <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(images/banner/bnr1.jpg);">
+        
             <div class="container">
                 <div class="dez-bnr-inr-entry">
-                    <h1 class="text-white">Browse Jobs</h1>
+                    <h1 class="text-white">Job Detail</h1>
 					<!-- Breadcrumb row -->
-					<div class="breadcrumb-row">
+					<!--<div class="breadcrumb-row">
 						<ul class="list-inline">
 							<li><a href="#">Home</a></li>
-							<li>Browse Jobs</li>
+							<li>Job Detail</li>
 						</ul>
-					</div>
+					</div> -->
 					<!-- Breadcrumb row END -->
                 </div>
             </div>
@@ -140,78 +154,123 @@
         <!-- inner page banner END -->
         <!-- contact area -->
         <div class="content-block">
-			<!-- Browse Jobs -->
-			<div class="section-full bg-white browse-job content-inner-2">
+             <!-- Job Detail -->
+			<div class="section-full content-inner-1">
 				<div class="container">
 					<div class="row">
-						<div class="col-xl-9 col-lg-8">
-							<h5 class="widget-title font-weight-700 text-uppercase"> الفرص الحالية  </h5>
-							<ul class="post-job-bx">
-                                <form action="">
-                               
-                                
-                                    
-                                <li>
-                                @foreach($job as $item)
-									<a href="job/details/{{ $item->id }}">
-										<div class="d-flex m-b30">
-											<div class="job-post-company">
-												<span><img src="images/logo/icon1.png"/></span>
+					
+							<div class="col-lg-4">
+								<div class="sticky-top">
+									<div class="row">
+										<div class="col-lg-12 col-md-6">
+											<div class="m-b30">
+												<img src="images/blog/grid/6.jpg" alt="">
 											</div>
-											<div class="job-post-info">
-												<h4>{{$item-> company_name}}</h4>
+										</div>
+										
+										<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;"
+ class="col-lg-12 col-md-6">
+											<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
+												<h4 class="text-black font-weight-700 p-t10 m-b15">تفاصيل العمل</h4>
 												<ul>
-													<li><i class="fa fa-map-marker"></i> {{$item->city}}</li>
-													<li><i class="fa fa-bookmark-o"></i> {{$item->job_type}}</li>
-													<li><i class="fa fa-clock-o"></i> Published 11 months ago</li>
+													<li><i  class="ti-location-pin"></i><strong class="font-weight-700 text-black">العنوان: {{$job->city}} </strong><span class="text-black-light"> </span></li>
+													<li><i class="ti-money"></i><strong class="font-weight-700 text-black">الراتب</strong> </li>
+													<li><i class="ti-shield"></i><strong class="font-weight-700 text-black">عدد الاشخاص المطلوبين:  {{$job->number_of_employess}} </strong>6 Year Experience</li>
 												</ul>
 											</div>
 										</div>
-										<div class="d-flex">
-											<div class="job-time mr-auto">
-												<span>{{$item->job_type}}</span>
-											</div>
-											<div class="salary-bx">
-												<span>{{$item->salary}} ل.س</span>
-											</div>
-										</div>
-										<span class="post-like fa fa-heart-o"></span>
-									</a>
-                                    @endforeach
-								</li>
-                                
-                                </form>
-								
-								
-								
-								
-								
-							
-							</ul>
-						
-						</div>
-						<div class="col-xl-3 col-lg-4">
-							<div class="sticky-top">
-								<div class="clearfix m-b30">
-									<h5 class="widget-title font-weight-700 text-uppercase">Keywords</h5>
-									<div class="">
-										<input type="text" class="form-control" placeholder="Search">
 									</div>
 								</div>
-							
-								
-							
 							</div>
-						</div>
+						
+
+							<div class="col-lg-8">
+								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
+									<h3 class="m-t0 m-b10 font-weight-700 title-head">
+										<a href="#" class="text-secondry m-r30"></a>
+										<p>
+											لدى شركة : {{$job->company_name}}
+										</p>
+									</h3>
+
+
+									<br>
+									<h5 class="font-weight-600"> الحد الأدنى للمستوى التعليمي:{{$job->educational_lvl}} </h5>
+									<p>
+										
+									</p>
+									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+									
+										
+									
+								
+
+									<h5 class="font-weight-600">المهام الوظيفية</h5>
+									<p>
+									{{$job->job_task}}
+									</p>
+									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+								
+
+										
+									<h5 class="font-weight-600">الراتب و الفوائد </h5>
+									<p>
+                                    {{$job->salary}}
+									</p>
+									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+									
+									<h5 class="font-weight-600">متطلبات خاصة بهذه الفرصة</h5>
+
+									<p>
+                                    
+										   
+									
+									</p>
+                                    <div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+									
+										
+									
+								
+
+									<h5 class="font-weight-600">اختصاص العمل المطلوب: </h5>
+									<p>
+									{{$job->job_specialist}}
+									</p>
+									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+                                    
+									<p>
+									عدد الاشخاص المطلوبين :
+									</p>
+									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+									<ul class="list-num-count no-round">
+										<!-- <li>T•الخبرة العملية السابقة غير مطلوبة , الافضلية لمن لديه خبرة في نفس المجال.
+											
+											
+										</li> -->
+										
+									</ul>
+									<a href="#" class="site-button">تقدم الآن</a>
+								</div>
+							</div>
+						
 					</div>
 				</div>
 			</div>
-            <!-- Browse Jobs END -->
+			<br><br>
+            <!-- Job Detail -->
+			<!-- Our Jobs -->
+			
+			<!-- Our Jobs END -->
 		</div>
+
+		
+       
     </div>
     <!-- Content END-->
 	<!-- Footer -->
+    
     <footer class="site-footer">
+		
         <div class="footer-top">
             <div class="container">
                 <div class="row">
@@ -219,7 +278,7 @@
                         <div class="widget">
                             <img src="images/logo-white.png" width="180" class="m-b15" alt=""/>
 							<p class="text-capitalize m-b20">Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the industry's standard dummy text ever since the..</p>
-                            <div class="subscribe-form m-b20">
+                           <!-- <div class="subscribe-form m-b20">
 								<form class="dzSubscribe" action="http://job-board.w3itexperts.com/xhtml/script/mailchamp.php" method="post">
 									<div class="dzSubscribeMsg"></div>
 									<div class="input-group">
@@ -229,7 +288,7 @@
 										</span> 
 									</div>
 								</form>
-							</div>
+							</div>-->
 							<ul class="list-inline m-a0">
 								<li><a href="#" class="site-button white facebook circle "><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#" class="site-button white google-plus circle "><i class="fa fa-google-plus"></i></a></li>
@@ -248,32 +307,33 @@
                                 <li><a href="#">Communications</a></li>
                                 <li><a href="#">Referral Terms</a></li>
                                 <li><a href="#">Lending Licnses</a></li>
-								<li><a href="#">Support</a></li>
+								
                                 <li><a href="#">How It Works</a></li>
                                 <li><a href="#">For Employers</a></li>
                                 <li><a href="#">Underwriting</a></li>
                                 <li><a href="#">Contact Us</a></li>
 								<li><a href="#">Lending Licnses</a></li>
-								<li><a href="#">Support</a></li>
+							
                             </ul>
                         </div>
                     </div>
 					<div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-12">
                         <div class="widget border-0">
-                            <h5 class="m-b30 text-white">Find Jobs</h5>
+                            <h5 class="m-b30 text-white">ابحث عن عمل</h5>
                             <ul class="list-2 w10 list-line">
-                                <li><a href="#">US Jobs</a></li>
-                                <li><a href="#">Canada Jobs</a></li>
-                                <li><a href="#">UK Jobs</a></li>
-                                <li><a href="#">Emplois en Fnce</a></li>
-                                <li><a href="#">Jobs in Deuts</a></li>
-								<li><a href="#">Vacatures China</a></li>
+                                <li><a href="#">دمشق</a></li>
+                                <li><a href="#">ريف دمشق</a></li>
+                                <li><a href="#">حلب</a></li>
+                                <li><a href="#">حمص </a></li>
+                                <li><a href="#">حماه</a></li>
+								<li><a href="#">اللاذقية</a></li>
                             </ul>
                         </div>
                     </div>
 				</div>
             </div>
         </div>
+		
         <!-- footer bottom part -->
         <div class="footer-bottom">
             <div class="container">
@@ -282,6 +342,7 @@
                 </div>
             </div>
         </div>
+		
     </footer>
     <!-- Footer END -->
     <button class="scroltop fa fa-chevron-up"></button>
@@ -305,6 +366,7 @@
 <script src="js/dz.carousel.js"></script><!-- SORTCODE FUCTIONS  -->
 <script src='js/recaptcha/api.js'></script> <!-- Google API For Recaptcha  -->
 <script src="js/dz.ajax.js"></script><!-- CONTACT JS  -->
+<script src="plugins/paroller/skrollr.min.js"></script><!-- PAROLLER -->
 </body>
 
 

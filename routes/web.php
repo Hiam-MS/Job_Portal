@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controller\CompanyController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\JobsController;
+use App\Http\Controllers\PersonController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +21,14 @@ use App\Http\Controller\CompanyController;
 
 Route::get('/','CompanyController@index');
 Route::get('/job','CompanyController@showJob');
+Route::get('job/details/{id}','JobsController@JobDetails');
+
+Route::get('/person','PersonController@index');
+
+
+
+
+
+
+
 
