@@ -17,4 +17,17 @@ class PersonController extends Controller
         return view('test');
     }
 
+
+    public function show($id)
+
+    {
+        
+        $Person = Person::find($id);
+        return view('test',compact('Person'));
+        
+       
+
+        
+    }
+
 }

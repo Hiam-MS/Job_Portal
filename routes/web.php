@@ -23,6 +23,7 @@ Route::get('/','CompanyController@index');
 Route::get('/job','CompanyController@showJob');
 Route::get('job/details/{id}','JobsController@JobDetails');
 
+Route::get('/person/{id}','PersonController@show');
 Route::get('/person','PersonController@index');
 
 

@@ -26,4 +26,16 @@ public function PersonSkill()
     return $this->hasMany(PersonSkill::class);
 }
 
+public function PersonCousre()
+
+{
+    return $this->hasMany(PersonCousre::class);
+}
+
+public function PersonExperience()
+
+{
+    return $this->hasMany(PersonExperience::class);
+}
+
 }
