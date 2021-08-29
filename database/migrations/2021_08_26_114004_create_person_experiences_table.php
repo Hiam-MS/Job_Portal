@@ -22,8 +22,12 @@ class CreatePersonExperiencesTable extends Migration
             $table->string('Start Date');
             $table->string('End Date');
             $table->string('Responsibilities');
+
             $table->unsignedInteger('person_id');
-            $table->foreign('person_id')->referances('id')->on('People')->onDelete('cascade');
+            $table->foreign('person_id')->references('id')->on('People')->onDelete('cascade');
+            
+            // $table->unsignedInteger('person_id');
+            // $table->foreign('person_id')->referances('id')->on('People')->onDelete('cascade');
             
             $table->timestamps();
         });

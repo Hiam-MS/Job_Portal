@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\JobsController;
 use App\Http\Controllers\PersonController;
+use App\Http\Controllers\AdminController;
 
 
 /*
@@ -26,6 +27,10 @@ Route::get('job/details/{id}','JobsController@JobDetails');
 Route::get('/person/{id}','PersonController@show');
 Route::get('/person','PersonController@index');
 
+
+
+Route::get('/country','AdminController@addCountry');
+Route::get('/city/{id}','AdminController@addCity');
 
 
 
