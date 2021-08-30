@@ -17,7 +17,7 @@ class CreatePeopleTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email');
-            $table->integer('gender');
+            $table->char('gender');
             $table->date('dob');
             $table->string('place-Of-b');
             $table->string('marital-status');
@@ -27,7 +27,6 @@ class CreatePeopleTable extends Migration
             $table->string('mobile-number');
             $table->string('img');
             $table->json('lang');
-           
             $table->timestamps();
         });
     }

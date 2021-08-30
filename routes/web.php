@@ -5,6 +5,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\JobsController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\JobCategoryController;
 
 
 /*
@@ -31,6 +32,8 @@ Route::get('/person','PersonController@index');
 
 Route::get('/country','AdminController@addCountry');
 Route::get('/city/{id}','AdminController@addCity');
+
+Route::get('/JobCategory','JobCategoryController@showJobJobCategory');
 
 
 

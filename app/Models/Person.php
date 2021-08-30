@@ -38,4 +38,18 @@ public function PersonExperience()
     return $this->hasMany(PersonExperience::class);
 }
 
+
+public function PersonEducation()
+
+{
+    return $this->hasMany(PersonEducation::class);
+}
+
+public function JobCategory()
+
+{
+    return $this->belongsToMany(JobCategory::class);
+
+}
+
 }
