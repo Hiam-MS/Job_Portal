@@ -20,13 +20,14 @@ class CreatePeopleTable extends Migration
             $table->char('gender');
             $table->date('dob');
             $table->string('place-Of-b');
+            $table->integer('national_number');
             $table->string('marital-status');
             $table->string('military-service');
             $table->string('Current-address');
             $table->string('fixed-phone');
             $table->string('mobile-number');
             $table->string('img');
-            $table->json('lang');
+            $table->json('lang')->nullable();
             $table->timestamps();
         });
     }
