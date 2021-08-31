@@ -15,18 +15,18 @@ class CreatePeopleTable extends Migration
     {
         Schema::create('people', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email');
+            $table->string('name')->nullable();
+            $table->string('email')->nullable();
             $table->char('gender');
             $table->date('dob');
-            $table->string('place-Of-b');
-            $table->integer('national_number');
-            $table->string('marital-status');
-            $table->string('military-service');
-            $table->string('Current-address');
-            $table->string('fixed-phone');
-            $table->string('mobile-number');
-            $table->string('img');
+            $table->string('place_Of_b');
+            $table->integer('national_number')->nullable();
+            $table->string('marital_status')->nullable();
+            $table->string('military_service')->nullable();
+            $table->string('Current_address')->nullable();
+            $table->string('fixed_phone')->nullable();
+            $table->string('mobile_number')->nullable();
+            $table->string('img')->nullable();
             $table->json('lang')->nullable();
             $table->timestamps();
         });

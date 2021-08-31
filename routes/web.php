@@ -20,7 +20,7 @@ use App\Http\Controllers\JobCategoryController;
 */
 
 
-
+// jobs
 Route::get('/','CompanyController@index');
 Route::get('/job','CompanyController@showJob');
 Route::get('job/details/{id}','JobsController@JobDetails');
@@ -36,12 +36,22 @@ Route::get('/city/{id}','AdminController@addCity');
 Route::get('/JobCategory','JobCategoryController@showJobJobCategory');
 
 
+//person
+Route::get('/resume/skill','PersonController@index');
+Route::get('/resume/create','PersonController@createResume');
+Route::post('/resume/store','PersonController@store');
 
 
+
+//auth _ register _ login
 Route::get('auth/login','HomeController@login');
 
 Route::get('auth/register','HomeController@register');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
