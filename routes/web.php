@@ -38,6 +38,19 @@ Route::get('/JobCategory','JobCategoryController@showJobJobCategory');
 
 
 
+Route::get('auth/login','HomeController@login');
+
+Route::get('auth/register','HomeController@register');
 
 
+Auth::routes();
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
