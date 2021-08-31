@@ -65,7 +65,7 @@
                     <div  class="extra-nav">
                         <div  class="extra-cell">
                            <!-- <a href="register.html" class="site-button"><i class="fa fa-user"></i> تسجيل حساب</a>-->
-                            <a href="login.html" class="site-button"><i class="fa fa-lock"></i> تسجيل دخول</a>
+                            <a href="{{url('auth/login')}}" class="site-button"><i class="fa fa-lock"></i> تسجيل دخول</a>
                         </div>
                     </div>
                     <!-- Quik search -->
@@ -88,8 +88,8 @@
 							<li>
 								<a href="#">التسجيل في الموقع <i class="fa fa-chevron-down"></i></a>
 								<ul class="sub-menu">
-									<li><a href="browse-job.html" class="dez-page">باحث عن موظف</a></li>
-									<li><a href="companies.html" class="dez-page">باحث عن عمل</a></li>
+									<li><a href="{{url('auth/register')}}" class="dez-page">باحث عن موظف</a></li>
+									<li><a href="{{url('auth/register')}}" class="dez-page">باحث عن عمل</a></li>
 									
 								</ul>
 							</li>
