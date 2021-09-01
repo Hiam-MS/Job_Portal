@@ -49,6 +49,19 @@ Route::get('auth/login','HomeController@login');
 Route::get('auth/register','HomeController@register');
 
 
+Route::get('view_resuem','PersonController@viewResuemForm');
+Route::get('view_resuem/details/{id}','PersonController@JobDetails');
+
+
+
+
+
+Route::get('res_det','PersonController@res_det');
+
+
+
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
