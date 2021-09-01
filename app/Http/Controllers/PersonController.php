@@ -32,7 +32,6 @@ class PersonController extends Controller
         
         $Person = Person::find($id);
         return view('test',compact('Person'));
-<<<<<<< HEAD
   
     }
 
@@ -61,7 +60,6 @@ class PersonController extends Controller
     public function res_det()
     {
         return view('person.ResuemDetail');
-=======
         
     }
 
@@ -94,7 +92,6 @@ class PersonController extends Controller
         return redirect('/');
        
         
->>>>>>> 5fa4076c540ef10da2081696ca086cb1a06bc743
     }
 
 }
