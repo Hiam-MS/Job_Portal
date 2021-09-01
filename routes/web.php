@@ -41,7 +41,7 @@ Route::get('/resume/skill','PersonController@index');
 Route::get('/resume/create','PersonController@createResume');
 Route::post('/resume/store','PersonController@store');
 
-
+Route::get('Person/details/{id}','PersonController@ResuemDetails');
 
 //auth _ register _ login
 Route::get('auth/login','HomeController@login');

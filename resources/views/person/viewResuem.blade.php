@@ -40,6 +40,31 @@
 	<link rel="stylesheet" type="text/css" href="plugins/revolution/revolution/css/settings.css">
 	<link rel="stylesheet" type="text/css" href="plugins/revolution/revolution/css/navigation.css">
 	<!-- Revolution Navigation Style -->
+
+	<style>
+
+		#resuems tr:hover {background-color: #ddd;}
+
+		#resuems th {
+			
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color:#6666ff;
+  color: white;
+}
+
+#reseums tr,td{
+
+	padding: 15px;
+	padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+}
+
+	</style>
+
+
 </head>
 <body id="bg">
 <div class="page-wraper">
@@ -139,32 +164,48 @@
         </div>
         <!-- inner page banner END -->
         <!-- contact area -->
-        <div class="content-block">
+        <div class="content-block" >
 			<!-- Browse Jobs -->
 			<div class="section-full bg-white browse-job content-inner-2">
 				<div class="container">
 					<div class="row">
-						<div class="col-xl-9 col-lg-8">
+						<div class="col-xl-9 col-lg-8" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;"
+>
 							<h5 class="widget-title font-weight-700 text-uppercase"> السير الذاتية الحالية  </h5>
+							<br>
 							<ul class="post-job-bx">
                             {{ csrf_field() }}
                                 <form action="">
                                 
                                
                                 
-                                    <table boarder="1px">
+                                    <table id="resuems" dir="rtl">
 
                                         <thead>
                                             <tr>
-                                                <th>الاسم</th>
-                                                <th> الاختصاص</th>
-                                                <th> السكن</th>
+                                                <th> الاسم</th>
+												
+												<th>الشهادة</th>
+												<th> الجنس</th>
+												<th>عرض</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                             @foreach($resuem as $item)
+                                             @foreach($Person as $item)
                                              <tr>
                                                  <td>{{$item->name}}</td>
+												 
+												 @foreach($item->PersonEducation as $edu)
+													<td>{{$edu['degree_name'] }}</td>
+
+												@endforeach
+												<td> {{$item->gender}} </td>
+												<td>  
+													
+												
+					  								<a href="Person/details/{{ $item->id }}" class="btn "> تفاصيل</a>
+													
+												</td>
                                              </tr>
 
                                 

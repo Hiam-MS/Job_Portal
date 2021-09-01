@@ -40,6 +40,39 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/revolution/css/settings.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/revolution/css/navigation.css')}}">
 	<!-- Revolution Navigation Style -->
+
+
+	<style>
+
+   #edu tr:hover {background-color: #ddd;}
+   #expr tr:hover {background-color: #ddd;}
+   #skill tr:hover {background-color: #ddd;}
+   
+   #expr td {
+		padding:5px;
+		text-align: center;
+		background-color:#8080ff;
+		color: white;
+		}
+
+   #edu th {
+		padding:5px;
+		text-align: center;
+		background-color:#8080ff;
+		color: white;
+		}
+
+#skill th {
+	padding:5px;
+text-align: center;
+background-color:#8080ff;
+color: white;
+}
+
+	
+
+	
+	</style>
 </head>
 <body id="bg">
 <div class="page-wraper">
@@ -181,37 +214,127 @@
 										<p>
 											المعلومات الشخصية
 										</p>
+										<br>
 
 
 									</h3>
-									<table>
-										<tr>
-											<td>الجنس :</td>
-										</tr>
-										<tr>
-											<td>عنوان السكن :</td>
-										</tr>
-										<tr>
-											<td>البريد الالكتروني : </td>
-										</tr>
-										<tr>
-											<td>الهاتف : </td>
-										</tr>
-										<tr>
-											<td>خدمة العلم : </td>
-										</tr>
-									</table>
+
+									<h5 class="font-weight-600">  المعلومات الاساسية : </h5>
+									<br>
+								<table  id ="gen_info" dir="rtl">
+									<tr>
+										
+											<td> الاسم الكامل</td>
+											<td> {{$Person->name}} </td>
+													
+									</tr>
+									<tr>
+										<td> البريد الالكتروني : </td>
+										<td> {{$Person->email}} </td>
+
+									</tr>
+									<tr>
+										<td> الجنس : </td>
+										<td>{{$Person->gender}}</td>
+									</tr>
+									<tr>
+										<td> تاريخ الميلاد : </td>
+										<td> {{$Person->dob}} </td>
+									</tr>
+									
+									<tr>
+										<td> مكان الولادة : </td>
+										<td> {{$Person->place_Of_b}} </td>
+									</tr>
+
+									<tr>
+										<td> الرقم الوطني : </td>
+										<td> {{$Person->national_number}} </td>
+									</tr>
+
+									<tr>
+										<td> الوضع  العائلي : </td>
+										<td>{{$Person->marital_status}}</td>
+									</tr>
+
+									<tr>
+										<td> خدمة العلم </td>
+										<td> {{$Person->military_service}} </td>
+									</tr>
+
+									<tr>
+										<td> السكن الحالي :  </td>
+										<td> {{$Person->Current_address}} </td>
+									</tr>
+									<tr>
+										<td> الهاتف الارضي  </td>
+										<td> {{$Person->fixed_phone}} </td>
+									</tr>
+									<tr>
+										<td> رقم الموبايل  </td>
+										<td> {{$Person->mobile_number}} </td>
+									</tr>
+									<tr>
+										<td> اللغات  </td>
+										<td> {{$Person->lang}} </td>
+									</tr>
+
+									
+
+									
+								</table>
+									
+							
+					
+								
+										
+									
+									
 										
 										
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 
 
 									<br>
-									<h5 class="font-weight-600">  الخبرات : </h5>
-									<table>
-										<tr>
-											<td></td>
-										</tr>
+									<h5 class="font-weight-600">  الخبرات </h5>
+									<br>
+									<table id="expr" dir="rtl">
+										<thead >
+											<tr>
+												<td> رقم الوظيفة</th>
+												<td>عنوان العمل</td>
+												<td> اختصاص العمل</td>
+												<td> اسم الشركة</td>
+												<td> عنوان الشركة</td>
+												<td>  تاريخ بدء العمل</td>
+												<td> تاريخ انتهاء العمل</td>
+												<td>  المسؤوليات</td>
+
+											</tr>
+											
+										</thead>
+										<tbody>
+											@foreach($Person->PersonExperience as $exp)
+												<tr>
+													<td> {{$exp['id'] }}</td>
+													<td>{{$exp['Job_title'] }} </td>
+													<td>{{$exp['job_Specialize'] }} </td>
+													<td>{{$exp['company_name'] }} </td>
+													<td>{{$exp['company_address'] }} </td>
+													<td>{{$exp['Start_date'] }} </td>
+													<td>{{$exp['end_date'] }} </td>
+													<td>{{$exp['Responsibilities'] }} </td>
+													
+
+													
+												</tr>
+											@endforeach
+										</tbody>
+
+
+										
+									
+							
 									
 									</table>
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
@@ -221,23 +344,90 @@
 								
 
 									<h5 class="font-weight-600"> التعليم</h5>
-										<table>
+									<br>
+										<table id="edu" dir="rtl">
 											<tr>
-												<td>اسم الشهادة :</td>
-												<td>سنة التخرج  :</td>
-												<td> المؤسسة التعليمية  :</td>
-												<td> الاختصاص   :</td>
+												<th>رقم الشهادة</th>
+												<th>اسم الشهادة </th>
+												<th>  المؤسسة التعليمية</th>
+												<th> الدرجة </th>
+												<th> الاختصاص  </th>
+												<th>سنة التخرج </th>
+												<th>  البلد </th>
+												
 											</tr>
+
+											@foreach($Person->PersonEducation as $exp)
+												<tr>
+													<td> {{$exp['id'] }}</td>
+													<td>{{$exp['degree_name'] }} </td>
+													<td>{{$exp['Institution'] }} </td>
+													<td>{{$exp['Degree'] }} </td>
+													<td>{{$exp['Major'] }} </td>
+													<td>{{$exp['Graduation_year'] }} </td>
+													<td>{{$exp['Country'] }} </td>
+													
+													
+
+													
+												</tr>
+											@endforeach
 										
 										</table>
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+									
+									
+										
+									
 								
+
+									<h5 class="font-weight-600"> المهارات</h5>
+									<br>
+									
+									<table id ="skill" dir="rtl">
+											<tr>
+												<th>رقم  </th>
+												<th>اسم المهارة   </th>
+												
+											</tr>
+
+											@foreach($Person->PersonSkill as $exp)
+												<tr>
+													<td> {{$exp['id'] }}</td>
+													<td>{{$exp['name'] }} </td>
+													
+													
+												</tr>
+											@endforeach
+										
+										</table>
+										<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+
+										<h5 class="font-weight-600"> الدورات</h5>
+										<br>
+									
+									<table dir="rtl">
+											<tr>
+												<th>رقم  </th>
+												<th>اسم الدورة   </th>
+												
+											</tr>
+
+											@foreach($Person->PersonSkill as $exp)
+												<tr>
+													<td> {{$exp['id'] }}</td>
+													<td>{{$exp['name'] }} </td>
+													
+													
+												</tr>
+											@endforeach
+										
+										</table>
 
 										
 									<h5 class="font-weight-600"> اللغات :  </h5>
-										<p>
-										
-										</p>
+									<br>
+									{{$Person->lan}}
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 									
 								
