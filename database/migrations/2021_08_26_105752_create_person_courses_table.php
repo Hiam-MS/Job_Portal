@@ -15,7 +15,7 @@ class CreatePersonCoursesTable extends Migration
     {
         Schema::create('person_courses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->unsignedBigInteger('person_id');
             $table->foreign('person_id')->references('id')->on('people')->onDelete('cascade');
             $table->timestamps();
