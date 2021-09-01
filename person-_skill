@@ -1,11 +1,11 @@
-CREATE TABLE IF NOT EXISTS person_skill (
+CREATE TABLE IF NOT EXISTS person_skills (
     `id` INT,
     `name` VARCHAR(433) CHARACTER SET utf8,
     `person_id` INT,
     `created_at` INT,
     `updated_at` INT
 );
-INSERT INTO person_skill VALUES
+INSERT INTO person_skills VALUES
     (1,NULL,1,NULL,NULL),
     (2,NULL,2,NULL,NULL),
     (3,'معلمة صف',3,NULL,NULL),
@@ -256,7 +256,7 @@ INSERT INTO person_skill VALUES
     (248,'IT manager , photoshop and illsutrator graphic design, محاسبة برنامج excel and access , data managing and reporting , emailing and correspondence',248,NULL,NULL),
     (249,'Icdl, جمع بيانات ،سبل عيش ',249,NULL,NULL),
     (250,'أعمال إدارية ',250,NULL,NULL);
-INSERT INTO person_skill VALUES
+INSERT INTO person_skills VALUES
     (251,'لم اتخرج من الجامعة بعد ',251,NULL,NULL),
     (252,'في مجال الدراسة.ويوجد خبرة في مجال التطوع',252,NULL,NULL),
     (253,'محاسب/اداري ',253,NULL,NULL),
@@ -507,7 +507,7 @@ INSERT INTO person_skill VALUES
     (498,'مهندسة ',498,NULL,NULL),
     (499,'جميع المهن وخاصة الطبية',499,NULL,NULL),
     (500,'إعداد مرشد اجتماعي...ادارة الاعمال...',500,NULL,NULL);
-INSERT INTO person_skill VALUES
+INSERT INTO person_skills VALUES
     (501,'كتييير مهن ',501,NULL,NULL),
     (502,'كل شي المهم لاقي شغل',502,NULL,NULL),
     (503,'التعليم',503,NULL,NULL),
@@ -758,7 +758,7 @@ INSERT INTO person_skill VALUES
     (748,'محاسبة',748,NULL,NULL),
     (749,'ادارة اعمال',749,NULL,NULL),
     (750,'مدربة تنمية بشرية ...معلمة ',750,NULL,NULL);
-INSERT INTO person_skill VALUES
+INSERT INTO person_skills VALUES
     (751,'ادارة الحالة - الرصد والتقييم - إدارة الكوارث (توزيع المساعدات الغذائية و الصحية)',751,NULL,NULL),
     (752,'القدره ع تعامل والتعاون مع فريق العمل',752,NULL,NULL),
     (753,'التدريس ',753,NULL,NULL),
@@ -1009,7 +1009,7 @@ INSERT INTO person_skill VALUES
     (998,'لايوجد مهنه محدده',998,NULL,NULL),
     (999,'خدمات اجتماعية وأعمال ادارية ',999,NULL,NULL),
     (1000,'مدير موارد بشرية',1000,NULL,NULL);
-INSERT INTO person_skill VALUES
+INSERT INTO person_skills VALUES
     (1001,'سكرتارية والمام بالكمبيوتر ',1001,NULL,NULL),
     (1002,'مدربة تنمية ',1002,NULL,NULL),
     (1003,'لا يوجد ',1003,NULL,NULL),
@@ -1260,7 +1260,7 @@ INSERT INTO person_skill VALUES
     (1248,'طبيب عام ',1248,NULL,NULL),
     (1249,'إدارة المشاريع وتنظيم سير العمل والتنسيق مع الأعضاء  العاملين',1249,NULL,NULL),
     (1250,'العمل المجتمعي واعطاء المحاضرات ',1250,NULL,NULL);
-INSERT INTO person_skill VALUES
+INSERT INTO person_skills VALUES
     (1251,'مخبرية اسنان ',1251,NULL,NULL),
     (1252,'اعمال ادارية',1252,NULL,NULL),
     (1253,'لا توجد مهنة معينة',1253,NULL,NULL),
@@ -1511,7 +1511,7 @@ INSERT INTO person_skill VALUES
     (1498,'معلمة مدرسة',1498,NULL,NULL),
     (1499,'محاسبة ',1499,NULL,NULL),
     (1500,'عمل إداري او تدريس ',1500,NULL,NULL);
-INSERT INTO person_skill VALUES
+INSERT INTO person_skills VALUES
     (1501,'محاسبه وإدارة ',1501,NULL,NULL),
     (1502,'صناعة مستحضرات التجميل ',1502,NULL,NULL),
     (1503,'التدريس',1503,NULL,NULL),
@@ -1762,7 +1762,7 @@ INSERT INTO person_skill VALUES
     (1748,'لا يوجد',1748,NULL,NULL),
     (1749,'العمل على برنامج الامين ',1749,NULL,NULL),
     (1750,'لا يوجد',1750,NULL,NULL);
-INSERT INTO person_skill VALUES
+INSERT INTO person_skills VALUES
     (1751,'اي شي ',1751,NULL,NULL),
     (1752,'الحساب والرياضيات ',1752,NULL,NULL),
     (1753,'.',1753,NULL,NULL),
@@ -2013,7 +2013,7 @@ INSERT INTO person_skill VALUES
     (1998,'لم اعمل من قبل',1998,NULL,NULL),
     (1999,'التدريس',1999,NULL,NULL),
     (2000,'العمل على تشغيل الماكينات الصناعية ',2000,NULL,NULL);
-INSERT INTO person_skill VALUES
+INSERT INTO person_skills VALUES
     (2001,'مترجم + مدرس',2001,NULL,NULL),
     (2002,'محاسبة ',2002,NULL,NULL),
     (2003,'مخبري أسنان ',2003,NULL,NULL),
