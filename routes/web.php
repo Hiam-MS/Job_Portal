@@ -45,7 +45,7 @@ Route::get('/resume/createEdu/{id}','PersonController@createResumeEdu')->name('e
 //Route::get('resume/addEducation/{id}','PersonController@createPersonEdu');
 Route::get('/resume/addEducation','PersonController@createPersonEdu');
 
-
+Route::get('Person/details/{id}','PersonController@ResuemDetails');
 
 //auth _ register _ login
 Route::get('auth/login','HomeController@login');

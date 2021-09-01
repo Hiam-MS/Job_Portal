@@ -37,31 +37,22 @@ class PersonController extends Controller
 
     public function viewResuemForm()
     {
-        $resuem =Person::all();
-        return view('person.viewResuem',compact('resuem'));
+        $Person=Person::all();
+       
+        
+        
+     
+        return view('person.viewResuem',compact('Person'));
     }
 
     public function ResuemDetails($id)
     {
-        $resuem = Person::find($id);
-        $skills = PersonSkill::orderBy('skill', 'asc')->get();
-        $educations = PersonEducation::where('id', $resuem->id)
-        ->orderBy('created_at', 'desc')
-        ->get();
-
-        //$experience = PersonExperience::orderBy('experience', 'asc')->get();
-
-
-
-
-        return view('company.job-Details',compact('resuem','skills','educations'));
+        $Person = Person::find($id);
+       
+        return view('person.ResuemDetail',compact('Person'));
     }
 
-    public function res_det()
-    {
-        return view('person.ResuemDetail');
-        
-    }
+ 
 
 
     public function createResume()
