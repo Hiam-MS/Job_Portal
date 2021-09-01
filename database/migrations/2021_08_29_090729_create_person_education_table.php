@@ -15,12 +15,12 @@ class CreatePersonEducationTable extends Migration
     {
         Schema::create('person_education', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('degree_name');
-            $table->string('Institution');
-            $table->string('Degree');
-            $table->string('Major');
-            $table->date('Graduation_year');
-            $table->string('Country');
+            $table->string('degree_name')->nullable();
+            $table->string('Institution')->nullable();
+            $table->string('Degree')->nullable();
+            $table->string('Major')->nullable();
+            $table->date('Graduation_year')->nullable();
+            $table->string('Country')->nullable();
             $table->unsignedBigInteger('person_id');
            $table->foreign('person_id')->references('id')->on('people')->onDelete('cascade');
              $table->timestamps();

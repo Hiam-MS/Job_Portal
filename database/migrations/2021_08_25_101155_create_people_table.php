@@ -17,9 +17,9 @@ class CreatePeopleTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->string('email')->nullable();
-            $table->char('gender');
-            $table->date('dob');
-            $table->string('place_Of_b');
+            $table->string('gender')->nullable();
+            $table->date('dob')->nullable();
+            $table->string('place_Of_b')->nullable();
             $table->integer('national_number')->nullable();
             $table->string('marital_status')->nullable();
             $table->string('military_service')->nullable();

@@ -15,13 +15,13 @@ class CreatePersonExperiencesTable extends Migration
     {
         Schema::create('person_experiences', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('Job_title');
-            $table->string('job_Specialize');
-            $table->string('company_name');
-            $table->string('company_address');
-            $table->string('Start_date');
-            $table->string('end_date');
-            $table->string('Responsibilities');
+            $table->string('Job_title')->nullable();
+            $table->string('job_Specialize')->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('company_address')->nullable();
+            $table->string('Start_date')->nullable();
+            $table->string('end_date')->nullable();
+            $table->string('Responsibilities')->nullable();
             $table->unsignedBigInteger('person_id');
             $table->timestamps();
             $table->foreign('person_id')->references('id')->on('people')->onDelete('cascade');
