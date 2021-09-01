@@ -89,9 +89,23 @@ class PersonController extends Controller
             ///$person->lang= $Request->input("lang");
 
         $person->save();
-        return redirect('/');
+
+        return redirect()->route('edu', [$person]);
+       
+        //return redirect('/');
        
         
     }
+
+    public function createResumeEdu()
+    {
+        return view('person.addResumeEdu');
+    }
+
+    public function createPersonEdu()
+    {
+        return view('person.addEdu');
+    }
+
 
 }

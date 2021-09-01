@@ -139,7 +139,7 @@
                     <h1 class="text-white">السيرة الذاتية</h1>
 					<!-- Breadcrumb row -->
 					<div class="breadcrumb-row">
-                    <h6 class="text-white">المعلومات الشخصية</h1>
+                    <h3 class="text-white">اضافة شهادة تعليمية جديدة</h3>
 					</div>
 					<!-- Breadcrumb row END -->
                 </div>
@@ -155,122 +155,57 @@
 					<form action="/resume/store" method="POST" id="resume" >
                     @csrf
                     
+                    
+
 						<div class="form-group">
-							<label>الاسم الكامل</label>
+							<label> اسم الشهادة</label>
 							<input type="text" class="form-control" placeholder="Your Full Name" name="name"  >
 						</div>
 						<div class="form-group">
-							<label>عنوان البريد الالكتروني</label>
+							<label> المؤسسة التعليمية</label>
 							<input type="email" class="form-control" placeholder="info@gmail.com" name="email">
 						</div>
                         <div class="form-group">
-							<label>الرقم الوطني</label>
+							<label>الاختصاص </label>
 							<input type="text" class="form-control" placeholder="" name="national_number">
 						</div>
 						<div class="form-group" >
-							<label>     الجنس :              </label>
+							<label>    الدرجة/ الشهادة              </label>
+                            <label> &nbsp                    </label>
+                            <label> &nbsp                    </label>
+                            <label> &nbsp                    </label>
 							<select name="gender" >
                             <option  >يرجى الاختيار</option>
 								
+                                <option value="f"  > أقل من ثانوية عامة </option>
+                                <option value="m"  > ذكر </option>
                                 <option value="f"  > انثى </option>
                                 <option value="m"  > ذكر </option>
+                                <option value="f"  > انثى </option>
+                                <option value="m"  > ذكر </option>
+                                <option value="f"  > انثى </option>
+                                
 								
 							</select>
                             <spam> &nbsp                                     </spam>
                             <label> &nbsp                    </label>
                             <label> &nbsp                    </label>
                             <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
+                            
                             
 
-                            <label>&nbsp                                      الوضع العائلي:</label>
                             
-							<select name="marital_status">
-                            
-                            <option >يرجى الاختيار</option>
-								<option value="single">عازب</option>
-								<option  value="single">غير عازب</option>
-								
-							</select>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label>&nbsp                                        خدمة العلم :</label>
-							<select name="military_service">
-                            <option >يرجى الاختيار</option>
-								<option  value="finish">منتهية</option>
-								<option  value="not finish">غير منتهية</option>
-                                <option value="non">معفى</option>
-								
-							</select>
 						</div>
-                        <!--<div class="form-group">
-							<label>       الوضع العائلي :      </label>
-                            
-							<select>
-                            <option >يرجى الاختيار</option>
-								<option>عازب</option>
-								<option>غير عازب</option>
-								
-							</select>
-						</div>
-
-                        <div class="form-group">
-							<label>     خدمة العلم :  </label>
-							<select>
-                            <option >يرجى الاختيار</option>
-								<option>منتهية</option>
-								<option>غير منتهية</option>
-                                <option>معفى</option>
-								
-							</select>
-                            </div>-->
+                       
 						<div class="form-group">
-							<label>تاريخ الميلاد</label>
+							<label>سنة التخرج </label>
 							<input type="date" class="form-control" placeholder="Web Designer"  name="dob">
 						</div>
 						<div class="form-group">
-							<label>مكان الولادة</label>
+							<label>دولة الدراسة </label>
 							<input type="text" class="form-control" placeholder=""  name="place_Of_b">
 						</div>
-                        <div class="form-group">
-							<label>عنوان الاقامة الحالي</label>
-							
-                             <!--<textarea  name="" id="" cols="90" rows="10" class="form-control" name="Current_address" form="resume"></textarea>-->
-                            <input type="text" class="form-control" placeholder=""  name="Current_address">
-						</div>
-
                         
-                            <div class="form-group">
-							<label>الهاتف الأرضي</label>
-							<input type="text" class="form-control" placeholder="" name="fixed_phone">
-						</div>
-                        <div class="form-group">
-							<label>رقم الخليوي</label>
-							<input type="text" class="form-control" placeholder=""  name="mobile_number">
-						</div>
-						
-						<div class="form-group">
-							<label>الصورة الشخصية</label>
-							<div class="custom-file">
-								<input type="file" class="site-button" id="customFile"  name="img">
-							</div>
-						</div>
-						
 						
 						
 						<button type="submit" class="site-button" >Submit</button>

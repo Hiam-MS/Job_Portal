@@ -42,6 +42,7 @@
 	<!-- Revolution Navigation Style -->
 </head>
 <body id="bg">
+@csrf
 <div class="page-wraper">
 
 	<!-- header -->
@@ -129,47 +130,167 @@
     </header>
     <!-- header END -->
     <!-- Content -->
-    <!-- Content -->
+   
+    
+
+    
     <div class="page-content bg-white">
         <!-- inner page banner -->
-        <div class="dez-bnr-inr overlay-black-dark" style="background-image:url({{ asset('images/banner/bnr1.jpg')}});">
+        <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{ asset('images/banner/bnr1.jpg')}});">
+		
         
             <div class="container">
                 <div class="dez-bnr-inr-entry">
                     <h1 class="text-white">السيرة الذاتية</h1>
-					<!-- Breadcrumb row -->
 					<div class="breadcrumb-row">
-                    <h6 class="text-white"> التعليم</h1>
+                    <h6 class="text-white">التعليم</h1>
 					</div>
+					<!-- Breadcrumb row -->
+					<!--<div class="breadcrumb-row">
+						<ul class="list-inline">
+							<li><a href="#">Home</a></li>
+							<li>Job Detail</li>
+						</ul>
+					</div> -->
 					<!-- Breadcrumb row END -->
                 </div>
             </div>
         </div>
         <!-- inner page banner END -->
         <!-- contact area -->
-
-        <div  class="content-block">
-			<!-- Submit Resume -->
-			<div class="section-full bg-white submit-resume content-inner-2">
-				<div dir="rtl" lang="ar" class="container" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
-					<form action="/resume/store" method="POST" id="resume" >
-                    @csrf
-                    
-						<div class="form-group">
-							<h2>خبرات العمل</h2>
-							
-                            <a href="browse-job.html" style="ho" >اضف خبرة عمل جديدة</a>
-						</div>
+        <div class="content-block">
+             <!-- Job Detail -->
+			<div class="section-full content-inner-1">
+				<div class="container">
+					<div class="row">
+					
+							<div class="col-lg-4">
+								<div class="sticky-top">
+									<div class="row">
+										<div class="col-lg-12 col-md-6">
+											<div class="m-b30">
+												<img src="images/blog/grid/6.jpg" alt="">
+											</div>
+										</div>
+										
+										<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;"
+ class="col-lg-12 col-md-6">
+											<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
+												<h4 class="text-black font-weight-700 p-t10 m-b15">لوحة التحكم</h4>
+												<ul>
+													<li><strong class="font-weight-700 text-black"> <a href="#" >عرض الملف الشخصي</a></strong><span class="text-black-light"> </span></li>
+													
+													<li><strong class="font-weight-700 text-black"><li><a href="#" >تعديل كلمة المرور</a></li></strong> </li>
+													<li><strong class="font-weight-700 text-black"><a href="#" >تعديل المعلومات الشخصية  </a>  </strong></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div> 
 						
-					</form>
+							
+							<div class="col-lg-8">
+								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
+									<!-- <h3 class="m-t0 m-b10 font-weight-700 title-head">
+										<a href="#" class="text-secondry m-r30"></a>
+										<p>
+											لدى شركة :
+									</h3> -->
+
+
+									<br>
+									<h3 class="font-weight-600"> الشهادات التعليمية  </h3>
+									<p>لاتوجد شهادات تعليمية مذكورة حالياً - أضف الشهادات التعليمية في حال وجودها </p>
+									
+
+									<!-- <table>
+									<tr>
+                                        <th>اسم الشهادة</th>
+                                        <th>الاختصاص</th>
+										<th>سنة التخرج</th>
+										<th>خيارات</th>
+                                    </tr>
+
+									<tr></tr>
+                                     
+                                    </table> -->
+									
+                                    <p>
+									<a href="resume/addEducation" class="site-button" >أضف شهادة تعليمية جديدة</a>
+									</p>
+									
+									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+									
+										
+									
+								
+
+									<h3 class="font-weight-600">المهارات </h3>
+									<p>
+									لا توجد مهارات مذكورة ضمن سيرتك الذاتية
+									</p>
+									<p>
+									<a href="blog-detailed-grid.html"  class="site-button" >أضف مهارة جديدة</a>
+									</p>
+									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+								
+
+										
+									<h3 class="font-weight-600">الدورات التدريبية المتبعة  </h3>
+									<p>
+									لاتوجد دورات مذكورة حالياً - أضف الدورات المتبعة في حال وجودها
+                                    </p>
+									<p><a href="blog-detailed-grid.html"  class="site-button" >أضف دورة تدريبية جديدة</a>
+									</p>
+
+
+									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+									
+									<h3 class="font-weight-600">خبرات العمل </h3>
+									<p>
+									لايوجد خبرات عمل مذكورة حالياً - أضف خبراتك في حال وجودها
+                                    </p>
+									<p><a href="blog-detailed-grid.html"  class="site-button" >أضف خبرة عمل جديدة</a>
+									</p>
+
+
+                                    
+									<!-- <!-- <div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+                                    
+									<p>
+									عدد الاشخاص المطلوبين :
+									</p>
+									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+									<ul class="list-num-count no-round">
+										<!-- <li>T•الخبرة العملية السابقة غير مطلوبة , الافضلية لمن لديه خبرة في نفس المجال.
+											
+											
+										</li> -->
+										
+									<!-- </ul>   -->
+									<a href="#" class="site-button">تقدم الآن</a>
+								</div>
+							</div>
+						
+					</div>
 				</div>
 			</div>
-            <!-- Submit Resume END -->
+			<br><br>
+            <!-- Job Detail -->
+			<!-- Our Jobs -->
+			
+			<!-- Our Jobs END -->
 		</div>
+
+		
+       
     </div>
     <!-- Content END-->
 	<!-- Footer -->
+    
     <footer class="site-footer">
+		
         <div class="footer-top">
             <div class="container">
                 <div class="row">
@@ -177,7 +298,7 @@
                         <div class="widget">
                             <img src="images/logo-white.png" width="180" class="m-b15" alt=""/>
 							<p class="text-capitalize m-b20">Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the industry's standard dummy text ever since the..</p>
-                            <div class="subscribe-form m-b20">
+                           <!-- <div class="subscribe-form m-b20">
 								<form class="dzSubscribe" action="http://job-board.w3itexperts.com/xhtml/script/mailchamp.php" method="post">
 									<div class="dzSubscribeMsg"></div>
 									<div class="input-group">
@@ -187,7 +308,7 @@
 										</span> 
 									</div>
 								</form>
-							</div>
+							</div>-->
 							<ul class="list-inline m-a0">
 								<li><a href="#" class="site-button white facebook circle "><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#" class="site-button white google-plus circle "><i class="fa fa-google-plus"></i></a></li>
@@ -206,40 +327,42 @@
                                 <li><a href="#">Communications</a></li>
                                 <li><a href="#">Referral Terms</a></li>
                                 <li><a href="#">Lending Licnses</a></li>
-								<li><a href="#">Support</a></li>
+								
                                 <li><a href="#">How It Works</a></li>
                                 <li><a href="#">For Employers</a></li>
                                 <li><a href="#">Underwriting</a></li>
                                 <li><a href="#">Contact Us</a></li>
 								<li><a href="#">Lending Licnses</a></li>
-								<li><a href="#">Support</a></li>
+							
                             </ul>
                         </div>
                     </div>
 					<div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-12">
                         <div class="widget border-0">
-                            <h5 class="m-b30 text-white">Find Jobs</h5>
+                            <h5 class="m-b30 text-white">ابحث عن عمل</h5>
                             <ul class="list-2 w10 list-line">
-                                <li><a href="#">US Jobs</a></li>
-                                <li><a href="#">Canada Jobs</a></li>
-                                <li><a href="#">UK Jobs</a></li>
-                                <li><a href="#">Emplois en Fnce</a></li>
-                                <li><a href="#">Jobs in Deuts</a></li>
-								<li><a href="#">Vacatures China</a></li>
+                                <li><a href="#">دمشق</a></li>
+                                <li><a href="#">ريف دمشق</a></li>
+                                <li><a href="#">حلب</a></li>
+                                <li><a href="#">حمص </a></li>
+                                <li><a href="#">حماه</a></li>
+								<li><a href="#">اللاذقية</a></li>
                             </ul>
                         </div>
                     </div>
 				</div>
             </div>
         </div>
+		
         <!-- footer bottom part -->
         <div class="footer-bottom">
             <div class="container">
-               <div class="row">
+                <div class="row">
                     <div class="col-lg-12 text-center"><span><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></span></div>
                 </div>
             </div>
         </div>
+		
     </footer>
     <!-- Footer END -->
     <button class="scroltop fa fa-chevron-up"></button>
@@ -264,33 +387,6 @@
 <script src='js/recaptcha/api.js'></script> <!-- Google API For Recaptcha  -->
 <script src="js/dz.ajax.js"></script><!-- CONTACT JS  -->
 <script src="plugins/paroller/skrollr.min.js"></script><!-- PAROLLER -->
-<script type="text/javascript">
-
-			$("#exp-slider-range").slider({
-				range: true,
-				min: 0,
-				max: 10,
-				//values: [0, 10],
-				slide: function(event, ui) {
-					var min = ui.values[0],
-						max = ui.values[1];
-					  $('#' + this.id).prev().val( min + " year - " + max + " year");
-				}
-			});
-			
-			$("#salary-slider-range").slider({
-				range: true,
-				min: 10,
-				max: 100,
-				//values: [10, 1000],
-				slide: function(event, ui) {
-					var min = ui.values[0],
-						max = ui.values[1];
-					  $('#' + this.id).prev().val(min + "K - " + max + "K");
-				}
-			});
-		
-</script>
 </body>
 
 

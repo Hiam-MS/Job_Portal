@@ -6,6 +6,7 @@ use App\Http\Controllers\JobsController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\JobCategoryController;
+use Illuminate\Routing\Redirector;
 
 
 /*
@@ -40,6 +41,9 @@ Route::get('/JobCategory','JobCategoryController@showJobJobCategory');
 Route::get('/resume/skill','PersonController@index');
 Route::get('/resume/create','PersonController@createResume');
 Route::post('/resume/store','PersonController@store');
+Route::get('/resume/createEdu/{id}','PersonController@createResumeEdu')->name('edu');
+//Route::get('resume/addEducation/{id}','PersonController@createPersonEdu');
+Route::get('/resume/addEducation','PersonController@createPersonEdu');
 
 
 
