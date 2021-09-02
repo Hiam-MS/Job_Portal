@@ -15,8 +15,8 @@
 	<meta name="format-detection" content="telephone=no">
 	
 	<!-- FAVICONS ICON -->
-	<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
-	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+	<link rel="icon" href="{{ asset('images/favicon.ico')}}" type="image/x-icon" />
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png')}}" />
 	
 	<!-- PAGE TITLE HERE -->
 	<title>JobBoard - HTML Template</title>
@@ -30,20 +30,20 @@
 	<![endif]-->
 	
 	<!-- STYLESHEETS -->
-	<link rel="stylesheet" type="text/css" href="css/plugins.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/templete.css">
-	<link class="skin" rel="stylesheet" type="text/css" href="css/skin/skin-1.css">
-	<link rel="stylesheet" href="plugins/datepicker/css/bootstrap-datetimepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/plugins.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/templete.css')}}">
+	<link class="skin" rel="stylesheet" type="text/css" href="{{ asset('css/skin/skin-1.css')}}">
+	<link rel="stylesheet" href="{{ asset('plugins/datepicker/css/bootstrap-datetimepicker.min.css')}}"/>
 	<!-- Revolution Slider Css -->
-	<link rel="stylesheet" type="text/css" href="plugins/revolution/revolution/css/layers.css">
-	<link rel="stylesheet" type="text/css" href="plugins/revolution/revolution/css/settings.css">
-	<link rel="stylesheet" type="text/css" href="plugins/revolution/revolution/css/navigation.css">
+	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/revolution/css/layers.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/revolution/css/settings.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/revolution/css/navigation.css')}}">
 	<!-- Revolution Navigation Style -->
 </head>
 <body id="bg">
-
 <div class="page-wraper">
+
 	<!-- header -->
     <header class="site-header mo-left header fullwidth">
 		<!-- main header -->
@@ -52,7 +52,7 @@
                 <div class="container clearfix">
                     <!-- website logo -->
                     <div class="logo-header mostion">
-						<a href="index-2.html"><img src="images/logo.png" class="logo" alt=""></a>
+						<a href="index-2.html"><img src="{{ asset('images/logo.png')}}" class="logo" alt=""></a>
 					</div>
                     <!-- nav toggle button -->
                     <!-- nav toggle button -->
@@ -65,7 +65,7 @@
                     <div  class="extra-nav">
                         <div  class="extra-cell">
                            <!-- <a href="register.html" class="site-button"><i class="fa fa-user"></i> تسجيل حساب</a>-->
-                            <a href="{{url('auth/login')}}" class="site-button"><i class="fa fa-lock"></i> تسجيل دخول</a>
+                            <a href="login.html" class="site-button"><i class="fa fa-lock"></i> تسجيل دخول</a>
                         </div>
                     </div>
                     <!-- Quik search -->
@@ -88,8 +88,8 @@
 							<li>
 								<a href="#">التسجيل في الموقع <i class="fa fa-chevron-down"></i></a>
 								<ul class="sub-menu">
-									<li><a href="{{url('auth/register')}}" class="dez-page">باحث عن موظف</a></li>
-									<li><a href="{{url('auth/register')}}" class="dez-page">باحث عن عمل</a></li>
+									<li><a href="browse-job.html" class="dez-page">باحث عن موظف</a></li>
+									<li><a href="companies.html" class="dez-page">باحث عن عمل</a></li>
 									
 								</ul>
 							</li>
@@ -127,14 +127,14 @@
         </div>
         <!-- main header END -->
     </header>
-
+    <!-- header END -->
 
     <main class="py-4">
             @yield('content')
-    </main>
+        </main>
 
 
-<footer class="site-footer">
+		<footer class="site-footer">
 		
         <div class="footer-top">
             <div class="container">
@@ -210,8 +210,7 @@
 		
     </footer>
     <!-- Footer END -->
-    <!-- scroll top button -->
-    <button class="scroltop fa fa-arrow-up" ></button>
+    <button class="scroltop fa fa-chevron-up"></button>
 </div>
 <!-- JAVASCRIPT FILES ========================================= -->
 <script src="js/jquery.min.js"></script><!-- JQUERY.MIN JS -->
@@ -228,16 +227,11 @@
 <script src="plugins/masonry/masonry.filter.js"></script><!-- MASONRY -->
 <script src="plugins/owl-carousel/owl.carousel.js"></script><!-- OWL SLIDER -->
 <script src="plugins/rangeslider/rangeslider.js" ></script><!-- Rangeslider -->
-
-
-<!--<script src="js/custom.js"></script>--> <!-- CUSTOM FUCTIONS  -->
-
+<script src="js/custom.js"></script><!-- CUSTOM FUCTIONS  -->
 <script src="js/dz.carousel.js"></script><!-- SORTCODE FUCTIONS  -->
 <script src='js/recaptcha/api.js'></script> <!-- Google API For Recaptcha  -->
 <script src="js/dz.ajax.js"></script><!-- CONTACT JS  -->
 <script src="plugins/paroller/skrollr.min.js"></script><!-- PAROLLER -->
-<!-- Go to www.addthis.com/dashboard to customize your tools --> 
-
 </body>
 
 

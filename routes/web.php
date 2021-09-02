@@ -54,7 +54,7 @@ Route::get('auth/register','HomeController@register');
 
 
 Route::get('view_resuem','PersonController@viewResuemForm');
-Route::get('view_resuem/details/{id}','PersonController@JobDetails');
+
 
 
 
