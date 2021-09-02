@@ -42,7 +42,7 @@
 	<!-- Revolution Navigation Style -->
 </head>
 <body id="bg">
-@csrf
+
 <div class="page-wraper">
 
 	<!-- header -->
@@ -189,7 +189,7 @@
 								</div>
 							</div> 
 						
-							
+							@csrf
 							<div class="col-lg-8">
 								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
 									<!-- <h3 class="m-t0 m-b10 font-weight-700 title-head">
@@ -202,7 +202,7 @@
 									<br>
 									<h3 class="font-weight-600"> الشهادات التعليمية  </h3>
 									<p>لاتوجد شهادات تعليمية مذكورة حالياً - أضف الشهادات التعليمية في حال وجودها </p>
-									
+									<p>  </p>
 
 									<!-- <table>
 									<tr>
@@ -217,7 +217,7 @@
                                     </table> -->
 									
                                     <p>
-									<a href="resume/addEducation" class="site-button" >أضف شهادة تعليمية جديدة</a>
+									<a href="/resume/addEducation/{{ $Person->id }}" class="site-button" >أضف شهادة تعليمية جديدة</a>
 									</p>
 									
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>

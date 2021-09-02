@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Person;
 use App\Models\PersonSkill;
+use App\Models\PersonEducation;
 
 
 
@@ -80,23 +81,53 @@ class PersonController extends Controller
             ///$person->lang= $Request->input("lang");
 
         $person->save();
+       $id= $person->id;
+       return redirect()->route('edu', ['id' => $id]);
 
-        return redirect()->route('edu', [$person]);
-       
-        //return redirect('/');
+       //return redirect('/');
+
+       //return view('person.addEdu');
        
         
     }
-
-    public function createResumeEdu()
+//show resume for add edu - skills - courses
+    public function createResumeEdu($id)
     {
-        return view('person.addResumeEdu');
+        $Person = Person::find($id);
+        return view('person.addResumeEdu',compact('Person'));
     }
 
-    public function createPersonEdu()
+//show form for add person Education
+    public function createPersonEdu($id)
     {
-        return view('person.addEdu');
+
+        return view('person.addEdu', ['id' => $id]);
     }
 
+    public function storePersonEdu(Request $Request)
+
+    {
+        $personEdu =new PersonEducation ;
+            $personEdu->degree_name = $Request->input("degree_name");
+            $personEdu->Institution =  $Request->input("Institution");
+            $personEdu->Degree= $Request->input("Degree");
+            $personEdu->Major= $Request->input("Major");
+            $personEdu->Graduation_year = $Request->input("Graduation_year");
+            
+            $personEdu->person_id= $Request->input("pid");
+           
+
+            $personEdu->save();
+            $id = $personEdu->person_id;
+            
+           //return redirect()->route('edu');
+           return redirect()->route('edu', ['id' => $id]);
+
+       //return redirect('/');
+
+       //return view('person.addEdu');
+       
+        
+    }
 
 }

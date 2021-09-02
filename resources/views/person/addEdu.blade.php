@@ -152,38 +152,38 @@
 			<!-- Submit Resume -->
 			<div class="section-full bg-white submit-resume content-inner-2">
 				<div dir="rtl" lang="ar" class="container" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
-					<form action="/resume/store" method="POST" id="resume" >
+					<form action="/resume/storePersonEdu" method="POST" id="resume" >
                     @csrf
                     
                     
 
 						<div class="form-group">
 							<label> اسم الشهادة</label>
-							<input type="text" class="form-control" placeholder="Your Full Name" name="name"  >
+							<input type="text" class="form-control" placeholder="Your Full Name" name="degree_name"  >
 						</div>
 						<div class="form-group">
 							<label> المؤسسة التعليمية</label>
-							<input type="email" class="form-control" placeholder="info@gmail.com" name="email">
+							<input type="text" class="form-control" placeholder="info@gmail.com" name="Institution">
 						</div>
                         <div class="form-group">
 							<label>الاختصاص </label>
-							<input type="text" class="form-control" placeholder="" name="national_number">
+							<input type="text" class="form-control" placeholder="" name="Major">
 						</div>
 						<div class="form-group" >
 							<label>    الدرجة/ الشهادة              </label>
                             <label> &nbsp                    </label>
                             <label> &nbsp                    </label>
                             <label> &nbsp                    </label>
-							<select name="gender" >
+							<select name="Degree" >
                             <option  >يرجى الاختيار</option>
 								
-                                <option value="f"  > أقل من ثانوية عامة </option>
-                                <option value="m"  > ذكر </option>
-                                <option value="f"  > انثى </option>
-                                <option value="m"  > ذكر </option>
-                                <option value="f"  > انثى </option>
-                                <option value="m"  > ذكر </option>
-                                <option value="f"  > انثى </option>
+                                <option value="f+"  > أقل من ثانوية عامة </option>
+                                <option value="f"  > ثانوية عامة </option>
+                                <option value="a"  > معهد متوسط </option>
+                                <option value="B"  > بكالوريوس / اجازة </option>
+                                <option value="m"  > دبلوم دراسات عليا </option>
+                                <option value="M"  > ماجستير </option>
+								<option value="D"  > دكتوراه </option>
                                 
 								
 							</select>
@@ -199,16 +199,17 @@
                        
 						<div class="form-group">
 							<label>سنة التخرج </label>
-							<input type="date" class="form-control" placeholder="Web Designer"  name="dob">
+							<input type="date" class="form-control" placeholder="Web Designer"  name="Graduation_year">
 						</div>
 						<div class="form-group">
 							<label>دولة الدراسة </label>
-							<input type="text" class="form-control" placeholder=""  name="place_Of_b">
+							<input type="text" class="form-control" placeholder=""  name="Country">
+							<input type="hidden" class="form-control" placeholder=""  name="pid" value={{$id}}>
 						</div>
                         
 						
 						
-						<button type="submit" class="site-button" >Submit</button>
+						<button type="submit" class="site-button" > أضف</button>
 					</form>
 				</div>
 			</div>

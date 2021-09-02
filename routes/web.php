@@ -42,8 +42,9 @@ Route::get('/resume/skill','PersonController@index');
 Route::get('/resume/create','PersonController@createResume');
 Route::post('/resume/store','PersonController@store');
 Route::get('/resume/createEdu/{id}','PersonController@createResumeEdu')->name('edu');
-//Route::get('resume/addEducation/{id}','PersonController@createPersonEdu');
-Route::get('/resume/addEducation','PersonController@createPersonEdu');
+Route::get('/resume/addEducation/{id}','PersonController@createPersonEdu');
+Route::post('/resume/storePersonEdu','PersonController@storePersonEdu')->name('StoreEdu');
+//Route::get('/resume/addEducation','PersonController@createPersonEdu');
 
 Route::get('Person/details/{id}','PersonController@ResuemDetails');
 
