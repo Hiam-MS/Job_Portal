@@ -88,7 +88,7 @@
 								<div class="clearfix m-b30">
 									<h5 class="widget-title font-weight-700 text-uppercase">Keywords</h5>
 									<div class="">
-										<input type="text" class="form-control" placeholder="Search">
+										<input type="text" class="form-control typeahead" placeholder="Search">
 									</div>
 								</div>
 							
@@ -104,4 +104,11 @@
     </div>
     <!-- Content END-->
 	<!-- Footer -->
+
+
+
+
+
 @endsection
+
+

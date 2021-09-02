@@ -65,7 +65,7 @@
                     <div  class="extra-nav">
                         <div  class="extra-cell">
                            <!-- <a href="register.html" class="site-button"><i class="fa fa-user"></i> تسجيل حساب</a>-->
-                            <a href="login.html" class="site-button"><i class="fa fa-lock"></i> تسجيل دخول</a>
+                            <a href="{{ route('login') }}" class="site-button"><i class="fa fa-lock"></i> تسجيل دخول</a>
                         </div>
                     </div>
                     <!-- Quik search -->
@@ -79,7 +79,7 @@
                     <div class="header-nav navbar-collapse collapse justify-content-start" id="navbarNavDropdown">
                         <ul class="nav navbar-nav">
 							<li class="active">
-								<a href="index-3.html">الرئيسية </i></a>
+								<a href="{{ asset('/')}}">الرئيسية </i></a>
 								<!--<ul class="sub-menu">
 									<li><a href="index-2.html" class="dez-page">Home 1</a></li>
 									<li><a href="index-3.html" class="dez-page">Home 2</a></li>
@@ -88,8 +88,8 @@
 							<li>
 								<a href="#">التسجيل في الموقع <i class="fa fa-chevron-down"></i></a>
 								<ul class="sub-menu">
-									<li><a href="browse-job.html" class="dez-page">باحث عن موظف</a></li>
-									<li><a href="companies.html" class="dez-page">باحث عن عمل</a></li>
+									<li><a href="{{ route('register') }}" class="dez-page">باحث عن موظف</a></li>
+									<li><a href="{{ route('register') }}" class="dez-page">باحث عن عمل</a></li>
 									
 								</ul>
 							</li>
@@ -97,14 +97,26 @@
 							<li>
 								<a href="#">فرص العمل <i class="fa fa-chevron-down"></i></a>
 								<ul class="sub-menu">
-									<li><a href="job-country.html#country" class="dez-page">حسب المدينة</a></li>
-									<li><a href="job-country.html#specialty" class="dez-page">حسب الاختصاص</a></li>
+									<li><a href="{{ route('job') }}" class="dez-page">حسب المدينة</a></li>
+									<li><a href="{{ route('job') }}" class="dez-page">حسب الاختصاص</a></li>
 									
 									
 								</ul>
 							</li>
 							<li>
-								<a href="#aboutUs">عن الشركة</i></a>
+								<a href="{{ asset('/')}}">عن الشركة</i></a>
+								<ul class="sub-menu">
+									
+								</ul>
+							</li>
+							<li>
+								<a href="{{ route('resuems') }}">السير الذاتية الحالية</i></a>
+								<ul class="sub-menu">
+									
+								</ul>
+							</li>
+							<li>
+								<a href="{{ route('resuem.create') }}">  انشاء سيرة ذاتية</i></a>
 								<ul class="sub-menu">
 									
 								</ul>
@@ -131,7 +143,7 @@
 
     <main class="py-4">
             @yield('content')
-        </main>
+    </main>
 
 
 		<footer class="site-footer">
@@ -143,17 +155,7 @@
                         <div class="widget">
                             <img src="images/logo-white.png" width="180" class="m-b15" alt=""/>
 							<p class="text-capitalize m-b20">Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the industry's standard dummy text ever since the..</p>
-                           <!-- <div class="subscribe-form m-b20">
-								<form class="dzSubscribe" action="http://job-board.w3itexperts.com/xhtml/script/mailchamp.php" method="post">
-									<div class="dzSubscribeMsg"></div>
-									<div class="input-group">
-										<input name="dzEmail" required="required"  class="form-control" placeholder="Your Email Id" type="email">
-										<span class="input-group-btn">
-											<button name="submit" value="Submit" type="submit" class="site-button radius-xl">Subscribe</button>
-										</span> 
-									</div>
-								</form>
-							</div>-->
+                       
 							<ul class="list-inline m-a0">
 								<li><a href="#" class="site-button white facebook circle "><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#" class="site-button white google-plus circle "><i class="fa fa-google-plus"></i></a></li>
