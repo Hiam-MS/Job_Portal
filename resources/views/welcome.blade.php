@@ -1,4 +1,4 @@
-@extends ('header')
+@extends('header')
 @section('content')
     <!-- header END -->
     <!-- Content -->
@@ -10,15 +10,7 @@
 					<div class=" job-search-form">
 						<h2 class="text-center">أسهل طريقة للحصول على وظيفتك الجديدة</h2>
 						<h3>ابحث عن الوظائف والتوظيف وفرص العمل</h3>
-						<!--<form>
-							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Job Title, Keywords Or Company Name">
-								<input type="text" class="form-control" placeholder="City, Province Or Region">
-								<div class="input-group-prepend">
-									<button class="site-button">Search</button>
-								</div>
-							</div>
-						</form>-->
+				
 					</div>
 				</div>
             </div>
@@ -74,7 +66,8 @@
 					</div>
 				</div>
 			</div>
-		
+			
+		<!-- About Us END -->
 		<!-- Call To Action -->
 		<div class="section-full content-inner-2 call-to-action overlay-black-dark text-white text-center bg-img-fix" style="background-image: url(images/background/bg4.jpg);">
 			<div class="container">
@@ -89,9 +82,12 @@
 		</div>
 		
 		
-	
+		
+		<!-- Our Job END -->	
+		<!-- Call To Action -->
 		<br>
 		
+		<!-- Our Latest Blog -->
 		<br><br><br><br><br>
 	
 		<div class="section-full content-inner-2 overlay-white-middle">
@@ -136,8 +132,6 @@
 	</div>
 	<!-- Footer -->
 	<br><br><br><br><br>
-
-	@endsection
 	
 	
-	
+@endsection

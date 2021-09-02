@@ -22,4 +22,10 @@ class JobsController extends Controller
 
         
     }
+
+
+    public function addJob()
+    {
+        return view('company.addJob');
+    }
 }

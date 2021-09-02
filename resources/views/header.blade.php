@@ -15,8 +15,8 @@
 	<meta name="format-detection" content="telephone=no">
 	
 	<!-- FAVICONS ICON -->
-	<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
-	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+	<link rel="icon" href="{{ asset('images/favicon.ico')}}" type="image/x-icon" />
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png')}}" />
 	
 	<!-- PAGE TITLE HERE -->
 	<title>JobBoard - HTML Template</title>
@@ -30,20 +30,20 @@
 	<![endif]-->
 	
 	<!-- STYLESHEETS -->
-	<link rel="stylesheet" type="text/css" href="css/plugins.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/templete.css">
-	<link class="skin" rel="stylesheet" type="text/css" href="css/skin/skin-1.css">
-	<link rel="stylesheet" href="plugins/datepicker/css/bootstrap-datetimepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/plugins.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/templete.css')}}">
+	<link class="skin" rel="stylesheet" type="text/css" href="{{ asset('css/skin/skin-1.css')}}">
+	<link rel="stylesheet" href="{{ asset('plugins/datepicker/css/bootstrap-datetimepicker.min.css')}}"/>
 	<!-- Revolution Slider Css -->
-	<link rel="stylesheet" type="text/css" href="plugins/revolution/revolution/css/layers.css">
-	<link rel="stylesheet" type="text/css" href="plugins/revolution/revolution/css/settings.css">
-	<link rel="stylesheet" type="text/css" href="plugins/revolution/revolution/css/navigation.css">
+	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/revolution/css/layers.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/revolution/css/settings.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/revolution/css/navigation.css')}}">
 	<!-- Revolution Navigation Style -->
 </head>
 <body id="bg">
-
 <div class="page-wraper">
+
 	<!-- header -->
     <header class="site-header mo-left header fullwidth">
 		<!-- main header -->
@@ -52,7 +52,7 @@
                 <div class="container clearfix">
                     <!-- website logo -->
                     <div class="logo-header mostion">
-						<a href="index-2.html"><img src="images/logo.png" class="logo" alt=""></a>
+						<a href="index-2.html"><img src="{{ asset('images/logo.png')}}" class="logo" alt=""></a>
 					</div>
                     <!-- nav toggle button -->
                     <!-- nav toggle button -->
@@ -65,7 +65,7 @@
                     <div  class="extra-nav">
                         <div  class="extra-cell">
                            <!-- <a href="register.html" class="site-button"><i class="fa fa-user"></i> تسجيل حساب</a>-->
-                            <a href="{{url('auth/login')}}" class="site-button"><i class="fa fa-lock"></i> تسجيل دخول</a>
+                            <a href="{{ route('login') }}" class="site-button"><i class="fa fa-lock"></i> تسجيل دخول</a>
                         </div>
                     </div>
                     <!-- Quik search -->
@@ -79,7 +79,7 @@
                     <div class="header-nav navbar-collapse collapse justify-content-start" id="navbarNavDropdown">
                         <ul class="nav navbar-nav">
 							<li class="active">
-								<a href="index-3.html">الرئيسية </i></a>
+								<a href="{{ asset('/')}}">الرئيسية </i></a>
 								<!--<ul class="sub-menu">
 									<li><a href="index-2.html" class="dez-page">Home 1</a></li>
 									<li><a href="index-3.html" class="dez-page">Home 2</a></li>
@@ -88,8 +88,8 @@
 							<li>
 								<a href="#">التسجيل في الموقع <i class="fa fa-chevron-down"></i></a>
 								<ul class="sub-menu">
-									<li><a href="{{url('auth/register')}}" class="dez-page">باحث عن موظف</a></li>
-									<li><a href="{{url('auth/register')}}" class="dez-page">باحث عن عمل</a></li>
+									<li><a href="{{ route('register') }}" class="dez-page">باحث عن موظف</a></li>
+									<li><a href="{{ route('register') }}" class="dez-page">باحث عن عمل</a></li>
 									
 								</ul>
 							</li>
@@ -97,14 +97,26 @@
 							<li>
 								<a href="#">فرص العمل <i class="fa fa-chevron-down"></i></a>
 								<ul class="sub-menu">
-									<li><a href="job-country.html#country" class="dez-page">حسب المدينة</a></li>
-									<li><a href="job-country.html#specialty" class="dez-page">حسب الاختصاص</a></li>
+									<li><a href="{{ route('job') }}" class="dez-page">حسب المدينة</a></li>
+									<li><a href="{{ route('job') }}" class="dez-page">حسب الاختصاص</a></li>
 									
 									
 								</ul>
 							</li>
 							<li>
-								<a href="#aboutUs">عن الشركة</i></a>
+								<a href="{{ asset('/')}}">عن الشركة</i></a>
+								<ul class="sub-menu">
+									
+								</ul>
+							</li>
+							<li>
+								<a href="{{ route('resuems') }}">السير الذاتية الحالية</i></a>
+								<ul class="sub-menu">
+									
+								</ul>
+							</li>
+							<li>
+								<a href="{{ route('resuem.create') }}">  انشاء سيرة ذاتية</i></a>
 								<ul class="sub-menu">
 									
 								</ul>
@@ -127,14 +139,14 @@
         </div>
         <!-- main header END -->
     </header>
-
+    <!-- header END -->
 
     <main class="py-4">
             @yield('content')
     </main>
 
 
-<footer class="site-footer">
+		<footer class="site-footer">
 		
         <div class="footer-top">
             <div class="container">
@@ -143,17 +155,7 @@
                         <div class="widget">
                             <img src="images/logo-white.png" width="180" class="m-b15" alt=""/>
 							<p class="text-capitalize m-b20">Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the industry's standard dummy text ever since the..</p>
-                           <!-- <div class="subscribe-form m-b20">
-								<form class="dzSubscribe" action="http://job-board.w3itexperts.com/xhtml/script/mailchamp.php" method="post">
-									<div class="dzSubscribeMsg"></div>
-									<div class="input-group">
-										<input name="dzEmail" required="required"  class="form-control" placeholder="Your Email Id" type="email">
-										<span class="input-group-btn">
-											<button name="submit" value="Submit" type="submit" class="site-button radius-xl">Subscribe</button>
-										</span> 
-									</div>
-								</form>
-							</div>-->
+                       
 							<ul class="list-inline m-a0">
 								<li><a href="#" class="site-button white facebook circle "><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#" class="site-button white google-plus circle "><i class="fa fa-google-plus"></i></a></li>
@@ -210,8 +212,7 @@
 		
     </footer>
     <!-- Footer END -->
-    <!-- scroll top button -->
-    <button class="scroltop fa fa-arrow-up" ></button>
+    <button class="scroltop fa fa-chevron-up"></button>
 </div>
 <!-- JAVASCRIPT FILES ========================================= -->
 <script src="js/jquery.min.js"></script><!-- JQUERY.MIN JS -->
@@ -228,16 +229,11 @@
 <script src="plugins/masonry/masonry.filter.js"></script><!-- MASONRY -->
 <script src="plugins/owl-carousel/owl.carousel.js"></script><!-- OWL SLIDER -->
 <script src="plugins/rangeslider/rangeslider.js" ></script><!-- Rangeslider -->
-
-
-<!--<script src="js/custom.js"></script>--> <!-- CUSTOM FUCTIONS  -->
-
+<script src="js/custom.js"></script><!-- CUSTOM FUCTIONS  -->
 <script src="js/dz.carousel.js"></script><!-- SORTCODE FUCTIONS  -->
 <script src='js/recaptcha/api.js'></script> <!-- Google API For Recaptcha  -->
 <script src="js/dz.ajax.js"></script><!-- CONTACT JS  -->
 <script src="plugins/paroller/skrollr.min.js"></script><!-- PAROLLER -->
-<!-- Go to www.addthis.com/dashboard to customize your tools --> 
-
 </body>
 
 

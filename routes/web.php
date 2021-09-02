@@ -23,11 +23,13 @@ use Illuminate\Routing\Redirector;
 
 // jobs
 Route::get('/','CompanyController@index');
-Route::get('/job','CompanyController@showJob');
+Route::get('/job','CompanyController@showJob')->name('job');
 Route::get('job/details/{id}','JobsController@JobDetails');
+Route::get('addJob','JobsController@addJob')->name('addJob');
 
 Route::get('/person/{id}','PersonController@show');
 Route::get('/person','PersonController@index');
+
 
 
 
@@ -39,7 +41,7 @@ Route::get('/JobCategory','JobCategoryController@showJobJobCategory');
 
 //person
 Route::get('/resume/skill','PersonController@index');
-Route::get('/resume/create','PersonController@createResume');
+Route::get('/resume/create','PersonController@createResume')->name('resuem.create');
 Route::post('/resume/store','PersonController@store');
 Route::get('/resume/createEdu/{id}','PersonController@createResumeEdu')->name('edu');
 Route::get('/resume/addEducation/{id}','PersonController@createPersonEdu');
@@ -48,14 +50,17 @@ Route::post('/resume/storePersonEdu','PersonController@storePersonEdu')->name('S
 
 Route::get('Person/details/{id}','PersonController@ResuemDetails');
 
-//auth _ register _ login
-Route::get('auth/login','HomeController@login');
+// //auth _ register _ login
+// Route::get('auth/login','HomeController@login');
 
-Route::get('auth/register','HomeController@register');
+// Route::get('auth/register','HomeController@register');
 
 
-Route::get('view_resuem','PersonController@viewResuemForm');
-Route::get('view_resuem/details/{id}','PersonController@JobDetails');
+Route::get('view_resuem','PersonController@viewResuemForm')->name('resuems');
+
+
+
+
 
 
 

@@ -40,8 +40,7 @@ class PersonController extends Controller
     {
         $Person=Person::all();
        
-        
-        
+       
      
         return view('person.viewResuem',compact('Person'));
     }
@@ -129,5 +128,29 @@ class PersonController extends Controller
        
         
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
