@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Person;
 use App\Models\PersonSkill;
 use App\Models\PersonEducation;
+use App\Models\PersonExperience;
+use App\Models\PersonCourse;
 
 
 
@@ -102,7 +104,7 @@ class PersonController extends Controller
 
         return view('person.addEdu', ['id' => $id]);
     }
-
+//store person Education
     public function storePersonEdu(Request $Request)
 
     {
@@ -125,9 +127,97 @@ class PersonController extends Controller
        //return redirect('/');
 
        //return view('person.addEdu');
-       
-        
+        }
+
+
+        //show form for add person *****Experience*****
+    public function createPersonExp($id)
+    {
+
+        return view('person.addExperience', ['id' => $id]);
     }
+//store person Experience
+    public function storePersonExp(Request $Request)
+
+    {
+        $personExp =new PersonExperience ;
+            $personExp->Job_title = $Request->input("Job_title");
+            $personExp->job_Specialize =  $Request->input("job_Specialize");
+            $personExp->company_name= $Request->input("company_name");
+            $personExp->company_address= $Request->input("company_address");
+            $personExp->Start_date = $Request->input("Start_date");
+            $personExp->end_date = $Request->input("end_date");
+            $personExp->Responsibilities= $Request->input("Responsibilities");
+            
+            $personExp->person_id= $Request->input("pid");
+           
+
+            $personExp->save();
+            $id = $personExp->person_id;
+            
+           //return redirect()->route('edu');
+           return redirect()->route('edu', ['id' => $id]);
+
+       //return redirect('/');
+
+       //return view('person.addEdu');
+        }
+
+         //show form for add person *****Skill*****
+    public function createPersonSkill($id)
+    {
+
+        return view('person.addSkill', ['id' => $id]);
+    }
+//store person Skill
+    public function storePersonSkill(Request $Request)
+
+    {
+        $personSkill =new PersonSkill ;
+            $personSkill->name = $Request->input("name");
+           $personSkill->person_id= $Request->input("pid");
+           
+
+            $personSkill->save();
+            $id = $personSkill->person_id;
+            
+           //return redirect()->route('edu');
+           return redirect()->route('edu', ['id' => $id]);
+
+       //return redirect('/');
+
+       //return view('person.addEdu');
+        }
+
+
+          //show form for add person *****Course*****
+    public function createPersonCourse($id)
+    {
+
+        return view('person.addCourse', ['id' => $id]);
+    }
+//store person ****Course****
+    public function storePersonCourse(Request $Request)
+
+    {
+        $PersonCourse =new PersonCourse ;
+            $PersonCourse->name = $Request->input("name");
+           $PersonCourse->person_id= $Request->input("pid");
+           
+
+            $PersonCourse->save();
+            $id = $PersonCourse->person_id;
+            
+           //return redirect()->route('edu');
+           return redirect()->route('edu', ['id' => $id]);
+
+       //return redirect('/');
+
+       //return view('person.addEdu');
+        }
+
+
+    
 
 
 

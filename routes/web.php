@@ -47,8 +47,21 @@ Route::get('/resume/createEdu/{id}','PersonController@createResumeEdu')->name('e
 Route::get('/resume/addEducation/{id}','PersonController@createPersonEdu');
 Route::post('/resume/storePersonEdu','PersonController@storePersonEdu')->name('StoreEdu');
 //Route::get('/resume/addEducation','PersonController@createPersonEdu');
-
 Route::get('Person/details/{id}','PersonController@ResuemDetails');
+Route::get('/resume/addExperience/{id}','PersonController@createPersonExp');
+Route::post('/resume/storePersonExp','PersonController@storePersonExp')->name('StoreExp');
+//skill//
+Route::get('/resume/addSkill/{id}','PersonController@createPersonSkill');
+Route::post('/resume/storePersonSkill','PersonController@storePersonSkill')->name('StoreSkill');
+//Course //
+Route::get('/resume/addCourse/{id}','PersonController@createPersonCourse');
+Route::post('/resume/storePersonCourse','PersonController@storePersonCourse')->name('StoreCourse');
+
+
+
+
+
+
 
 // //auth _ register _ login
 // Route::get('auth/login','HomeController@login');
@@ -58,20 +71,7 @@ Route::get('Person/details/{id}','PersonController@ResuemDetails');
 
 Route::get('view_resuem','PersonController@viewResuemForm')->name('resuems');
 
-
-
-
-
-
-
-
-
 Route::get('res_det','PersonController@res_det');
-
-
-
-
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
