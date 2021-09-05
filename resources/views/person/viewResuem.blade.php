@@ -73,10 +73,16 @@
                                              <tr>
                                                  <td>{{$item->name}}</td>
 												 
-												 @foreach($item->PersonEducation as $edu)
-													<td>{{$edu['degree_name'] }}</td>
+												 <td>
+													  @foreach($item->PersonEducation as $edu)
+												 		{{$edu['degree_name'] }} <br>
 
-												@endforeach
+												 @endforeach
+												 </td>
+												
+													
+
+												
 												<td> {{$item->gender}} </td>
 												<td>  
 													
