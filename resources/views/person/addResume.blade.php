@@ -30,19 +30,19 @@
                     
 						<div class="form-group">
 							<label>الاسم الكامل</label>
-							<input type="text" class="form-control" placeholder="Your Full Name" name="name"  >
+							<input type="text" class="form-control" placeholder="Your Full Name" name="name" style="width:60%" >
 						</div>
 						<div class="form-group">
 							<label>عنوان البريد الالكتروني</label>
-							<input type="email" class="form-control" placeholder="info@gmail.com" name="email">
+							<input type="email" class="form-control" placeholder="info@gmail.com" name="email" style="width:60%">
 						</div>
                         <div class="form-group">
 							<label>الرقم الوطني</label>
-							<input type="text" class="form-control" placeholder="" name="national_number">
+							<input type="text" class="form-control" placeholder="" name="national_number" style="width:60% ">
 						</div>
 						<div class="form-group" >
 							<label>     الجنس :              </label>
-							<select name="gender" >
+							<select name="gender" style="width:15%  "  >
                             <option  >يرجى الاختيار</option>
 								
                                 <option value="f"  > انثى </option>
@@ -63,7 +63,7 @@
 
                             <label>&nbsp                                      الوضع العائلي:</label>
                             
-							<select name="marital_status">
+							<select name="marital_status" style="width:15%" >
                             
                             <option >يرجى الاختيار</option>
 								<option value="single">عازب</option>
@@ -83,7 +83,7 @@
                             <label> &nbsp                    </label>
                             <label> &nbsp                    </label>
                             <label>&nbsp                                        خدمة العلم :</label>
-							<select name="military_service">
+							<select name="military_service" style="width:15%" >
                             <option >يرجى الاختيار</option>
 								<option  value="finish">منتهية</option>
 								<option  value="not finish">غير منتهية</option>
@@ -114,33 +114,33 @@
                             </div>-->
 						<div class="form-group">
 							<label>تاريخ الميلاد</label>
-							<input type="date" class="form-control" placeholder="Web Designer"  name="dob">
+							<input type="date" class="form-control" placeholder="Web Designer"  name="dob" style="width:60%" >
 						</div>
 						<div class="form-group">
 							<label>مكان الولادة</label>
-							<input type="text" class="form-control" placeholder=""  name="place_Of_b">
+							<input type="text" class="form-control" placeholder=""  name="place_Of_b" style="width:60% ">
 						</div>
                         <div class="form-group">
 							<label>عنوان الاقامة الحالي</label>
 							
                              <!--<textarea  name="" id="" cols="90" rows="10" class="form-control" name="Current_address" form="resume"></textarea>-->
-                            <input type="text" class="form-control" placeholder=""  name="Current_address">
+                            <input type="text" class="form-control" placeholder=""  name="Current_address" style="width:60% ">
 						</div>
 
                         
                             <div class="form-group">
 							<label>الهاتف الأرضي</label>
-							<input type="text" class="form-control" placeholder="" name="fixed_phone">
+							<input type="text" class="form-control" placeholder="" name="fixed_phone" style="width:60% ">
 						</div>
                         <div class="form-group">
 							<label>رقم الخليوي</label>
-							<input type="text" class="form-control" placeholder=""  name="mobile_number">
+							<input type="text" class="form-control" placeholder=""  name="mobile_number" style="width:60% ">
 						</div>
 						
 						<div class="form-group">
 							<label>الصورة الشخصية</label>
 							<div class="custom-file">
-								<input type="file" class="site-button" id="customFile"  name="img">
+								<input type="file" class="site-button" id="customFile"  name="img" style="width:60% ">
 							</div>
 						</div>
 						

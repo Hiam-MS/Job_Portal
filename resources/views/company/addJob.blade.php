@@ -27,17 +27,17 @@
 					<form style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
 						<div class="form-group">
 							<label>اسم الجهة </label>
-							<input type="text" class="form-control" placeholder="اسم الشركة بالعربي">
+							<input type="text" class="form-control" placeholder="اسم الشركة بالعربي" style="width:60% ">
 						</div>
 						<div class="form-group">
 							<label>المسمى الوظيفي  </label>
-							<input type="email" class="form-control" placeholder="المسمى الوظيفي">
+							<input type="email" class="form-control" placeholder="المسمى الوظيفي" style="width:60% ">
 						</div>
                         <div class="form-group">
 							<label> عرض فترة العمل  </label>
-							<input type="email" class="form-control" placeholder="">
+							<input type="email" class="form-control" placeholder="" style="width:60% ">
 						</div>
-                        <div class="form-group">
+                        <div class="form-group" >
 							<label>الدولة   </label>
                             <select>
 								<option>سورية</option>

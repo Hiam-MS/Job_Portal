@@ -1,5 +1,26 @@
 @extends('header')
 @section('content')
+
+
+
+<style>
+
+
+#resuems tr:hover {background-color: #ddd;}
+#resuems th {
+		padding:5px;
+		text-align: center;
+		background-color:#8080ff;
+		color: white;
+		}
+
+		#resuems tr {
+		padding:5px;
+		text-align: center;
+		
+		color: black;
+		}
+</style>
     <!-- header END -->
     <!-- Content -->
     <div class="page-content bg-white">
