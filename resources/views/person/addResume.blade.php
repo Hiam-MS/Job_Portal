@@ -146,7 +146,18 @@
 							<input type="text" class="form-control" placeholder=""  name="mobile_number" style="width:60% ">
 							<span style="color:red"> @error('mobile_number'){{$message}}@enderror</span>
 						</div>
-						
+						<div class="form-group">
+						<label>اللغات </label><br>
+						<select name="lang[]" id="category" multiple='multiple' size="3" style="width:15%">
+                                    
+                                     <option value="a">عربي</option>
+                                     <option value="g">الماني</option>
+                                     <option value="s">اسباني</option>
+									 <option value="f">هندي</option>
+									 <option value="e">ايطالي</option>
+                                    
+                                   </select>
+								   </div>
 						<div class="form-group">
 							<label>الصورة الشخصية</label>
 							<div class="custom-file">
