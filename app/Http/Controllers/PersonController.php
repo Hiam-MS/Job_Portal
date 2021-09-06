@@ -8,6 +8,8 @@ use App\Models\PersonSkill;
 use App\Models\PersonEducation;
 use App\Models\PersonExperience;
 use App\Models\PersonCourse;
+use App\Models\JobCategory;
+use App\Models\PersonCategory;
 
 
 
@@ -66,6 +68,7 @@ class PersonController extends Controller
     public function store(Request $Request)
 
     {
+        //$lang = $Request->input("lang");
         $person =new Person ;
             $person->name = $Request->input("name");
             $person->email =  $Request->input("email");
@@ -78,6 +81,8 @@ class PersonController extends Controller
             $person->Current_address= $Request->input("Current_address");
             $person->fixed_phone= $Request->input("fixed_phone");
             $person->mobile_number= $Request->input("mobile_number");
+            $person->lang= $Request->input("lang");
+            
             $person->img= $Request->input("img");
             ///$person->lang= $Request->input("lang");
 
@@ -216,10 +221,45 @@ class PersonController extends Controller
        //return view('person.addEdu');
         }
 
+// **********  show form for Job Category *******
 
+public function createResumeJobCat($id)
+{
+    $jobCat =JobCategory::all();
+    $Person = Person::find($id);
+    return view('person.addCategory',compact('Person','jobCat'));
+}
     
 
+// store person job category
 
+
+public function storePersonJobCat(Request $Request)
+
+{
+    $input = $Request->input("category");
+   
+    
+   
+
+
+    foreach($input as $cat){
+    $PersonCategory =new PersonCategory ;
+        $PersonCategory->category_id= $cat;
+       $PersonCategory->person_id= $Request->input("pid");
+
+       
+       $PersonCategory->save();
+    }
+
+        $id = $Request->input("pid");
+        
+        
+      
+       return redirect()->route('JobCategory', ['id' => $id]);
+
+   
+    }
 
 
 
