@@ -33,14 +33,17 @@
 						<div class="form-group">
 							<label> اسم الشهادة</label>
 							<input type="text" class="form-control" placeholder="Your Full Name" name="degree_name"  >
+							<span style="color:red"> @error('degree_name'){{$message}}@enderror</span>
 						</div>
 						<div class="form-group">
 							<label> المؤسسة التعليمية</label>
 							<input type="text" class="form-control" placeholder="info@gmail.com" name="Institution">
+							<span style="color:red"> @error('Institution'){{$message}}@enderror</span>
 						</div>
                         <div class="form-group">
 							<label>الاختصاص </label>
 							<input type="text" class="form-control" placeholder="" name="Major">
+							<span style="color:red"> @error('Major'){{$message}}@enderror</span>
 						</div>
 						<div class="form-group" >
 							<label>    الدرجة/ الشهادة              </label>
@@ -73,11 +76,14 @@
 						<div class="form-group">
 							<label>سنة التخرج </label>
 							<input type="date" class="form-control" placeholder="Web Designer"  name="Graduation_year">
+							<span style="color:red"> @error('Graduation_year'){{$message}}@enderror</span>
 						</div>
 						<div class="form-group">
 							<label>دولة الدراسة </label>
 							<input type="text" class="form-control" placeholder=""  name="Country">
+							<span style="color:red"> @error('Country'){{$message}}@enderror</span>
 							<input type="hidden" class="form-control" placeholder=""  name="pid" value={{$id}}>
+							
 						</div>
                         
 						

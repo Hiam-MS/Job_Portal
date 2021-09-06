@@ -8,6 +8,7 @@ use App\Models\PersonSkill;
 use App\Models\PersonEducation;
 use App\Models\PersonExperience;
 use App\Models\PersonCourse;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -18,7 +19,6 @@ class PersonController extends Controller
 
     {
 
-        
         return view('person.addSkill');
     }
 
@@ -40,12 +40,26 @@ class PersonController extends Controller
 
     public function viewResuemForm()
     {
-        $Person=Person::all();
-       
-       
-     
+        if(isset($_GET['query'])){
+            
+        $search_text= $_GET['query'];
+        $Person= Person::where('name','LIKE','%'.$search_text.'%')->get();
+
         return view('person.viewResuem',compact('Person'));
+        }else{
+            $Person=Person::all();
+            return view('person.viewResuem',compact('Person'));
+        }
+
+       
+
+        
+     
+        
     }
+
+  
+    
 
     public function ResuemDetails($id)
     {
@@ -66,6 +80,19 @@ class PersonController extends Controller
     public function store(Request $Request)
 
     {
+       
+
+        $Request->validate([
+            'name'=> ['required','string'] ,
+            'email'=> ['required','string'] ,
+            'dob'=> ['required','string'] ,
+            'place_Of_b'=> ['required','string'] ,
+            'national_number'=> ['required','integer'] ,
+            'fixed_phone'=> ['required','integer'] ,
+            'Current_address'=> ['required','string'] ,
+            'mobile_number'=> ['required','integer'] ,
+          
+        ]);
         $person =new Person ;
             $person->name = $Request->input("name");
             $person->email =  $Request->input("email");
@@ -91,6 +118,9 @@ class PersonController extends Controller
        
         
     }
+
+
+ 
 //show resume for add edu - skills - courses
     public function createResumeEdu($id)
     {

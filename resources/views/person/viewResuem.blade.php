@@ -47,60 +47,84 @@
 			<div class="section-full bg-white browse-job content-inner-2">
 				<div class="container">
 					<div class="row">
-						<div class="col-xl-9 col-lg-8" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;"
->
+					
+						
+						<div class="col-xl-3 col-lg-4">
+							<div class="sticky-top">
+								<div class="clearfix m-b30">
+									
+								<form action="{{route('resuems')}}" method="GET">
+								<ul class="post-job-bx">
+								<h5 class="widget-title font-weight-700 text-uppercase">البحث</h5>
+									<div class="">
+										<input type="text" class="form-control typeahead" placeholder="Search">
+									</div>
+
+									<br><b></b>
+									<div class="form-group">
+										<button type="submit">ابحث هنا</button>
+									</div>
+
+									</ul>
+
+
+									<ul class="post-job-bx">
+									<div class="col-xl-9 col-lg-8" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
 							<h5 class="widget-title font-weight-700 text-uppercase"> السير الذاتية الحالية  </h5>
 							<br>
 							<ul class="post-job-bx">
                             {{ csrf_field() }}
-                                <form action="">
-                                
                                
                                 
-                                    <table id="resuems" dir="rtl">
+                               
+                                @if(isset($Person))
+								<table id="resuems" dir="rtl">
 
-                                        <thead>
-                                            <tr>
-                                                <th> الاسم</th>
+									<thead>
+										<tr>
+											<th> الاسم</th>
+											
+											<th>الشهادة</th>
+											<th> الجنس</th>
+											<th>عرض</th>
+										</tr>
+									</thead>
+									<tbody>
+										@if(count($Person) > 0)
+											@foreach($Person as $item)
+											<tr>
+												<td>{{$item->name}}</td>
 												
-												<th>الشهادة</th>
-												<th> الجنس</th>
-												<th>عرض</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                             @foreach($Person as $item)
-                                             <tr>
-                                                 <td>{{$item->name}}</td>
-												 
-												 <td>
-													  @foreach($item->PersonEducation as $edu)
-												 		{{$edu['degree_name'] }} <br>
+												<td>
+													@foreach($item->PersonEducation as $edu)
+														{{$edu['degree_name'] }} <br>
 
-												 @endforeach
-												 </td>
-												
-													
-
-												
+													@endforeach
+												</td>
+											
 												<td> {{$item->gender}} </td>
 												<td>  
 													
-												
-					  								<a href="Person/details/{{ $item->id }}" class="btn "> تفاصيل</a>
+													<a href="Person/details/{{ $item->id }}" class="btn "> تفاصيل</a>
 													
 												</td>
-                                             </tr>
+											</tr>
 
-                                
-                                             @endforeach
 
-                                        </tbody>
-                                    </table>
-                                
+											@endforeach
+										@else
+											<tr><td>No result Founded</td></tr>
+										@endif
+									
+
+									</tbody>
+									</table>
+
+								@endif
+                                 
                                
 									
-                                </form>
+                             
 								
 								
 								
@@ -110,7 +134,25 @@
 							</ul>
 						
 						</div>
-						<div class="col-xl-3 col-lg-4">
+
+
+									</url>
+
+
+								</form>
+									
+								</div>
+							
+								
+							
+							</div>
+						</div>
+
+
+
+
+
+						<!-- <div class="col-xl-3 col-lg-4">
 							<div class="sticky-top">
 								<div class="clearfix m-b30">
 									<h5 class="widget-title font-weight-700 text-uppercase">Keywords</h5>
@@ -122,7 +164,9 @@
 								
 							
 							</div>
-						</div>
+						</div> -->
+
+
 					</div>
 				</div>
 			</div>

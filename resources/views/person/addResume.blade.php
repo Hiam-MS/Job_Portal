@@ -25,20 +25,25 @@
 			<!-- Submit Resume -->
 			<div class="section-full bg-white submit-resume content-inner-2">
 				<div dir="rtl" lang="ar" class="container" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
+
+		
 					<form action="/resume/store" method="POST" id="resume" >
                     @csrf
                     
 						<div class="form-group">
 							<label>الاسم الكامل</label>
 							<input type="text" class="form-control" placeholder="Your Full Name" name="name" style="width:60%" >
+							<span style="color:red"> @error('name'){{$message}}@enderror</span>
 						</div>
 						<div class="form-group">
 							<label>عنوان البريد الالكتروني</label>
 							<input type="email" class="form-control" placeholder="info@gmail.com" name="email" style="width:60%">
+							<span style="color:red"> @error('email'){{$message}}@enderror</span>
 						</div>
                         <div class="form-group">
 							<label>الرقم الوطني</label>
 							<input type="text" class="form-control" placeholder="" name="national_number" style="width:60% ">
+							<span style="color:red"> @error('national_number'){{$message}}@enderror</span>
 						</div>
 						<div class="form-group" >
 							<label>     الجنس :              </label>
@@ -115,26 +120,31 @@
 						<div class="form-group">
 							<label>تاريخ الميلاد</label>
 							<input type="date" class="form-control" placeholder="Web Designer"  name="dob" style="width:60%" >
+							<span style="color:red"> @error('dob'){{$message}}@enderror</span>
 						</div>
 						<div class="form-group">
 							<label>مكان الولادة</label>
 							<input type="text" class="form-control" placeholder=""  name="place_Of_b" style="width:60% ">
+							<span style="color:red"> @error('place_Of_b'){{$message}}@enderror</span>
 						</div>
                         <div class="form-group">
 							<label>عنوان الاقامة الحالي</label>
 							
                              <!--<textarea  name="" id="" cols="90" rows="10" class="form-control" name="Current_address" form="resume"></textarea>-->
                             <input type="text" class="form-control" placeholder=""  name="Current_address" style="width:60% ">
+							<span style="color:red"> @error('Current_address'){{$message}}@enderror</span>
 						</div>
 
                         
                             <div class="form-group">
 							<label>الهاتف الأرضي</label>
 							<input type="text" class="form-control" placeholder="" name="fixed_phone" style="width:60% ">
+							<span style="color:red"> @error('fixed_phone'){{$message}}@enderror</span>
 						</div>
                         <div class="form-group">
 							<label>رقم الخليوي</label>
 							<input type="text" class="form-control" placeholder=""  name="mobile_number" style="width:60% ">
+							<span style="color:red"> @error('mobile_number'){{$message}}@enderror</span>
 						</div>
 						
 						<div class="form-group">

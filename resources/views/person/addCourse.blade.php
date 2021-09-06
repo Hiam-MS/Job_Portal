@@ -33,7 +33,8 @@
 						<div class="form-group">
 							<label>     اسم الدورة  </label>
 							<input type="text" class="form-control" placeholder="Your Full Name" name="name"  >
-						</div>
+                            <span style="color:red"> @error('name'){{$message}}@enderror</span>
+                        </div>
 						
                        
                         <input type="hidden" class="form-control" placeholder=""  name="pid" value={{$id}}>
