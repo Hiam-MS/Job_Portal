@@ -40,6 +40,10 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/revolution/css/settings.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/revolution/css/navigation.css')}}">
 	<!-- Revolution Navigation Style -->
+<!-- select2 -->
+<link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.multiselect.css')}}">
+
+
 </head>
 <body id="bg">
 <div class="page-wraper">
@@ -234,6 +238,18 @@
 <script src='js/recaptcha/api.js'></script> <!-- Google API For Recaptcha  -->
 <script src="js/dz.ajax.js"></script><!-- CONTACT JS  -->
 <script src="plugins/paroller/skrollr.min.js"></script><!-- PAROLLER -->
+
+<!-- select2 -->
+<!--select2 -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="js/jquery.multiselect.js"></script>
+
+
+												<!--select2 -->
+
+
+
 </body>
 
 

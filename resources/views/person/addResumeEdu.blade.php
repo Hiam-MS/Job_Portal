@@ -77,14 +77,36 @@
 									<h3 class="font-weight-600">  اختصاص العمل المطلوب  </h3>
 									<p> </p>
 									<p>  </p>
-                                   
+									
                                    
 
-                                    <select name="category[]" id="category" multiple='multiple' size="13">
+                                    <select name="category[]" id="category" multiple="multiple">
                                     @foreach($jobCat as $category)
                                      <option value="{{$category->id}}">{{$category->name}}</option>
                                      @endforeach
                                    </select>
+
+								   <script>
+								   $(function(){
+
+$category = $('#category');
+
+$category.multiselect();
+placeholder: 'select a option',
+
+});
+</script>
+
+								   <!-- <script>
+									
+									
+          
+        // $('#category').multiselect({
+        // placeholder: 'select a option',
+        
+		// columns : 1
+        // });
+		// </script> -->
                                    <br>
 
 								
