@@ -129,8 +129,10 @@ class PersonController extends Controller
 //show resume for add edu - skills - courses
     public function createResumeEdu($id)
     {
-        $Person = Person::find($id);
-        return view('person.addResumeEdu',compact('Person'));
+        $jobCat =JobCategory::all();
+       $Person = Person::find($id);
+        return view('person.addResumeEdu',compact('Person','jobCat'));
+        
     }
 
 //show form for add person Education
@@ -253,12 +255,12 @@ class PersonController extends Controller
 
 // **********  show form for Job Category *******
 
-public function createResumeJobCat($id)
-{
-    $jobCat =JobCategory::all();
-    $Person = Person::find($id);
-    return view('person.addCategory',compact('Person','jobCat'));
-}
+// public function createResumeJobCat($id)
+// {
+//     $jobCat =JobCategory::all();
+//     $Person = Person::find($id);
+//     return view('person.addCategory',compact('Person','jobCat'));
+// }
     
 
 // store person job category
@@ -286,7 +288,7 @@ public function storePersonJobCat(Request $Request)
         
         
       
-       return redirect()->route('JobCategory', ['id' => $id]);
+       return redirect()->route('edu', ['id' => $id]);
 
    
     }

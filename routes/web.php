@@ -58,7 +58,7 @@ Route::post('/resume/storePersonSkill','PersonController@storePersonSkill')->nam
 Route::get('/resume/addCourse/{id}','PersonController@createPersonCourse');
 Route::post('/resume/storePersonCourse','PersonController@storePersonCourse')->name('StoreCourse');
 
-Route::get('/resume/JobCategory/{id}','PersonController@createResumeJobCat')->name('JobCategory');
+//Route::get('/resume/JobCategory/{id}','PersonController@createResumeJobCat')->name('JobCategory');
 Route::post('/resume/storePersonJobCat','PersonController@storePersonJobCat');
 
 

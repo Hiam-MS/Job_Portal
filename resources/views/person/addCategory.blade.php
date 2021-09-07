@@ -87,17 +87,7 @@
                                    </select>
                                    <br>
 
-									<!-- <table>
-									<tr>
-                                        <th>اسم الشهادة</th>
-                                        <th>الاختصاص</th>
-										<th>سنة التخرج</th>
-										<th>خيارات</th>
-                                    </tr>
-
-									<tr></tr>
-                                     
-                                    </table> -->
+								
 									<br>
                                     <p>
                                     <input type="hidden" class="form-control" placeholder=""  name="pid" value="{{$Person->id}}">

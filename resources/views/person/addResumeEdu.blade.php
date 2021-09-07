@@ -70,7 +70,36 @@
 										<p>
 											لدى شركة :
 									</h3> -->
+									<form action="/resume/storePersonJobCat" method="POST" id="resume" >
+                                    @csrf
 
+									<br>
+									<h3 class="font-weight-600">  اختصاص العمل المطلوب  </h3>
+									<p> </p>
+									<p>  </p>
+                                   
+                                   
+
+                                    <select name="category[]" id="category" multiple='multiple' size="13">
+                                    @foreach($jobCat as $category)
+                                     <option value="{{$category->id}}">{{$category->name}}</option>
+                                     @endforeach
+                                   </select>
+                                   <br>
+
+								
+									<br>
+                                    <p>
+                                    <input type="hidden" class="form-control" placeholder=""  name="pid" value="{{$Person->id}}">
+									
+                                    <button type="submit" class="site-button" > أضف</button>
+									</p>
+									
+									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+									
+										
+                                      </form>
+									  
 
 									<br>
 									<h3 class="font-weight-600"> الشهادات التعليمية  </h3>
