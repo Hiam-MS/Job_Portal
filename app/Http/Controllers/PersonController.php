@@ -49,7 +49,7 @@ class PersonController extends Controller
         $Person=appends($request->all());
         return view('person.viewResuem',compact('Person'));
         }else{
-            $Person=Person::paginate(3);
+            $Person=Person::paginate(10);
             return view('person.viewResuem',compact('Person'));
         }
 
