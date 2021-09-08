@@ -293,6 +293,12 @@ public function storePersonJobCat(Request $Request)
    
     }
 
+    // public function PersonSkill($id)
+    // {
+    //      Person::delete($id);
+    //     return view('person.addCourse', ['id' => $id]);
+    // }
+
 
 
 

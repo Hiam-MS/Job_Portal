@@ -80,33 +80,13 @@
 									
                                    
 
-                                    <select name="category[]" id="category" multiple="multiple">
+                                    <select name="category[]" id="category" multiple="multiple" size="13">
                                     @foreach($jobCat as $category)
                                      <option value="{{$category->id}}">{{$category->name}}</option>
                                      @endforeach
                                    </select>
 
-								   <script>
-								   $(function(){
-
-$category = $('#category');
-
-$category.multiselect();
-placeholder: 'select a option',
-
-});
-</script>
-
-								   <!-- <script>
-									
-									
-          
-        // $('#category').multiselect({
-        // placeholder: 'select a option',
-        
-		// columns : 1
-        // });
-		// </script> -->
+								  
                                    <br>
 
 								
@@ -124,21 +104,39 @@ placeholder: 'select a option',
 									  
 
 									<br>
-									<h3 class="font-weight-600"> الشهادات التعليمية  </h3>
-									<p>لاتوجد شهادات تعليمية مذكورة حالياً - أضف الشهادات التعليمية في حال وجودها </p>
-									<p>  </p>
-
-									<!-- <table>
-									<tr>
+									<h3 class="font-weight-600" > الشهادات التعليمية  </h3>
+									<!-- <p>لاتوجد شهادات تعليمية مذكورة حالياً - أضف الشهادات التعليمية في حال وجودها </p> -->
+									@if(count($Person->PersonEducation) > 0)
+									 <table>
+									<tr style="border-bottom: 1px solid #ddd; background-color: rgba(250, 247, 246 ); color:black;font-size: 105%;">
                                         <th>اسم الشهادة</th>
                                         <th>الاختصاص</th>
 										<th>سنة التخرج</th>
 										<th>خيارات</th>
                                     </tr>
+									@foreach($Person->PersonEducation as $edu)
+									 <tr>
+									
+									
+                                        <th style=" color:black;">{{$edu['degree_name']}} </th>
+                                        <th style=" color:black;">{{$edu['Major']}}</th>
+										<th style=" color:black;">{{$edu['Graduation_year']}} </th>
+										<th style=" color:black;"><a href="#" >تعديل</a> / <a href="#" >  حذف</a></th>
+                                    </tr>
+                                    
+									@endforeach
+									</table>
+									
+									
+									
+									@else
+									<p>لاتوجد شهادات تعليمية مذكورة حالياً - أضف الشهادات التعليمية في حال وجودها </p>
+									@endif
+									
+									
+									
+									 
 
-									<tr></tr>
-                                     
-                                    </table> -->
 									
                                     <p>
 									<a href="/resume/addEducation/{{ $Person->id }}" class="site-button" >أضف شهادة تعليمية جديدة</a>
@@ -150,10 +148,29 @@ placeholder: 'select a option',
 									
 								
 
-									<h3 class="font-weight-600">المهارات </h3>
+									<h3 class="font-weight-600" id="sdiv">المهارات </h3>
+									
+									@if(count($Person->PersonSkill) > 0)
+									 <table>
+									<tr style="border-bottom: 1px solid #ddd; background-color: rgba(250, 247, 246 ); color:black;font-size: 105%;">
+                                        <th> المهارة</th>
+                                        
+										<th>خيارات</th>
+                                    </tr>
+									@foreach($Person->PersonSkill as $edu)
+									 <tr>
+									<th style=" color:black;">{{$edu['name']}} </th>
+                                    <th style=" color:black;"><a href="#" >تعديل</a> / <a href="#" >  حذف</a></th>
+                                    </tr>
+                                    
+									@endforeach
+									</table>
+									@else
 									<p>
 									لا توجد مهارات مذكورة ضمن سيرتك الذاتية
-									</p>
+</p>
+									
+									@endif
 									<p>
 									<a href="/resume/addSkill/{{ $Person->id }}"  class="site-button" >أضف مهارة جديدة</a>
 									</p>
@@ -162,9 +179,29 @@ placeholder: 'select a option',
 
 										
 									<h3 class="font-weight-600">الدورات التدريبية المتبعة  </h3>
+									@if(count($Person->PersonCousre) > 0)
+									 <table>
+									<tr style="border-bottom: 1px solid #ddd; background-color: rgba(250, 247, 246 ); color:black;font-size: 105%;">
+                                        <th> اسم الدورة</th>
+                                        
+										<th>خيارات</th>
+                                    </tr>
+									@foreach($Person->PersonCousre as $edu)
+									 <tr>
+									<th style=" color:black;">{{$edu['name']}} </th>
+                                    <th style=" color:black;"><a href="#" >تعديل</a> / <a href="#" >  حذف</a></th>
+                                    </tr>
+                                    
+									@endforeach
+									</table>
+									@else
 									<p>
 									لاتوجد دورات مذكورة حالياً - أضف الدورات المتبعة في حال وجودها
                                     </p>
+									
+									@endif
+									
+									
 									<p><a href="/resume/addCourse/{{ $Person->id }}"  class="site-button" >أضف دورة تدريبية جديدة</a>
 									</p>
 
@@ -172,27 +209,45 @@ placeholder: 'select a option',
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 									
 									<h3 class="font-weight-600">خبرات العمل </h3>
+									
+									@if(count($Person->PersonExperience) > 0)
+									 <table>
+									<tr style="border-bottom: 1px solid #ddd;background-color: rgba(250, 247, 246); color:black;font-size: 105%;">
+                                        <th> اسم الشركة </th>
+                                        <th> اختصاص العمل</th>
+										<th> تاريخ الالتحاق  </th>
+										<th> تاريخ الانتهاء </th>
+										<th>خيارات</th>
+                                    </tr>
+									@foreach($Person->PersonExperience as $edu)
+									 <tr>
+									
+									
+                                        <th style=" color:black;">{{$edu['company_name']}} </th>
+                                        <th style=" color:black;">{{$edu['job_Specialize']}}</th>
+										<th style=" color:black;">{{$edu['Start_date']}} </th>
+										<th style=" color:black;">{{$edu['end_date']}} </th>
+										<th style=" color:black;"><a href="#" >تعديل</a> / <a href="#" >  حذف</a></th>
+                                    </tr>
+                                    
+									@endforeach
+									</table>
+									
+									
+									
+									@else
 									<p>
 									لايوجد خبرات عمل مذكورة حالياً - أضف خبراتك في حال وجودها
                                     </p>
+									@endif
+									
+									
 									<p><a href="/resume/addExperience/{{ $Person->id }}"  class="site-button" >أضف خبرة عمل جديدة</a>
 									</p>
 
 
                                     
-									<!-- <!-- <div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-                                    
-									<p>
-									عدد الاشخاص المطلوبين :
-									</p>
-									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-									<ul class="list-num-count no-round">
-										<!-- <li>T•الخبرة العملية السابقة غير مطلوبة , الافضلية لمن لديه خبرة في نفس المجال.
-											
-											
-										</li> -->
-										
-									<!-- </ul>   -->
+									
 									<a href="#" class="site-button">تقدم الآن</a>
 								</div>
 							</div>

@@ -30,7 +30,7 @@ public function PersonSkill()
 public function PersonCousre()
 
 {
-    return $this->hasMany(PersonCousre::class);
+    return $this->hasMany(PersonCourse::class);
 }
 
 public function PersonExperience()

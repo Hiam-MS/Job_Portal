@@ -41,7 +41,8 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/revolution/css/navigation.css')}}">
 	<!-- Revolution Navigation Style -->
 <!-- select2 -->
-<link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.multiselect.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/jquery.multiselect.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/multiselect.css')}}">
 
 
 </head>
@@ -108,7 +109,7 @@
 								</ul>
 							</li>
 							<li>
-								<a href="{{ asset('/')}}">عن الشركة</i></a>
+								<a href="{{ asset('/#aboutUs')}}">عن الشركة</i></a>
 								<ul class="sub-menu">
 									
 								</ul>
@@ -241,9 +242,13 @@
 
 <!-- select2 -->
 <!--select2 -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 
-<script src="js/jquery.multiselect.js"></script>
+
+<script src="D:\job\Job_Portal\public\js\jquery.multiselect.js"></script>
+<script src="D:\job\Job_Portal\public\js\multiselect.core.js"></script>
+<script src="D:\job\Job_Portal\public\js\multiselect.min.js"></script>
+<script src="D:\job\Job_Portal\public\js\multiselect.js"></script>
 
 
 												<!--select2 -->
