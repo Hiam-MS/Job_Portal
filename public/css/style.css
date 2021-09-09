@@ -216,11 +216,11 @@ table {
     float: none;
 }
 ::-moz-selection {
-    background: #3396d1;
+    background: #200080;
     color: #fff;
 }
 ::selection {
-    background: #3396d1;
+    background: #200080;
     color: #fff;
 }
 .op{
@@ -3831,7 +3831,7 @@ blockquote:before {
 /*=== Primary */
 .header.primary,
 .header.primary .main-bar{
-	 background: #3B68E7
+	 background: #200080
 }
 .header.primary .header-nav .nav > li > a,
 .header.primary .extra-nav .site-button-link,
@@ -3842,7 +3842,7 @@ blockquote:before {
 	background-color:#dfdfdf
 }
 .header.primary .top-bar{
-	background-color:#3B68E7;
+	background-color:#200080;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     color: #dfdfdf;
 }
@@ -5119,7 +5119,7 @@ blockquote:before {
 }
 .pagination .page-numbers.current,
 .pagination a.page-numbers:hover {
-    background: #3396D1;
+    background: #200080;
     color: #fff;
 }
 .pagination i {
@@ -5134,14 +5134,14 @@ blockquote:before {
 .nav-links .nav-previous a,
 .nav-links .nav-next a {
     display: inline-block;
-    color: #3396d1;
+    color: #200080;
     font-weight: 600;
     margin-bottom: 20px;
     outline: none !important;
 }
 .nav-links .nav-previous a:hover,
 .nav-links .nav-next a:hover {
-    color: #0099CC;
+    color: #200080;
 }
 .nav-links .nav-previous a:after,
 .nav-links .nav-next a:after {
@@ -5587,7 +5587,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 .comments-area .comment-form p input[type="submit"]:hover,
 .comments-area .comment-form p input[type="submit"]:focus,
 .comments-area .comment-form p input[type="submit"]:active {
-    background-color: #1d46f5;
+    background-color: #200080;
     border-color: #1d46f5;
     color: #fff;
 }
@@ -6446,14 +6446,14 @@ a,
     color: #ffffff;
 }
 .btn-primary {
-    background-color: #0275d8;
+    background-color: #200080;
     border-color: #0275d8;
     color: #ffffff;
 }
 .btn-primary:active,
 .btn-primary:focus,
 .btn-primary:hover{
-	background-color: #025aa5;
+	background-color: #200080;
     border-color: #01549b;
 }
 .btn-info {
@@ -6481,7 +6481,7 @@ a,
 .btn-outline-primary {
     background-color: rgba(0, 0, 0, 0);
     background-image: none;
-    border-color: #0275d8;
+    border-color: #200080;
     color: #0275d8;
 }
 .btn-outline-secondary {

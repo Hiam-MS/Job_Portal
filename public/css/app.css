@@ -155,12 +155,12 @@ sup {
 }
 
 a {
-  color: #3490dc;
+  color: #200080;
   text-decoration: none;
   background-color: transparent;
 }
 a:hover {
-  color: #1d68a7;
+  color: #200080;
   text-decoration: underline;
 }
 
@@ -2438,28 +2438,28 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #3490dc;
+  background-color: #200080;
   border-color: #3490dc;
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #227dc7;
+  background-color: #200080;
   border-color: #2176bd;
 }
 .btn-primary:focus, .btn-primary.focus {
   color: #fff;
-  background-color: #227dc7;
+  background-color: #200080;
   border-color: #2176bd;
   box-shadow: 0 0 0 0.2rem rgba(82, 161, 225, 0.5);
 }
 .btn-primary.disabled, .btn-primary:disabled {
   color: #fff;
-  background-color: #3490dc;
+  background-color: #200080;
   border-color: #3490dc;
 }
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #2176bd;
+  background-color: #200080;
   border-color: #1f6fb2;
 }
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .show > .btn-primary.dropdown-toggle:focus {
@@ -2528,28 +2528,28 @@ fieldset:disabled a.btn {
 
 .btn-info {
   color: #212529;
-  background-color: #6cb2eb;
+  background-color: #200080;
   border-color: #6cb2eb;
 }
 .btn-info:hover {
   color: #fff;
-  background-color: #4aa0e6;
+  background-color: #200080;
   border-color: #3f9ae5;
 }
 .btn-info:focus, .btn-info.focus {
   color: #fff;
-  background-color: #4aa0e6;
+  background-color: #200080;
   border-color: #3f9ae5;
   box-shadow: 0 0 0 0.2rem rgba(97, 157, 206, 0.5);
 }
 .btn-info.disabled, .btn-info:disabled {
   color: #212529;
-  background-color: #6cb2eb;
+  background-color: #200080;
   border-color: #6cb2eb;
 }
 .btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled).active, .show > .btn-info.dropdown-toggle {
   color: #fff;
-  background-color: #3f9ae5;
+  background-color: #200080;
   border-color: #3495e3;
 }
 .btn-info:not(:disabled):not(.disabled):active:focus, .btn-info:not(:disabled):not(.disabled).active:focus, .show > .btn-info.dropdown-toggle:focus {
@@ -2678,11 +2678,11 @@ fieldset:disabled a.btn {
 
 .btn-outline-primary {
   color: #3490dc;
-  border-color: #3490dc;
+  border-color: #200080;
 }
 .btn-outline-primary:hover {
   color: #fff;
-  background-color: #3490dc;
+  background-color: #200080;
   border-color: #3490dc;
 }
 .btn-outline-primary:focus, .btn-outline-primary.focus {
@@ -2694,7 +2694,7 @@ fieldset:disabled a.btn {
 }
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active, .show > .btn-outline-primary.dropdown-toggle {
   color: #fff;
-  background-color: #3490dc;
+  background-color: #200080;
   border-color: #3490dc;
 }
 .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-primary.dropdown-toggle:focus {
@@ -2753,11 +2753,11 @@ fieldset:disabled a.btn {
 
 .btn-outline-info {
   color: #6cb2eb;
-  border-color: #6cb2eb;
+  border-color: #200080;
 }
 .btn-outline-info:hover {
   color: #212529;
-  background-color: #6cb2eb;
+  background-color: #200080;
   border-color: #6cb2eb;
 }
 .btn-outline-info:focus, .btn-outline-info.focus {
@@ -2769,7 +2769,7 @@ fieldset:disabled a.btn {
 }
 .btn-outline-info:not(:disabled):not(.disabled):active, .btn-outline-info:not(:disabled):not(.disabled).active, .show > .btn-outline-info.dropdown-toggle {
   color: #212529;
-  background-color: #6cb2eb;
+  background-color: #200080;
   border-color: #6cb2eb;
 }
 .btn-outline-info:not(:disabled):not(.disabled):active:focus, .btn-outline-info:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-info.dropdown-toggle:focus {
@@ -3155,7 +3155,7 @@ input[type=button].btn-block {
 .dropdown-item.active, .dropdown-item:active {
   color: #fff;
   text-decoration: none;
-  background-color: #3490dc;
+  background-color: #200080;
 }
 .dropdown-item.disabled, .dropdown-item:disabled {
   color: #adb5bd;
@@ -3490,7 +3490,7 @@ input[type=button].btn-block {
 .custom-control-input:checked ~ .custom-control-label::before {
   color: #fff;
   border-color: #3490dc;
-  background-color: #3490dc;
+  background-color: #200080;
 }
 .custom-control-input:focus ~ .custom-control-label::before {
   box-shadow: 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
@@ -3750,7 +3750,7 @@ input[type=button].btn-block {
   width: 1rem;
   height: 1rem;
   margin-top: -0.25rem;
-  background-color: #3490dc;
+  background-color: #200080;
   border: 0;
   border-radius: 1rem;
   -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -3779,7 +3779,7 @@ input[type=button].btn-block {
 .custom-range::-moz-range-thumb {
   width: 1rem;
   height: 1rem;
-  background-color: #3490dc;
+  background-color: #200080;
   border: 0;
   border-radius: 1rem;
   -moz-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -3811,7 +3811,7 @@ input[type=button].btn-block {
   margin-top: 0;
   margin-right: 0.2rem;
   margin-left: 0.2rem;
-  background-color: #3490dc;
+  background-color: #200080;
   border: 0;
   border-radius: 1rem;
   -ms-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -4597,13 +4597,13 @@ input[type=button].btn-block {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #3490dc;
+  color: #200080;
   background-color: #fff;
   border: 1px solid #dee2e6;
 }
 .page-link:hover {
   z-index: 2;
-  color: #1d68a7;
+  color: #200080;
   text-decoration: none;
   background-color: #e9ecef;
   border-color: #dee2e6;
@@ -4626,7 +4626,7 @@ input[type=button].btn-block {
 .page-item.active .page-link {
   z-index: 3;
   color: #fff;
-  background-color: #3490dc;
+  background-color: #200080;
   border-color: #3490dc;
 }
 .page-item.disabled .page-link {

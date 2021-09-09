@@ -11,7 +11,7 @@
 }
 .fullwidth .header-nav .nav > li.active > a,
 .fullwidth .header-nav .nav > li:hover > a{
-	background-color:#2e55fa;
+	background-color:#200080;
 	color:#fff;
 }
 .extra-nav{
@@ -124,7 +124,7 @@
 .job-categories .icon-bx-wraper{
 	padding: 40px 10px;
 	margin-bottom: 20px;
-	background: #2e55fa;
+	background: #200080;
 	border-radius: 10px;
 	text-align:center;
 	-moz-transition:all 0.5s;
@@ -177,7 +177,7 @@
 	height: 0;
 }
 .job-categories .icon-bx-wraper:hover{
-	background-color:#2e55fa;
+	background-color:#200080;
 	transform: scale(1.05);
 	-moz-transform: scale(1.05);
 	-webkit-transform: scale(1.05);
@@ -529,7 +529,7 @@
 	
 }
 .active.center .testimonial-5 .testimonial-text{
-	background-color:#2e55fa;
+	background-color:#200080;
 }
 .active.center .testimonial-5 .testimonial-text p{
 	color: #fff;
@@ -637,7 +637,7 @@
 	border-radius:0;
 	background-color: transparent;
 	border-width: 0 0 2px 0;
-	border-color:#2e55fa;
+	border-color:#200080;
 }
 .find-job-bx .form-control{
 	padding:0;
@@ -671,7 +671,7 @@
 }
 .find-job-bx .input-group-text{
 	padding:0;
-	color:#2e55fa;
+	color:#200080;
 }
 .find-job-bx .dezPlaceAni .site-button{
 	height:50px;
@@ -681,7 +681,7 @@
 .find-job-bx .bootstrap-select .dropdown-toggle:focus, 
 .find-job-bx .bootstrap-select .dropdown-toggle:hover{
 	border-width: 0 0 2px 0 !important;
-	border-color: #2e55fa !important;
+	border-color: #200080 !important;
 	background-color: transparent !important;
 	border-radius: 0;
 	height: 50px;
@@ -700,7 +700,7 @@
 }
 .find-job-bx .bootstrap-select.btn-group .dropdown-toggle .caret::before {
     content: "\f078";
-    color: #2e55fa;
+    color: #200080;
 }
 /* Post Job Bx */
 .post-job-bx{
@@ -718,7 +718,7 @@
 .post-job-bx ul li{
 	display:inline-block;
 	margin-right:10px;
-	color: #2e55fa;
+	color: #200080;
 }
 .post-job-bx ul li i{
 	margin-right:5px;
@@ -733,7 +733,7 @@
 	position:relative;
 }
 .post-job-bx a:hover{
-	border-color:#2e55fa;
+	border-color:#200080;
 }
 .post-job-bx > li{
 	margin-bottom:30px;
@@ -773,7 +773,7 @@
 	display: block;
 	font-size: 14px;
 	padding: 2px 10px;
-	color: #2e55fa;
+	color: #200080;
 	display: inline-block;
 	text-align: center;
 }
@@ -784,13 +784,13 @@
 	border: 1px solid #2e55fa;
 	line-height: 30px;
 	text-align: center;
-	color: #2e55fa;
+	color: #200080;
 	position: absolute;
 	top: 25px;
 	right: 25px;
 }
 .post-like:hover{
-	background-color: #2e55fa;
+	background-color: #200080;
 	color: #ffffff;
 }
 /* Candidates Box */
@@ -918,7 +918,7 @@
 	-o-transition:all 0.5s;
 }
 .city-bx:hover:after{
-	background-color:#2e55fa;
+	background-color:#200080;
 	opacity:0.95;
 }
 .city-info{
