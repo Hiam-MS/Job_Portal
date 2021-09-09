@@ -10,7 +10,7 @@
 #resuems th {
 		padding:5px;
 		text-align: center;
-		background-color:#8080ff;
+		background-color:#200080;
 		color: white;
 		}
 

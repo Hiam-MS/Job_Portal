@@ -108,12 +108,7 @@
 									
 								</ul>
 							</li>
-							<li>
-								<a href="{{ asset('/#aboutUs')}}">عن الشركة</i></a>
-								<ul class="sub-menu">
-									
-								</ul>
-							</li>
+						
 							<li>
 								<a href="{{ route('resuems') }}">السير الذاتية الحالية</i></a>
 								<ul class="sub-menu">
@@ -122,6 +117,12 @@
 							</li>
 							<li>
 								<a href="{{ route('resuem.create') }}">  انشاء سيرة ذاتية</i></a>
+								<ul class="sub-menu">
+									
+								</ul>
+							</li>
+							<li>
+								<a href="{{ asset('/#aboutUs')}}">موقع الغرفة      </i></a>
 								<ul class="sub-menu">
 									
 								</ul>
@@ -195,10 +196,7 @@
                             <ul class="list-2 w10 list-line">
                                 <li><a href="#">دمشق</a></li>
                                 <li><a href="#">ريف دمشق</a></li>
-                                <li><a href="#">حلب</a></li>
-                                <li><a href="#">حمص </a></li>
-                                <li><a href="#">حماه</a></li>
-								<li><a href="#">اللاذقية</a></li>
+                               
                             </ul>
                         </div>
                     </div>
