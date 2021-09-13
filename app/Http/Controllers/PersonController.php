@@ -7,10 +7,11 @@ use App\Models\Person;
 use App\Models\PersonSkill;
 use App\Models\PersonEducation;
 use App\Models\PersonExperience;
-use App\Models\PersonCourse;
+use App\Models\PersonCourse; 
 use Illuminate\Support\Facades\DB;
 use App\Models\JobCategory;
 use App\Models\PersonCategory;
+use Illuminate\Support\Facades\Session;
 
 
 
@@ -85,14 +86,14 @@ class PersonController extends Controller
        
 
         $Request->validate([
-            // 'name'=> ['required','string'] ,
-            // 'email'=> ['required','string'] ,
-            // 'dob'=> ['required','string'] ,
-            // 'place_Of_b'=> ['required','string'] ,
-            // 'national_number'=> ['required','integer'] ,
-            // 'fixed_phone'=> ['required','integer'] ,
-            // 'Current_address'=> ['required','string'] ,
-            // 'mobile_number'=> ['required','integer'] ,
+            'name'=> ['required','string'] ,
+            'email'=> ['required','string'] ,
+            'dob'=> ['required','string'] ,
+            'place_Of_b'=> ['required','string'] ,
+            'national_number'=> ['required','integer'] ,
+            'fixed_phone'=> ['required','integer'] ,
+            'Current_address'=> ['required','string'] ,
+            'mobile_number'=> ['required','string'] ,
           
         ]);
         //$lang = $Request->input("lang");
@@ -330,11 +331,45 @@ public function storePersonJobCat(Request $Request)
    
     }
 
-    // public function PersonSkill($id)
-    // {
-    //      Person::delete($id);
-    //     return view('person.addCourse', ['id' => $id]);
-    // }
+    public function DeletePersonSkill($id)
+    {
+         $res=PersonSkill::find($id)->delete();
+  if ($res){
+    
+    return redirect()->back()->with('success', ' تم الحذف بنجاح');
+}else{
+    
+    return redirect()->back()->with('success', ' لم يتم الحذف يرجى المحاولة مرة ثانية');
+ 
+  }
+}
+
+public function DeletePersonEdu($id)
+    {
+         $res=PersonEducation::find($id)->delete();
+  if ($res){
+    
+    return redirect()->back()->with('success', ' تم الحذف بنجاح');
+}else{
+    
+    return redirect()->back()->with('success', ' لم يتم الحذف يرجى المحاولة مرة ثانية');
+ 
+  }
+}
+
+public function DeletePersonCourse($id)
+    {
+         $res=PersonCourse::find($id)->delete();
+  if ($res){
+    
+    return redirect()->back()->with('success', ' تم الحذف بنجاح');
+}else{
+    
+    return redirect()->back()->with('success', ' لم يتم الحذف يرجى المحاولة مرة ثانية');
+ 
+  }
+}
+
 
 
 
