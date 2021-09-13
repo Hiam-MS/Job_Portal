@@ -121,7 +121,7 @@
                                         <th style=" color:black;">{{$edu['degree_name']}} </th>
                                         <th style=" color:black;">{{$edu['Major']}}</th>
 										<th style=" color:black;">{{$edu['Graduation_year']}} </th>
-										<th style=" color:black;"><a href="#" >تعديل</a> / <a href="#" >  حذف</a></th>
+										<th style=" color:black;"><a href="#" >تعديل</a> / <a href="/resume/deleteEdu/{{$edu['id']}}" >  حذف</a></th>
                                     </tr>
                                     
 									@endforeach
@@ -143,12 +143,15 @@
 									</p>
 									
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+
 									
 										
 									
-								
+								<!-- Message -->
+     
 
 									<h3 class="font-weight-600" id="sdiv">المهارات </h3>
+									
 									
 									@if(count($Person->PersonSkill) > 0)
 									 <table>
@@ -160,7 +163,7 @@
 									@foreach($Person->PersonSkill as $edu)
 									 <tr>
 									<th style=" color:black;">{{$edu['name']}} </th>
-                                    <th style=" color:black;"><a href="#" >تعديل</a> / <a href="#" >  حذف</a></th>
+                                    <th style=" color:black;"><a href="#" >تعديل</a> / <a href="/resume/deleteSkill/{{$edu['id']}}" >  حذف</a></th>
                                     </tr>
                                     
 									@endforeach
@@ -171,6 +174,23 @@
 </p>
 									
 									@endif
+									<!-- @if ($message = Session::get('success'))
+    <div class="alert alert-success alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button>    
+        <strong>{{ $message }}</strong>
+    </div>
+    @endif -->
+	@if(session()->has('success'))
+	<script>
+    var msg = '{{Session::get('success')}}';
+    var exist = '{{Session::has('success')}}';
+    if(exist){
+      alert(msg);
+    }
+  </script>
+@endif 
+    
+
 									<p>
 									<a href="/resume/addSkill/{{ $Person->id }}"  class="site-button" >أضف مهارة جديدة</a>
 									</p>
@@ -189,7 +209,7 @@
 									@foreach($Person->PersonCousre as $edu)
 									 <tr>
 									<th style=" color:black;">{{$edu['name']}} </th>
-                                    <th style=" color:black;"><a href="#" >تعديل</a> / <a href="#" >  حذف</a></th>
+                                    <th style=" color:black;"><a href="#" >تعديل</a> / <a href="/resume/deleteCourse/{{$edu['id']}}" >  حذف</a></th>
                                     </tr>
                                     
 									@endforeach
