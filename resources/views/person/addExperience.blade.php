@@ -32,15 +32,15 @@
 
 						<div class="form-group">
 							<label> اسم الشهادة</label>
-							<input type="text" class="form-control" placeholder="Your Full Name" name="degree_name"  >
+							<input type="text" class="form-control" placeholder="Your Full Name" name="degree_name"  data-parsly-trigger="keyup">
 						</div>
 						<div class="form-group">
 							<label> المؤسسة التعليمية</label>
-							<input type="text" class="form-control" placeholder="info@gmail.com" name="Institution">
+							<input type="text" class="form-control" placeholder="info@gmail.com" name="Institution" data-parsly-trigger="keyup"> 
 						</div>
                         <div class="form-group">
 							<label>الاختصاص </label>
-							<input type="text" class="form-control" placeholder="" name="Major">
+							<input type="text" class="form-control" placeholder="" name="Major" data-parsly-trigger="keyup">
 						</div>
 						<div class="form-group" >
 							<label>    الدرجة/ الشهادة              </label>
@@ -72,7 +72,7 @@
                        
 						<div class="form-group">
 							<label>سنة التخرج </label>
-							<input type="date" class="form-control" placeholder="Web Designer"  name="Graduation_year">
+							<input type="date" class="form-control" placeholder="Web Designer"  name="Graduation_year" >
 						</div>
 						<div class="form-group">
 							<label>دولة الدراسة </label>

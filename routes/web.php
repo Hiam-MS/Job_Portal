@@ -33,12 +33,14 @@ Route::get('/person','PersonController@index');
 
 
 
+Route::post('/store/job','JobsController@storeJob');
+
 
 Route::get('/country','AdminController@addCountry');
 Route::get('/city/{id}','AdminController@addCity');
 
 Route::get('/JobCategory','JobCategoryController@showJobJobCategory');
-
+Route::get('/profile','CompanyController@index');
 
 //******************person************
 Route::get('/resume/skill','PersonController@index');

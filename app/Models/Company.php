@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PersonSkill extends Model
+class Company extends Model
 {
     use HasFactory;
     protected $primaryKey = 'id';
-
-
-    //Skill belongs to one Person
-    public function Person()
+    
+    //Company has many job
+    public function Job()
     {
-        return $this->belongTo(Person::class);
+        return $this->hasMany(Job::class);
     }
+    
 }

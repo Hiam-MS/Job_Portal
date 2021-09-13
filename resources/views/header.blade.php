@@ -70,7 +70,7 @@
                     <div  class="extra-nav">
                         <div  class="extra-cell">
                            <!-- <a href="register.html" class="site-button"><i class="fa fa-user"></i> تسجيل حساب</a>-->
-                            <a href="{{ route('login') }}" class="site-button"><i class="fa fa-lock"></i> تسجيل دخول</a>
+                            <a href="{{ route('login') }}" class="btn btn-primary"><i class="fa fa-lock"></i> تسجيل دخول</a>
                         </div>
                     </div>
                     <!-- Quik search -->

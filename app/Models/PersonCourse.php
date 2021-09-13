@@ -17,9 +17,8 @@ class PersonCourse extends Model
     //protected $fillable = ['name'];
 
 
-
+    //Courses belongs to one Person
     public function Person()
-
     {
         return $this->belongTo(Person::class);
     }

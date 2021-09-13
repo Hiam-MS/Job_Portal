@@ -85,14 +85,14 @@ class PersonController extends Controller
        
 
         $Request->validate([
-            'name'=> ['required','string'] ,
-            'email'=> ['required','string'] ,
-            'dob'=> ['required','string'] ,
-            'place_Of_b'=> ['required','string'] ,
-            'national_number'=> ['required','integer'] ,
-            'fixed_phone'=> ['required','integer'] ,
-            'Current_address'=> ['required','string'] ,
-            'mobile_number'=> ['required','integer'] ,
+            // 'name'=> ['required','string'] ,
+            // 'email'=> ['required','string'] ,
+            // 'dob'=> ['required','string'] ,
+            // 'place_Of_b'=> ['required','string'] ,
+            // 'national_number'=> ['required','integer'] ,
+            // 'fixed_phone'=> ['required','integer'] ,
+            // 'Current_address'=> ['required','string'] ,
+            // 'mobile_number'=> ['required','integer'] ,
           
         ]);
         //$lang = $Request->input("lang");
@@ -145,6 +145,19 @@ class PersonController extends Controller
     public function storePersonEdu(Request $Request)
 
     {
+
+
+        $Request->validate([
+            // 'degree_name'=> ['required','string'] ,
+            // 'Institution'=> ['required','string'] ,
+            // 'Degree'=> ['required','string'] ,
+            // 'Major'=> ['required','string'] ,
+            // 'Graduation_year'=> ['required','integer'] ,
+            
+          
+        ]);
+
+
         $personEdu =new PersonEducation ;
             $personEdu->degree_name = $Request->input("degree_name");
             $personEdu->Institution =  $Request->input("Institution");
@@ -177,7 +190,19 @@ class PersonController extends Controller
     public function storePersonExp(Request $Request)
 
     {
-        $personExp =new PersonExperience ;
+
+        $Request->validate([
+            // 'Job_title'=> ['required','string'] ,
+            // 'job_Specialize'=> ['required','string'] ,
+            // 'company_name'=> ['required','string'] ,
+            // 'company_address'=> ['required','string'] ,
+            // 'Start_date'=> ['required','integer'] ,
+            // 'end_date'=> ['required','integer'] ,
+            // 'Responsibilities'=> ['required','integer'] ,
+          
+        ]);
+
+            $personExp =new PersonExperience ;
             $personExp->Job_title = $Request->input("Job_title");
             $personExp->job_Specialize =  $Request->input("job_Specialize");
             $personExp->company_name= $Request->input("company_name");
@@ -210,6 +235,12 @@ class PersonController extends Controller
     public function storePersonSkill(Request $Request)
 
     {
+        $Request->validate([
+            // 'name'=> ['required','string'] ,
+         
+          
+        ]);
+
         $personSkill =new PersonSkill ;
             $personSkill->name = $Request->input("name");
            $personSkill->person_id= $Request->input("pid");
@@ -237,6 +268,12 @@ class PersonController extends Controller
     public function storePersonCourse(Request $Request)
 
     {
+        $Request->validate([
+            // 'name'=> ['required','string'] ,
+         
+          
+        ]);
+
         $PersonCourse =new PersonCourse ;
             $PersonCourse->name = $Request->input("name");
            $PersonCourse->person_id= $Request->input("pid");

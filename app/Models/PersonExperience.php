@@ -17,9 +17,8 @@ class PersonExperience extends Model
     //protected $fillable = ['name'];
 
 
-
+    //Experience Belongs to one Person
     public function Person()
-
     {
         return $this->belongTo(Person::class);
     }

@@ -20,13 +20,15 @@ class CreateJobsTable extends Migration
             $table->integer('number_of_employess');
             $table->string('country');
             $table->string('city');
-            $table->string('job_specialist');
-            $table->string('job_type');
-            $table->string('educational_lvl');
-            $table->string('gender');
-            $table->string('military_service');
-            $table->string('job_task');
-            $table->double('salary');
+            $table->string('job_specialist')->nullable();
+            $table->string('job_type')->nullable();
+            $table->string('educational_lvl')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('military_service')->nullable();
+            $table->string('job_task')->nullable();
+            $table->double('salary')->nullable();
+
+            
             $table->timestamps();
         });
     }

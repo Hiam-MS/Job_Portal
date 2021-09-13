@@ -11,8 +11,8 @@ class PersonEducation extends Model
     protected $primaryKey = 'id';
 
 
+    //Education belongs to one Person
     public function Person()
-
     {
         return $this->belongTo(Person::class);
     }

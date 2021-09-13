@@ -20,37 +20,42 @@ class Person extends Model
 
 
 
+    //Person has one or more  Skill
+    public function PersonSkill()
+    {
+        return $this->hasMany(PersonSkill::class);
+    }
 
-public function PersonSkill()
+    //Person has one or more Course
+    public function PersonCousre()
+    {
+        return $this->hasMany(PersonCourse::class);
+    }
 
-{
-    return $this->hasMany(PersonSkill::class);
-}
+    //Person has one or more Experience
+    public function PersonExperience()
+    {
+        return $this->hasMany(PersonExperience::class);
+    }
 
-public function PersonCousre()
+    //Person has one or more Education
+    public function PersonEducation()
+    {
+        return $this->hasMany(PersonEducation::class);
+    }
 
-{
-    return $this->hasMany(PersonCourse::class);
-}
+    //Person has many Job Category
+    public function JobCategory()
 
-public function PersonExperience()
+    {
+        return $this->belongsToMany(JobCategory::class);
 
-{
-    return $this->hasMany(PersonExperience::class);
-}
+    }
 
-
-public function PersonEducation()
-
-{
-    return $this->hasMany(PersonEducation::class);
-}
-
-public function JobCategory()
-
-{
-    return $this->belongsToMany(JobCategory::class);
-
-}
+    //Person has manyJob
+    public function Job()
+    {
+        return $this->belongsToMany(Job::class);
+    }
 
 }

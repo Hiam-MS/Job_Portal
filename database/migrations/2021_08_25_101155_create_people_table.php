@@ -20,7 +20,7 @@ class CreatePeopleTable extends Migration
             $table->string('gender')->nullable();
             $table->date('dob')->nullable();
             $table->string('place_Of_b')->nullable();
-            $table->unsignedBigInteger('national_number')->nullable();
+            $table->unsignedBigInteger('national_number');
             $table->string('marital_status')->nullable();
             $table->string('military_service')->nullable();
             $table->string('Current_address')->nullable();
