@@ -165,6 +165,7 @@ class PersonController extends Controller
             $personEdu->Degree= $Request->input("Degree");
             $personEdu->Major= $Request->input("Major");
             $personEdu->Graduation_year = $Request->input("Graduation_year");
+            $personEdu->Country = $Request->input("Country");
             
             $personEdu->person_id= $Request->input("pid");
            
@@ -330,7 +331,7 @@ public function storePersonJobCat(Request $Request)
 
    
     }
-
+/////////////////  DELETE ************
     public function DeletePersonSkill($id)
     {
          $res=PersonSkill::find($id)->delete();
@@ -370,16 +371,136 @@ public function DeletePersonCourse($id)
   }
 }
 
+public function DeletePersonExperience($id)
+    {
+         $res=PersonExperience::find($id)->delete();
+  if ($res){
+    
+    return redirect()->back()->with('success', ' تم الحذف بنجاح');
+}else{
+    
+    return redirect()->back()->with('success', ' لم يتم الحذف يرجى المحاولة مرة ثانية');
+ 
+  }
+}
+//////////////////////////////
+
+// ************  UPDATE ****************
+// ************  UPDATE COURSE ****************
+
+public function editPersonCourse($pid , $cid )
+{
+
+   $course= PersonCourse::find($cid);
+    return view('person.editCourse',compact('course' ,'pid' ));
+
+}
+
+public function updateCourse(Request $Request)
+{
+    $Request->validate([
+        'name'=> ['string'] ,
+     
+      
+    ]);
+
+    $id = $Request->input("pid");
+    $cid = $Request->input("cid");
+
+    
+       
+    $course = PersonCourse::where('id' , $cid)
+       ->update([
+        'name' => $Request->input("name"),
+        'person_id' => $Request->input("pid")
+
+       ]);
+         
+        return redirect()->route('edu', ['id' => $id]);
 
 
+    }
+// ************  UPDATE SKILL ****************
+
+public function editPersonSkill($pid , $cid )
+{
+
+   $skill= PersonSkill::find($cid);
+    return view('person.editSkill',compact('skill' ,'pid' ));
+
+}
+
+public function updateSkill(Request $Request)
+{
+    $Request->validate([
+        'name'=> ['string'] ,
+     
+      
+    ]);
+
+    $id = $Request->input("pid");
+    $cid = $Request->input("cid");
+
+    
+       
+    $course = PersonSkill::where('id' , $cid)
+       ->update([
+        'name' => $Request->input("name"),
+        'person_id' => $Request->input("pid")
+
+       ]);
+         
+        return redirect()->route('edu', ['id' => $id]);
 
 
+    }
 
 
+// ************  UPDATE Edu ****************
+
+public function editPersonEdu($pid , $cid )
+{
+
+   $Edu= PersonEducation::find($cid);
+    return view('person.editEdu',compact('Edu' ,'pid' ));
+
+}
+
+public function updateEdu(Request $Request)
+ {
+//     $Request->validate([
+//         //  'degree_name'=> ['required','string'] ,
+//         //     'Institution'=> ['string'] ,
+//         //     'Degree'=> ['string'] ,
+//         //     'Major'=> ['string'] ,
+//         //     'Graduation_year'=> ['Date'] ,
+     
+      
+//     ]);
+
+    $id = $Request->input("pid");
+    $cid = $Request->input("cid");
+
+    
+       
+    $Edu = PersonEducation::where('id' , $cid)
+       ->update([
+        'degree_name' => $Request->input("degree_name"),
+        'Institution' => $Request->input("Institution"),
+        'Degree' => $Request->input("Degree"),
+        'Major' => $Request->input("Major"),
+        'Graduation_year' => $Request->input("Graduation_year"),
+        'Country' => $Request->input("Country"),
+        'person_id' => $Request->input("pid")
+
+       ]);
+         
+        return redirect()->route('edu', ['id' => $id]);
 
 
-
-
+    }
+    
+    
 
 
 

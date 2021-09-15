@@ -19,10 +19,10 @@
             </div>
         </div>
         <!-- inner page banner END -->
-        <!-- contact area -->
+        <!-- contact area  SKILL -->
 
         <div  class="content-block">
-			<!-- Submit Resume -->
+			<!-- Submit Resume SKILL -->
 			<div class="section-full bg-white submit-resume content-inner-2">
 				<div dir="rtl" lang="ar" class="container" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
 					<form action="/resume/storePersonSkill" method="POST" id="resume" >
@@ -32,7 +32,7 @@
 
 						<div class="form-group">
 							<label>    اسم المهارة </label>
-							<input type="text" class="form-control" placeholder="Your Full Name" name="name"  >
+							<input type="text"class="form-control"  placeholder="" name="name" style="width:80% "  >
                             <span style="color:red"> @error('name'){{$message}}@enderror</span>
                         </div>
 						

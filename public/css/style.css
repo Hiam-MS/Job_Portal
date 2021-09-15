@@ -331,7 +331,8 @@ strong {
 .text-nowrap {
     white-space: nowrap
 }
-/*text transform*/
+/*text trans
+*/
 
 .text-lowercase {
     text-transform: lowercase

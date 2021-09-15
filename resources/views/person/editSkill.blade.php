@@ -12,7 +12,7 @@
                     <h1 class="text-white">السيرة الذاتية</h1>
 					<!-- Breadcrumb row -->
 					<div class="breadcrumb-row">
-                    <h3 class="text-white">اضافة مهارة  جديدة</h3>
+                    <h3 class="text-white">تعديل  </h3>
 					</div>
 					<!-- Breadcrumb row END -->
                 </div>
@@ -22,29 +22,31 @@
         <!-- contact area -->
 
         <div  class="content-block">
-			<!-- Submit Resume COURSE -->
+			<!-- Submit Resume -->
 			<div class="section-full bg-white submit-resume content-inner-2">
 				<div dir="rtl" lang="ar" class="container" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
-					<form action="/resume/storePersonCourse" method="POST" id="resume" >
+					<form action="/resume/updateSkill" method="POST" id="resume" >
                     @csrf
+                    @method('PUT')
                     
                     
 
 						<div class="form-group">
 							<label>     اسم الدورة  </label>
-							<input type="text" class="form-control" placeholder="Your Full Name" name="name"  >
+							<input type="text" class="form-control"  name="name" value="{{ $skill->name }}" >
                             <span style="color:red"> @error('name'){{$message}}@enderror</span>
                         </div>
 						
                        
-                        <input type="hidden" class="form-control" placeholder=""  name="pid" value={{$id}}>
+                        <input type="hidden" class="form-control" placeholder=""  name="pid" value={{$pid}}>
+                        <input type="hidden" class="form-control" placeholder=""  name="cid" value="{{$skill->id}}">
 						
 						
-						<button type="submit" class="site-button" > أضف</button>
+						<button type="submit" class="site-button" > تعديل </button>
 					</form>
 				</div>
 			</div>
-            <!-- Submit Resume END COURSE-->
+            <!-- Submit Resume END -->
 		</div>
     </div>
     <!-- Content END-->

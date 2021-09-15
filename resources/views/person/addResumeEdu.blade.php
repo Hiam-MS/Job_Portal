@@ -63,7 +63,7 @@
 							</div> 
 						
 							@csrf
-							<div class="col-lg-8">
+							<div class="col-lg-8" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
 								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
 									<!-- <h3 class="m-t0 m-b10 font-weight-700 title-head">
 										<a href="#" class="text-secondry m-r30"></a>
@@ -121,7 +121,7 @@
                                         <th style=" color:black;">{{$edu['degree_name']}} </th>
                                         <th style=" color:black;">{{$edu['Major']}}</th>
 										<th style=" color:black;">{{$edu['Graduation_year']}} </th>
-										<th style=" color:black;"><a href="#" >تعديل</a> / <a href="/resume/deleteEdu/{{$edu['id']}}" >  حذف</a></th>
+										<th style=" color:black;"><a href="/resume/editEdu/{{ $Person->id }}/{{$edu['id']}}" >تعديل</a> / <a href="/resume/deleteEdu/{{$edu['id']}}" >  حذف</a></th>
                                     </tr>
                                     
 									@endforeach
@@ -151,7 +151,39 @@
      
 
 									<h3 class="font-weight-600" id="sdiv">المهارات </h3>
+									<!-- contact area  SKILL -->
+
+        
+			<!-- Submit Resume SKILL -->
+			
+				<div dir="rtl" lang="ar" class="container" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
+					<form action="/resume/storePersonSkill" method="POST" id="resume" >
+                    @csrf
+                    
+                    
+
+						<div class="form-group">
+							<label>    اسم المهارة </label>
+							<input type="text"class="form-control"  placeholder="" name="name" style="width:80% "  >
+                            <span style="color:red"> @error('name'){{$message}}@enderror</span>
+                        </div>
+						
+                       
+                        <input type="hidden" class="form-control" placeholder=""  name="pid" value="{{$Person->id}}">
+						
+						
+						<button type="submit" class="site-button" > أضف مهارة جديدة</button>
+					</form>
+				</div>
+			</div>
+            <!-- Submit Resume END -->
+<br>
+   
+	
+    <!-- Content END SKILL-->
+	
 									
+	<div dir="rtl" lang="ar" class="container" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
 									
 									@if(count($Person->PersonSkill) > 0)
 									 <table>
@@ -163,7 +195,7 @@
 									@foreach($Person->PersonSkill as $edu)
 									 <tr>
 									<th style=" color:black;">{{$edu['name']}} </th>
-                                    <th style=" color:black;"><a href="#" >تعديل</a> / <a href="/resume/deleteSkill/{{$edu['id']}}" >  حذف</a></th>
+                                    <th style=" color:black;"><a href="/resume/editSkill/{{ $Person->id }}/{{$edu['id']}}" >تعديل</a> / <a href="/resume/deleteSkill/{{$edu['id']}}" >  حذف</a></th>
                                     </tr>
                                     
 									@endforeach
@@ -174,6 +206,7 @@
 </p>
 									
 									@endif
+</div>
 									<!-- @if ($message = Session::get('success'))
     <div class="alert alert-success alert-block">
         <button type="button" class="close" data-dismiss="alert">×</button>    
@@ -191,14 +224,44 @@
 @endif 
     
 
-									<p>
+									<!-- <p>
 									<a href="/resume/addSkill/{{ $Person->id }}"  class="site-button" >أضف مهارة جديدة</a>
-									</p>
+									</p> -->
+
+									
+									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 								
 
 										
 									<h3 class="font-weight-600">الدورات التدريبية المتبعة  </h3>
+									<!-- Submit Resume COURSE -->
+			
+				<div dir="rtl" lang="ar" class="container" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
+					<form action="/resume/storePersonCourse" method="POST" id="resume" >
+                    @csrf
+                    
+                    
+
+						<div class="form-group">
+							<label>     اسم الدورة  </label>
+							<input type="text" class="form-control" placeholder="Your Full Name" name="name"  >
+                            <span style="color:red"> @error('name'){{$message}}@enderror</span>
+                        </div>
+						
+                       
+                        <input type="hidden" class="form-control" placeholder=""  name="pid" value="{{$Person->id}}">
+						
+						
+						<button type="submit" class="site-button" > أضف دورة تدريبية جديدة</button>
+					</form>
+				</div>
+			
+            <!-- Submit Resume END COURSE-->
+			<br>
+
+			<div dir="rtl" lang="ar" class="container" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
+
 									@if(count($Person->PersonCousre) > 0)
 									 <table>
 									<tr style="border-bottom: 1px solid #ddd; background-color: rgba(250, 247, 246 ); color:black;font-size: 105%;">
@@ -209,7 +272,7 @@
 									@foreach($Person->PersonCousre as $edu)
 									 <tr>
 									<th style=" color:black;">{{$edu['name']}} </th>
-                                    <th style=" color:black;"><a href="#" >تعديل</a> / <a href="/resume/deleteCourse/{{$edu['id']}}" >  حذف</a></th>
+                                    <th style=" color:black;"><a href="/resume/editCourse/{{ $Person->id }}/{{$edu['id']}}" >تعديل</a> / <a href="/resume/deleteCourse/{{$edu['id']}}" >  حذف</a></th>
                                     </tr>
                                     
 									@endforeach
@@ -222,10 +285,11 @@
 									@endif
 									
 									
-									<p><a href="/resume/addCourse/{{ $Person->id }}"  class="site-button" >أضف دورة تدريبية جديدة</a>
-									</p>
+									<!-- <p><a href="/resume/addCourse/{{ $Person->id }}"  class="site-button" >أضف دورة تدريبية جديدة</a>
+									</p> -->
+</div>
 
-
+									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 									
 									<h3 class="font-weight-600">خبرات العمل </h3>
@@ -247,7 +311,7 @@
                                         <th style=" color:black;">{{$edu['job_Specialize']}}</th>
 										<th style=" color:black;">{{$edu['Start_date']}} </th>
 										<th style=" color:black;">{{$edu['end_date']}} </th>
-										<th style=" color:black;"><a href="#" >تعديل</a> / <a href="#" >  حذف</a></th>
+										<th style=" color:black;"><a href="#" >تعديل</a> / <a href="/resume/deleteExperience/{{$edu['id']}}" > حذف </a></th>
                                     </tr>
                                     
 									@endforeach
@@ -268,7 +332,7 @@
 
                                     
 									
-									<a href="#" class="site-button">تقدم الآن</a>
+									<!-- <a href="#" class="site-button">تقدم الآن</a> -->
 								</div>
 							</div>
 						
