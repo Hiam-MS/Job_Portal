@@ -73,7 +73,7 @@ Route::PUT('/resume/updateCourse','PersonController@updateCourse');
 
 //Route::get('/resume/JobCategory/{id}','PersonController@createResumeJobCat')->name('JobCategory');
 Route::post('/resume/storePersonJobCat','PersonController@storePersonJobCat');
-
+Route::get('view_resuem','PersonController@viewResuemForm')->name('resuems');
 
 
 
@@ -85,7 +85,7 @@ Route::post('/resume/storePersonJobCat','PersonController@storePersonJobCat');
 // Route::get('auth/register','HomeController@register');
 
 
-Route::get('view_resuem','PersonController@viewResuemForm')->name('resuems');
+
 
 Route::get('res_det','PersonController@res_det');
 Auth::routes();

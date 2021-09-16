@@ -16,7 +16,7 @@
                 <div class="dez-bnr-inr-entry">
                     <h1 class="text-white">السيرة الذاتية</h1>
 					<div class="breadcrumb-row">
-                    <h6 class="text-white">التعليم</h1>
+                    <h6 class="text-white"></h1>
 					</div>
 					<!-- Breadcrumb row -->
 					<!--<div class="breadcrumb-row">
@@ -94,8 +94,9 @@
                                     <p>
                                     <input type="hidden" class="form-control" placeholder=""  name="pid" value="{{$Person->id}}">
 									
-                                    <button type="submit" class="site-button" > أضف</button>
+                                    <button type="submit" class="btn btn-primary" > أضف</button>
 									</p>
+									<br>
 									
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 									
@@ -105,7 +106,72 @@
 
 									<br>
 									<h3 class="font-weight-600" > الشهادات التعليمية  </h3>
-									<!-- <p>لاتوجد شهادات تعليمية مذكورة حالياً - أضف الشهادات التعليمية في حال وجودها </p> -->
+
+									<!-- Submit Resume EDU -->
+		
+				<div dir="rtl" lang="ar" class="container" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
+					<form action="/resume/storePersonEdu" method="POST" id="resume" >
+                    @csrf
+                   
+                    <table >
+						<tr>
+						  <th style="width: 20%" >اسم الشهادة :</th>
+						  <td style="width: 50%"><input type="text" class="form-control" placeholder="  " name="degree_name" style="width:40%" >
+						  <span style="color:red"> @error('degree_name'){{$message}}@enderror</span></td>
+						  </tr>
+						  <tr>
+						  <th style="width: 20%" > المؤسسة التعليمية :</th>
+						  <td style="width: 50%"><input type="text" class="form-control" placeholder="" name="Institution" style="width:40%">
+						  <span style="color:red"> @error('Institution'){{$message}}@enderror</span></td>
+                        </tr>
+						<tr>
+						  <th style="width: 20%" >  الاختصاص :</th>
+						  <td style="width: 50%"><input type="text" class="form-control" placeholder="" name="Major" style="width:40%">
+							<span style="color:red"> @error('Major'){{$message}}@enderror</span></td>
+                        </tr>
+						<tr>
+						  <th style="width: 20%" >  الدرجة/ الشهادة   :</th>
+						  <td style="width: 50%" ><select name="Degree" style="width:40%" >
+                            <option  >يرجى الاختيار</option>
+								
+                                <option value="f+"  > أقل من ثانوية عامة </option>
+                                <option value="f"  > ثانوية عامة </option>
+                                <option value="a"  > معهد متوسط </option>
+                                <option value="B"  > بكالوريوس / اجازة </option>
+                                <option value="m"  > دبلوم دراسات عليا </option>
+                                <option value="M"  > ماجستير </option>
+								<option value="D"  > دكتوراه </option>
+                                
+								
+							</select></td>
+                        </tr>
+						<tr>
+						  <th style="width: 20%" >    سنة التخرج :</th>
+						  <td style="width: 50%"><input type="date" class="form-control" placeholder="Web Designer"  name="Graduation_year" style="width:40%">
+							<span style="color:red"> @error('Graduation_year'){{$message}}@enderror</span>
+                        </tr>
+
+						<tr>
+						  <th style="width: 20%" >     دولة الدراسة :</th>
+						  <td><input type="text" class="form-control" placeholder=""  name="Country" style="width:40%">
+							<span style="color:red"> @error('Country'){{$message}}@enderror</span></td>
+							
+                        </tr>
+
+                   </table>
+
+					 <input type="hidden" class="form-control" placeholder=""  name="pid" value="{{$Person->id}}">
+						
+						
+						<button type="submit"  class="btn btn-primary" > أضف شهادة تعليمية جديدة</button>
+						</form>
+					
+				</div><br>
+				
+			
+            <!-- Submit Resume END EDU -->
+								
+									<div dir="rtl" lang="ar" class="container" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
 									@if(count($Person->PersonEducation) > 0)
 									 <table>
 									<tr style="border-bottom: 1px solid #ddd; background-color: rgba(250, 247, 246 ); color:black;font-size: 105%;">
@@ -139,10 +205,12 @@
 
 									
                                     <p>
-									<a href="/resume/addEducation/{{ $Person->id }}" class="site-button" >أضف شهادة تعليمية جديدة</a>
+									<!-- <a href="/resume/addEducation/{{ $Person->id }}" class="site-button" >أضف شهادة تعليمية جديدة</a> -->
 									</p>
-									
+</div>
+<br><br>
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+									<br>
 
 									
 										
@@ -172,7 +240,7 @@
                         <input type="hidden" class="form-control" placeholder=""  name="pid" value="{{$Person->id}}">
 						
 						
-						<button type="submit" class="site-button" > أضف مهارة جديدة</button>
+						<button type="submit" class="btn btn-primary" > أضف مهارة جديدة</button>
 					</form>
 				</div>
 			</div>
@@ -228,9 +296,9 @@
 									<a href="/resume/addSkill/{{ $Person->id }}"  class="site-button" >أضف مهارة جديدة</a>
 									</p> -->
 
-									
+									<br><br>
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+									<br>
 								
 
 										
@@ -253,7 +321,7 @@
                         <input type="hidden" class="form-control" placeholder=""  name="pid" value="{{$Person->id}}">
 						
 						
-						<button type="submit" class="site-button" > أضف دورة تدريبية جديدة</button>
+						<button type="submit" class="btn btn-primary" > أضف دورة تدريبية جديدة</button>
 					</form>
 				</div>
 			
@@ -288,9 +356,9 @@
 									<!-- <p><a href="/resume/addCourse/{{ $Person->id }}"  class="site-button" >أضف دورة تدريبية جديدة</a>
 									</p> -->
 </div>
-
+<br><br>
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+									<br>
 									
 									<h3 class="font-weight-600">خبرات العمل </h3>
 									
@@ -326,7 +394,7 @@
 									@endif
 									
 									
-									<p><a href="/resume/addExperience/{{ $Person->id }}"  class="site-button" >أضف خبرة عمل جديدة</a>
+									<p><a href="/resume/addExperience/{{ $Person->id }}"  class="btn btn-primary" >أضف خبرة عمل جديدة</a>
 									</p>
 
 
