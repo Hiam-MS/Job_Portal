@@ -6,6 +6,7 @@ use App\Http\Controllers\JobsController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\JobCategoryController;
+
 use Illuminate\Routing\Redirector;
 
 
@@ -24,6 +25,8 @@ use Illuminate\Routing\Redirector;
 
 // jobs
 Route::get('/','CompanyController@index');
+Route::get('/addCompany','CompanyController@getAddCompanyForm');
+Route::post('/storeProfile','CompanyController@storeProfile');
 Route::get('/job','CompanyController@showJob')->name('job');
 Route::get('job/details/{id}','JobsController@JobDetails');
 Route::get('addJob','JobsController@addJob')->name('addJob');

@@ -32,17 +32,17 @@
                     
 						<div class="form-group">
 							<label>الاسم الكامل</label>
-							<input type="text" class="form-control" placeholder="Your Full Name" name="name" style="width:60%" data-parsly-trigger="keyup" >
+							<input type="text" class="form-control" placeholder="Your Full Name" name="name" value="{{old(' name')}}" style="width:60%" data-parsly-trigger="keyup" >
 							<span style="color:red"> @error('name'){{$message}}@enderror</span>
 						</div>
 						<div class="form-group">
 							<label>عنوان البريد الالكتروني</label>
-							<input type="email" class="form-control" placeholder="info@gmail.com" name="email" style="width:60%" data-parsly-trigger="keyup">
+							<input type="email" class="form-control" placeholder="info@gmail.com" name="email" value="{{old(' email')}}"  style="width:60%" data-parsly-trigger="keyup">
 							<span style="color:red"> @error('email'){{$message}}@enderror</span>
 						</div>
                         <div class="form-group">
 							<label>الرقم الوطني</label>
-							<input type="text" class="form-control" placeholder="" name="national_number" style="width:60% "  data-parsly-trigger="keyup">
+							<input type="text" class="form-control" placeholder="" name="national_number" value="{{old(' national_number')}}" style="width:60% "  data-parsly-trigger="keyup">
 							<span style="color:red"> @error('national_number'){{$message}}@enderror</span>
 						</div>
 						<div class="form-group" >
@@ -119,31 +119,31 @@
                             </div>-->
 						<div class="form-group">
 							<label>تاريخ الميلاد</label>
-							<input type="date" class="form-control" placeholder="Web Designer"  name="dob" style="width:60%" data-parsly-trigger="keyup">
+							<input type="date" class="form-control" placeholder="Web Designer"  value="{{old(' dob')}}" name="dob" style="width:60%" data-parsly-trigger="keyup">
 							<span style="color:red"> @error('dob'){{$message}}@enderror</span>
 						</div>
 						<div class="form-group">
 							<label>مكان الولادة</label>
-							<input type="text" class="form-control" placeholder=""  name="place_Of_b" style="width:60% " data-parsly-trigger="keyup">
+							<input type="text" class="form-control" placeholder=""  name="place_Of_b" value="{{old(' place_Of_b')}}" style="width:60% " data-parsly-trigger="keyup">
 							<span style="color:red"> @error('place_Of_b'){{$message}}@enderror</span>
 						</div>
                         <div class="form-group">
 							<label>عنوان الاقامة الحالي</label>
 							
                              <!--<textarea  name="" id="" cols="90" rows="10" class="form-control" name="Current_address" form="resume"></textarea>-->
-                            <input type="text" class="form-control" placeholder=""  name="Current_address" style="width:60% " data-parsly-trigger="keyup">
+                            <input type="text" class="form-control" placeholder=""  name="Current_address" value="{{old(' Current_address')}}" style="width:60% " data-parsly-trigger="keyup">
 							<span style="color:red"> @error('Current_address'){{$message}}@enderror</span>
 						</div>
 
                         
                             <div class="form-group">
 							<label>الهاتف الأرضي</label>
-							<input type="text" class="form-control" placeholder="" name="fixed_phone" style="width:60% " data-parsly-trigger="keyup">
+							<input type="text" class="form-control" placeholder="" name="fixed_phone" value="{{old(' fixed_phone')}}" style="width:60% " data-parsly-trigger="keyup">
 							<span style="color:red"> @error('fixed_phone'){{$message}}@enderror</span>
 						</div>
                         <div class="form-group">
 							<label>رقم الخليوي</label>
-							<input type="text" class="form-control" placeholder=""  name="mobile_number" style="width:60% " data-parsly-trigger="keyup">
+							<input type="text" class="form-control" placeholder=""  name="mobile_number" value="{{old(' mobile_number')}}" style="width:60% " data-parsly-trigger="keyup">
 							<span style="color:red"> @error('mobile_number'){{$message}}@enderror</span>
 						</div>
 						<div class="form-group">
@@ -161,7 +161,7 @@
 						<div class="form-group">
 							<label>الصورة الشخصية</label>
 							<div class="custom-file">
-								<input type="file" class="site-button" id="customFile"  name="img" style="width:60% " data-parsly-trigger="keyup">
+								<input type="file" class="site-button" id="customFile"  name="img"  value="{{old(' img')}}"style="width:60% " data-parsly-trigger="keyup">
 							</div>
 						</div>
 						
