@@ -22,6 +22,9 @@ class CreateCompaniesTable extends Migration
             $table->integer('fax_phone');
             $table->string('location');
             $table->string('company_specialist');
+            $table->string('commercial_record');
+            $table->string('industria_record');
+            $table->string('website');
             $table->timestamps();
         });
     }
