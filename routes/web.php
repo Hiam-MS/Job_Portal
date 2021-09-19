@@ -25,18 +25,35 @@ use Illuminate\Routing\Redirector;
 
 // jobs
 Route::get('/','CompanyController@index');
-Route::get('/addCompany','CompanyController@getAddCompanyForm');
-Route::post('/storeProfile','CompanyController@storeProfile');
-Route::get('/job','CompanyController@showJob')->name('job');
-Route::get('job/details/{id}','JobsController@JobDetails');
-Route::get('addJob','JobsController@addJob')->name('addJob');
+Route::get('/company/profile','CompanyController@getAddCompanyForm');
+Route::post('/company/storeProfile','CompanyController@storeProfile')->name('company.addCompany');
+Route::get('/company/editProfile/{id}','CompanyController@editCompanyProfile');
+Route::post('/company/editProfile/{id}','CompanyController@updatCompanyProfile');
+
+
+
+//********************************************* */
+
+
+Route::get('/job/addJob','JobsController@addJob')->name('addJob');
+Route::get('/job/details/{id}','JobsController@JobDetails');
+Route::get('/job/showJobs','JobsController@showJob')->name('job');
+Route::post('/job/storeJob','JobsController@storeJob');
+
+
+
+
+Route::get('/company/show','CompanyController@showCompany')->name('company.show');
+
 
 Route::get('/person/{id}','PersonController@show');
 Route::get('/person','PersonController@index');
 
 
 
-Route::post('/store/job','JobsController@storeJob');
+
+
+// Route::post('/store/job','JobsController@storeJob');
 
 
 Route::get('/country','AdminController@addCountry');

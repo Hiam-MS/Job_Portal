@@ -44,7 +44,10 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/jquery.multiselect.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/multiselect.css')}}">
 
-
+<style>
+	   body {
+  color: black;
+</style>
 </head>
 <body id="bg">
 <div class="page-wraper">
@@ -117,6 +120,12 @@
 							</li>
 							<li>
 								<a href="{{ route('resuem.create') }}">  انشاء سيرة ذاتية</i></a>
+								<ul class="sub-menu">
+									
+								</ul>
+							</li>
+							<li>
+								<a href="{{ route('company.show') }}">    الشركات الحالية</i></a>
 								<ul class="sub-menu">
 									
 								</ul>

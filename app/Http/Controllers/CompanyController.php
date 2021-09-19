@@ -21,11 +21,45 @@ class CompanyController extends Controller
         return view('company.profile');
     }
 
-    public function showJob()
+    public function showCompany()
     {
-        $job =Job::all();
-        return view('company.job',compact('job'));
+        $company=Company::all();
+
+        return view ('company.showCompany',compact('company'));
     }
+
+    public function editCompanyProfile($id)
+    {
+        $company=Company::find($id);
+        return view('company.editProfile',compact('company'));
+    }
+
+    public function updatCompanyProfile(Request $Request,$id)
+    {
+        $company=Company::find($id);
+        $company->company_name_ar=$Request->company_name_ar;
+        $company->company_name_en=$Request->company_name_en;
+        $company->email=$Request->email;
+        $company->fixed_phone=$Request->fixed_phone;
+        $company->fax_phone=$Request->fax_phone;
+        $company->location=$Request->location;
+        $company->company_specialist=$Request->company_specialist;
+        $company->commercial_record=$Request->commercial_record;
+        $company->industria_record=$Request->industria_record;
+        $company->website=$Request->website;
+
+        $company->save();
+
+        if($company){
+            return back()->withInput()->with('success','  تم التعديل بنجاح');
+        }else{
+            return back()->withInput()->with('fail','هناك خطأ ما');
+        }
+        
+        
+    }
+
+  
 
     public function storeProfile(Request $Request)
     {

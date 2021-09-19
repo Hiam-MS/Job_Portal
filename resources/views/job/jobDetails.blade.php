@@ -61,7 +61,8 @@
 									<h3 class="m-t0 m-b10 font-weight-700 title-head">
 										<a href="#" class="text-secondry m-r30"></a>
 										<p>
-											لدى شركة : {{$job->company_name}}
+											العمل لدى شركة  : 
+											<h5>{{$job->company_name}}</h5>
 										</p>
 									</h3>
 

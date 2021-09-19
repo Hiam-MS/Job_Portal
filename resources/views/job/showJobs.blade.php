@@ -64,7 +64,8 @@
                                     
                                 <li>
                                 @foreach($job as $item)
-									<a href="job/details/{{ $item->id }}">
+								
+									<a href="details/{{ $item->id }}">
 										<div class="d-flex m-b30">
 											<div class="job-post-company">
 												<span><img src="images/logo/icon1.png"/></span>
