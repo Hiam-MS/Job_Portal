@@ -52,11 +52,26 @@ class JobsController extends Controller
 
         $query =DB::table('jobs')->insert([
             'company_name'=>$Request->input('company_name'),
-            'job_position'=>$Request->input('job_position'),
+            'job_title'=>$Request->input('job_title'),
+            'number_of_employess'=>$Request->input('number_of_employess'),
+            'salary'=>$Request->input('salary'),
+            'job_requirement'=>$Request->input('job_requirement'),
+            'functional_tasks'=>$Request->input('functional_tasks'),
             'country'=>$Request->input('country'),
             'city'=>$Request->input('city'),
-            'job_position'=>$Request->input('job_position'),
-            'number_of_employess'=>$Request->input('number_of_employess')
+            'gender'=>$Request->input('gender'),
+            'military_service'=>$Request->input('military_service'),
+            'degree'=>$Request->input('degree'),
+            'job_type'=>$Request->input('job_type')
+           
+         
+
+
+
+
+
+          
+        
     
            ]);
 

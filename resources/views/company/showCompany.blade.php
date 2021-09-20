@@ -20,7 +20,11 @@
 
     
     @csrf
-    <button type="submit" class="btn btn-primary" >  اضافة شركة جديدة</button>
+    <a href="{{ route('company.profile') }}">
+
+        <button type="submit" class="btn btn-primary" >  اضافة شركة جديدة</button>
+	</a>
+  
 
         <table>
            <thead>
