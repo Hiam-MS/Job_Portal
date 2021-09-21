@@ -16,20 +16,20 @@ class CreateJobsTable extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('company_name');
-            $table->string('job_position');
+            $table->string('job_title');
             $table->integer('number_of_employess');
+            $table->string('salary');
+            $table->string('job_requirement');
+            $table->string('functional_tasks');
             $table->string('country');
             $table->string('city');
-            $table->string('job_specialist')->nullable();
-            $table->string('job_type')->nullable();
-            $table->string('educational_lvl')->nullable();
-            $table->string('gender')->nullable();
-            $table->string('military_service')->nullable();
-            $table->string('job_task')->nullable();
-            $table->double('salary')->nullable();
-
+            $table->string('gender');
+            $table->string('military_service');
+            $table->string('degree');
+            $table->string('job_type');
             
-            $table->timestamps();
+           
+           $table->timestamps();
         });
     }
 
