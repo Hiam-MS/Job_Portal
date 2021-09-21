@@ -28,6 +28,12 @@ class CreatePeopleTable extends Migration
             $table->string('mobile_number')->nullable();
             $table->string('img')->nullable();
             $table->json('lang')->nullable();
+            $table->unsignedBigInteger('user_id')->unique();
+            $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users')
+                    ->onDelete('cascade');
+                   
             $table->timestamps();
         });
     }

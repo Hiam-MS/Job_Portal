@@ -82,10 +82,10 @@
                         <div class="form-group row">
                             <label for="role" class="col-md-4 col-form-label text-md-right">الدور</label>
                             <div class="col-md-6">
-                                <select class="form-control" name="role">
+                                <select class="form-control" name="role" required>
                                     <option selected disabled>...Select Role</option>
-                                    <option value='1'>باحث عن عمل</option>
-                                    <option value="2">باحث عن موظف</option>
+                                    <option value="p">باحث عن عمل</option>
+                                    <option value="c">باحث عن موظف</option>
                                 </select>
                             </div>
                         </div>
