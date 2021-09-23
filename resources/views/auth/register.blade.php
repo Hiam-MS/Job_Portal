@@ -33,7 +33,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">اسم المستخدم</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" placeholder="" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback">
@@ -43,7 +43,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">البريد الالكتروني</label>
 
                             <div class="col-md-6">
@@ -55,7 +55,22 @@
                                     </span>
                                 @endif
                             </div>
+                        </div> -->
+
+                        <div class="form-group row">
+                            <label for="mobile" class="col-md-4 col-form-label text-md-right"> رقم الموبايل</label>
+
+                            <div class="col-md-6">
+                                <input id="mobile" type="tel"  pattern="[0]{1}[9]{1}[0-9]{8}" placeholder="0933333333" class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}" name="mobile" value="{{ old('mobile') }}" required>
+
+                                @if ($errors->has('mobile'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('mobile') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                         </div>
+
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">كلمة السر</label>
@@ -80,13 +95,18 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="role" class="col-md-4 col-form-label text-md-right">الدور</label>
+                            <label for="role" class="col-md-4 col-form-label text-md-right" >الدور</label>
                             <div class="col-md-6">
-                                <select class="form-control" name="role" required>
+                                <select class="form-control" name="role"  class="form-control{{ $errors->has('role') ? ' is-invalid' : '' }}" required>
                                     <option selected disabled>...Select Role</option>
                                     <option value="p">باحث عن عمل</option>
                                     <option value="c">باحث عن موظف</option>
                                 </select>
+                                @if ($errors->has('role'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('role') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                         <div class="form-group row mb-0">
