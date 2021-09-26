@@ -105,7 +105,10 @@ Route::get('view_resuem','PersonController@viewResuemForm')->name('resuems');
 // Route::get('auth/register','HomeController@register');
 
 
+/**************Admin******************** */
 
+
+Route::get('/admin/dashboard','AdminController@getDash');
 
 Route::get('res_det','PersonController@res_det');
 Auth::routes();
