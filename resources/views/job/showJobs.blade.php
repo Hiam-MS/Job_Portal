@@ -1,8 +1,8 @@
 @extends('header')
 @section('content')
-
+@csrf
 <style>
-	#add{
+	/* #add{
 
 		border-radius: 4px;
   background-color: #8080ff;
@@ -15,7 +15,7 @@
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
-	}
+	} */
 
 
 </style>
@@ -49,7 +49,7 @@
 						
 						<a href="{{ route('addJob') }}">
 
-						<button  id ="add" type="submit" class="btn btn-sucess"> إضافة فرص عمل جديدة</button>
+							<button  id ="add" type="submit" class="btn btn-primary  "> إضافة فرص عمل جديدة</button>
 						</a>
 						<br>
 						

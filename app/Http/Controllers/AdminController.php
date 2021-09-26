@@ -36,7 +36,10 @@ class AdminController extends Controller
         return "DOne";
 
     }
-    
+    public function getDash()
+    {
+        return view('admin.dashboard');
+    }
 
 
 
