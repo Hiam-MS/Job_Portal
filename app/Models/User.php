@@ -19,8 +19,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
+        'mobile',
         'password',
+        'role',
     ];
 
     /**
@@ -28,10 +29,10 @@ class User extends Authenticatable
      *
      * @var array
      */
-    // protected $hidden = [
-    //     'password',
-    //     'remember_token',
-    // ];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
     /**
      * The attributes that should be cast to native types.
@@ -41,4 +42,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //Person has one or more Course
+    public function GetPerson()
+    {
+        return $this->hasOne(Person::class);
+    }
 }

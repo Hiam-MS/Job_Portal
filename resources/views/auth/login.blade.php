@@ -30,7 +30,7 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                             <label for="email" class="col-sm-4 col-form-label text-md-right">اسم المستخدم</label>
 
                             <div class="col-md-6">
@@ -39,6 +39,20 @@
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div> -->
+
+                        <div class="form-group row">
+                            <label for="mobile" class="col-sm-4 col-form-label text-md-right">اسم المستخدم</label>
+
+                            <div class="col-md-6">
+                                <input id="mobile" type="tel"  pattern="[0-9]{10}" class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}" name="mobile" value="{{ old('mobile') }}" required autofocus>
+
+                                @if ($errors->has('mobile'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('mobile') }}</strong>
                                     </span>
                                 @endif
                             </div>

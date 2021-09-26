@@ -110,13 +110,14 @@ class PersonController extends Controller
             $person->fixed_phone= $Request->input("fixed_phone");
             $person->mobile_number= $Request->input("mobile_number");
             $person->lang= $Request->input("lang");
-            
             $person->img= $Request->input("img");
-            ///$person->lang= $Request->input("lang");
+            $person->user_id= auth()->user()->id;
+
+          
 
         $person->save();
-       $id= $person->id;
-       return redirect()->route('edu', ['id' => $id]);
+    //    $id= $person->id;
+       return redirect()->route('edu');
 
        //return redirect('/');
 
@@ -125,14 +126,14 @@ class PersonController extends Controller
         
     }
 
-
+///////////////////////////////////////////////////////////edit///////////////////
  
 //show resume for add edu - skills - courses
-    public function createResumeEdu($id)
+    public function createResumeEdu()
     {
         $jobCat =JobCategory::all();
-       $Person = Person::find($id);
-        return view('person.addResumeEdu',compact('Person','jobCat'));
+        $person = auth()->user()->GetPerson;
+        return view('person.addResumeEdu',compact('person','jobCat'));
         
     }
 

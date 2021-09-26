@@ -66,7 +66,7 @@ Route::get('/profile','CompanyController@index');
 Route::get('/resume/skill','PersonController@index');
 Route::get('/resume/create','PersonController@createResume')->name('resuem.create');
 Route::post('/resume/store','PersonController@store');
-Route::get('/resume/createEdu/{id}','PersonController@createResumeEdu')->name('edu');
+Route::get('/resume/createEdu','PersonController@createResumeEdu')->name('edu');
 Route::get('/resume/addEducation/{id}','PersonController@createPersonEdu');
 Route::post('/resume/storePersonEdu','PersonController@storePersonEdu')->name('StoreEdu');
 Route::get('/resume/deleteEdu/{id}', 'PersonController@DeletePersonEdu');
@@ -117,12 +117,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

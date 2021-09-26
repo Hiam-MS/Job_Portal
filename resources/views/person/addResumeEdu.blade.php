@@ -92,7 +92,7 @@
 								
 									<br>
                                     <p>
-                                    <input type="hidden" class="form-control" placeholder=""  name="pid" value="{{$Person->id}}">
+                                    <input type="hidden" class="form-control" placeholder=""  name="pid" value="{{$person->id}}">
 									
                                     <button type="submit" class="btn btn-primary" > أضف</button>
 									</p>
@@ -160,7 +160,7 @@
 
                    </table>
 
-					 <input type="hidden" class="form-control" placeholder=""  name="pid" value="{{$Person->id}}">
+					 <input type="hidden" class="form-control" placeholder=""  name="pid" value="{{$person->id}}">
 						
 						
 						<button type="submit"  class="btn btn-primary" > أضف شهادة تعليمية جديدة</button>
@@ -172,7 +172,7 @@
             <!-- Submit Resume END EDU -->
 								
 									<div dir="rtl" lang="ar" class="container" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
-									@if(count($Person->PersonEducation) > 0)
+									@if(count($person->PersonEducation) > 0)
 									 <table>
 									<tr style="border-bottom: 1px solid #ddd; background-color: rgba(250, 247, 246 ); color:black;font-size: 105%;">
                                         <th>اسم الشهادة</th>
@@ -180,14 +180,14 @@
 										<th>سنة التخرج</th>
 										<th>خيارات</th>
                                     </tr>
-									@foreach($Person->PersonEducation as $edu)
+									@foreach($person->PersonEducation as $edu)
 									 <tr>
 									
 									
                                         <th style=" color:black;">{{$edu['degree_name']}} </th>
                                         <th style=" color:black;">{{$edu['Major']}}</th>
 										<th style=" color:black;">{{$edu['Graduation_year']}} </th>
-										<th style=" color:black;"><a href="/resume/editEdu/{{ $Person->id }}/{{$edu['id']}}" >تعديل</a> / <a href="/resume/deleteEdu/{{$edu['id']}}" >  حذف</a></th>
+										<th style=" color:black;"><a href="/resume/editEdu/{{ $person->id }}/{{$edu['id']}}" >تعديل</a> / <a href="/resume/deleteEdu/{{$edu['id']}}" >  حذف</a></th>
                                     </tr>
                                     
 									@endforeach
@@ -205,7 +205,7 @@
 
 									
                                     <p>
-									<!-- <a href="/resume/addEducation/{{ $Person->id }}" class="site-button" >أضف شهادة تعليمية جديدة</a> -->
+									<!-- <a href="/resume/addEducation/{{ $person->id }}" class="site-button" >أضف شهادة تعليمية جديدة</a> -->
 									</p>
 </div>
 <br><br>
@@ -237,7 +237,7 @@
                         </div>
 						
                        
-                        <input type="hidden" class="form-control" placeholder=""  name="pid" value="{{$Person->id}}">
+                        <input type="hidden" class="form-control" placeholder=""  name="pid" value="{{$person->id}}">
 						
 						
 						<button type="submit" class="btn btn-primary" > أضف مهارة جديدة</button>
@@ -253,17 +253,17 @@
 									
 	<div dir="rtl" lang="ar" class="container" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
 									
-									@if(count($Person->PersonSkill) > 0)
+									@if(count($person->PersonSkill) > 0)
 									 <table>
 									<tr style="border-bottom: 1px solid #ddd; background-color: rgba(250, 247, 246 ); color:black;font-size: 105%;">
                                         <th> المهارة</th>
                                         
 										<th>خيارات</th>
                                     </tr>
-									@foreach($Person->PersonSkill as $edu)
+									@foreach($person->PersonSkill as $edu)
 									 <tr>
 									<th style=" color:black;">{{$edu['name']}} </th>
-                                    <th style=" color:black;"><a href="/resume/editSkill/{{ $Person->id }}/{{$edu['id']}}" >تعديل</a> / <a href="/resume/deleteSkill/{{$edu['id']}}" >  حذف</a></th>
+                                    <th style=" color:black;"><a href="/resume/editSkill/{{ $person->id }}/{{$edu['id']}}" >تعديل</a> / <a href="/resume/deleteSkill/{{$edu['id']}}" >  حذف</a></th>
                                     </tr>
                                     
 									@endforeach
@@ -293,7 +293,7 @@
     
 
 									<!-- <p>
-									<a href="/resume/addSkill/{{ $Person->id }}"  class="site-button" >أضف مهارة جديدة</a>
+									<a href="/resume/addSkill/{{ $person->id }}"  class="site-button" >أضف مهارة جديدة</a>
 									</p> -->
 
 									<br><br>
@@ -318,7 +318,7 @@
                         </div>
 						
                        
-                        <input type="hidden" class="form-control" placeholder=""  name="pid" value="{{$Person->id}}">
+                        <!-- <input type="hidden" class="form-control" placeholder=""  name="pid" value="{{$person->id}}"> -->
 						
 						
 						<button type="submit" class="btn btn-primary" > أضف دورة تدريبية جديدة</button>
@@ -330,17 +330,17 @@
 
 			<div dir="rtl" lang="ar" class="container" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
 
-									@if(count($Person->PersonCousre) > 0)
+									@if(count($person->PersonCousre) > 0)
 									 <table>
 									<tr style="border-bottom: 1px solid #ddd; background-color: rgba(250, 247, 246 ); color:black;font-size: 105%;">
                                         <th> اسم الدورة</th>
                                         
 										<th>خيارات</th>
                                     </tr>
-									@foreach($Person->PersonCousre as $edu)
+									@foreach($person->PersonCousre as $edu)
 									 <tr>
 									<th style=" color:black;">{{$edu['name']}} </th>
-                                    <th style=" color:black;"><a href="/resume/editCourse/{{ $Person->id }}/{{$edu['id']}}" >تعديل</a> / <a href="/resume/deleteCourse/{{$edu['id']}}" >  حذف</a></th>
+                                    <th style=" color:black;"><a href="/resume/editCourse/{{ $person->id }}/{{$edu['id']}}" >تعديل</a> / <a href="/resume/deleteCourse/{{$edu['id']}}" >  حذف</a></th>
                                     </tr>
                                     
 									@endforeach
@@ -353,7 +353,7 @@
 									@endif
 									
 									
-									<!-- <p><a href="/resume/addCourse/{{ $Person->id }}"  class="site-button" >أضف دورة تدريبية جديدة</a>
+									<!-- <p><a href="/resume/addCourse/{{ $person->id }}"  class="site-button" >أضف دورة تدريبية جديدة</a>
 									</p> -->
 </div>
 <br><br>
@@ -362,7 +362,7 @@
 									
 									<h3 class="font-weight-600">خبرات العمل </h3>
 									
-									@if(count($Person->PersonExperience) > 0)
+									@if(count($person->PersonExperience) > 0)
 									 <table>
 									<tr style="border-bottom: 1px solid #ddd;background-color: rgba(250, 247, 246); color:black;font-size: 105%;">
                                         <th> اسم الشركة </th>
@@ -394,7 +394,7 @@
 									@endif
 									
 									
-									<p><a href="/resume/addExperience/{{ $Person->id }}"  class="btn btn-primary" >أضف خبرة عمل جديدة</a>
+									<p><a href="/resume/addExperience/{{ $person->id }}"  class="btn btn-primary" >أضف خبرة عمل جديدة</a>
 									</p>
 
 
