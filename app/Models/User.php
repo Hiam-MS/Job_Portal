@@ -43,9 +43,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    //Person has one or more Course
+    //Get person
     public function GetPerson()
     {
         return $this->hasOne(Person::class);
+    }
+
+    //Get company
+    public function GetCompany()
+    {
+        return $this->hasOne(Company::class);
     }
 }

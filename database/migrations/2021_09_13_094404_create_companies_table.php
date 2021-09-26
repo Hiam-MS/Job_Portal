@@ -25,6 +25,11 @@ class CreateCompaniesTable extends Migration
             $table->string('commercial_record');
             $table->string('industria_record');
             $table->string('website');
+            $table->unsignedBigInteger('user_id')->unique();
+            $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users')
+                    ->onDelete('cascade');
             $table->timestamps();
         });
     }
