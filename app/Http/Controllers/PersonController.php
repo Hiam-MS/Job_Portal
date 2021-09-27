@@ -54,11 +54,6 @@ class PersonController extends Controller
             return view('person.viewResuem',compact('Person'));
         }
 
-       
-
-        
-     
-        
     }
 
   
@@ -94,9 +89,10 @@ class PersonController extends Controller
             'fixed_phone'=> ['required','integer'] ,
             'Current_address'=> ['required','string'] ,
             'mobile_number'=> ['required','string'] ,
+            // 'user_id'=>['unique:Person','required'] ,
           
         ]);
-        //$lang = $Request->input("lang");
+        
         $person =new Person ;
             $person->name = $Request->input("name");
             $person->email =  $Request->input("email");
@@ -116,15 +112,10 @@ class PersonController extends Controller
           
 
         $person->save();
-    //    $id= $person->id;
+    
        return redirect()->route('edu');
 
-       //return redirect('/');
-
-       //return view('person.addEdu');
-       
-        
-    }
+     }
 
 ///////////////////////////////////////////////////////////edit///////////////////
  
@@ -133,23 +124,24 @@ class PersonController extends Controller
     {
         $jobCat =JobCategory::all();
         $person = auth()->user()->GetPerson;
+       
         return view('person.addResumeEdu',compact('person','jobCat'));
         
     }
 
-//show form for add person Education
+// show form for add person Education
     public function createPersonEdu($id)
     {
 
         return view('person.addEdu', ['id' => $id]);
     }
+
+
 //store person Education
     public function storePersonEdu(Request $Request)
 
     {
-
-
-        $Request->validate([
+          $Request->validate([
             // 'degree_name'=> ['required','string'] ,
             // 'Institution'=> ['required','string'] ,
             // 'Degree'=> ['required','string'] ,
@@ -159,7 +151,7 @@ class PersonController extends Controller
           
         ]);
 
-
+        
         $personEdu =new PersonEducation ;
             $personEdu->degree_name = $Request->input("degree_name");
             $personEdu->Institution =  $Request->input("Institution");
@@ -167,20 +159,13 @@ class PersonController extends Controller
             $personEdu->Major= $Request->input("Major");
             $personEdu->Graduation_year = $Request->input("Graduation_year");
             $personEdu->Country = $Request->input("Country");
-            
-            $personEdu->person_id= $Request->input("pid");
-           
-
+            $personEdu->person_id=  auth()->user()->GetPerson->id;
             $personEdu->save();
-            $id = $personEdu->person_id;
-            
-           //return redirect()->route('edu');
-           return redirect()->route('edu', ['id' => $id]);
 
-       //return redirect('/');
-
-       //return view('person.addEdu');
-        }
+            return redirect()->route('edu');
+        //    return redirect()->route('edu', ['id' => $id]);
+          
+ }
 
 
         //show form for add person *****Experience*****
@@ -229,11 +214,12 @@ class PersonController extends Controller
         }
 
          //show form for add person *****Skill*****
-    public function createPersonSkill($id)
-    {
+    // public function createPersonSkill($id)
+    // {
 
-        return view('person.addSkill', ['id' => $id]);
-    }
+    //     return view('person.addSkill', ['id' => $id]);
+    // }
+
 //store person Skill
     public function storePersonSkill(Request $Request)
 
@@ -246,27 +232,23 @@ class PersonController extends Controller
 
         $personSkill =new PersonSkill ;
             $personSkill->name = $Request->input("name");
-           $personSkill->person_id= $Request->input("pid");
+           $personSkill->person_id= auth()->user()->GetPerson->id;
            
-
-            $personSkill->save();
-            $id = $personSkill->person_id;
+           $personSkill->save();
+          
             
-           //return redirect()->route('edu');
-           return redirect()->route('edu', ['id' => $id]);
-
-       //return redirect('/');
-
-       //return view('person.addEdu');
-        }
+           return redirect()->route('edu');
+           
+ }
 
 
           //show form for add person *****Course*****
-    public function createPersonCourse($id)
-    {
+    // public function createPersonCourse($id)
+    // {
 
-        return view('person.addCourse', ['id' => $id]);
-    }
+    //     return view('person.addCourse', ['id' => $id]);
+    // }
+
 //store person ****Course****
     public function storePersonCourse(Request $Request)
 
@@ -279,18 +261,14 @@ class PersonController extends Controller
 
         $PersonCourse =new PersonCourse ;
             $PersonCourse->name = $Request->input("name");
-           $PersonCourse->person_id= $Request->input("pid");
+           $PersonCourse->person_id= auth()->user()->GetPerson->id;
            
 
             $PersonCourse->save();
-            $id = $PersonCourse->person_id;
+           
             
-           //return redirect()->route('edu');
-           return redirect()->route('edu', ['id' => $id]);
-
-       //return redirect('/');
-
-       //return view('person.addEdu');
+           return redirect()->route('edu');
+           
         }
 
 // **********  show form for Job Category *******
@@ -310,29 +288,23 @@ public function storePersonJobCat(Request $Request)
 
 {
     $input = $Request->input("category");
-   
-    
-   
-
-
     foreach($input as $cat){
     $PersonCategory =new PersonCategory ;
         $PersonCategory->category_id= $cat;
-       $PersonCategory->person_id= $Request->input("pid");
-
-       
-       $PersonCategory->save();
+       $PersonCategory->person_id= auth()->user()->GetPerson->id;
+     $PersonCategory->save();
     }
 
-        $id = $Request->input("pid");
-        
-        
-      
-       return redirect()->route('edu', ['id' => $id]);
+    return redirect()->route('edu');
+
+   // $id = $Request->input("pid");
+    //return redirect()->route('edu', ['id' => $id]);
 
    
     }
-/////////////////  DELETE ************
+
+                  /////////////////  DELETE ************
+
     public function DeletePersonSkill($id)
     {
          $res=PersonSkill::find($id)->delete();
@@ -389,11 +361,17 @@ public function DeletePersonExperience($id)
 // ************  UPDATE ****************
 // ************  UPDATE COURSE ****************
 
-public function editPersonCourse($pid , $cid )
+public function editPersonCourse($cid)
 {
+   
 
    $course= PersonCourse::find($cid);
-    return view('person.editCourse',compact('course' ,'pid' ));
+   if($course && $course->person_id == auth()->user()->GetPerson->id){
+    return view('person.editCourse',compact('course')); 
+}
+else
+
+     abort(404);
 
 }
 
@@ -405,7 +383,7 @@ public function updateCourse(Request $Request)
       
     ]);
 
-    $id = $Request->input("pid");
+    // $id = $Request->input("pid");
     $cid = $Request->input("cid");
 
     
@@ -413,21 +391,27 @@ public function updateCourse(Request $Request)
     $course = PersonCourse::where('id' , $cid)
        ->update([
         'name' => $Request->input("name"),
-        'person_id' => $Request->input("pid")
+        'person_id' => auth()->user()->GetPerson->id,
 
        ]);
          
-        return redirect()->route('edu', ['id' => $id]);
+        return redirect()->route('edu');
 
 
     }
 // ************  UPDATE SKILL ****************
 
-public function editPersonSkill($pid , $cid )
+public function editPersonSkill($cid )
 {
 
    $skill= PersonSkill::find($cid);
-    return view('person.editSkill',compact('skill' ,'pid' ));
+   if($skill && $skill->person_id == auth()->user()->GetPerson->id ){
+    return view('person.editSkill',compact('skill'));
+   }
+
+    else
+
+     abort(404);
 
 }
 
@@ -438,32 +422,30 @@ public function updateSkill(Request $Request)
      
       
     ]);
-
-    $id = $Request->input("pid");
     $cid = $Request->input("cid");
 
-    
-       
     $course = PersonSkill::where('id' , $cid)
        ->update([
         'name' => $Request->input("name"),
-        'person_id' => $Request->input("pid")
+        'person_id' => auth()->user()->GetPerson->id,
 
        ]);
          
-        return redirect()->route('edu', ['id' => $id]);
-
-
-    }
+        return redirect()->route('edu');
+}
 
 
 // ************  UPDATE Edu ****************
 
-public function editPersonEdu($pid , $cid )
+public function editPersonEdu($cid)
 {
 
    $Edu= PersonEducation::find($cid);
-    return view('person.editEdu',compact('Edu' ,'pid' ));
+   
+       
+    return view('person.editEdu',compact('Edu'));
+
+    
 
 }
 
@@ -479,7 +461,7 @@ public function updateEdu(Request $Request)
       
 //     ]);
 
-    $id = $Request->input("pid");
+    
     $cid = $Request->input("cid");
 
     
@@ -492,11 +474,11 @@ public function updateEdu(Request $Request)
         'Major' => $Request->input("Major"),
         'Graduation_year' => $Request->input("Graduation_year"),
         'Country' => $Request->input("Country"),
-        'person_id' => $Request->input("pid")
+        'person_id' =>  auth()->user()->GetPerson->id,
 
        ]);
          
-        return redirect()->route('edu', ['id' => $id]);
+        return redirect()->route('edu');
 
 
     }

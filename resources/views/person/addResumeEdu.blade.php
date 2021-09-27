@@ -92,7 +92,7 @@
 								
 									<br>
                                     <p>
-                                    <input type="hidden" class="form-control" placeholder=""  name="pid" value="{{$person->id}}">
+                                   
 									
                                     <button type="submit" class="btn btn-primary" > أضف</button>
 									</p>
@@ -160,7 +160,7 @@
 
                    </table>
 
-					 <input type="hidden" class="form-control" placeholder=""  name="pid" value="{{$person->id}}">
+					 
 						
 						
 						<button type="submit"  class="btn btn-primary" > أضف شهادة تعليمية جديدة</button>
@@ -187,7 +187,7 @@
                                         <th style=" color:black;">{{$edu['degree_name']}} </th>
                                         <th style=" color:black;">{{$edu['Major']}}</th>
 										<th style=" color:black;">{{$edu['Graduation_year']}} </th>
-										<th style=" color:black;"><a href="/resume/editEdu/{{ $person->id }}/{{$edu['id']}}" >تعديل</a> / <a href="/resume/deleteEdu/{{$edu['id']}}" >  حذف</a></th>
+										<th style=" color:black;"><a href="/resume/editEdu/{{$edu['id']}}" >تعديل</a> / <a href="/resume/deleteEdu/{{$edu['id']}}" >  حذف</a></th>
                                     </tr>
                                     
 									@endforeach
@@ -204,10 +204,7 @@
 									 
 
 									
-                                    <p>
-									<!-- <a href="/resume/addEducation/{{ $person->id }}" class="site-button" >أضف شهادة تعليمية جديدة</a> -->
-									</p>
-</div>
+                                   
 <br><br>
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 									<br>
@@ -237,7 +234,7 @@
                         </div>
 						
                        
-                        <input type="hidden" class="form-control" placeholder=""  name="pid" value="{{$person->id}}">
+                        
 						
 						
 						<button type="submit" class="btn btn-primary" > أضف مهارة جديدة</button>
@@ -263,7 +260,7 @@
 									@foreach($person->PersonSkill as $edu)
 									 <tr>
 									<th style=" color:black;">{{$edu['name']}} </th>
-                                    <th style=" color:black;"><a href="/resume/editSkill/{{ $person->id }}/{{$edu['id']}}" >تعديل</a> / <a href="/resume/deleteSkill/{{$edu['id']}}" >  حذف</a></th>
+                                    <th style=" color:black;"><a href="/resume/editSkill/{{$edu['id']}}" >تعديل</a> / <a href="/resume/deleteSkill/{{$edu['id']}}" >  حذف</a></th>
                                     </tr>
                                     
 									@endforeach
@@ -292,9 +289,7 @@
 @endif 
     
 
-									<!-- <p>
-									<a href="/resume/addSkill/{{ $person->id }}"  class="site-button" >أضف مهارة جديدة</a>
-									</p> -->
+									
 
 									<br><br>
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
@@ -318,7 +313,7 @@
                         </div>
 						
                        
-                        <!-- <input type="hidden" class="form-control" placeholder=""  name="pid" value="{{$person->id}}"> -->
+                        
 						
 						
 						<button type="submit" class="btn btn-primary" > أضف دورة تدريبية جديدة</button>
@@ -340,7 +335,7 @@
 									@foreach($person->PersonCousre as $edu)
 									 <tr>
 									<th style=" color:black;">{{$edu['name']}} </th>
-                                    <th style=" color:black;"><a href="/resume/editCourse/{{ $person->id }}/{{$edu['id']}}" >تعديل</a> / <a href="/resume/deleteCourse/{{$edu['id']}}" >  حذف</a></th>
+                                    <th style=" color:black;"><a href="/resume/editCourse/{{$edu['id']}}" >تعديل</a> / <a href="/resume/deleteCourse/{{$edu['id']}}" >  حذف</a></th>
                                     </tr>
                                     
 									@endforeach
@@ -353,14 +348,72 @@
 									@endif
 									
 									
-									<!-- <p><a href="/resume/addCourse/{{ $person->id }}"  class="site-button" >أضف دورة تدريبية جديدة</a>
-									</p> -->
+									
 </div>
 <br><br>
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 									<br>
 									
 									<h3 class="font-weight-600">خبرات العمل </h3>
+
+									<!-- Submit Resume EDU -->
+		
+				<div dir="rtl" lang="ar" class="container" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
+					<form action="/resume/storePersonEdu" method="POST" id="resume" >
+                    @csrf
+                   
+                    <table >
+						<tr>
+						  <th style="width: 20%" >  المنصب الوظيفي :</th>
+						  <td style="width: 50%"><input type="text" class="form-control" placeholder="  " name="Job_title" style="width:40%" >
+						  <span style="color:red"> @error('degree_name'){{$message}}@enderror</span></td>
+						  </tr>
+						  <tr>
+						  <th style="width: 20%" >  اختصاص عملك  :</th>
+						  <td style="width: 50%"><input type="text" class="form-control" placeholder="" name="job_Specialize" style="width:40%">
+						  <span style="color:red"> @error('Institution'){{$message}}@enderror</span></td>
+                        </tr>
+						<tr>
+						  <th style="width: 20%" >  اسم الشركة :</th>
+						  <td style="width: 50%"><input type="text" class="form-control" placeholder="" name="company_name" style="width:40%">
+							<span style="color:red"> @error('Major'){{$message}}@enderror</span></td>
+                        </tr>
+						tr>
+						  <th style="width: 20%" >  عنوان الشركة :</th>
+						  <td style="width: 50%"><input type="text" class="form-control" placeholder="" name="company_address" style="width:40%">
+							<span style="color:red"> @error('Major'){{$message}}@enderror</span></td>
+                        </tr>
+						
+						<tr>
+						  <th style="width: 20%" >    تاريخ الالتحاق  :</th>
+						  <td style="width: 50%"><input type="date" class="form-control" placeholder="Web Designer"  name="Start_date" style="width:40%">
+							<span style="color:red"> @error('Graduation_year'){{$message}}@enderror</span>
+                        </tr>
+						<tr>
+						  <th style="width: 20%" >     تاريخ الانتهاء   :</th>
+						  <td style="width: 50%"><input type="date" class="form-control" placeholder="Web Designer"  name="end_date" style="width:40%">
+							<span style="color:red"> @error('Graduation_year'){{$message}}@enderror</span>
+                        </tr>
+
+						<tr>
+						  <th style="width: 20%" >     المهام الوظيفية  :</th>
+						  <td><input type="text" class="form-control" placeholder=""  name="Responsibilities" style="width:40%">
+							<span style="color:red"> @error('Country'){{$message}}@enderror</span></td>
+							
+                        </tr>
+
+                   </table>
+
+					 
+						
+						
+						<button type="submit"  class="btn btn-primary" > أضف شهادة تعليمية جديدة</button>
+						</form>
+					
+				</div><br>
+				
+			
+            <!-- Submit Resume END EDU -->
 									
 									@if(count($person->PersonExperience) > 0)
 									 <table>

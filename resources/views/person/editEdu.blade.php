@@ -84,7 +84,7 @@
 							<label>دولة الدراسة </label>
 							<input type="text" class="form-control" value="{{ $Edu->Country }}"  name="Country">
 							<span style="color:red"> @error('Country'){{$message}}@enderror</span>
-							<input type="hidden" class="form-control" placeholder=""  name="pid" value={{$pid}}>
+							
                             <input type="hidden" class="form-control" placeholder=""  name="cid" value="{{$Edu->id}}">
 							
 						</div>

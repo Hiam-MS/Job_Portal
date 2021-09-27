@@ -38,7 +38,7 @@
                         </div>
 						
                        
-                        <input type="hidden" class="form-control" placeholder=""  name="pid" value={{$pid}}>
+                       
                         <input type="hidden" class="form-control" placeholder=""  name="cid" value="{{$skill->id}}">
 						
 						

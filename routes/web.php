@@ -70,7 +70,7 @@ Route::get('/resume/createEdu','PersonController@createResumeEdu')->name('edu');
 Route::get('/resume/addEducation/{id}','PersonController@createPersonEdu');
 Route::post('/resume/storePersonEdu','PersonController@storePersonEdu')->name('StoreEdu');
 Route::get('/resume/deleteEdu/{id}', 'PersonController@DeletePersonEdu');
-Route::get('/resume/editEdu/{id}/{cid}', 'PersonController@editPersonEdu');
+Route::get('/resume/editEdu/{cid}', 'PersonController@editPersonEdu');
 Route::PUT('/resume/updateEdu','PersonController@updateEdu');
 
 Route::get('Person/details/{id}','PersonController@ResuemDetails');
@@ -81,13 +81,13 @@ Route::get('/resume/deleteExperience/{id}', 'PersonController@DeletePersonExperi
 Route::get('/resume/addSkill/{id}','PersonController@createPersonSkill');
 Route::post('/resume/storePersonSkill','PersonController@storePersonSkill')->name('StoreSkill');
 Route::get('/resume/deleteSkill/{id}', 'PersonController@DeletePersonSkill');
-Route::get('/resume/editSkill/{id}/{cid}', 'PersonController@editPersonSkill');
+Route::get('/resume/editSkill/{cid}', 'PersonController@editPersonSkill');
 Route::PUT('/resume/updateSkill','PersonController@updateSkill');
 //Course //
 Route::get('/resume/addCourse/{id}','PersonController@createPersonCourse');
 Route::post('/resume/storePersonCourse','PersonController@storePersonCourse')->name('StoreCourse');
 Route::get('/resume/deleteCourse/{id}', 'PersonController@DeletePersonCourse');
-Route::get('/resume/editCourse/{id}/{cid}', 'PersonController@editPersonCourse');
+Route::get('/resume/editCourse/{cid}', 'PersonController@editPersonCourse');
 Route::PUT('/resume/updateCourse','PersonController@updateCourse');
 
 
