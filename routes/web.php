@@ -77,6 +77,8 @@ Route::get('Person/details/{id}','PersonController@ResuemDetails');
 Route::get('/resume/addExperience/{id}','PersonController@createPersonExp');
 Route::post('/resume/storePersonExp','PersonController@storePersonExp')->name('StoreExp');
 Route::get('/resume/deleteExperience/{id}', 'PersonController@DeletePersonExperience');
+Route::get('/resume/editExperience/{cid}', 'PersonController@editPersonExperience');
+Route::PUT('/resume/updatExperience','PersonController@updateExperience');
 //skill//
 Route::get('/resume/addSkill/{id}','PersonController@createPersonSkill');
 Route::post('/resume/storePersonSkill','PersonController@storePersonSkill')->name('StoreSkill');

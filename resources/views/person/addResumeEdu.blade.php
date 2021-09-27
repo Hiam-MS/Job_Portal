@@ -359,7 +359,7 @@
 									<!-- Submit Resume EDU -->
 		
 				<div dir="rtl" lang="ar" class="container" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
-					<form action="/resume/storePersonEdu" method="POST" id="resume" >
+					<form action="/resume/storePersonExp" method="POST" id="" >
                     @csrf
                    
                     <table >
@@ -378,7 +378,7 @@
 						  <td style="width: 50%"><input type="text" class="form-control" placeholder="" name="company_name" style="width:40%">
 							<span style="color:red"> @error('Major'){{$message}}@enderror</span></td>
                         </tr>
-						tr>
+						
 						  <th style="width: 20%" >  عنوان الشركة :</th>
 						  <td style="width: 50%"><input type="text" class="form-control" placeholder="" name="company_address" style="width:40%">
 							<span style="color:red"> @error('Major'){{$message}}@enderror</span></td>
@@ -407,7 +407,7 @@
 					 
 						
 						
-						<button type="submit"  class="btn btn-primary" > أضف شهادة تعليمية جديدة</button>
+						<button type="submit"  class="btn btn-primary" > أضف خبرة عمل جديدة</button>
 						</form>
 					
 				</div><br>
@@ -424,7 +424,7 @@
 										<th> تاريخ الانتهاء </th>
 										<th>خيارات</th>
                                     </tr>
-									@foreach($Person->PersonExperience as $edu)
+									@foreach($person->PersonExperience as $edu)
 									 <tr>
 									
 									
@@ -432,7 +432,7 @@
                                         <th style=" color:black;">{{$edu['job_Specialize']}}</th>
 										<th style=" color:black;">{{$edu['Start_date']}} </th>
 										<th style=" color:black;">{{$edu['end_date']}} </th>
-										<th style=" color:black;"><a href="#" >تعديل</a> / <a href="/resume/deleteExperience/{{$edu['id']}}" > حذف </a></th>
+										<th style=" color:black;"><a href="/resume/editExperience/{{$edu['id']}}" >تعديل</a> / <a href="/resume/deleteExperience/{{$edu['id']}}" > حذف </a></th>
                                     </tr>
                                     
 									@endforeach
@@ -447,7 +447,7 @@
 									@endif
 									
 									
-									<p><a href="/resume/addExperience/{{ $person->id }}"  class="btn btn-primary" >أضف خبرة عمل جديدة</a>
+									
 									</p>
 
 

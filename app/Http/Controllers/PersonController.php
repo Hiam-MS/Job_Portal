@@ -89,7 +89,7 @@ class PersonController extends Controller
             'fixed_phone'=> ['required','integer'] ,
             'Current_address'=> ['required','string'] ,
             'mobile_number'=> ['required','string'] ,
-            // 'user_id'=>['unique:Person','required'] ,
+            // 'user_id'=>['unique:Person'] ,
           
         ]);
         
@@ -169,11 +169,12 @@ class PersonController extends Controller
 
 
         //show form for add person *****Experience*****
-    public function createPersonExp($id)
-    {
+    // public function createPersonExp($id)
+    // {
 
-        return view('person.addExperience', ['id' => $id]);
-    }
+    //     return view('person.addExperience', ['id' => $id]);
+    // }
+
 //store person Experience
     public function storePersonExp(Request $Request)
 
@@ -198,19 +199,14 @@ class PersonController extends Controller
             $personExp->Start_date = $Request->input("Start_date");
             $personExp->end_date = $Request->input("end_date");
             $personExp->Responsibilities= $Request->input("Responsibilities");
-            
-            $personExp->person_id= $Request->input("pid");
-           
+            $personExp->person_id= auth()->user()->GetPerson->id;
 
             $personExp->save();
-            $id = $personExp->person_id;
             
-           //return redirect()->route('edu');
-           return redirect()->route('edu', ['id' => $id]);
+           
+           return redirect()->route('edu');
 
-       //return redirect('/');
-
-       //return view('person.addEdu');
+      
         }
 
          //show form for add person *****Skill*****
@@ -474,6 +470,58 @@ public function updateEdu(Request $Request)
         'Major' => $Request->input("Major"),
         'Graduation_year' => $Request->input("Graduation_year"),
         'Country' => $Request->input("Country"),
+        'person_id' =>  auth()->user()->GetPerson->id,
+
+       ]);
+         
+        return redirect()->route('edu');
+
+
+    }
+
+// edit person exp
+    public function editPersonExperience($cid)
+{
+    
+   $Exp= PersonExperience::find($cid);
+   if($Exp && $Exp->person_id == auth()->user()->GetPerson->id ){
+       
+    return view('person.editExperience',compact('Exp'));
+   
+   }
+   else
+      abort(404);
+
+}
+// update oerson exp
+public function updateExperience(Request $Request)
+ {
+//     $Request->validate([
+//         //  'Job_title'=> ['required','string'] ,
+//         //     'job_Specialize'=> ['string'] ,
+//         //     'company_name'=> ['string'] ,
+//         //     'company_address'=> ['string'] ,
+//         //     'Start_date'=> ['Date'] ,
+// 'end_date'=> ['Date'] ,
+// 'Responsibilities'=> ['string'] ,
+     
+      
+//     ]);
+
+    
+    $cid = $Request->input("cid");
+
+    
+       
+    $Exp = PersonExperience::where('id' , $cid)
+       ->update([
+        'Job_title' => $Request->input("Job_title"),
+        'job_Specialize' => $Request->input("job_Specialize"),
+        'company_name' => $Request->input("company_name"),
+        'company_address' => $Request->input("company_address"),
+        'Start_date' => $Request->input("Start_date"),
+        'end_date' => $Request->input("end_date"),
+        'Responsibilities' => $Request->input("Responsibilities"),
         'person_id' =>  auth()->user()->GetPerson->id,
 
        ]);

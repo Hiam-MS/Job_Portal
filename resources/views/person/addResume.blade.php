@@ -29,7 +29,7 @@
 		
 					<form action="/resume/store" method="POST" id="resume" >
                     @csrf
-                    
+                    <span style="color:red"> @error('user_id'){{$message}}@enderror</span>
 						<div class="form-group">
 							<label>الاسم الكامل</label>
 							<input type="text" class="form-control" placeholder="Your Full Name" name="name" value="{{old(' name')}}" style="width:60%" data-parsly-trigger="keyup" >
@@ -50,8 +50,8 @@
 							<select name="gender" style="width:15%  "  >
                             <option  >يرجى الاختيار</option>
 								
-                                <option value="f"  > انثى </option>
-                                <option value="m"  > ذكر </option>
+                                <option value="انثى"  > انثى </option>
+                                <option value="ذكر"  > ذكر </option>
 								
 							</select>
                             <spam> &nbsp                                     </spam>
@@ -71,8 +71,8 @@
 							<select name="marital_status" style="width:15%" >
                             
                             <option >يرجى الاختيار</option>
-								<option value="single">عازب</option>
-								<option  value="single">غير عازب</option>
+								<option value="عازب">عازب</option>
+								<option  value="غير عازب">غير عازب</option>
 								
 							</select>
                             <label> &nbsp                    </label>
@@ -90,33 +90,13 @@
                             <label>&nbsp                                        خدمة العلم :</label>
 							<select name="military_service" style="width:15%" >
                             <option >يرجى الاختيار</option>
-								<option  value="finish">منتهية</option>
-								<option  value="not finish">غير منتهية</option>
-                                <option value="non">معفى</option>
+								<option  value="منتهية">منتهية</option>
+								<option  value="غير منتهية">غير منتهية</option>
+                                <option value="معفى">معفى</option>
 								
 							</select>
 						</div>
-                        <!--<div class="form-group">
-							<label>       الوضع العائلي :      </label>
-                            
-							<select>
-                            <option >يرجى الاختيار</option>
-								<option>عازب</option>
-								<option>غير عازب</option>
-								
-							</select>
-						</div>
-
-                        <div class="form-group">
-							<label>     خدمة العلم :  </label>
-							<select>
-                            <option >يرجى الاختيار</option>
-								<option>منتهية</option>
-								<option>غير منتهية</option>
-                                <option>معفى</option>
-								
-							</select>
-                            </div>-->
+                        
 						<div class="form-group">
 							<label>تاريخ الميلاد</label>
 							<input type="date" class="form-control" placeholder="Web Designer"  value="{{old(' dob')}}" name="dob" style="width:60%" data-parsly-trigger="keyup">
