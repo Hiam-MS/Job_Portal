@@ -54,6 +54,7 @@ class Person extends Model
 
     //Person has manyJob
     public function Job()
+    
     {
         return $this->belongsToMany(Job::class);
     }

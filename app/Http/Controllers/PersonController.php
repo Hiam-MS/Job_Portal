@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Session;
 
 class PersonController extends Controller
 {
+   
+
     public function index()
 
     {

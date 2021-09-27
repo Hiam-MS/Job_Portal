@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use \Illuminate\Http\Request;
+
 
 class RegisterController extends Controller
 {
@@ -23,13 +25,28 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+    
+    
 
     /**
      * Where to redirect users after registration.
      *
      * @var string
+     *
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+
+    protected function registered(Request $request, $user){
+
+        if( auth()->user()->role == 'p' ){
+            return redirect('/resume/create');
+        }
+        if( auth()->user()->role == 'c' ){
+            return redirect('/company/profile');
+        }
+    }
+    
+    //  protected $redirectTo = '/resume/create';
+    
 
     /**
      * Create a new controller instance.
