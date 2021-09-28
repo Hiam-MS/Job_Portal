@@ -28,9 +28,10 @@ class CompanyController extends Controller
         return view ('company.showCompany',compact('company'));
     }
 
-    public function editCompanyProfile($id)
+    public function editCompanyProfile()
     {
-        $company=Company::find($id);
+       
+        $company=auth()->user()->GetCompany;
         return view('company.editProfile',compact('company'));
     }
 
@@ -114,9 +115,15 @@ class CompanyController extends Controller
         return view('company.company_dash');
     }
 
-    public function getJob()
+    public function getJob($id)
     {
-        return view('company.jobList');
+        $job = Job::findOrFail($id);
+        return view('company.shortList', compact('job'));
     }
 
+
+
+
+
+ 
 }
