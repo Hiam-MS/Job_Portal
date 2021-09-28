@@ -27,7 +27,18 @@ class PersonController extends Controller
         return view('person.person_dash');
     }
 
-    
+    public function ViewpersonalInfo()
+    {
+        if(isset(auth()->user()->GetPerson)){
+        $Person = auth()->user()->GetPerson;
+       
+        return view('person.ViewPersonInfo',compact('Person'));
+        }
+        else
+        return redirect()->route('resuem.create');
+
+        
+    }
 
     
 
@@ -112,11 +123,14 @@ class PersonController extends Controller
 //show resume for add edu - skills - courses
     public function createResumeEdu()
     {
+        if(isset(auth()->user()->GetPerson)){
         $jobCat =JobCategory::all();
         $person = auth()->user()->GetPerson;
        
         return view('person.addResumeEdu',compact('person','jobCat'));
-        
+        }
+        else
+        return redirect()->route('resuem.create');
     }
 
 // show form for add person Education

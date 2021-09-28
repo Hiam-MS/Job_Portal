@@ -33,7 +33,7 @@ class LoginController extends Controller
                 return redirect('/resume/dashboard');
             }
             if( $user->role == 'c' ){
-                return redirect('/company/profile');
+                return redirect('/company/dashboard');
             }
         }
     // protected $redirectTo = RouteServiceProvider::HOME;

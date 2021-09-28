@@ -14,7 +14,7 @@
         
             <div class="container">
                 <div class="dez-bnr-inr-entry">
-                    <h1 class="text-white">تفاصيل السيرة الذاتية</h1>
+                    <h1 class="text-white">معاينة السيرة الذاتية</h1>
 					<!-- Breadcrumb row -->
 					<!--<div class="breadcrumb-row">
 						<ul class="list-inline">

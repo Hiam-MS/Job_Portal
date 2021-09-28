@@ -84,6 +84,7 @@ Route::get('/profile','CompanyController@index');
         // Route::get('/resume/skill','PersonController@index');
 
         Route::get('/resume/dashboard','PersonController@index');
+        Route::get('/resume/ViewpersonalInfo','PersonController@ViewpersonalInfo');
 
     Route::get('/resume/create','PersonController@createResume')->name('resuem.create');
     Route::post('/resume/store','PersonController@store');
@@ -95,6 +96,7 @@ Route::get('/profile','CompanyController@index');
     Route::PUT('/resume/updateEdu','PersonController@updateEdu');
 
     Route::get('Person/details/{id}','PersonController@ResuemDetails');
+
     Route::get('/resume/addExperience/{id}','PersonController@createPersonExp');
     Route::post('/resume/storePersonExp','PersonController@storePersonExp')->name('StoreExp');
     Route::get('/resume/deleteExperience/{id}', 'PersonController@DeletePersonExperience');
