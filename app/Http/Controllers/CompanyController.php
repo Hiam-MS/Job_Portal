@@ -80,40 +80,43 @@ class CompanyController extends Controller
 
         ]);
 
+        $company =new Company ;
+            $company->company_name_ar = $Request->input("company_name_ar");
+            $company->company_name_en =  $Request->input("company_name_en");
+            $company->email= $Request->input("email");
+            $company->fixed_phone= $Request->input("fixed_phone");
+            $company->fax_phone = $Request->input("fax_phone");
+            $company->location= $Request->input("location");
+            $company->company_specialist= $Request->input("company_specialist");
+            $company->commercial_record= $Request->input("commercial_record");
+            $company->industria_record= $Request->input("industria_record");
+            $company->website= $Request->input("website");
+         
+            $company->user_id= auth()->user()->id;
 
-       $query =DB::table('companies')->insert([
-        'company_name_ar'=>$Request->input('company_name_ar'),
-        'company_name_en'=>$Request->input('company_name_en'),
-        'email'=>$Request->input('email'),
-        'fixed_phone'=>$Request->input('fixed_phone'),
-        'fax_phone'=>$Request->input('fax_phone'),
-        'location'=>$Request->input('location'),
-        'company_specialist'=>$Request->input('company_specialist'),
-        'commercial_record'=>$Request->input('commercial_record'),
-        'industria_record'=>$Request->input('industria_record'),
-        'website'=>$Request->input('website')
+          
 
-       ]);
-
-       if($query){
-           return back()->withInput()->with('success','  تمت الاضافة بنجاح');
+        $company->save();
+       
+       if($company){
+           
+           return redirect()->route('CompanyDash')->with('success','  تمت الاضافة بنجاح');
        }else{
            return back()->withInput()->with('fail','هناك خطأ ما');
        }
-        // $profile =new Company ;
-        // $profile->company_name_ar = $Request->input("company_name_ar");
-        // $profile->company_name_en = $Request->input("company_name_en");
-        // $profile->email = $Request->input("email");
-        // $profile->fixed_phone = $Request->input("fixed_phone");
-        // $profile->fax_phone = $Request->input("fax_phone");
-        // $profile->location = $Request->input("location");
-        // $profile->company_specialist = $Request->input("company_specialist");
-        // $profile->commercial_record=$Request->input('commercial_record');
-        // $profile->industria_record=$Request->input('industria_record');
-        // $profile->website=$Request->input('website');
-        // $profile->save();
+
 
     }
 
+
+    public function getDash()
+    {
+        return view('company.company_dash');
+    }
+
+    public function getJob()
+    {
+        return view('company.jobList');
+    }
 
 }

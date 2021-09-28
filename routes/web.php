@@ -46,8 +46,8 @@ Route::post('/company/storeProfile','CompanyController@storeProfile')->name('com
 Route::get('/company/editProfile/{id}','CompanyController@editCompanyProfile');
 Route::post('/company/editProfile/{id}','CompanyController@updatCompanyProfile');
 
-
-
+Route::get('/company/dashboard','CompanyController@getDash')->name('CompanyDash');
+Route::get('company/shortList','CompanyController@getJob')->name('CompanyJob');
 //********************************************* */
 
 
