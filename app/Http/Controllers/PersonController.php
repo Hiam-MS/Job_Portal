@@ -24,24 +24,12 @@ class PersonController extends Controller
 
     {
 
-        return view('person.addSkill');
+        return view('person.person_dash');
     }
 
-    public function showall()
-    {
-        $Person =Person::all();
-        return view('',compact('Person'));
-    }
+    
 
-
-    public function show($id)
-
-    {
-        
-        $Person = Person::find($id);
-        return view('test',compact('Person'));
-  
-    }
+    
 
     public function viewResuemForm(Request $request)
     {
