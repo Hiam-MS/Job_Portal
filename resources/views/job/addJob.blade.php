@@ -6,7 +6,7 @@
         <div class="dez-bnr-inr overlay-black-dark" style="background-image:url(images/banner/bnr1.jpg);">
             <div class="container">
                 <div class="dez-bnr-inr-entry">
-                    <h1 class="text-white"> اضافة فرصة عمل </h1>
+                    <h1 class="text-white"> نشر فرصة عمل </h1>
 					<!-- Breadcrumb row -->
 				
 					<!-- Breadcrumb row END -->
@@ -19,6 +19,33 @@
 			<!-- Submit Resume -->
 			<div class="section-full bg-white submit-resume content-inner-2">
 				<div class="container">
+				<div class="row">
+					<div class="col-lg-4">
+						<div class="sticky-top">
+							<div class="row">
+								<div class="col-lg-12 col-md-6">
+									<div class="m-b30">
+										<img src="images/blog/grid/6.jpg" alt=""> 
+									</div>
+								</div>
+										
+								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
+									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
+                                         <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="#" > لوحة التحكم<a></h4>
+                                            <ul>
+                                                
+                                                <li><strong class="font-weight-700 text-black"> <a href="{{route('CompanyProfile')}}" > عرض الملف الشخصي </a></strong><span class="text-black-light"> </span></li>
+                                                <li><strong class="font-weight-700 text-black"><li><a href="{{route('addJob')}}" > نشر فرصة عمل جديدة </a></li></strong> </li>
+                                                <li><strong class="font-weight-700 text-black"><li><a href="{{route('CompanyJob')}}" > عرض فرص العمل المنشورة  </a></li></strong> </li>
+                                                <li><strong class="font-weight-700 text-black"><a href="{{route('resuems')}}" >   عرض السير الذاتية المتاحة</a>  </strong></li>
+                                            </ul>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+						
 				@if(Session::get('success'))
 						<div class="alert alert-success">
 							{{Session::get('success')}}
@@ -34,31 +61,31 @@
 					@csrf
 						<div class="form-group">
 							<label>اسم الجهة </label>
-							<input type="text" name="company_name" value="{{$company->company_name_ar}} " class="form-control" placeholder="اسم الشركة بالعربي" style="width:60% ">
+							<input type="text" name="company_name" value="{{$company->company_name_ar}} " class="form-control" placeholder="اسم الشركة بالعربي" style="width:100% ">
 						</div>
 						<div class="form-group">
 							<label>المسمى الوظيفي  </label>
-							<input type="text" name="job_title" value="{{old('job_title')}} " class="form-control" placeholder="المسمى الوظيفي" style="width:60% ">
+							<input type="text" name="job_title" value="{{old('job_title')}} " class="form-control" placeholder="المسمى الوظيفي" style="width:100% ">
 						</div>
 
 						
                         <div class="form-group">
 							<label>   عدد الموظفين المطلوب  </label>
-							<input type="text" class="form-control"   name="number_of_employess" value="{{old('number_of_employess')}} " placeholder="" style="width:60% ">
+							<input type="text" class="form-control"   name="number_of_employess" value="{{old('number_of_employess')}} " placeholder="" style="width:100% ">
 						</div>
 						<div class="form-group">
 							<label> الراتب والفوائد  </label>
-							<input type="text" name="salary" value="{{old('salary')}} " class="form-control" placeholder=" الراتب والفوائد" style="width:60% ">
+							<input type="text" name="salary" value="{{old('salary')}} " class="form-control" placeholder=" الراتب والفوائد" style="width:100% ">
 						</div>
 
 						<div class="form-group">
 							<label>  متطلبات خاصة بالوظيفة  </label>
-							<input type="text" name="job_requirement" value="{{old('job_requirement')}} " class="form-control" placeholder=" متطلبات خاصة بالوظيفة" style="width:60% ">
+							<input type="text" name="job_requirement" value="{{old('job_requirement')}} " class="form-control" placeholder=" متطلبات خاصة بالوظيفة" style="width:100% ">
 						</div>
 
 						<div class="form-group">
 							<label>  المهام الوظيفية  </label>
-							<input type="text" name="functional_tasks" value="{{old('functional_tasks')}} " class="form-control" placeholder=" المهام الوظيفية" style="width:60% ">
+							<input type="text" name="functional_tasks" value="{{old('functional_tasks')}} " class="form-control" placeholder=" المهام الوظيفية" style="width:100% ">
 						</div>
 
 						
@@ -143,12 +170,13 @@
 								
 							</select></label>
 						</div>
-						<button type="submit" class="btn btn-primary">إضافة</button>
+						<button type="submit" class="btn btn-primary">نشر</button>
 					</form>
 				</div>
 			</div>
             <!-- Submit Resume END -->
 		</div>
+</div>
     </div>
     <!-- Content END-->
 	@endsection
