@@ -130,20 +130,21 @@
 						<label>اللغات </label><br>
 						<select name="lang[]" id="category" multiple='multiple' size="3" style="width:15%" data-parsly-trigger="keyup">
                                     
-                                     <option value="a">عربي</option>
-                                     <option value="g">الماني</option>
-                                     <option value="s">اسباني</option>
-									 <option value="f">هندي</option>
-									 <option value="e">ايطالي</option>
+                                     <option value="عربي">عربي</option>
+                                     <option value="الماني">الماني</option>
+                                     <option value="اسباني">اسباني</option>
+									 <option value="تركي">تركي</option>
+									 <option value="ايطالي">ايطالي</option>
+									 <option value="انكليزي">انكليزي</option>
                                     
                                    </select>
 								   </div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label>الصورة الشخصية</label>
 							<div class="custom-file">
 								<input type="file" class="site-button" id="customFile"  name="img"  value="{{old(' img')}}"style="width:60% " data-parsly-trigger="keyup">
 							</div>
-						</div>
+						</div> -->
 						
 						
 						
