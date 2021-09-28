@@ -34,7 +34,7 @@
 					@csrf
 						<div class="form-group">
 							<label>اسم الجهة </label>
-							<input type="text" name="company_name" value="{{old('company_name')}} " class="form-control" placeholder="اسم الشركة بالعربي" style="width:60% ">
+							<input type="text" name="company_name" value="{{$company->company_name_ar}} " class="form-control" placeholder="اسم الشركة بالعربي" style="width:60% ">
 						</div>
 						<div class="form-group">
 							<label>المسمى الوظيفي  </label>

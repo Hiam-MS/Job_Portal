@@ -115,15 +115,11 @@ class CompanyController extends Controller
         return view('company.company_dash');
     }
 
-    public function getJob($id)
+    public function getJob()
     {
-        $job = Job::findOrFail($id);
-        return view('company.shortList', compact('job'));
+        $company=auth()->user()->GetCompany;
+        return view('company.shortList', compact('company'));
     }
 
 
-
-
-
- 
 }
