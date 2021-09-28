@@ -18,7 +18,12 @@ class JobsController extends Controller
 
     public function addJob()
     {
-        return view('job.addJob');
+        if(isset(auth()->user()->GetPerson)){
+        $company=auth()->user()->getCompany;
+        return view('job.addJob',compact('company'));}
+        else{
+            return redirect()->route('company.profile');
+        }
     }
 
     public function JobDetails($id)
@@ -30,8 +35,10 @@ class JobsController extends Controller
 
     public function showJob()
     {
+        
+        $company=auth()->user()->getCompany;
         $job =Job::all();
-        return view('job.showJobs',compact('job'));
+        return view('job.showJobs',compact('job','company'));
     }
 
    
@@ -48,26 +55,28 @@ class JobsController extends Controller
      
     public function storeJob(Request $Request)
     {
+        
+        $job =new Job ;
+        $job->company_name = $Request->input("company_name");
+        $job->job_title =  $Request->input("job_title");
+        $job->number_of_employess= $Request->input("number_of_employess");
+        $job->salary= $Request->input("salary");
+        $job->job_requirement = $Request->input("job_requirement");
+        $job->functional_tasks = $Request->input("functional_tasks");
+        $job->country= $Request->input("country");
+        $job->city= $Request->input("city");
+        $job->gender= $Request->input("gender");
+        $job->military_service= $Request->input("military_service");
+        $job->degree= $Request->input("degree");
+        $job->job_type= $Request->input("job_type");
+        $job->company_id= auth()->user()->GetCompany->id;
+
+        $job->save();
+
+       
 
 
-        $query =DB::table('jobs')->insert([
-            'company_name'=>$Request->input('company_name'),
-            'job_title'=>$Request->input('job_title'),
-            'number_of_employess'=>$Request->input('number_of_employess'),
-            'salary'=>$Request->input('salary'),
-            'job_requirement'=>$Request->input('job_requirement'),
-            'functional_tasks'=>$Request->input('functional_tasks'),
-            'country'=>$Request->input('country'),
-            'city'=>$Request->input('city'),
-            'gender'=>$Request->input('gender'),
-            'military_service'=>$Request->input('military_service'),
-            'degree'=>$Request->input('degree'),
-            'job_type'=>$Request->input('job_type')
-         
-           ]);
-
-
-        if($query){
+        if($job){
             return redirect()->route('CompanyJob')->with('success','  تمت الاضافة بنجاح');
         }else{
             return back()->withInput()->with('fail','هناك خطأ ما');

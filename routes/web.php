@@ -48,11 +48,12 @@ Route::post('/company/editProfile/{id}','CompanyController@updatCompanyProfile')
 
 Route::get('/company/dashboard','CompanyController@getDash')->name('CompanyDash');
 Route::get('company/shortList','CompanyController@getJob')->name('CompanyJob');
+
 //********************************************* */
 
 
 Route::get('/job/addJob','JobsController@addJob')->name('addJob');
-// Route::get('/job/details/{id}','JobsController@JobDetails');
+ Route::get('/job/details/{id}','JobsController@JobDetails');
 // Route::get('/job/showJobs','JobsController@showJob')->name('job');
 Route::post('/job/storeJob','JobsController@storeJob');
 
@@ -62,8 +63,7 @@ Route::post('/job/storeJob','JobsController@storeJob');
 Route::get('/company/show','CompanyController@showCompany')->name('company.show');
 
 
-// Route::get('/person/{id}','PersonController@show');
-// Route::get('/person','PersonController@index');
+
 
 
 
