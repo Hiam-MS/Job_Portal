@@ -18,8 +18,12 @@ class JobsController extends Controller
 
     public function addJob()
     {
+        if(isset(auth()->user()->GetPerson)){
         $company=auth()->user()->getCompany;
-        return view('job.addJob',compact('company'));
+        return view('job.addJob',compact('company'));}
+        else{
+            return redirect()->route('company.profile');
+        }
     }
 
     public function JobDetails($id)
@@ -31,6 +35,7 @@ class JobsController extends Controller
 
     public function showJob()
     {
+        
         $company=auth()->user()->getCompany;
         $job =Job::all();
         return view('job.showJobs',compact('job','company'));
@@ -50,7 +55,7 @@ class JobsController extends Controller
      
     public function storeJob(Request $Request)
     {
-
+        
         $job =new Job ;
         $job->company_name = $Request->input("company_name");
         $job->job_title =  $Request->input("job_title");
