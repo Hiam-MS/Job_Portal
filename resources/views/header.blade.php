@@ -72,9 +72,11 @@
                     <!-- extra nav -->
                     <div  class="extra-nav">
                         <div  class="extra-cell">
-                           <!-- <a href="register.html" class="site-button"><i class="fa fa-user"></i> تسجيل حساب</a>-->
-                            <a href="{{ route('login') }}" class="btn btn-primary"><i class="fa fa-lock"></i> تسجيل دخول</a>
+						
+                                
+						
                         </div>
+						
                     </div>
                     <!-- Quik search -->
                     <div class="dez-quik-search bg-primary">
@@ -84,30 +86,71 @@
                         </form>
                     </div>
                     <!-- main nav -->
+
                     <div class="header-nav navbar-collapse collapse justify-content-start" id="navbarNavDropdown">
+
                         <ul class="nav navbar-nav">
-							<li class="active">
+						<li class="active">
+						@guest
+                            @if (Route::has('login'))
+                            <a href="{{ route('register') }}" class="btn btn-primary"><i class="fa fa-user"></i> تسجيل حساب</a>
+							@endif
+							@if (Route::has('register'))
+                            <a href="{{ route('login') }}" class="btn btn-primary"><i class="fa fa-lock"></i>  دخول</a>
+							@endif
+						@else
+						<a href="#"> {{ Auth::user()->name }} <i class="fa fa-chevron-down"></i></a>
+								<ul class="sub-menu">
+
+							@if(auth::user())
+							@if(auth()->user()->role == 'p')
+								<li ><a  href="{{ asset('/resume/dashboard')}}" class="dez-page" > لوحة التحكم</a></li>
+								@endif
+								@if(auth()->user()->role == 'c')
+								<li ><a  href="{{ asset('/company/dashboard')}}" class="dez-page" > لوحة التحكم</a></li>
+								@endif
+								@endif
+									<li><a  class="dez-page" href="{{ route('logout') }}" 
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> 
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form></li>
+								</ul>
+
+                              @endguest
+									</li>
+							<li class="sub-menu">
 								<a href="{{ asset('/')}}">الرئيسية </i></a>
 								<!--<ul class="sub-menu">
 									<li><a href="index-2.html" class="dez-page">Home 1</a></li>
 									<li><a href="index-3.html" class="dez-page">Home 2</a></li>
 								</ul>
 							</li>-->
-							<li>
+							<!-- <li>
 								<a href="#">التسجيل في الموقع <i class="fa fa-chevron-down"></i></a>
 								<ul class="sub-menu">
 									<li><a href="{{ route('register') }}" class="dez-page">باحث عن موظف</a></li>
 									<li><a href="{{ route('register') }}" class="dez-page">باحث عن عمل</a></li>
 									
 								</ul>
-							</li>
+							</li> -->
 							
-							<li>
+							<!--<li>
 								<a href="#">فرص العمل <i class="fa fa-chevron-down"></i></a>
 								<ul class="sub-menu">
 									<li><a href="{{ route('job') }}" class="dez-page">حسب المدينة</a></li>
 									<li><a href="{{ route('job') }}" class="dez-page">حسب الاختصاص</a></li>
 									
+									
+								</ul>
+							</li>-->
+							<li>
+								<a href="{{ route('job') }}">  فرص العمل</i></a>
+								<ul class="sub-menu">
 									
 								</ul>
 							</li>
@@ -131,11 +174,11 @@
 								</ul>
 							</li>
 							<li>
-								<a href="{{ asset('/#aboutUs')}}">موقع الغرفة      </i></a>
+								<a href="{{ asset('https://ccdcp.net/new/')}}">موقع الغرفة      </i></a>
 								<ul class="sub-menu">
 									
 								</ul>
-							</li>
+							
 							 <!--<li>
 								<a href="#">Blog <i class="fa fa-chevron-down"></i></a>
 								<ul class="sub-menu">

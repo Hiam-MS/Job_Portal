@@ -30,7 +30,7 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user){
 
             if($user->role == 'p' ){
-                return redirect('/resume/create');
+                return redirect('/resume/dashboard');
             }
             if( $user->role == 'c' ){
                 return redirect('/company/profile');
