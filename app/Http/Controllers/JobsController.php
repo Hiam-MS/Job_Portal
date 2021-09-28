@@ -63,21 +63,12 @@ class JobsController extends Controller
             'military_service'=>$Request->input('military_service'),
             'degree'=>$Request->input('degree'),
             'job_type'=>$Request->input('job_type')
-           
          
-
-
-
-
-
-          
-        
-    
            ]);
 
 
         if($query){
-            return back()->withInput()->with('success','  تمت الاضافة بنجاح');
+            return redirect()->route('CompanyJob')->with('success','  تمت الاضافة بنجاح');
         }else{
             return back()->withInput()->with('fail','هناك خطأ ما');
         }

@@ -43,7 +43,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 Route::get('/company/profile','CompanyController@getAddCompanyForm')->name('company.profile');
 Route::post('/company/storeProfile','CompanyController@storeProfile')->name('company.addCompany');
-Route::get('/company/editProfile/{id}','CompanyController@editCompanyProfile');
+Route::get('/company/editProfile','CompanyController@editCompanyProfile')->name('CompanyProfile');
 Route::post('/company/editProfile/{id}','CompanyController@updatCompanyProfile');
 
 Route::get('/company/dashboard','CompanyController@getDash')->name('CompanyDash');
