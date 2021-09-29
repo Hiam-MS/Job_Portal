@@ -77,7 +77,19 @@
 					<div class="col-lg-12">
 						<h2 class="m-b10">اصنع فرقًا مع سيرتك الذاتية على الإنترنت!</h2>
 						<p class="m-b0"></p>
-						<a href="#" class="site-button m-t20 outline outline-2 radius-xl">سجل الآن</a>
+						@if(auth::user())
+						@if(auth()->user()->role == 'p')
+						<a href="/resume/dashboard" class="site-button m-t20 outline outline-2 radius-xl">سجل الآن</a>
+						@endif
+								@if(auth()->user()->role == 'c')
+								<a href="{{ asset('/company/dashboard')}}" class="site-button m-t20 outline outline-2 radius-xl">سجل الآن</a>
+								@endif
+
+						@else
+						<a href="{{ route('register') }}" class="site-button m-t20 outline outline-2 radius-xl">سجل الآن</a>
+						
+
+						@endif
 					</div>
 				</div>
 			</div>
@@ -95,9 +107,9 @@
 		<div class="section-full content-inner-2 overlay-white-middle">
 			<div class="container">
 				<div class="section-head text-black text-center">
-					<h2 class="text-uppercase m-b0">Our Latest Blog</h2>
+					<h2 class="text-uppercase m-b0">لمحة عن الغرفة</h2>
 					
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.</p>
+					<p> غرفة تجارة دمشق تشمل وشركات بالإضافة كونها تشغل منصب الخازن الدائم لاتحاد الغرف التجارية السورية و عضويتها في مجلس إدارة الاتحاد وعضويتها في تجمع غرف التجارة والصناعة والزراعة لبلدان البحر الأبيض المتوسط</p>
 					<br>
 				</div>
 				<div dir="ltr" lang="en"  class="blog-carousel owl-carousel owl-btn-center-lr owl-btn-3 owl-theme owl-btn-center-lr owl-btn-1">

@@ -161,12 +161,12 @@
 									
 								</ul>
 							</li>
-							<li>
+							<!--<li>
 								<a href="{{ route('resuem.create') }}">  انشاء سيرة ذاتية</i></a>
 								<ul class="sub-menu">
 									
 								</ul>
-							</li>
+							</li>-->
 							<li>
 								<a href="{{ route('company.show') }}">    الشركات الحالية</i></a>
 								<ul class="sub-menu">
@@ -210,48 +210,36 @@
             <div class="container">
                 <div class="row">
 					<div class="col-xl-5 col-lg-4 col-md-12 col-sm-12">
-                        <div class="widget">
-                            <img src="images/logo-white.png" width="180" class="m-b15" alt=""/>
-							<p class="text-capitalize m-b20">Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the industry's standard dummy text ever since the..</p>
-                       
-							<ul class="list-inline m-a0">
+                        <div class="widget" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
+                            <img src="images/logo.png" width="180" class="m-b15" alt=""/>
+							
+							<p class="text-capitalize m-b20">
+
+								<ul class="list-inline m-a0">
 								<li><a href="#" class="site-button white facebook circle "><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#" class="site-button white google-plus circle "><i class="fa fa-google-plus"></i></a></li>
 								<li><a href="#" class="site-button white linkedin circle "><i class="fa fa-linkedin"></i></a></li>
 								<li><a href="#" class="site-button white instagram circle "><i class="fa fa-instagram"></i></a></li>
-								<li><a href="#" class="site-button white twitter circle "><i class="fa fa-twitter"></i></a></li>
-							</ul>
+								
+							</ul> 
                         </div>
                     </div>
-					<div class="col-xl-5 col-lg-5 col-md-8 col-sm-8 col-12">
+					<div class="col-xl-5 col-lg-5 col-md-8 col-sm-8 col-12"  style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
                         <div class="widget border-0">
-                            <h5 class="m-b30 text-white">Frequently Asked Questions</h5>
-                            <ul class="list-2 list-line">
-                                <li><a href="#">Privacy & Seurty</a></li>
-                                <li><a href="#">Terms of Serice</a></li>
-                                <li><a href="#">Communications</a></li>
-                                <li><a href="#">Referral Terms</a></li>
-                                <li><a href="#">Lending Licnses</a></li>
+                            <h5 class="m-b30 text-white">اتصل بنا</h5>
+                            <ul >
+                                <li><p>أزبكية – دمشق</p></li>
+                                <li><p>  بريد الكتروني : ccdcp@ccdcp.net </p>
+                                <li><p>هاتف رباعي : 9841</p></li>
+                                <li><p>فاكس: 2313798</p></li>
+                                
 								
-                                <li><a href="#">How It Works</a></li>
-                                <li><a href="#">For Employers</a></li>
-                                <li><a href="#">Underwriting</a></li>
-                                <li><a href="#">Contact Us</a></li>
-								<li><a href="#">Lending Licnses</a></li>
+                               
 							
                             </ul>
                         </div>
                     </div>
-					<div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-12">
-                        <div class="widget border-0">
-                            <h5 class="m-b30 text-white">ابحث عن عمل</h5>
-                            <ul class="list-2 w10 list-line">
-                                <li><a href="#">دمشق</a></li>
-                                <li><a href="#">ريف دمشق</a></li>
-                               
-                            </ul>
-                        </div>
-                    </div>
+				
 				</div>
             </div>
         </div>
@@ -260,7 +248,7 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12 text-center"><span><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></span></div>
+				<!--  <div class="col-lg-12 text-center"><span><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></span></div>-->
                 </div>
             </div>
         </div>
