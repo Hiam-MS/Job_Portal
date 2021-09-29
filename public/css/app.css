@@ -6127,17 +6127,18 @@ button.bg-secondary:focus {
 a.bg-success:hover, a.bg-success:focus,
 button.bg-success:hover,
 button.bg-success:focus {
-  background-color: #2d995b !important;
+  background-color: #200080 !important;
 }
 
 .bg-info {
-  background-color: #6cb2eb !important;
+  background-color: #200080 !important;
 }
+
 
 a.bg-info:hover, a.bg-info:focus,
 button.bg-info:hover,
 button.bg-info:focus {
-  background-color: #3f9ae5 !important;
+  background-color: #200080 !important;
 }
 
 .bg-warning {
@@ -6167,7 +6168,7 @@ button.bg-danger:focus {
 a.bg-light:hover, a.bg-light:focus,
 button.bg-light:hover,
 button.bg-light:focus {
-  background-color: #dae0e5 !important;
+  background-color: #200080 !important;
 }
 
 .bg-dark {

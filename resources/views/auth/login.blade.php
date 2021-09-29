@@ -30,19 +30,7 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <!-- <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">اسم المستخدم</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div> -->
+                   
 
                         <div class="form-group row">
                             <label for="mobile" class="col-sm-4 col-form-label text-md-right">اسم المستخدم</label>
