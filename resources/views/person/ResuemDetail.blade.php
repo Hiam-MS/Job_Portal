@@ -278,12 +278,7 @@
 										</table>
 
 										<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-									<h5 class="font-weight-600"> اللغات   </h5>
-									
-									@foreach($Person->lang as $lan)
-										<p> {{ $lan}} </p>
-										@endforeach
-									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+								
 									
 									
 

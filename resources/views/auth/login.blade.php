@@ -24,7 +24,7 @@
         <div class="col-md-8">        
            
             <div class="card card-default">
-                <div class="card-header bg-info text-center text-white"><h3 class="h3">تسجيل الدخول</h3></div>
+                <div class="btn btn-primary"><h3 class="h3">تسجيل الدخول</h3></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -36,7 +36,7 @@
                             <label for="mobile" class="col-sm-4 col-form-label text-md-right">اسم المستخدم</label>
 
                             <div class="col-md-6">
-                                <input id="mobile" type="tel"  pattern="[0-9]{10}" class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}" name="mobile" value="{{ old('mobile') }}" required autofocus>
+                                <input id="mobile" type="tel"  pattern="[0-9]{10}" class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}" name="mobile" placeholder="ادخل رقم هاتفك" value="{{ old('mobile') }}" required autofocus>
 
                                 @if ($errors->has('mobile'))
                                     <span class="invalid-feedback">
@@ -64,7 +64,7 @@
                             <div class="col-md-6 offset-md-4">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> حفظ كلمة السر
                                     </label>
                                 </div>
                             </div>
@@ -72,12 +72,12 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-info">
-                                    Login
+                                <button type="submit" class="btn btn-primary">
+                                    تسجيل
                                 </button>
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
+                                    نسيت كلمة السر؟
                                 </a>
                             </div>
                         </div>

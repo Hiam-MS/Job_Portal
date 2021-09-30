@@ -18,12 +18,10 @@ class JobsController extends Controller
 
     public function addJob()
     {
-        if(isset(auth()->user()->GetPerson)){
+        
         $company=auth()->user()->getCompany;
-        return view('job.addJob',compact('company'));}
-        else{
-            return redirect()->route('company.profile');
-        }
+        return view('job.addJob',compact('company'));
+      
     }
 
     public function JobDetails($id)
