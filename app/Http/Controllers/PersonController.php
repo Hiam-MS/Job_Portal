@@ -57,6 +57,23 @@ class PersonController extends Controller
 
     }
 
+
+  
+    // public function viewResuem(Request $request)
+    // {
+    //     if(isset($_GET['query'])){
+            
+    //     $search_text= $_GET['query'];
+    //     $Person= exc::where('name','LIKE','%'.$search_text.'%')->paginate(2);
+    //     //$Person=appends($request->all());
+    //     return view('person.viewResuem',compact('Person'));
+    //     }else{
+    //         $Person=Person::paginate(10);
+    //         return view('person.viewResuem',compact('Person'));
+    //     }
+
+    // }
+
   
     
 

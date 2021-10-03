@@ -23,7 +23,7 @@
         <div class="col-md-8">        
            
             <div class="card card-default">
-                <div class="card-header bg-info text-white text-center"><h3 class="h3">تسجيل حساب جديد</h3></div>
+                <div class="btn btn-primary"><h3 class="h3">تسجيل حساب جديد</h3></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -98,7 +98,7 @@
                             <label for="role" class="col-md-4 col-form-label text-md-right" >الدور</label>
                             <div class="col-md-6">
                                 <select class="form-control" name="role"  class="form-control{{ $errors->has('role') ? ' is-invalid' : '' }}" required>
-                                    <option selected disabled>...Select Role</option>
+                                    <option selected disabled>اختر دور ....</option>
                                     <option value="p">باحث عن عمل</option>
                                     <option value="c">باحث عن موظف</option>
                                 </select>
@@ -111,8 +111,8 @@
                         </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-info">
-                                    Register
+                                <button type="submit" class="btn btn-primary">
+                                  انشاء حساب
                                 </button>
                             </div>
                         </div>

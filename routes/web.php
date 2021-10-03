@@ -30,11 +30,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/job/details/{id}','JobsController@JobDetails');
 Route::get('/job/showJobs','JobsController@showJob')->name('job');
 
+Route::get('view_resuem','PersonController@viewResuemForm')->name('resuems');
 
+Route::get('/job/details/{id}','JobsController@JobDetails');
+
+Route::get('Person/details/{id}','PersonController@ResuemDetails'); 
 
 
 
 Route::group(['middleware' => 'auth'], function(){
+   
 
     Route::group(['middleware' => 'role:company'], function(){
        
@@ -53,7 +58,7 @@ Route::get('company/shortList','CompanyController@getJob')->name('CompanyJob');
 
 
 Route::get('/job/addJob','JobsController@addJob')->name('addJob');
- Route::get('/job/details/{id}','JobsController@JobDetails');
+
 // Route::get('/job/showJobs','JobsController@showJob')->name('job');
 Route::post('/job/storeJob','JobsController@storeJob');
 
@@ -62,7 +67,7 @@ Route::post('/job/storeJob','JobsController@storeJob');
 
 Route::get('/company/show','CompanyController@showCompany')->name('company.show');
 
-
+Route::get('Person/details/{id}','PersonController@ResuemDetails');
 
 
 
@@ -95,7 +100,6 @@ Route::get('/profile','CompanyController@index');
     Route::get('/resume/editEdu/{cid}', 'PersonController@editPersonEdu');
     Route::PUT('/resume/updateEdu','PersonController@updateEdu');
 
-    Route::get('Person/details/{id}','PersonController@ResuemDetails');
 
     Route::get('/resume/addExperience/{id}','PersonController@createPersonExp');
     Route::post('/resume/storePersonExp','PersonController@storePersonExp')->name('StoreExp');
@@ -118,7 +122,7 @@ Route::PUT('/resume/updateCourse','PersonController@updateCourse');
 
 //Route::get('/resume/JobCategory/{id}','PersonController@createResumeJobCat')->name('JobCategory');
 Route::post('/resume/storePersonJobCat','PersonController@storePersonJobCat');
-Route::get('view_resuem','PersonController@viewResuemForm')->name('resuems');
+// Route::get('view_resuem','PersonController@viewResuemForm')->name('resuems');
 
 
 

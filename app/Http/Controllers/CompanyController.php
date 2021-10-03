@@ -117,12 +117,10 @@ class CompanyController extends Controller
 
     public function getJob()
     {
-        if(isset(auth()->user()->GetPerson)){
+        
         $company=auth()->user()->GetCompany;
-        return view('company.shortList', compact('company'));}
-        else{
-            return redirect()->route('company.profile');
-        }
+        return view('company.shortList', compact('company'));
+       
     }
 
 
