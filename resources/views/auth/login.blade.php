@@ -23,8 +23,7 @@
     <div class="row justify-content-center mt-5">
         <div class="col-md-8">        
            
-            <div class="card card-default" >
-                <div  class="card-header bg-info text-center text-white"  style="background-color:#052D7E;"><h3 class="h3" >تسجيل الدخول</h3></div>
+            
             <div class="card card-default">
                 <div class="btn btn-primary"><h3 class="h3">تسجيل الدخول</h3></div>
 

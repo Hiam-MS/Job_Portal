@@ -1,41 +1,94 @@
 @extends('header')
 @section('content')
-    <form action="">
     @csrf
-
-    <table>
-        <thead>
-            <tr>
-                <td>
-                    <a href="{{route('company.show')}}" class="btn btn-primary">  إضافة بلد</a>
-                  
-                </td>
-                <td>
-                    <a href="{{route('company.show')}}" class="btn btn-primary">  إضافة مدينة</a>
-                </td>
-               
-            </tr>
-            <tr>
-                <td>
-                     <a href="{{route('addJob')}}" class="btn btn-primary">  اضافة عمل </a>
-                </td>
-                <td>
-                    <a href="{{route('company.profile')}}" class="btn btn-primary">  إضافة شركة </a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                <a href="{{route('company.show')}}" class="btn btn-primary">  إضافة بلد</a>
-                </td>
-                <td>
-                <a href="{{route('company.show')}}" class="btn btn-primary">  إضافة بلد</a>
-                </td>
-            </tr>
-        </thead>
-        
-    </table>
-
     
+<div class="page-content bg-white">
+    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(images/banner/bnr1.jpg);">
+        <div class="container">
+            <div class="dez-bnr-inr-entry">
+                <h1 class="text-white">لوحة التحكم </h1>
+					
+            </div>
+        </div>
+    </div>
+     
+    <div class="content-block">
+        <div class="section-full content-inner-1">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4">
+						<div class="sticky-top">
+							<div class="row">
+								<div class="col-lg-12 col-md-6">
+									<div class="m-b30">
+										<img src="images/blog/grid/6.jpg" alt=""> 
+									</div>
+								</div>
+										
+								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
+									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
+                                         <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="#" > لوحة التحكم<a></h4>
+                                            <ul>
+											
+										
+                                                <li><strong class="font-weight-700 text-black"> <a href="{{route('company.show')}}" > الشركات الحالية </a></strong><span class="text-black-light"> </span></li>
+                                                <li><strong class="font-weight-700 text-black"><a href="{{route('resuems')}}" >   عرض السير الذاتية المتاحة</a>  </strong></li>	
+                                               
+                                            </ul>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+						
+
+					<div class="col-lg-8">
+						<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
+                            <div>
+                               <h4 ><p>اهلا و سهلا {{Auth::user()->name}}</p></h4> 
+                               <hr>
+                            </div>    
+                            <div class="">
+                            <div class="">
+				<div class="icon-bx-wraper p-a30 center bg-gray radius-sm">
+					<div class="icon-md text-primary m-b20"> <a href="#" class="icon-cell text-primary"><i class="ti-image" ></i></a> </div>
+						<div class="icon-content">
+							<h5 class="dlab-tilte text-uppercase">نشر فرصة عمل الكترونية</h5>
+                            <p>يمكن للمؤسسات المسجلة على الموقع و بطريقة سهلة  نشر فرصة عمل الكترونياً, حيث  تمكّن الباحثين عن عمل من الوصول إاليها بسهولة و الاطلاع على تفاصيل هذا العمل بكل بساطة والتقدم لهذا العمل في حال توافرت الشروط المناسبة لهم</p>
+							
+						</div>
+					</div>
+				</div>
+         
+    <hr>
+		
+           
+         
+    
+            
+
+            </div>   
+  
+
+						</div>
+					</div>
+
+
+
+
+
+
+
+
+
+						
+				</div>
+			</div>
+		</div>
+			<br><br>
+    </div>
+</div>
  
-    </form>
-@endsection()
+    
+ @endsection

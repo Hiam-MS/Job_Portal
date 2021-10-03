@@ -43,6 +43,7 @@ class RegisterController extends Controller
         if( auth()->user()->role == 'c' ){
             return redirect('/company/profile');
         }
+        
     }
     
     //  protected $redirectTo = '/resume/create';

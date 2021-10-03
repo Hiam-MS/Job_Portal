@@ -27,7 +27,11 @@ class CheckRole
 
         }
 
+        if($role== 'admin' && auth()->user()->role != 'a')
+        {
+            abort(403);
 
+        }
 
 
 

@@ -109,6 +109,9 @@
 								@if(auth()->user()->role == 'c')
 								<li ><a  href="{{ asset('/company/dashboard')}}" class="dez-page" > لوحة التحكم</a></li>
 								@endif
+								@if(auth()->user()->role == 'a')
+								<li ><a  href="{{ asset('/admin/dashboard')}}" class="dez-page" > لوحة التحكم</a></li>
+								@endif
 								@endif
 									<li><a  class="dez-page" href="{{ route('logout') }}" 
                                        onclick="event.preventDefault();
@@ -154,13 +157,16 @@
 									
 								</ul>
 							</li>
-						
+							@if(auth::user())
+							@if(auth()->user()->role == 'c')
 							<li>
 								<a href="{{ route('resuems') }}">السير الذاتية الحالية</i></a>
 								<ul class="sub-menu">
 									
 								</ul>
 							</li>
+							@endif
+							@endif
 							<!--<li>
 								<a href="{{ route('resuem.create') }}">  انشاء سيرة ذاتية</i></a>
 								<ul class="sub-menu">
@@ -169,6 +175,12 @@
 							</li>-->
 							<li>
 								<a href="{{ route('company.show') }}">    الشركات الحالية</i></a>
+								<ul class="sub-menu">
+									
+								</ul>
+							</li>
+							<li>
+								<a href="/#aboutUs">  نبذة عن الموقع</i></a>
 								<ul class="sub-menu">
 									
 								</ul>
@@ -211,7 +223,8 @@
                 <div class="row">
 					<div class="col-xl-5 col-lg-4 col-md-12 col-sm-12">
                         <div class="widget" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
-                            <img src="images/logo.png" width="180" class="m-b15" alt=""/>
+                            <img src="{{ asset('images/logo.png')}}" width="180" class="m-b15" alt=""/>
+							
 							
 							<p class="text-capitalize m-b20">
 
@@ -232,6 +245,7 @@
                                 <li><p>  بريد الكتروني : ccdcp@ccdcp.net </p>
                                 <li><p>هاتف رباعي : 9841</p></li>
                                 <li><p>فاكس: 2313798</p></li>
+							
                                 
 								
                                
@@ -248,7 +262,7 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
-				<!--  <div class="col-lg-12 text-center"><span><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></span></div>-->
+			
                 </div>
             </div>
         </div>
@@ -258,7 +272,7 @@
     <button class="scroltop fa fa-chevron-up"></button>
 </div>
 <!-- JAVASCRIPT FILES ========================================= -->
-<script src="js/jquery.min.js"></script><!-- JQUERY.MIN JS -->
+
 <script src="plugins/wow/wow.js"></script><!-- WOW JS -->
 <script src="plugins/bootstrap/js/popper.min.js"></script><!-- BOOTSTRAP.MIN JS -->
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script><!-- BOOTSTRAP.MIN JS -->

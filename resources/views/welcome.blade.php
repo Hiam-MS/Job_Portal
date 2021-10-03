@@ -22,10 +22,10 @@
 		<!-- inner page banner -->
         
         <!-- inner page banner END -->
-		<div id="aboutUs" class="content-block">
+		<div  class="content-block">
             <div class="section-full content-inner overlay-white-middle">
 				<div class="container">
-					<div class="row align-items-center m-b50">
+					<div id="aboutUs" class="row align-items-center m-b50">
 						<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-md-12 col-lg-6 m-b20">
 							<h2 class="m-b5">نبذة عن منصة التوظيف </h2>
 							<h3 class="fw4"></h3>

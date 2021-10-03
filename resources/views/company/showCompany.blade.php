@@ -25,7 +25,7 @@
         <button type="submit" class="btn btn-primary" >  اضافة شركة جديدة</button>
 	</a>
   
-
+<div>
         <table>
            <thead>
                <tr>
@@ -56,4 +56,6 @@
            </tbody>
         </table>
     </form>
+</div>
+
 @endsection()

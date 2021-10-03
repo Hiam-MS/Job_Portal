@@ -30,9 +30,12 @@ class CompanyController extends Controller
 
     public function editCompanyProfile()
     {
-       
+        if(isset(auth()->user()->GetCompany)){
         $company=auth()->user()->GetCompany;
         return view('company.editProfile',compact('company'));
+        }
+        else
+        return redirect()->route('company.profile');
     }
 
     public function updatCompanyProfile(Request $Request,$id)
@@ -114,12 +117,15 @@ class CompanyController extends Controller
     {
         return view('company.company_dash');
     }
-
+// get company published jobs
     public function getJob()
     {
-        
+        if(isset(auth()->user()->GetCompany)){
         $company=auth()->user()->GetCompany;
         return view('company.shortList', compact('company'));
+        }
+        else
+        return redirect()->route('company.profile');
        
     }
 
