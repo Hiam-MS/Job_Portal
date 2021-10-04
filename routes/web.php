@@ -60,7 +60,6 @@ Route::post('/job/storeJob','JobsController@storeJob');
 
 
 
-
 });
 
 Route::group(['middleware' => 'role:company|admin'], function(){
@@ -113,7 +112,7 @@ Route::get('/resume/deleteCourse/{id}', 'PersonController@DeletePersonCourse');
 Route::get('/resume/editCourse/{cid}', 'PersonController@editPersonCourse');
 Route::PUT('/resume/updateCourse','PersonController@updateCourse');
 Route::post('/resume/storePersonJobCat','PersonController@storePersonJobCat');
-
+Route::get('/resume/applyedJob','PersonController@applyedJob')->name('applyedJob');
 
  });
 

@@ -558,7 +558,13 @@ public function updateExperience(Request $Request)
     }
     
     
+    public function applyedJob()
+    {
 
+        
+        return view('person.applyedJob');
+
+    }
 
 
 
