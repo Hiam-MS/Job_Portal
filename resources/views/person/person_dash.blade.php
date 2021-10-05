@@ -34,8 +34,8 @@
 									@if(isset(auth()->user()->GetPerson))
 									   <li><strong class="font-weight-700 text-black"><a href="/resume/ViewpersonalInfo" >  معاينةالسيرة الذاتية</a>  </strong></li>
 										<li><strong class="font-weight-700 text-black"><li><a href="#" >تعديل السيرة الذاتية</a></li></strong> </li>
-													<li><strong class="font-weight-700 text-black"><li><a href="/resume/createEdu" >اضافة/تعديل التعليم و المهارات  </a></li></strong> </li>
-													
+										<li><strong class="font-weight-700 text-black"><li><a href="/resume/createEdu" >اضافة/تعديل التعليم و المهارات  </a></li></strong> </li>
+										<li><strong class="font-weight-700 text-black"><li><a href="/resume/applyedJob" >سجل التقدمات  </a></li></strong> </li>			
 
 									  
 									  @else

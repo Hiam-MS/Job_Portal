@@ -32,123 +32,120 @@
                     <span style="color:red"> @error('user_id'){{$message}}@enderror</span>
 						<div class="form-group">
 							<label>الاسم الكامل</label>
-							<input type="text" class="form-control" placeholder="Your Full Name" name="name" value="{{old(' name')}}" style="width:60%" data-parsly-trigger="keyup" >
+							<input type="text" class="form-control" placeholder="Your Full Name" name="name" value="{{old('name')}}" style="width:58%" data-parsly-trigger="keyup" >
 							<span style="color:red"> @error('name'){{$message}}@enderror</span>
 						</div>
 						<div class="form-group">
 							<label>عنوان البريد الالكتروني</label>
-							<input type="email" class="form-control" placeholder="info@gmail.com" name="email" value="{{old(' email')}}"  style="width:60%" data-parsly-trigger="keyup">
+							<input type="email" class="form-control" placeholder="info@gmail.com" name="email" value="{{old('email')}}"  style="width:58%" data-parsly-trigger="keyup">
 							<span style="color:red"> @error('email'){{$message}}@enderror</span>
 						</div>
                         <div class="form-group">
 							<label>الرقم الوطني</label>
-							<input type="text" class="form-control" placeholder="" name="national_number" value="{{old(' national_number')}}" style="width:60% "  data-parsly-trigger="keyup">
+							<input type="text" class="form-control" placeholder="" name="national_number" value="{{old('national_number')}}" style="width:58% "  data-parsly-trigger="keyup">
 							<span style="color:red"> @error('national_number'){{$message}}@enderror</span>
 						</div>
+
+
 						<div class="form-group" >
-							<label>     الجنس :              </label>
-							<select name="gender" style="width:15%  "  >
-                            <option  >يرجى الاختيار</option>
-								
-                                <option value="انثى"  > انثى </option>
+							<label> الجنس 
+							<select name="gender" class="form-control" style="width:300px;" >
+								<option  >يرجى الاختيار</option>
+								<option value="انثى"  > انثى </option>
                                 <option value="ذكر"  > ذكر </option>
 								
-							</select>
-                            <spam> &nbsp                                     </spam>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
+								
+								
+							</select> </label>
                             
+							<label style="padding-right:60px">  خدمة العلم 
+							 <select name="military_service"  class="form-control" style="width:300px;">
+							<option  >يرجى الاختيار</option>
+							<option  value="منتهية">منتهية</option>
+								<option  value="غير منتهية">غير منتهية</option>
+                                <option value="معفى">معفى</option>
+								<option value="*">اختر* اذا كنت أنثى</option>
+								
+								
+							</select></label>
 
-                            <label>&nbsp                                      الوضع العائلي:</label>
-                            
-							<select name="marital_status" style="width:15%" >
-                            
-                            <option >يرجى الاختيار</option>
+						
+							
+							
+						</div>
+						<div class="form-group" >
+							<label> الوضع العائلي 
+							<select name="marital_status" class="form-control" style="width:660px" >
+								<option  >يرجى الاختيار</option>
 								<option value="عازب">عازب</option>
 								<option  value="غير عازب">غير عازب</option>
 								
-							</select>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label>&nbsp                                        خدمة العلم :</label>
-							<select name="military_service" style="width:15%" >
-                            <option >يرجى الاختيار</option>
-								<option  value="منتهية">منتهية</option>
-								<option  value="غير منتهية">غير منتهية</option>
-                                <option value="معفى">معفى</option>
 								
-							</select>
+								
+							</select> </label>
+                            
+						
+							
 						</div>
+					
+
+						
                         
 						<div class="form-group">
 							<label>تاريخ الميلاد</label>
-							<input type="date" class="form-control" placeholder="Web Designer"  value="{{old(' dob')}}" name="dob" style="width:60%" data-parsly-trigger="keyup">
+							<input type="date" class="form-control" placeholder="Web Designer"  value="{{old('dob')}}" name="dob" style="width:58%" data-parsly-trigger="keyup">
 							<span style="color:red"> @error('dob'){{$message}}@enderror</span>
 						</div>
 						<div class="form-group">
 							<label>مكان الولادة</label>
-							<input type="text" class="form-control" placeholder=""  name="place_Of_b" value="{{old(' place_Of_b')}}" style="width:60% " data-parsly-trigger="keyup">
+							<input type="text" class="form-control" placeholder=""  name="place_Of_b" value="{{old('place_Of_b')}}" style="width:58% " data-parsly-trigger="keyup">
 							<span style="color:red"> @error('place_Of_b'){{$message}}@enderror</span>
 						</div>
                         <div class="form-group">
 							<label>عنوان الاقامة الحالي</label>
 							
                              <!--<textarea  name="" id="" cols="90" rows="10" class="form-control" name="Current_address" form="resume"></textarea>-->
-                            <input type="text" class="form-control" placeholder=""  name="Current_address" value="{{old(' Current_address')}}" style="width:60% " data-parsly-trigger="keyup">
+                            <input type="text" class="form-control" placeholder=""  name="Current_address" value="{{old('Current_address')}}" style="width:58% " data-parsly-trigger="keyup">
 							<span style="color:red"> @error('Current_address'){{$message}}@enderror</span>
 						</div>
 
                         
                             <div class="form-group">
 							<label>الهاتف الأرضي</label>
-							<input type="text" class="form-control" placeholder="" name="fixed_phone" value="{{old(' fixed_phone')}}" style="width:60% " data-parsly-trigger="keyup">
+							<input type="text" class="form-control" placeholder="" name="fixed_phone" value="{{old('fixed_phone')}}" style="width:58% " data-parsly-trigger="keyup">
 							<span style="color:red"> @error('fixed_phone'){{$message}}@enderror</span>
 						</div>
                         <div class="form-group">
 							<label>رقم الخليوي</label>
-							<input type="text" class="form-control" placeholder=""  name="mobile_number" value="{{old(' mobile_number')}}" style="width:60% " data-parsly-trigger="keyup">
+							<input type="text" class="form-control" placeholder=""  name="mobile_number" value="{{old('mobile_number')}}" style="width:58% " data-parsly-trigger="keyup">
 							<span style="color:red"> @error('mobile_number'){{$message}}@enderror</span>
 						</div>
-						<div class="form-group">
-						<label>اللغات </label><br>
-						<select name="lang[]" id="category" multiple='multiple' size="3" style="width:15%" data-parsly-trigger="keyup">
-                                    
-                                     <option value="عربي">عربي</option>
+					
+
+						<div class="form-group" >
+							<label>  اللغات </label>
+							<select name="lang[]" id="category" multiple='multiple' size="3" data-parsly-trigger="keyup" class="form-control" style="width:660px" >
+								<option  >يرجى الاختيار</option>
+								<option  ></option>
+								<option value="عربي">عربي</option>
                                      <option value="الماني">الماني</option>
                                      <option value="اسباني">اسباني</option>
 									 <option value="تركي">تركي</option>
 									 <option value="ايطالي">ايطالي</option>
 									 <option value="انكليزي">انكليزي</option>
-                                    
-                                   </select>
-								   </div>
-						<!-- <div class="form-group">
-							<label>الصورة الشخصية</label>
-							<div class="custom-file">
-								<input type="file" class="site-button" id="customFile"  name="img"  value="{{old(' img')}}"style="width:60% " data-parsly-trigger="keyup">
-							</div>
-						</div> -->
+								
+								
+								
+							</select> 
+                            
+						
+							
+						</div>
+					
 						
 						
 						
-						<button type="submit" class="btn btn-primary" >Submit</button>
+						<button type="submit" class="btn btn-primary" >إرسال</button>
 					</form>
 				</div>
 			</div>

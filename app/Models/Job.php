@@ -22,9 +22,10 @@ class Job extends Model
     }
 
     //Job has many Person 
-    function Person() 
+    public function PersonTOThisJobs()
+    
     {
-    	return $this->belongsToMany(Person::class);
+        return $this->belongsToMany(Person::class);
     }
 
     //Job has one city
@@ -32,5 +33,8 @@ class Job extends Model
     {
         return $this->belongsTo(City::class);
     }
+
+
+
 
 }
