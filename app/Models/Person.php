@@ -56,7 +56,7 @@ class Person extends Model
     public function PersonApplyedJobs()
     
     {
-        return $this->belongsToMany(Job::class);
+        return $this->belongsToMany(Job::class,'applyed_jobs');
     }
 
 

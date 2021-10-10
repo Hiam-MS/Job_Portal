@@ -98,7 +98,7 @@
 								<ul class="post-job-bx">
 								<h5 class="widget-title font-weight-700 text-uppercase">البحث</h5>
 									<div class="">
-										<input type="text" class="form-control typeahead" name="query"  placeholder="...ابحث">
+										<input type="text" class="form-control typeahead" name="query"  placeholder="...ابحث" >
 									</div>
 
 									<br><b></b>

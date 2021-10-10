@@ -83,18 +83,21 @@
 											<div class="job-time mr-auto">
 												<span>{{$item->job_type}}</span>
 											</div>
+										
+											
 											<div class="salary-bx">
 												<span>{{$item->salary}} ل.س</span>
 											</div>
 										</div>
 										
 									</a>
+									<hr>
                                     @endforeach
 								</li>
                                 
                                 </form>
 								
-								
+							
 								
 								
 								

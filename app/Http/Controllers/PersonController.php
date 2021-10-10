@@ -11,6 +11,8 @@ use App\Models\PersonCourse;
 use Illuminate\Support\Facades\DB;
 use App\Models\JobCategory;
 use App\Models\PersonCategory;
+use App\Models\ApplyedJob;
+
 use Illuminate\Support\Facades\Session;
 
 
@@ -556,15 +558,16 @@ public function updateExperience(Request $Request)
 
 
     }
+
+
+ 
     
     
-    public function applyedJob()
-    {
 
-        
-        return view('person.applyedJob');
 
-    }
+ 
+    
+
 
 
 

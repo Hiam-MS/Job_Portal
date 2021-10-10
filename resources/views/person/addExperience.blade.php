@@ -77,6 +77,7 @@
 						<div class="form-group">
 							<label>دولة الدراسة </label>
 							<input type="text" class="form-control" placeholder=""  name="Country">
+							
 							<input type="hidden" class="form-control" placeholder=""  name="pid" value={{$id}}>
 						</div>
                         
