@@ -3,7 +3,8 @@
     @csrf
     
 <div class="page-content bg-white">
-    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(images/banner/bnr1.jpg);">
+    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{ asset('images/banner/bnr1.jpg')}});">
+	
         <div class="container">
             <div class="dez-bnr-inr-entry">
                 <h1 class="text-white">لوحة التحكم </h1>
@@ -33,6 +34,7 @@
 										
                                                 <li><strong class="font-weight-700 text-black"> <a href="{{route('company.show')}}" > الشركات الحالية </a></strong><span class="text-black-light"> </span></li>
                                                 <li><strong class="font-weight-700 text-black"><a href="{{route('resuems')}}" >   عرض السير الذاتية المتاحة</a>  </strong></li>	
+													
                                                
                                             </ul>
 									</div>

@@ -101,6 +101,7 @@
                                     <option selected disabled>اختر دور ....</option>
                                     <option value="p">باحث عن عمل</option>
                                     <option value="c">باحث عن موظف</option>
+                                    <option value="a"> مشرف </option>
                                 </select>
                                 @if ($errors->has('role'))
                                     <span class="invalid-feedback">

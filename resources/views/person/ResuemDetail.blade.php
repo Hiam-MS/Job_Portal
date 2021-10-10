@@ -66,7 +66,7 @@
 
 							<div class="col-lg-8">
 								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
-									<h3 class="m-t0 m-b10 font-weight-700 title-head">
+									<!-- <h3 class="m-t0 m-b10 font-weight-700 title-head">
 										<a href="#" class="text-secondry m-r30"></a>
 										<p>
 											المعلومات الشخصية
@@ -74,9 +74,9 @@
 										<br>
 
 
-									</h3>
+									</h3> -->
 
-									<h5 class="font-weight-600">  المعلومات الاساسية : </h5>
+									<h3 class="font-weight-600">  المعلومات الاساسية : </h5>
 									<br>
 								<table  id ="gen_info" dir="rtl">
 									<tr>
@@ -149,13 +149,13 @@
 
 
 									<br>
-									<h5 class="font-weight-600">  الخبرات </h5>
+									<h3 class="font-weight-600">  الخبرات </h5>
 									<br>
 									<table id="expr" dir="rtl">
 										<thead >
 											<tr>
-												<td> رقم الوظيفة</th>
-												<td>عنوان العمل</td>
+												
+												<td>المنصب الوظيفي </td>
 												<td> اختصاص العمل</td>
 												<td> اسم الشركة</td>
 												<td> عنوان الشركة</td>
@@ -169,7 +169,7 @@
 										<tbody>
 											@foreach($Person->PersonExperience as $exp)
 												<tr>
-													<td> {{$exp['id'] }}</td>
+													
 													<td>{{$exp['Job_title'] }} </td>
 													<td>{{$exp['job_Specialize'] }} </td>
 													<td>{{$exp['company_name'] }} </td>

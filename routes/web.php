@@ -125,7 +125,9 @@ Route::post('/resume/storePersonJobCat','PersonController@storePersonJobCat');
     Route::get('/company/show','CompanyController@showCompany')->name('company.show');
     Route::get('/country','AdminController@addCountry');
     Route::get('/city/{id}','AdminController@addCity');
-    Route::get('/admin/dashboard','AdminController@getDash');
+    Route::get('/admin/dashboard','AdminController@getDash')->name('admin.Dash');
+    
+
 
 
 });
