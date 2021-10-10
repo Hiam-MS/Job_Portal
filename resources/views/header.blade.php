@@ -272,7 +272,7 @@
     <button class="scroltop fa fa-chevron-up"></button>
 </div>
 <!-- JAVASCRIPT FILES ========================================= -->
-
+<script src="js/jquery.min.js"></script><!-- JQUERY.MIN JS -->
 <script src="plugins/wow/wow.js"></script><!-- WOW JS -->
 <script src="plugins/bootstrap/js/popper.min.js"></script><!-- BOOTSTRAP.MIN JS -->
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script><!-- BOOTSTRAP.MIN JS -->

@@ -3,7 +3,7 @@
     @csrf
     
 <div class="page-content bg-white">
-    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(images/banner/bnr1.jpg);">
+    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{ asset('images/banner/bnr1.jpg')}});;">
         <div class="container">
             <div class="dez-bnr-inr-entry">
                 <h1 class="text-white">لوحة التحكم </h1>
@@ -27,7 +27,7 @@
 										
 								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
 									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
-                                         <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="#" > لوحة التحكم<a></h4>
+                                         <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="/company/profile" > لوحة التحكم<a></h4>
                                             <ul>
 											
 											@if(isset(auth()->user()->GetCompany))
@@ -52,7 +52,7 @@
 					<div class="col-lg-8">
 						<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
                             <div>
-                               <h4 ><p>الخدمات المقدمة من قبل الموقع</p></h4> 
+                               <h4 ><p>اهلا و سهلا : {{auth()->user()->name}} </p></h4> 
                                <hr>
                             </div>    
                             <div class="">
