@@ -42,7 +42,12 @@
 									  @else
 
 									<li><strong class="font-weight-700 text-black"> <a href="/resume/create" >انشاء السيرة الذاتية</a></strong><span class="text-black-light"> </span></li>
-										@endif			
+									
+										@endif	
+										<li><strong class="font-weight-700 text-black"><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a>  </strong></li>
+										<li><strong class="font-weight-700 text-black"><a href="{{route('edit.form')}}" >   تعديل   الحساب</a>  </strong></li>
+										<li><strong class="font-weight-700 text-black"><a href="{{route('profile.delete')}}" >  حذف الحساب عن الموقع</a>  </strong></li>		
+											
                                             </ul>
 									</div>
 								</div>

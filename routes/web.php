@@ -40,6 +40,16 @@ Route::get('/job/showJobs','JobsController@showJob')->name('job');
 //    *******************   auth  *****************
 
 Route::group(['middleware' => 'auth'], function(){
+
+    Route::get('/change-password','Auth\ChangePasswordController@index')->name('password.change'); 
+    Route::post('/update-password','Auth\ChangePasswordController@ChangePassword')->name('password.update'); 
+
+    Route::get('/edit-profile','UserController@editform')->name('edit.form'); 
+    Route::post('/update-profile','UserController@updateprofile')->name('profile.update');
+
+    Route::get('/delete-profile', 'UserController@Deleteprofile')->name('profile.delete');
+
+
    
 
     Route::group(['middleware' => 'role:company'], function(){
