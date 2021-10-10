@@ -16,6 +16,7 @@ class CreateApplyedJobsTable extends Migration
         Schema::create('applyed_jobs', function (Blueprint $table) {
             $table->unsignedBigInteger('job_id');
             $table->unsignedBigInteger('person_id');
+            $table->string('status');
             $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade');
             $table->foreign('person_id')->references('id')->on('people')->onDelete('cascade');
             $table->primary(['person_id', 'job_id']);

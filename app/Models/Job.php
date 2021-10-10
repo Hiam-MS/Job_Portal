@@ -25,7 +25,8 @@ class Job extends Model
     public function PersonTOThisJobs()
     
     {
-        return $this->belongsToMany(Person::class);
+  
+        return $this->belongsToMany(Person::class,'applyed_jobs');
     }
 
     //Job has one city

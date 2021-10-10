@@ -37,7 +37,6 @@ class JobsController extends Controller
     public function showJob()
     {
         
-        
         $job =Job::all();
         return view('job.showJobs',compact('job'));
     }

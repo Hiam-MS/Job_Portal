@@ -6,6 +6,9 @@ use App\Http\Controllers\JobsController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\JobCategoryController;
+use App\Http\Controllers\ApplicantController;
+
+
 
 use Illuminate\Routing\Redirector;
 
@@ -76,7 +79,7 @@ Route::get('Person/details/{id}','PersonController@ResuemDetails');
     Route::group(['middleware' => 'role:persone'], function(){
      
 
-    Route::get('/resume/dashboard','PersonController@index');
+    Route::get('/resume/dashboard','PersonController@index')->name('PersonDash');
 
     // CV preview
     Route::get('/resume/ViewpersonalInfo','PersonController@ViewpersonalInfo');
@@ -112,7 +115,7 @@ Route::get('/resume/deleteCourse/{id}', 'PersonController@DeletePersonCourse');
 Route::get('/resume/editCourse/{cid}', 'PersonController@editPersonCourse');
 Route::PUT('/resume/updateCourse','PersonController@updateCourse');
 Route::post('/resume/storePersonJobCat','PersonController@storePersonJobCat');
-Route::get('/resume/applyedJob','PersonController@applyedJob')->name('applyedJob');
+
 
  });
 
@@ -133,8 +136,8 @@ Route::get('/resume/applyedJob','PersonController@applyedJob')->name('applyedJob
 
 
 
-
-
+Route::get('/resume/applyedJob','ApplicantController@applyedJob')->name('applyedJob');
+Route::post('/job/application/{id}/store', 'ApplicantController@storeApplyedJob');
 
 
 
@@ -143,8 +146,5 @@ Route::get('/resume/applyedJob','PersonController@applyedJob')->name('applyedJob
 // //auth _ register _ login
 // Route::get('auth/login','HomeController@login');
 // Route::get('auth/register','HomeController@register');
-
-
-
 
 

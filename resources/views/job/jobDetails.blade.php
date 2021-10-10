@@ -3,7 +3,19 @@
     <!-- Content -->
     @csrf
     
+<style>
+	h5 {
+  color: blue;
+  text-align: center;
+  
+}
+textarea{
+	resize: none;
+}
 
+
+
+</style>
     
     <div class="page-content bg-white">
         <!-- inner page banner -->
@@ -11,15 +23,8 @@
         
             <div class="container">
                 <div class="dez-bnr-inr-entry">
-                    <h1 class="text-white">Job Detail</h1>
-					<!-- Breadcrumb row -->
-					<!--<div class="breadcrumb-row">
-						<ul class="list-inline">
-							<li><a href="#">Home</a></li>
-							<li>Job Detail</li>
-						</ul>
-					</div> -->
-					<!-- Breadcrumb row END -->
+                    <h1 class="text-white">تفاصيل العمل </h1>
+				
                 </div>
             </div>
         </div>
@@ -40,8 +45,7 @@
 											</div>
 										</div>
 										
-										<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;"
- class="col-lg-12 col-md-6">
+										<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
 											<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
 												<h4 class="text-black font-weight-700 p-t10 m-b15">تفاصيل العمل</h4>
 												<ul>
@@ -59,24 +63,38 @@
 							<div class="col-lg-8">
 								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
 									
+									<h5 > العمل لدى شركة </h5>
+									
+								
+										<p  >{{$job->company_name}}</p>
 										
-										<h5 class="font-weight-600"> العمل لدى شركة </h5>
-										<p>
-										{{$job->company_name}}
-										</p>
+									
+									
+								
 									
 
-										<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 
-										<h5 class="font-weight-600">   المسمى الوظيفي </h5>
-										<p>
-										{{$job->job_title}}
-										</p>
+									<h5 >   المسمى الوظيفي </h5>
+									<textarea name="" id="" cols="30" rows="5" class="form-control">
+
+									{{$job->job_title}}
+
+									</textarea>
+								
 									
 
-										<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+									<h5 >   تم النشر  </h5>
+									<textarea name="" id="" cols="30" rows="5" class="form-control">
+										{{$job->created_at->diffForHumans()}}
+									
+										</textarea>
+
+
+									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 									<br>
-									<h5 class="font-weight-600"> الحد الأدنى للمستوى التعليمي: </h5>
+									<h5 > الحد الأدنى للمستوى التعليمي: </h5>
 									<p>
 									{{$job->degree}}
 									</p>
@@ -86,7 +104,7 @@
 									
 								
 
-									<h5 class="font-weight-600">المهام الوظيفية</h5>
+									<h5 >المهام الوظيفية</h5>
 									<p>
 									{{$job->functional_tasks}}
 									</p>
@@ -94,13 +112,13 @@
 								
 
 										
-									<h5 class="font-weight-600">الراتب و الفوائد </h5>
+									<h5 >الراتب و الفوائد </h5>
 									<p>
                                     {{$job->salary}}
 									</p>
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 									
-									<h5 class="font-weight-600">متطلبات خاصة بهذه الفرصة</h5>
+									<h5 >متطلبات خاصة بهذه الفرصة</h5>
 
 									<p>
                                     {{$job->job_requirement}}
@@ -111,49 +129,54 @@
 									
 								
 
-									<h5 class="font-weight-600">اختصاص العمل المطلوب: </h5>
+									<h5 >اختصاص العمل المطلوب: </h5>
 									<p>
 									{{$job->job_specialist}}
 									</p>
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 
-                                    <h5 class="font-weight-600"> عدد الاشخاص المطلوب </h5>
+                                    <h5 > عدد الاشخاص المطلوب </h5>
 									<p>
 									{{$job->number_of_employess}}
 									</p>
 									
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-									<h5 class="font-weight-600">   الجنس </h5>
+									<h5 >   الجنس </h5>
 									<p>
 									{{$job->gender}}
 									</p>
 									
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 
-									<h5 class="font-weight-600">   خدمة العلم </h5>
+									<h5 >   خدمة العلم </h5>
 									<p>
 									{{$job->military_service}}
 									</p>
 									
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 
-									<h5 class="font-weight-600">   طبيعة العمل  </h5>
+									<h5 >   طبيعة العمل  </h5>
 									<p>
 									{{$job->job_type}}
 									</p>
 									
+					
+									@if(auth::user())
+										@if(auth()->user()->role == 'p')
 									
-								
-									
-									
-									<ul class="list-num-count no-round">
-										<!-- <li>T•الخبرة العملية السابقة غير مطلوبة , الافضلية لمن لديه خبرة في نفس المجال.
-											
-											
-										</li> -->
-										
-									</ul>
-									<a href="#" class="site-button">تقدم الآن</a>
+											<div class="card card-default mt-5">  
+											<form action="{{url("/job/application/$job->id/store")}}" method="POST">
+												{{ csrf_field() }}
+					
+					
+												<input type="hidden" value="{{$job->id}}" name="job">
+												<div  class="card-header">
+													<button id="enroll" type="submit" class="btn btn-primary btn-lg px-5">تقدم الآن</button>
+												</div>
+											</form>
+										@endif
+									@endif
+            </div>
 								</div>
 							</div>
 						
@@ -174,3 +197,24 @@
 	<!-- Footer -->
     
  @endsection
+
+
+
+
+
+@section('jsplugins')
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Readmore.js/2.2.0/readmore.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('article').readmore({
+			  afterToggle: function(trigger, element, expanded) {
+			    if(! expanded) { // The "Close" link was clicked
+			      $('html, body').animate( { scrollTop: element.offset().top }, {duration: 100 } );			  
+			    } 
+			  }
+			});
+		});
+	</script>
+@endsection
+
+

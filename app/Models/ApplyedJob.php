@@ -11,10 +11,5 @@ class ApplyedJob extends Model
 
 
 
-    public function Job()
-    
-    {
-        return $this->belongsToMany(Job::class)->withTimeStamps();
-    }
     
 }
