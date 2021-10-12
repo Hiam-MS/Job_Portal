@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\Company;
 
+
 use Illuminate\Support\Facades\DB;
 
 class CompanyController extends Controller
@@ -128,6 +129,9 @@ class CompanyController extends Controller
         return redirect()->route('company.profile');
        
     }
+
+
+   
 
 
 }

@@ -17,6 +17,8 @@
 	<!-- FAVICONS ICON -->
 	<link rel="icon" href="{{ asset('images/favicon.ico')}}" type="image/x-icon" />
 	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png')}}" />
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
 	
 	<!-- PAGE TITLE HERE -->
 	<title>JobBoard - HTML Template</title>

@@ -30,8 +30,23 @@ class JobsController extends Controller
     public function JobDetails($id)
 
     {
+        $person_id = auth()->user()->GetPerson;
         $job = Job::find($id);
-        return view('job.jobDetails',compact('job'));
+        $exist = DB::table('applyed_jobs')
+        ->join('jobs', 'applyed_jobs.job_id', '=', 'jobs.id')
+        ->when($id, function ($query) use ($id) {
+                return $query->where('applyed_jobs.job_id', $id);
+            })
+        ->when($person_id, function ($query) use ($person_id) {
+                return $query->where('applyed_jobs.person_id', $person_id);
+            })
+        ->first();  
+    if ($exist == null) {
+        $result = 'not exist';          
+    } else {
+        $result = 'exist';
+    }  
+        return view('job.jobDetails',compact('job','result'));
     }
 
     public function showJob()
@@ -83,4 +98,7 @@ class JobsController extends Controller
         }
 
     }
+
+
+    
 }
