@@ -21,7 +21,12 @@
     
 <div class="container">
     <div class="row justify-content-center mt-5">
-        <div class="col-md-8">        
+        <div class="col-md-8">      
+        @if(Session::get('successMsg'))
+						<div class="alert alert-success">
+							{{Session::get('successMsg')}}
+						</div>
+					@endif  
            
             
             <div class="card card-default">
