@@ -9,7 +9,5 @@ class ApplyedJob extends Model
 {
     use HasFactory;
 
-
-
     
 }

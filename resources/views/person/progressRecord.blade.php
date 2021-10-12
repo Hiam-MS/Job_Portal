@@ -75,7 +75,7 @@
                                                 @foreach($jobs as $job)
                                                 <tr>
                                                     <td>
-                                                        <a href="/job/details/{{$job->job_id}}'">{{ $job->job_title }}</a>
+                                                        <a href="/job/details/{{$job->job_id}}">{{ $job->job_title }}</a>
                                                     </td>
                                                     <td>
                                                     @if ($job->status =='hired')

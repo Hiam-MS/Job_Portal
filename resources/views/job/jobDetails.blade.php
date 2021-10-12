@@ -11,6 +11,11 @@
 }
 textarea{
 	resize: none;
+	
+}
+textarea.form-control{
+	color: black;
+	font-size:17px;
 }
 
 
@@ -51,22 +56,31 @@ textarea{
 												<ul>
 													<li><i  class="ti-location-pin"></i><strong class="font-weight-700 text-black">العنوان: {{$job->city}} </strong><span class="text-black-light"> </span></li>
 													<li><i class="ti-money"></i><strong class="font-weight-700 text-black">الراتب : {{$job->salary}}</strong> </li>
-													<li><i class="ti-shield"></i><strong class="font-weight-700 text-black">عدد الاشخاص المطلوبين:  {{$job->number_of_employess}} </strong></li>
+													<li><i class="ti-user"></i><strong class="font-weight-700 text-black">عدد الاشخاص المطلوبين:  {{$job->number_of_employess}} </strong></li>
 												</ul>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						
+				
 
 							<div class="col-lg-8">
 								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
-									
+								@if(Session::get('success'))
+						<div class="alert alert-success">
+							{{Session::get('success')}}
+						</div>
+					@endif
+					@if(Session::get('fail'))
+						<div class="alert alert-danger">
+							{{Session::get('success')}}
+						</div>
+					@endif
 									<h5 > العمل لدى شركة </h5>
 									
 								
-										<p  >{{$job->company_name}}</p>
+									<textarea name="" id="" cols="30" rows="5" class="form-control" disabled> {{$job->company_name}} </textarea>
 										
 									
 									
@@ -76,28 +90,23 @@ textarea{
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 
 									<h5 >   المسمى الوظيفي </h5>
-									<textarea name="" id="" cols="30" rows="5" class="form-control">
-
-									{{$job->job_title}}
-
-									</textarea>
+									<textarea name="" id="" cols="30" rows="5" class="form-control" disabled>{{$job->job_title}} </textarea>
 								
 									
 
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 									<h5 >   تم النشر  </h5>
-									<textarea name="" id="" cols="30" rows="5" class="form-control">
-										{{$job->created_at->diffForHumans()}}
+									<textarea name="" id="" cols="30" rows="5" class="form-control" disabled>{{$job->created_at->diffForHumans()}}
 									
-										</textarea>
+									</textarea>
 
 
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 									<br>
 									<h5 > الحد الأدنى للمستوى التعليمي: </h5>
-									<p>
-									{{$job->degree}}
-									</p>
+									<textarea name="" id="" cols="30" rows="5" class="form-control" disabled>{{$job->degree}}
+									</textarea>
+
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 									
 										
@@ -105,24 +114,24 @@ textarea{
 								
 
 									<h5 >المهام الوظيفية</h5>
-									<p>
-									{{$job->functional_tasks}}
-									</p>
+									<textarea name="" id="" cols="30" rows="5" class="form-control" disabled>{{$job->functional_tasks}}
+									</textarea>
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 								
 
 										
 									<h5 >الراتب و الفوائد </h5>
-									<p>
-                                    {{$job->salary}}
-									</p>
+									<textarea name="" id="" cols="30" rows="5" class="form-control" disabled>{{$job->salary}}
+									</textarea>
+
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 									
 									<h5 >متطلبات خاصة بهذه الفرصة</h5>
 
-									<p>
-                                    {{$job->job_requirement}}
-									</p>
+									<textarea name="" id="" cols="30" rows="5" class="form-control" disabled>{{ $job->job_requirement }}
+									</textarea>
+			
+
                                     <div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 									
 										
@@ -130,53 +139,76 @@ textarea{
 								
 
 									<h5 >اختصاص العمل المطلوب: </h5>
-									<p>
-									{{$job->job_specialist}}
-									</p>
+									<textarea name="" id="" cols="30" rows="5" class="form-control" disabled>{{$job->job_specialist}}
+									</textarea>
+
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 
                                     <h5 > عدد الاشخاص المطلوب </h5>
-									<p>
-									{{$job->number_of_employess}}
-									</p>
+									<textarea name="" id="" cols="30" rows="5" class="form-control" disabled>{{$job->number_of_employess}}
+									</textarea>
 									
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 									<h5 >   الجنس </h5>
-									<p>
-									{{$job->gender}}
-									</p>
+									<textarea name="" id="" cols="30" rows="5" class="form-control" disabled>{{$job->gender}}
+									</textarea>
 									
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 
 									<h5 >   خدمة العلم </h5>
-									<p>
-									{{$job->military_service}}
-									</p>
+									<textarea name="" id="" cols="30" rows="5" class="form-control" disabled>{{$job->military_service}}
+									</textarea>
+								
 									
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 
+								
 									<h5 >   طبيعة العمل  </h5>
-									<p>
-									{{$job->job_type}}
-									</p>
-									
+									<textarea name="" id="" cols="30" rows="5" class="form-control" disabled>{{$job->job_type}}
+									</textarea>
+								
 					
 									@if(auth::user())
 										@if(auth()->user()->role == 'p')
-									
-											<div class="card card-default mt-5">  
-											<form action="{{url("/job/application/$job->id/store")}}" method="POST">
-												{{ csrf_field() }}
-					
-					
-												<input type="hidden" value="{{$job->id}}" name="job">
-												<div  class="card-header">
-													<button id="enroll" type="submit" class="btn btn-primary btn-lg px-5">تقدم الآن</button>
+											@if ($result == 'exist')
+												<div class="card card-default mt-5">  
+													<button class="btn btn-success btn-block"><i class="fa fa-check"></i>Applied</button>
 												</div>
-											</form>
+
+
+											@else
+												<div class="card card-default mt-5">  
+													<form action="{{url("/job/application/$job->id/store")}}" method="POST">
+														{{ csrf_field() }}
+														
+														<input type="hidden" value="{{$job->id}}" name="job">
+														<div class="card-header">
+															<button type="submit" class="btn btn-primary btn-lg px-5">تقدّم الآن</button>
+														</div>
+													</form>
+												</div>
+											@endif
 										@endif
 									@endif
-            </div>
+									
+
+									@if(auth::user())
+										@if(auth()->user()->role == 'c')
+											<div class="card card-default mt-5">  
+												<form action="{{url("/job/applyedToJob/$job->id")}}" method="">
+													{{ csrf_field() }}
+													<input type="hidden" value="{{$job->id}}" name="job">
+													<div  class="card-header">
+														<button id="viewApplyedJob" type="submit" class="btn btn-primary btn-lg px-5">عرض المتقدمين</button>
+													</div>
+												</form>
+											</div>
+										@endif
+									@endif
+
+
+
+            								
 								</div>
 							</div>
 						

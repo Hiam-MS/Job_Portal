@@ -33,7 +33,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //     list jobs and job details
-Route::get('/job/details/{id}','JobsController@JobDetails');
+Route::get('/job/details/{id}','JobsController@JobDetails')->name('JobDetails');
 Route::get('/job/showJobs','JobsController@showJob')->name('job');
 //
 
@@ -56,10 +56,12 @@ Route::get('/company/editProfile','CompanyController@editCompanyProfile')->name(
 Route::post('/company/editProfile/{id}','CompanyController@updatCompanyProfile');
 Route::get('company/shortList','CompanyController@getJob')->name('CompanyJob');
 
+
 //********************************************* */
 
 Route::get('/job/addJob','JobsController@addJob')->name('addJob');
 Route::post('/job/storeJob','JobsController@storeJob');
+
 
 
 
@@ -139,9 +141,17 @@ Route::post('/resume/storePersonJobCat','PersonController@storePersonJobCat');
 
 
 Route::get('/resume/applyedJob','ApplicantController@applyedJob')->name('applyedJob');
+
 Route::post('/job/application/{id}/store', 'ApplicantController@storeApplyedJob');
 
+Route::get('/job/applyedToJob/{id}','ApplicantController@getApplyedToJob')->name('Applicants');
 
+Route::get('/job/applyedToJob/{id}/{user}/hire', 'ApplicantController@hire');
+
+Route::get('/job/applyedToJob/{id}/{user}/reject', 'ApplicantController@reject');
+
+
+Route::get('/job/applicationForm/{id}','ApplicantController@getApplicationForm');
 
 
 //Route::get('res_det','PersonController@res_det');

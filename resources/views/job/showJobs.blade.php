@@ -26,12 +26,11 @@
         <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(images/banner/bnr1.jpg);">
             <div class="container">
                 <div class="dez-bnr-inr-entry">
-                    <h1 class="text-white">Browse Jobs</h1>
+                    <h1 class="text-white">فرص العمل </h1>
 					<!-- Breadcrumb row -->
 					<div class="breadcrumb-row">
 						<ul class="list-inline">
-							<li><a href="#">Home</a></li>
-							<li>Browse Jobs</li>
+						
 						</ul>
 					</div>
 					<!-- Breadcrumb row END -->
