@@ -63,7 +63,7 @@ textarea.form-control{
 									</div>
 								</div>
 							</div>
-				
+						
 
 							<div class="col-lg-8">
 								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
@@ -76,7 +76,7 @@ textarea.form-control{
 						<div class="alert alert-danger">
 							{{Session::get('success')}}
 						</div>
-					@endif
+					@endif	
 									<h5 > العمل لدى شركة </h5>
 									
 								
@@ -170,7 +170,7 @@ textarea.form-control{
 					
 									@if(auth::user())
 										@if(auth()->user()->role == 'p')
-											@if ($result == 'exist')
+										@if ($result == 'exist')
 												<div class="card card-default mt-5">  
 													<button class="btn btn-success btn-block"><i class="fa fa-check"></i>Applied</button>
 												</div>
@@ -187,8 +187,7 @@ textarea.form-control{
 														</div>
 													</form>
 												</div>
-											@endif
-										@endif
+											@endif										@endif
 									@endif
 									
 

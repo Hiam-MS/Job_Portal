@@ -113,8 +113,6 @@ class ApplicantController extends Controller
                 return back()->withInput()->with('fail','هناك خطأ ما');
             }
 
-            
-
     }
   
 
