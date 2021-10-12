@@ -32,6 +32,7 @@
                                     <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="#" > لوحة التحكم<a></h4>
                                     <ul>
 									@if(isset(auth()->user()->GetPerson))
+									
 									   <li><strong class="font-weight-700 text-black"><a href="/resume/ViewpersonalInfo" >  معاينةالسيرة الذاتية</a>  </strong></li>
 										<li><strong class="font-weight-700 text-black"><li><a href="#" >تعديل السيرة الذاتية</a></li></strong> </li>
 										<li><strong class="font-weight-700 text-black"><li><a href="/resume/createEdu" >اضافة/تعديل التعليم و المهارات  </a></li></strong> </li>
@@ -41,7 +42,17 @@
 									  @else
 
 									<li><strong class="font-weight-700 text-black"> <a href="/resume/create" >انشاء السيرة الذاتية</a></strong><span class="text-black-light"> </span></li>
-										@endif			
+									
+										@endif	
+
+										
+							
+								
+										<li><strong class="font-weight-700 text-black"><h5 >      ادارة الحساب</h5>  </strong>
+										<ul>
+										<ul><li><strong class="font-weight-700 text-black"><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a>  </strong></li></ul>
+										<ul><li><strong class="font-weight-700 text-black"><a href="{{route('edit.form')}}" >   تعديل   الحساب</a>  </strong></li></ul>
+										<ul><li><strong class="font-weight-700 text-black"><a href="{{route('profile.delete')}}" >  حذف الحساب </a>  </strong></li>		
                                             </ul>
 									</div>
 								</div>

@@ -50,6 +50,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/edit-profile','UserController@editform')->name('edit.form'); 
     Route::post('/update-profile','UserController@updateprofile')->name('profile.update');
 
+    Route::get('/edit-profile-email','UserController@editformEmail')->name('edit.formEmail'); 
+    Route::post('','UserController@updateprofileEmail')->name('profile.updateEmail');
+
     Route::get('/delete-profile', 'UserController@Deleteprofile')->name('profile.delete');
 
 
@@ -97,6 +100,8 @@ Route::get('Person/details/{id}','PersonController@ResuemDetails');
 //show form (add personal info)
     Route::get('/resume/create','PersonController@createResume')->name('resuem.create');
     Route::post('/resume/store','PersonController@store');
+    Route::get('/resume/edit-Personal-Info', 'PersonController@editPersonalInfo')->name('PersonalInfo.edit');
+    Route::PUT('/resume/update-Personal-Info','PersonController@updatPersonalInfo');
 //show form for add Edu _ Exp _ skill
     Route::get('/resume/createEdu','PersonController@createResumeEdu')->name('edu');
 //Education

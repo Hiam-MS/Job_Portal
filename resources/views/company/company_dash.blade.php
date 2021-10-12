@@ -40,9 +40,14 @@
 
 												@endif
 												<li><strong class="font-weight-700 text-black"><a href="{{route('resuems')}}" >   عرض السير الذاتية المتاحة</a>  </strong></li>	
-												<li><strong class="font-weight-700 text-black"><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a>  </strong></li>
-												<li><strong class="font-weight-700 text-black"><a href="{{route('edit.form')}}" >   تعديل   الحساب</a>  </strong></li>	
-												<li><strong class="font-weight-700 text-black"><a href="{{route('profile.delete')}}" >  حذف الحساب عن الموقع</a>  </strong></li>	
+												
+										<li><strong class="font-weight-700 text-black"><h5 >      ادارة الحساب</h5>  </strong>
+										<ul>
+										<ul><li><strong class="font-weight-700 text-black"><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a>  </strong></li></ul>
+										<ul><li><strong class="font-weight-700 text-black"><a href="{{route('edit.form')}}" >   تعديل   الحساب</a>  </strong></li></ul>
+										<ul><li><strong class="font-weight-700 text-black"><a href="{{route('profile.delete')}}" >  حذف الحساب </a>  </strong></li>		
+										</ul >
+										</li>	
                                             </ul>
 									</div>
 								</div>
