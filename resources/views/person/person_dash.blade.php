@@ -1,8 +1,26 @@
 @extends('header')
 @section('content')
 @csrf
-    
-    
+<style>
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 250px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
 <div class="page-content bg-white">
     <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{ asset('images/banner/bnr1.jpg')}});">
 	
@@ -45,18 +63,38 @@
 									
 										@endif	
 
-										
+										<!-- <div class="dropdown font-weight-700 text-black">
+										<button class="dropbtn"> ادارة الحساب</button>
+                                        <div class="dropdown-content">
+                                        <p> <a href="#">Link 1</a></p>
+                                        <p> <a href="#">Link 2</a></p>
+                                        <p> <a href="#">Link 3</a></p>
+                                         </div>
+                                          </div> -->
+
+
+										  <div class="dropdown " >
+										  <li><strong class="font-weight-700 text-black"><h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5>  </strong>	</li>
+                                         <div class="dropdown-content">
+                                         <ul><li><a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a> </li></ul>
+										<ul><li><a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a> </li></ul>
+										<ul><li><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a> </li></ul>
+										<ul><li><a href="{{route('profile.delete')}}" >  حذف الحساب </a> </li>	
+                                         </div>
+                                           </div>
+										   <br> <br> <br>  
+  
 							
 								
-										<li><strong class="font-weight-700 text-black"><h5 >      ادارة الحساب</h5>  </strong>
-										<ul>
+										<!-- <li><strong class="font-weight-700 text-black"><h5 >      ادارة الحساب</h5>  </strong>	</li>
+										
 										
 										<ul><li><strong class="font-weight-700 text-black"><a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a>  </strong></li></ul>
 										<ul><li><strong class="font-weight-700 text-black"><a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a>  </strong></li></ul>
 										<ul><li><strong class="font-weight-700 text-black"><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a>  </strong></li></ul>
-										<ul><li><strong class="font-weight-700 text-black"><a href="{{route('profile.delete')}}" >  حذف الحساب </a>  </strong></li>		
-										</ul >
-										</li>
+										<ul><li><strong class="font-weight-700 text-black"><a href="{{route('profile.delete')}}" >  حذف الحساب </a>  </strong></li>		 -->
+										
+									
 									</div>
 								</div>
 

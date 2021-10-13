@@ -123,8 +123,8 @@
 					
 
 						<div class="form-group" >
-							<label>  اللغات </label>
-							<select name="lang[]" id="category" multiple='multiple' size="3" data-parsly-trigger="keyup" class="form-control" style="width:660px" >
+							<label>  اللغات </label><br>
+							<!-- <select name="lang[]" id="category" multiple='multiple' size="3" data-parsly-trigger="keyup" class="form-control" style="width:660px" >
 								<option  >يرجى الاختيار</option>
 								<option  ></option>
 								<option value="عربي">عربي</option>
@@ -136,11 +136,36 @@
 								
 								
 								
-							</select> 
-                            
+							</select>  -->
+							<select class="js-example-basic-multiple" name="lang[]" multiple="multiple" style="width: 58%">
+							
+							<option value="عربي">عربي</option>
+							<option value="اسباني">اسباني</option>
+							<option value="ايطالي">ايطالي</option>
+							<option value="انكليزي">انكليزي</option>
+</select>
+                            </div>						
+							
+			
+
+
+<script> 
+$(document).ready(function() {
+    $('.js-example-basic-multiple').select2({
+    placeholder: "يرجى الاختيار",
+	width: 'resolve',
+    allowClear: true ,
+	closeOnSelect: false
+	
+});
+    
+});
+
+
+</script>
 						
 							
-						</div>
+						
 					
 						
 						

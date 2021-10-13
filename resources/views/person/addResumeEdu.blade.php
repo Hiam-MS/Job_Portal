@@ -60,22 +60,7 @@
 												</ul>
 											</div>
 										</div>
-								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;"class="col-lg-12 col-md-6">
-									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
-										<h4 class="text-black font-weight-700 p-t10 m-b15">لوحة التحكم</h4>
-
-										<ul>
-											@if(isset(auth()->user()->GetPerson))
-												<li><strong class="font-weight-700 text-black"><a href="/resume/ViewpersonalInfo" >  معاينةالسيرة الذاتية</a>  </strong></li>
-										        <li><strong class="font-weight-700 text-black"><li><a href="#" >تعديل السيرة الذاتية</a></li></strong> </li>
-												<li><strong class="font-weight-700 text-black"><li><a href="/resume/createEdu" >اضافة/تعديل التعليم و المهارات  </a></li></strong> </li>
-											@else
-
-												<li><strong class="font-weight-700 text-black"> <a href="/resume/create" >انشاء السيرة الذاتية</a></strong><span class="text-black-light"> </span></li>
-											@endif	
-										</ul>
-									</div>
-								</div>
+								
 							</div>
 						</div>
 					</div> 
@@ -89,14 +74,37 @@
 								<br>
 								<h3 class="font-weight-600">  اختصاص العمل المطلوب  </h3>
 								<p> </p><p></p>
-								<select name="category[]" id="category" multiple="multiple" size="13">
-                                    @foreach($jobCat as $category)
-                                    	<option value="{{$category->id}}">{{$category->name}}</option>
+								
+
+								<select class="js-example-basic-multiple" name="category[]" multiple="multiple" style="width: 63%" >
+								@foreach($jobCat as $category)
+								<option value="{{$category->id}}">{{$category->name}}</option>
                                      @endforeach
-                                </select>
+</select>
 								<br><br>
 
                                 <p><button type="submit" class="btn btn-primary" > أضف</button></p>
+
+ 								
+								
+
+								
+								<script> 
+$(document).ready(function() {
+    $('.js-example-basic-multiple').select2({
+    placeholder: "  يرجى اختيار اختصاص العمل ",
+	width: 'resolve',
+    allowClear: true ,
+	closeOnSelect: false
+	
+});
+    
+});
+
+
+</script>
+
+
 
 								<br>
 								<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>

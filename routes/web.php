@@ -10,6 +10,7 @@ use App\Http\Controllers\ApplicantController;
 
 
 
+
 use Illuminate\Routing\Redirector;
 
 
@@ -36,8 +37,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/job/details/{id}','JobsController@JobDetails');
 Route::get('/job/showJobs','JobsController@showJob')->name('job');
 //
-
-
+Route::group(['middleware' => 'prevent-back-history'],function(){
+    
+    Auth::routes();
 
 
 //    *******************   auth  *****************
@@ -151,7 +153,7 @@ Route::post('/resume/storePersonJobCat','PersonController@storePersonJobCat');
 
 });
 
-
+});
 
 
 Route::get('/resume/applyedJob','ApplicantController@applyedJob')->name('applyedJob');
@@ -173,4 +175,6 @@ Route::get('/job/applicationForm/{id}','ApplicantController@getApplicationForm')
 // Route::get('auth/login','HomeController@login');
 // Route::get('auth/register','HomeController@register');
 
-
+Route::get('/select2', function () {
+    return view('person.testselect2');
+});

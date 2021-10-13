@@ -345,13 +345,13 @@
 									
 
 								
-									@if(count($Person->PersonCousre) > 0)
+									
 									<h2 class="font-weight-600" style="background: rgb(230, 230, 230);">   اللغات </h2>
 									
 									@foreach($Person->lang as $lan)
 										<p  style="font-weight:bold;"> {{ $lan}} </p>
 										@endforeach
-										@endif
+										
 
 									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 									

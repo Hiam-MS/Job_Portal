@@ -43,8 +43,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/revolution/css/navigation.css')}}">
 	<!-- Revolution Navigation Style -->
 <!-- select2 -->
-<link rel="stylesheet" type="text/css" href="{{asset('css/jquery.multiselect.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('css/multiselect.css')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 <script
@@ -303,7 +302,9 @@
 
 <!-- select2 -->
 <!--select2 -->
-<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 <script src="D:\job\Job_Portal\public\js\jquery.multiselect.js"></script>

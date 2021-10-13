@@ -111,6 +111,7 @@ public function Deleteprofile()
         $user = User::find(Auth::id());
 
          $res=$user->delete();
+         Auth::logout();
   if ($res){
     
     return view('welcome');

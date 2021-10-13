@@ -92,7 +92,10 @@ class PersonController extends Controller
     public function createResume()
     {
         if(isset(auth()->user()->GetPerson)){
+
             return redirect()->route('edu');
+
+            
 
         }
         else
