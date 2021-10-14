@@ -80,7 +80,7 @@
 
 												@endforeach
 											@else
-												<tr><td>No result Founded</td></tr>
+												<tr><td>  لايوجد سير ذاتية لعرضها</td></tr>
 											@endif
 										</tbody>
 									</table>

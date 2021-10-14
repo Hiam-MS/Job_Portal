@@ -59,6 +59,7 @@
                                 
                                     
                                 <li>
+								@if(count($jobs) > 0)
                                 @foreach($jobs as $item)
 								
 									<a href="details/{{ $item->id }}">
@@ -90,8 +91,9 @@
 									<hr>
                                     @endforeach
 								</li>
+								@endif
                                 
-                            
+								<span>{{$jobs->links('layouts.paginationlinks')}}</span>
 								
 							
 								
@@ -106,7 +108,7 @@
 								<div class="clearfix m-b30">
 									
 								<h4 class="h4 text-info">Select Category</h4>
-		            		<form method="get">
+		            		<form method="GET" >
 			            		<div class="form-check">
 								 <input class="form-check-input catFilter" type="checkbox"  value="all" id="filterall" name="cat"
 								 @if($cat > 0)
@@ -152,4 +154,7 @@
     </div>
     <!-- Content END-->
 	<!-- Footer -->
+
+
+	
 @endsection

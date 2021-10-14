@@ -96,13 +96,14 @@ class JobsController extends Controller
                 ]);
             } 
         }else {
-            $jobs = Job::where('job_title', 'like', '%'.$search.'%')
+            // $jobs = Job::where('job_title', 'like', '%'.$search.'%')
             
-            ->orderby('created_at', 'desc')
-            ->paginate(5)
-            ->appends([
-                'search' => request('search')
-            ]);
+            // ->orderby('created_at', 'desc')
+            // ->paginate(5)
+            // ->appends([
+            //     'search' => request('search')
+            // ]);
+            $jobs=Job::paginate(5);
         }
        
         return view('job.showJobs',compact('categories','jobs','cat','search'));
