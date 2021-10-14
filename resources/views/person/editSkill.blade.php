@@ -43,6 +43,9 @@
 						
 						
 						<button type="submit" class="site-button" > تعديل </button>
+                        <form>
+ <input type="button" value="الغاء" onclick="history.back()" class="btn btn-primary">
+</form>
 					</form>
 				</div>
 			</div>

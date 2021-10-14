@@ -48,7 +48,7 @@ class Person extends Model
     public function JobCategory()
 
     {
-        return $this->belongsToMany(JobCategory::class);
+        return $this->belongsToMany(JobCategory::class,'person_categories');
 
     }
 
