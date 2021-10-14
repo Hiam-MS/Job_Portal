@@ -69,7 +69,7 @@
                                         <td class="text-nowrap"><h5 class="h5"> <a class="text-info" href="/proposal/{{$applicant->job_id}}/{{$applicant->id}}">{{ $applicant->name }}</a></h5>
                                             <p>{{ $applicant->job_title }}</p>
                                             <p class="small"> 
-                                                <span class="mr-5"><i class="fa fa-envelope"></i> تم النشر بتاريخ: {{ $job->created_at->diffForHumans() }}</span>                                            
+                                                <span class="mr-5"><i class="fa fa-envelope"></i> تم التقدم بتاريخ: {{ $applicant->created_at }}</span>                                            
                                                 <span><i class="fa fa-map-marker-alt"></i> {{ $applicant->country }}</span>
                                             </p>
                                         </td>

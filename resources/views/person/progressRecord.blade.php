@@ -53,6 +53,16 @@
 
 					<div class="col-lg-8">
 						<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
+                        @if(Session::get('success'))
+						<div class="alert alert-success">
+							{{Session::get('success')}}
+						</div>
+					@endif
+					@if(Session::get('fail'))
+						<div class="alert alert-danger">
+							{{Session::get('success')}}
+						</div>
+					@endif
                             <div>
                                 <h4><p>
                                     سجل التقدمات
@@ -79,11 +89,11 @@
                                                     </td>
                                                     <td>
                                                     @if ($job->status =='hired')
-						      		                    <h4><span class="badge badge-success w-100">{{ $job->status }}</span></h4>
+						      		                    <h4><span class="badge badge-success w-100">تم القبول</span></h4>
 						                        	@elseif($job->status =='rejected')
-						      		                    <h4><span class="badge badge-danger w-100">{{ $job->status }}</span></h4>
+						      		                    <h4><span class="badge badge-danger w-100">تم الرفض</span></h4>
 						      	                    @else
-						      		                    <h4><span class="badge badge-primary w-100">{{ $job->status }}</span></h4>
+						      		                    <h4><span class="badge badge-primary w-100">في حالة انتظار</span></h4>
 						      	                    @endif
                                                     </td>
                                                 </tr>

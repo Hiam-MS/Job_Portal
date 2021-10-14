@@ -63,6 +63,17 @@
 
 					<div class="col-lg-8">
 						<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
+						@if(Session::get('success'))
+							<div class="alert alert-success">
+								{{Session::get('success')}}
+							</div>
+						@endif
+						@if(Session::get('fail'))
+							<div class="alert alert-danger">
+								{{Session::get('success')}}
+							</div>
+						@endif	
+						
                         <h5 class="widget-title font-weight-700 text-uppercase"> الفرص المنشورة  </h5>
 							<br>
 							<ul class="post-job-bx">

@@ -33,7 +33,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //     list jobs and job details
-Route::get('/job/details/{id}','JobsController@JobDetails');
+Route::get('/job/details/{id}','JobsController@JobDetails')->name('JobDetails');
 Route::get('/job/showJobs','JobsController@showJob')->name('job');
 //
 

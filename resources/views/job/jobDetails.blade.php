@@ -6,7 +6,7 @@
 <style>
 	h5 {
   color: blue;
-  text-align: center;
+  text-align: right;
   
 }
 textarea{
@@ -77,7 +77,32 @@ textarea.form-control{
 							{{Session::get('success')}}
 						</div>
 					@endif	
-									<h5 > العمل لدى شركة </h5>
+					<h3 class="m-t0 m-b10 font-weight-700 title-head">
+									<a href="#" class="text-secondry m-r30"> 
+										<p style="color:red">{{$job->company_name}}</p> 
+										<p style="color:blue">{{$job->job_title }} </p>
+										</a>
+								</h3>
+								<ul class="job-info">
+									<li><strong >الحد الأدنى للمستوى التعليمي:</strong> <i class="ti-stamp text-black m-r5"></i>{{$job->degree}} </li>
+									
+									<li><i class="ti-location-pin text-black m-r5"></i> {{$job->city}} </li>
+								</ul>
+								<br>
+								<h5 class="font-weight-600">متطلبات خاصة بهذه الفرصة</h5>
+								<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+								<p class="p-t20">{{$job->job_requirement}}</p>
+								<h5 class="font-weight-600">المهام الوظيفية</h5>
+								<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+								<p>{{$job->functional_tasks}}</p>
+								<h5 class="font-weight-600">الراتب والفوائد</h5>
+								<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+								<p>{{$job->salary}}</p>
+								<h5 class="font-weight-600">متطلبات خاصة بهذه الفرصة</h5>
+								<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+								<p>{{$job->salary}}</p>
+								
+									<!-- <h5 > العمل لدى شركة </h5>
 									
 								
 									<textarea name="" id="" cols="30" rows="5" class="form-control" disabled> {{$job->company_name}} </textarea>
@@ -165,12 +190,12 @@ textarea.form-control{
 								
 									<h5 >   طبيعة العمل  </h5>
 									<textarea name="" id="" cols="30" rows="5" class="form-control" disabled>{{$job->job_type}}
-									</textarea>
+									</textarea> -->
 								
 					
 									@if(auth::user())
 										@if(auth()->user()->role == 'p')
-										@if ($result == 'exist')
+											@if ($result == 'exist')
 												<div class="card card-default mt-5">  
 													<button class="btn btn-success btn-block"><i class="fa fa-check"></i>Applied</button>
 												</div>
@@ -180,14 +205,13 @@ textarea.form-control{
 												<div class="card card-default mt-5">  
 													<form action="{{url("/job/application/$job->id/store")}}" method="POST">
 														{{ csrf_field() }}
-														
 														<input type="hidden" value="{{$job->id}}" name="job">
-														<div class="card-header">
-															<button type="submit" class="btn btn-primary btn-lg px-5">تقدّم الآن</button>
-														</div>
+														<button type="submit" class="btn btn-primary btn-block">تقدّم الآن</button>
+														
 													</form>
 												</div>
-											@endif										@endif
+											@endif
+										@endif
 									@endif
 									
 
@@ -197,9 +221,8 @@ textarea.form-control{
 												<form action="{{url("/job/applyedToJob/$job->id")}}" method="">
 													{{ csrf_field() }}
 													<input type="hidden" value="{{$job->id}}" name="job">
-													<div  class="card-header">
-														<button id="viewApplyedJob" type="submit" class="btn btn-primary btn-lg px-5">عرض المتقدمين</button>
-													</div>
+													<button id="viewApplyedJob" type="submit" class="btn btn-primary btn-block">عرض المتقدمين</button>
+													
 												</form>
 											</div>
 										@endif

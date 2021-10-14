@@ -21,7 +21,7 @@
 
 	
 	<!-- PAGE TITLE HERE -->
-	<title>JobBoard - HTML Template</title>
+	<title>منصة التوظيف</title>
 	
 	<!-- MOBILE SPECIFIC -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,6 +45,7 @@
 <!-- select2 -->
 <link rel="stylesheet" type="text/css" href="{{asset('css/jquery.multiselect.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/multiselect.css')}}">
+<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 
 <style>
 	   body {
@@ -306,7 +307,11 @@
 
 
 												<!--select2 -->
-
+												<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="semantic/dist/semantic.min.js"></script>
 
 
 </body>

@@ -46,10 +46,7 @@
 					<div class="row">
 						<div class="col-xl-9 col-lg-8" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
 						
-						<a href="{{ route('addJob') }}">
-
-							<button  id ="add" type="submit" class="btn btn-primary  "> إضافة فرص عمل جديدة</button>
-						</a>
+						
 						<br>
 						
 						<br>
@@ -57,12 +54,12 @@
 						<h5 class="widget-title font-weight-700 text-uppercase"> الفرص الحالية  </h5>
 							<br>
 							<ul class="post-job-bx">
-                                <form action="">
+                              
                                
                                 
                                     
                                 <li>
-                                @foreach($job as $item)
+                                @foreach($jobs as $item)
 								
 									<a href="details/{{ $item->id }}">
 										<div class="d-flex m-b30">
@@ -94,7 +91,7 @@
                                     @endforeach
 								</li>
                                 
-                                </form>
+                            
 								
 							
 								
@@ -107,11 +104,41 @@
 						<div class="col-xl-3 col-lg-4">
 							<div class="sticky-top">
 								<div class="clearfix m-b30">
-									<h5 class="widget-title font-weight-700 text-uppercase">Keywords</h5>
-									<div class="">
-										<input type="text" class="form-control" placeholder="Search">
-									</div>
+									
+								<h4 class="h4 text-info">Select Category</h4>
+		            		<form method="get">
+			            		<div class="form-check">
+								 <input class="form-check-input catFilter" type="checkbox"  value="all" id="filterall" name="cat"
+								 @if($cat > 0)
+									{{'unchecked'}}
+								 @else 
+								 	{{'checked'}}	 	
+								 @endif
+								 >
+								  <label class="form-check-label" for="filterall">All
+								  </label>
 								</div>
+			            		@foreach($categories as $category)
+				            		<div class="form-check">
+									 <input class="form-check-input catFilter" type="checkbox" value="{{$category->id}}" id="defaultCheck1{{$category->id}}" name="cat"
+									 @if($cat == $category->id)
+									 	{{'checked'}}
+									 @endif	
+									 >
+									  <label class="form-check-label" for="defaultCheck1{{$category->id}}">
+									   {{$category->name}}
+									  </label>
+									</div>
+			            		@endforeach
+
+
+			            		<input type="text" name="search" class="form-control mt-2" placeholder="Search Job" value="{{$search}}">
+			            		<button class="btn btn-info mt-2" id="searchCat">Seach</button>
+		            		</form>
+								</div>
+								
+
+
 							
 								
 							
