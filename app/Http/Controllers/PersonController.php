@@ -46,7 +46,7 @@ class PersonController extends Controller
 
     public function viewResuemForm(Request $request)
     {
-        if(isset($_GET['query'])){
+        // if(isset($_GET['query'])){
             
         $search_text= $_GET['query'];
         $Person= Person::where('name','LIKE','%'.$search_text.'%')->paginate(5)->appends([
@@ -54,33 +54,40 @@ class PersonController extends Controller
             
         ]);
         // $Person=appends($request->all());
+        // $search_text= $_GET['query'];
+        // $Person= Person::where('name','LIKE','%'.$search_text.'%')->paginate(2);
+        // //$Person=appends($request->all());
+        // return view('person.viewResuem',compact('Person'));
+        // }else{
+        //     $Person=Person::paginate(10);
+        //     return view('person.viewResuem',compact('Person'));
+        // }
+
+        $Person=Person::paginate(10);
         return view('person.viewResuem',compact('Person'));
-        }else{
-            $Person=Person::paginate(10);
-            return view('person.viewResuem',compact('Person'));
-        }
 
-    }
+}
+
+//   search resume    //
 
 
-  
-    // public function viewResuem(Request $request)
-    // {
-    //     if(isset($_GET['query'])){
-            
-    //     $search_text= $_GET['query'];
-    //     $Person= exc::where('name','LIKE','%'.$search_text.'%')->paginate(2);
-    //     //$Person=appends($request->all());
-    //     return view('person.viewResuem',compact('Person'));
-    //     }else{
-    //         $Person=Person::paginate(10);
-    //         return view('person.viewResuem',compact('Person'));
-    //     }
 
-    // }
+public function searchResume(Request $request)
+    {
 
-  
-    
+        $Person = DB::table('people')
+        ->join('person_education', 'people.id', '=', 'person_education.person_id')
+        ->where('degree_name','LIKE','%' . $request->get('serchQuest') . '%')->get();
+
+        return json_encode( $Person);
+        
+        
+
+ }
+
+
+
+
 
     public function ResuemDetails($id)
     {

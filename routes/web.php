@@ -56,7 +56,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/delete-profile', 'UserController@Deleteprofile')->name('profile.delete');
 
-
+// ********************* role company *******************
    
 
     Route::group(['middleware' => 'role:company'], function(){
@@ -71,6 +71,8 @@ Route::post('/company/editProfile/{id}','CompanyController@updatCompanyProfile')
 Route::get('company/shortList','CompanyController@getJob')->name('CompanyJob');
 
 
+
+
 //********************************************* */
 
 Route::get('/job/addJob','JobsController@addJob')->name('addJob');
@@ -81,10 +83,16 @@ Route::post('/job/storeJob','JobsController@storeJob');
 
 });
 
+
+// ********************* role company + admin *******************
+
 Route::group(['middleware' => 'role:company|admin'], function(){
 // view all resume and resume details
 Route::get('view_resuem','PersonController@viewResuemForm')->name('resuems');
 Route::get('Person/details/{id}','PersonController@ResuemDetails'); 
+
+Route::post('/resume/search','PersonController@searchResume')->name('search.Resume');
+
 //
 
 });
