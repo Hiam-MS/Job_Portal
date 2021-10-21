@@ -46,14 +46,8 @@ class PersonController extends Controller
 
     public function viewResuemForm(Request $request)
     {
-        if(isset($_GET['query'])){
+        // if(isset($_GET['query'])){
             
-        $search_text= $_GET['query'];
-        $Person= Person::where('name','LIKE','%'.$search_text.'%')->paginate(5)->appends([
-            'query' => request('query'),
-            
-        ]);
-        // $Person=appends($request->all());
         // $search_text= $_GET['query'];
         // $Person= Person::where('name','LIKE','%'.$search_text.'%')->paginate(2);
         // //$Person=appends($request->all());
