@@ -2,7 +2,9 @@
 
 @section('content')
 
-
+<style>
+    
+</style>
     <!-- Content -->
     <div class="page-content bg-white">
         <!-- inner page banner -->

@@ -21,7 +21,7 @@
 		}
 </style>
 <div class="page-content bg-white">
-    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(images/banner/bnr1.jpg);">
+    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}});">
         <div class="container">
             <div class="dez-bnr-inr-entry">
                 <h1 class="text-white">لوحة التحكم </h1>
@@ -39,7 +39,7 @@
 							<div class="row">
 								<div class="col-lg-12 col-md-6">
 									<div class="m-b30">
-										<!-- <img src="images/blog/grid/6.jpg" alt=""> -->
+									<img src="{{asset('images/blog/grid/6.jpg')}}" alt="">
 									</div>
 								</div>
 										
@@ -64,33 +64,34 @@
 					<div class="col-lg-8">
 						<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
 						@if(Session::get('success'))
-							<div class="alert alert-success">
+							<div class="alert alert-success" style="font-size:20px">
 								{{Session::get('success')}}
 							</div>
 						@endif
 						@if(Session::get('fail'))
-							<div class="alert alert-danger">
+							<div class="alert alert-danger" style="font-size:20px">
 								{{Session::get('success')}}
 							</div>
 						@endif	
 						
-                        <h5 class="widget-title font-weight-700 text-uppercase"> الفرص المنشورة  </h5>
+                        <h5 class="widget-title font-weight-700 text-uppercase" style="color:blue"> الفرص المنشورة  </h5>
 							<br>
 							<ul class="post-job-bx">
                                 <form action="">
                                
                                 
-                                    
+								 
                                 <li>
+								@if(count($company->Job) > 0) 
                                 @foreach($company->Job as $item)
 								
 									<a href="/job/details/{{$item['id']}}">
 										<div class="d-flex m-b30">
 											<div class="job-post-company">
-												<span><img src="images/logo/icon1.png"/></span>
+												<span><img src="{{asset('images/logo/icon1.png')}}"/></span>
 											</div>
 											<div class="job-post-info">
-												<h4>{{$item-> company_name}}</h4>
+												<h4>{{$item-> job_title}}</h4>
 												<ul>
 													<li> {{$item->city}}</li>
 													<li> {{$item->job_type}}</li>
@@ -100,7 +101,7 @@
 										</div>
 										<div class="d-flex">
 											<div class="job-time mr-auto">
-												<span>{{$item->job_type}}</span>
+												<span>{{$item->company_name}}</span>
 											</div>
 											<div class="salary-bx">
 												<span>{{$item->salary}}</span>
@@ -110,12 +111,15 @@
 									</a>
                                     <br><hr>
                                     @endforeach
+									@else
+										<li>  لايوجد فرص عمل  لعرضها</li>
+									@endif
 								</li>
-                                
+								
                                 </form>
 								
 								
-								
+							 
 								
 								
 							

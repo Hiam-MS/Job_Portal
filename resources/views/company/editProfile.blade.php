@@ -25,7 +25,7 @@
 									<div class="row">
 										<div class="col-lg-12 col-md-6">
 											<div class="m-b30">
-												<img  src="images/blog/grid/6.jpg" alt="">
+											<img src="{{asset('images/blog/grid/6.jpg')}}" alt="">
 											</div>
 											
 											<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">

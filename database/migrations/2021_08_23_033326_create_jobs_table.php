@@ -18,9 +18,10 @@ class CreateJobsTable extends Migration
             $table->string('company_name');
             $table->string('job_title');
             $table->integer('number_of_employess');
-            $table->string('salary');
-            $table->string('job_requirement');
-            $table->string('functional_tasks');
+            $table->string('budget');
+            
+            $table->text('job_requirement');
+            $table->text('functional_tasks');
             $table->string('country');
             $table->string('city');
             $table->string('gender');

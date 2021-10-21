@@ -3,7 +3,7 @@
     @csrf
     
 <div class="page-content bg-white">
-    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{ asset('images/banner/bnr1.jpg')}});;">
+    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}});">
         <div class="container">
             <div class="dez-bnr-inr-entry">
                 <h1 class="text-white">لوحة التحكم </h1>
@@ -21,7 +21,7 @@
 							<div class="row">
 								<div class="col-lg-12 col-md-6">
 									<div class="m-b30">
-										<img src="images/blog/grid/6.jpg" alt=""> 
+									<img src="{{asset('images/blog/grid/6.jpg')}}" alt="">
 									</div>
 								</div>
 										

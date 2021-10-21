@@ -19,6 +19,7 @@
 		text-align: center;
 		
 		color: black;
+		font-size:20px;
 		}
 </style>
     <!-- header END -->
@@ -28,12 +29,11 @@
         <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(images/banner/bnr1.jpg);">
             <div class="container">
                 <div class="dez-bnr-inr-entry">
-                    <h1 class="text-white">Browse Jobs</h1>
+                    <h1 class="text-white"> السير الذاتية</h1>
 					<!-- Breadcrumb row -->
 					<div class="breadcrumb-row">
 						<ul class="list-inline">
-							<li><a href="#">Home</a></li>
-							<li>Browse Jobs</li>
+							
 						</ul>
 					</div>
 					<!-- Breadcrumb row END -->
@@ -49,7 +49,7 @@
 					<div class="row">
 					<div class="col-xl-9 col-lg-8" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
 							<h5 class="widget-title font-weight-700 text-uppercase"> السير الذاتية الحالية  </h5>
-							<br>
+							<br><br>
 								<ul class="post-job-bx">
 									@if(isset($Person))
 									<table id="resuems" dir="rtl">

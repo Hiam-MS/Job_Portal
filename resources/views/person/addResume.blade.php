@@ -1,5 +1,12 @@
 @extends('header')
 @section('content')
+<style>
+    .form-control{
+        font-size:20px;
+        font-family: Arial, Helvetica, sans-serif;
+
+    }
+</style>
     <!-- header END -->
     <!-- Content -->
     <!-- Content -->
@@ -49,8 +56,8 @@
 
 						<div class="form-group" >
 							<label> الجنس 
-							<select name="gender" class="form-control" style="width:300px;" >
-								<option  >يرجى الاختيار</option>
+							<select name="gender" class="form-control  form-control-lg" style="width:300px;" >
+								<option selected disabled >يرجى الاختيار</option>
 								<option value="انثى"  > انثى </option>
                                 <option value="ذكر"  > ذكر </option>
 								
@@ -59,8 +66,8 @@
 							</select> </label>
                             
 							<label style="padding-right:60px">  خدمة العلم 
-							 <select name="military_service"  class="form-control" style="width:300px;">
-							<option  >يرجى الاختيار</option>
+							 <select name="military_service"  class="form-control  form-control-lg" style="width:300px;">
+							<option  selected disabled>يرجى الاختيار</option>
 							<option  value="منتهية">منتهية</option>
 								<option  value="غير منتهية">غير منتهية</option>
                                 <option value="معفى">معفى</option>
@@ -75,8 +82,8 @@
 						</div>
 						<div class="form-group" >
 							<label> الوضع العائلي 
-							<select name="marital_status" class="form-control" style="width:660px" >
-								<option  >يرجى الاختيار</option>
+							<select name="marital_status" class="form-control  form-control-lg" style="width:660px" >
+								<option  selected disabled>يرجى الاختيار</option>
 								<option value="عازب">عازب</option>
 								<option  value="غير عازب">غير عازب</option>
 								

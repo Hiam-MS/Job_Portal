@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "26799454f307fc3d415e7272aefb6267",
+    "content-hash": "175a148baf735826557d5e8338ac16f2",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5295,6 +5295,71 @@
                 }
             ],
             "time": "2021-08-04T23:19:25+00:00"
+        },
+        {
+            "name": "tiagomichaelsousa/laravelfilters",
+            "version": "v1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tiagomichaelsousa/LaravelFilters.git",
+                "reference": "f3ee2715c8cf7aafab263d2e6672576fda0ac872"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tiagomichaelsousa/LaravelFilters/zipball/f3ee2715c8cf7aafab263d2e6672576fda0ac872",
+                "reference": "f3ee2715c8cf7aafab263d2e6672576fda0ac872",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^7.0|^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.3.1",
+                "orchestra/testbench": "^5.0|^6.0",
+                "phpunit/phpunit": "^8.5|^9.0",
+                "sempro/phpunit-pretty-print": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "tiagomichaelsousa\\LaravelFilters\\LaravelFiltersServiceProvider"
+                    ],
+                    "aliases": {
+                        "LaravelFilters": "tiagomichaelsousa\\LaravelFilters\\Facades\\LaravelFilters"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "tiagomichaelsousa\\LaravelFilters\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "tiagomichaelsousa",
+                    "email": "tiagomichaelsousa@gmail.com",
+                    "homepage": "https://github.com/tiagomichaelsousa",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel Filters is a package that allows to filter eloquent models in a clean way.",
+            "homepage": "https://github.com/tiagomichaelsousa/laravelfilters",
+            "keywords": [
+                "LaravelFilters",
+                "laravel",
+                "laravel-filters",
+                "packages"
+            ],
+            "support": {
+                "issues": "https://github.com/tiagomichaelsousa/LaravelFilters/issues",
+                "source": "https://github.com/tiagomichaelsousa/LaravelFilters/tree/v1.3"
+            },
+            "time": "2021-05-25T13:25:54+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

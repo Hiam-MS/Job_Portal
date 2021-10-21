@@ -18,6 +18,7 @@
 	<link rel="icon" href="{{ asset('images/favicon.ico')}}" type="image/x-icon" />
 	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png')}}" />
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 	
 	<!-- PAGE TITLE HERE -->
@@ -48,13 +49,15 @@
 <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+
+
 <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 <script
   src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
 <script src="semantic/dist/semantic.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <style>
 	   body {
   color: black;
@@ -222,8 +225,11 @@
     </header>
     <!-- header END -->
 
+
+
     <main class="py-4">
             @yield('content')
+		
     </main>
 
 
@@ -322,6 +328,10 @@
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
 <script src="semantic/dist/semantic.min.js"></script>
+
+
+
+@yield('javascript')
 
 
 </body>

@@ -1,5 +1,10 @@
 @extends('header')
 @section('content')
+<style>
+	th{
+		font-size:20px;
+	}
+</style>
 @csrf
     
     
@@ -65,12 +70,12 @@
 					<div class="col-lg-8">
 						<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
                         @if(Session::get('success'))
-						<div class="alert alert-success">
+						<div class="alert alert-success" style="font-size:20px">
 							{{Session::get('success')}}
 						</div>
 					@endif
 					@if(Session::get('fail'))
-						<div class="alert alert-danger">
+						<div class="alert alert-danger" style="font-size:20px">
 							{{Session::get('success')}}
 						</div>
 					@endif
@@ -96,7 +101,7 @@
                                                 @foreach($jobs as $job)
                                                 <tr>
                                                     <td>
-                                                        <a href="/job/details/{{$job->job_id}}">{{ $job->job_title }}</a>
+                                                        <a href="/job/details/{{$job->job_id}}" style="font-size:20px">{{ $job->job_title }}</a>
                                                     </td>
                                                     <td>
                                                     @if ($job->status =='hired')

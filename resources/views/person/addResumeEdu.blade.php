@@ -1,7 +1,13 @@
 
 @extends('header')
 @section('content')
+<style>
+    .form-control{
+        font-size:20px;
+        font-family: Arial, Helvetica, sans-serif;
 
+    }
+</style>
 <div class="page-content bg-white">
     <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{ asset('images/banner/bnr1.jpg')}});">
 		<div class="container">
@@ -76,9 +82,9 @@
 								<p> </p><p></p>
 								
 
-								<select class="js-example-basic-multiple" name="category[]" multiple="multiple" style="width: 63%" >
+								<select class="js-example-basic-multiple" id="category" name="category[]" multiple="multiple" style="width: 63%" >
 								@foreach($jobCat as $category)
-								<option value="{{$category->id}}">{{$category->name}}</option>
+								<option value="{{$category->id}}" {{(old('category') && in_array($category->id,old('category')) )?'selected':''}} >{{$category->name}}</option>
                                      @endforeach
 </select>
 								<br><br>
