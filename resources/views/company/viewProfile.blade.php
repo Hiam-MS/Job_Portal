@@ -63,12 +63,12 @@
 									<h5 class="font-weight-600">  المعلومات الاساسية : </h5>
 									<br>
 									@if(Session::get('success'))
-						<div class="alert alert-success">
+						<div class="alert alert-success" style="font-size:20px">
 							{{Session::get('success')}}
 						</div>
 					@endif
 					@if(Session::get('fail'))
-						<div class="alert alert-danger">
+						<div class="alert alert-danger" style="font-size:20px">
 							{{Session::get('success')}}
 						</div>
 					@endif

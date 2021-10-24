@@ -40,13 +40,70 @@
 								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
 									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
                                          <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="#" > لوحة التحكم<a></h4>
-                                            <ul>
-                                                
-                                                <li><strong class="font-weight-700 text-black"> <a href="{{route('CompanyViewProfile')}}" > عرض الملف الشخصي </a></strong><span class="text-black-light"> </span></li>
-                                                <li><strong class="font-weight-700 text-black"><li><a href="{{route('addJob')}}" > نشر فرصة عمل جديدة </a></li></strong> </li>
-                                                <li><strong class="font-weight-700 text-black"><li><a href="{{route('CompanyJob')}}" > عرض فرص العمل المنشورة  </a></li></strong> </li>
-                                                <li><strong class="font-weight-700 text-black"><a href="{{route('resuems')}}" >   عرض السير الذاتية المتاحة</a>  </strong></li>
-                                            </ul>
+										 <ul>
+											
+											@if(isset(auth()->user()->GetCompany))
+												<li>
+													<strong class="font-weight-700 text-black"> 
+														<a href="{{route('CompanyViewProfile')}}" > عرض الملف الشخصي </a>
+													</strong><span class="text-black-light"> </span>
+												</li>
+												<li>
+													<strong class="font-weight-700 text-black">
+														<a href="{{route('addJob')}}" > نشر فرصة عمل جديدة </a>
+													</strong> 
+												</li>
+												<li>
+													<strong class="font-weight-700 text-black">
+														<a href="{{route('CompanyJob')}}" > عرض فرص العمل المنشورة  </a>
+													</strong>
+												</li>
+												<li>
+													<strong class="font-weight-700 text-black">
+														<a href="{{route('resuems')}}" >   عرض السير الذاتية المتاحة</a> 
+													 </strong>
+												</li>	
+												<li>
+													<strong class="font-weight-700 text-black">
+														<a href="{{route('CompanyEndJobs')}}" >   الوظائف المنتهية  </a>  
+													</strong>
+												</li>
+											
+												<div class="dropdown " >
+													<li>
+														<strong class="font-weight-700 text-black">
+															<h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5> 
+														 </strong>
+													</li>
+											 		<div class="dropdown-content">
+											 			<ul>
+															<li>
+																<a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a> 
+															</li>
+														</ul>
+														<ul>
+															<li>
+																<a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a>
+															</li>
+														</ul>
+														<ul>
+															<li>
+																<a href="{{route('password.change')}}" >    تغيير كلمة المرور</a> 
+															</li>
+														</ul>
+														<ul>
+															<li>
+																<a href="{{route('profile.delete')}}" >  حذف الحساب </a>
+															 </li>
+														</ul>	
+									 				</div>
+												</div>
+											@else
+												<li><strong class="font-weight-700 text-black"><li><a href="{{route('company.profile')}}" > ادخال معلومات الشركة </a></li></strong> </li>
+
+											@endif
+											
+										</ul>
 									</div>
 								</div>
 
@@ -54,13 +111,13 @@
 						</div>
 					</div>
 						
-				@if(Session::get('success'))
-						<div class="alert alert-success">
+					@if(Session::get('success'))
+						<div class="alert alert-success" style="font-size:20px">
 							{{Session::get('success')}}
 						</div>
 					@endif
 					@if(Session::get('fail'))
-						<div class="alert alert-danger">
+						<div class="alert alert-danger" style="font-size:20px">
 							{{Session::get('success')}}
 						</div>
 					@endif
@@ -81,7 +138,7 @@
 						<div class="form-group">
 						<label for="jobcategory"> اختصاص العمل</label>
 						<select class="form-control form-control-lg" id="jobcategory" name="category">
-						    	<option selected disabled value="0">اختر اختصاص العمل</option>
+						    	<option selected disabled>اختر اختصاص العمل</option>
 			                        @foreach ($categories as $category)
 			                            <option value="{{$category->id}}" {{(old('category') && old('category')==$category->id )?'selected':''}} >{{$category->name}}</option>
 			                        @endforeach
@@ -156,8 +213,10 @@
 							<label style="padding-right:60px"> المدينة 
 							 <select name="city"  class="form-control form-control-lg" style="width:300px">
 							<option  selected disabled>يرجى الاختيار</option>
-								<option value="دمشق">دمشق</option>
-								<option value="ريف دمشق">ريف دمشق</option>
+							<option value="دمشق" {{(old('city') && old('city')=='دمشق' )?'selected':''}}>دمشق</option>
+							<option value="ريف دمشق" {{(old('city') && old('city')=='ريف دمشق' )?'selected':''}}>ريف دمشق</option>
+							
+								
 								
 								
 							</select>
@@ -172,9 +231,10 @@
 						<label> الجنس  
 							<select name="gender" class="form-control form-control-lg" style="width:300px">
 								<option  selected disabled>يرجى الاختيار</option>
-								<option value="ذكر">ذكر</option>
-								<option value="أنثى">أنثى</option>
-								<option value="لايهم">لايهم</option>
+								<option value="ذكر" {{(old('gender') && old('gender')=='ذكر' )?'selected':''}}>ذكر</option>
+								<option value="أنثى" {{(old('gender') && old('gender')=='أنثى' )?'selected':''}}>أنثى</option>
+								<option value="لايهم" {{(old('gender') && old('gender')=='لايهم' )?'selected':''}}>لايهم</option>
+								
 								
 								
 							</select>
@@ -185,10 +245,11 @@
 							<label style="padding-right:60px">خدمة العلم  
 							<select name="military_service" class="form-control form-control-lg" style="width:300px">
 								<option  selected disabled>يرجى الاختيار</option>
-								<option value="معفى">معفى</option>
-								<option value="منتهية">منتهية</option>
-								<option value="غير منتهية">غير منتهية</option>
-								<option value="لايهم">لايهم</option>
+								<option value="معفى" {{(old('military_service') && old('military_service')=='معفى' )?'selected':''}}>معفى</option>
+								<option value="منتهية" {{(old('military_service') && old('military_service')=='منتهية' )?'selected':''}}>منتهية</option>
+								<option value="غير منتهية" {{(old('military_service') && old('military_service')=='غير منتهية' )?'selected':''}}>غير منتهية</option>
+								<option value="لايهم" {{(old('military_service') && old('military_service')=='لايهم' )?'selected':''}}>لايهم</option>
+								
 								
 								
 							</select> 
@@ -211,15 +272,16 @@
 							<label> الحد الأدنى من المستوى التعليمي 
 							<select name="degree" class="form-control form-control-lg" style="width:300px" >
 							<option  selected disabled>يرجى الاختيار</option>
+							<option value="أقل من ثانوية عامة" {{(old('degree') && old('degree')=='أقل من ثانوية عامة' )?'selected':''}}>أقل من ثانوية عامة</option>
+							<option value="  ثانوية عامة" {{(old('degree') && old('degree')=='ثانوية عامة' )?'selected':''}}>  ثانوية عامة</option>
+							<option value="معهد متوسط" {{(old('degree') && old('degree')=='معهد متوسط' )?'selected':''}}>معهد متوسط</option>
+							<option value="بكالوريس/إجازة" {{(old('degree') && old('degree')=='بكالوريس/إجازة' )?'selected':''}}>بكالوريس/إجازة</option>
+							<option value="دبلوم دراسات عليا" {{(old('degree') && old('degree')=='دبلوم دراسات عليا' )?'selected':''}}>دبلوم دراسات عليا</option>
+							<option value=" ماجستير " {{(old('degree') && old('degree')=='ماجستير' )?'selected':''}}>ماجستير  </option>
+							<option value=" دكتوراة " {{(old('degree') && old('degree')=='دكتوراة' )?'selected':''}}>دكتوراة  </option>
+							
+							
 
-							<option value="أقل من ثانوية عامة"> أقل من ثانوية عامة</option>
-							<option value="ثانوية عامة"> ثانوية عامة</option>
-							<option value="معهد متوسط"> معهد متوسط</option>
-							<option value="بكالوريس/إجازة"> بكالوريس/إجازة</option>
-							<option value="دبلوم دراسات عليا"> دبلوم دراسات عليا</option>
-							<option value="ماجستير"> ماجستير</option>
-							<option value="دكتوراة">  دكتوراة</option>
-								
 								
 								
 							</select>
@@ -232,10 +294,13 @@
 							<label style="padding-right:60px"> طبيعة العمل 
 							 <select name="job_type"  class="form-control form-control-lg" style="width:300px" >
 							<option  selected disabled>يرجى الاختيار</option>
-								<option value="دوام كامل">دوام كامل</option>
-								<option value="دوام جزئي">دوام جزئي</option>
-								<option value="تدريب">تدريب</option>
-								<option value="دوام ليلي">دوام ليلي</option>
+							<option value=" دوام كامل " {{(old('job_type') && old('job_type')=='دوام كامل' )?'selected':''}}>دوام كامل  </option>
+							<option value=" دوام جزئي " {{(old('job_type') && old('job_type')=='دوام جزئي' )?'selected':''}}>دوام جزئي  </option>
+							<option value=" تدريب " {{(old('job_type') && old('job_type')=='تدريب' )?'selected':''}}>تدريب  </option>	
+							<option value=" دوام ليلي " {{(old('job_type') && old('job_type')=='دوام ليلي' )?'selected':''}}>دوام ليلي  </option>
+							
+							
+						
 
 								
 							</select>

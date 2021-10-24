@@ -2,6 +2,24 @@
 @section('content')
     @csrf
     
+
+<style>
+    
+#jobs tr:hover {background-color: #ddd;}
+#jobs th {
+		padding:5px;
+		text-align: center;
+		background-color:#200080;
+		color: white;
+		}
+
+		#jobs tr {
+		padding:5px;
+		text-align: center;
+		
+		color: black;
+		}
+</style>
 <div class="page-content bg-white">
     <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}});">
         <div class="container">
@@ -21,14 +39,14 @@
 							<div class="row">
 								<div class="col-lg-12 col-md-6">
 									<div class="m-b30">
-										<img src="{{asset('images/blog/grid/6.jpg')}}" alt="">
+									<img src="{{asset('images/blog/grid/6.jpg')}}" alt="">
 									</div>
 								</div>
 										
 								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
 									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
                                          <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="#" > لوحة التحكم<a></h4>
-										 <ul>
+                                         <ul>
 											
 											@if(isset(auth()->user()->GetCompany))
 												<li>
@@ -92,6 +110,7 @@
 											@endif
 											
 										</ul>
+
 									</div>
 								</div>
 
@@ -102,86 +121,91 @@
 
 					<div class="col-lg-8">
 						<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
-                        @if(Session::get('success'))
-						<div class="alert alert-success" style="font-size:20px">
-							{{Session::get('success')}}
-						</div>
-					@endif
-					@if(Session::get('fail'))
-						<div class="alert alert-danger" style="font-size:20px">
-							{{Session::get('success')}}
-						</div>
-					@endif   
-						<div>
-                               <h4 ><p>اهلا و سهلا : {{auth()->user()->name}} </p></h4> 
-                               <hr>
-                            </div>    
-                            <div class="">
-			<div class="icon-bx-wraper p-a30 center bg-gray radius-sm">
-				<div class="icon-md text-primary m-b20"> <a href="#" class="icon-cell text-primary"><i class="ti-desktop"></i></a> </div>
-					<div class="icon-content">
-						<h5 class="dlab-tilte text-uppercase">إضافة معلومات الشركة   </h5>
-						<p>معلومات الشركة هي أول و أهم ما تحتاجه لتفعيل حسابك  ، حيث إن باحثين عن العمل يحتاجون للاطلاع عليها قبل اتخاذ قرار التقدم للعمل. علماً أن معلومات الشركة  التي تبنيها على موقعنا هي الأكثر إقناعاً لهم   </p>
-					</div>
-				</div>
-			</div>
-            <hr>
-            <div class="">
-				<div class="icon-bx-wraper p-a30 center bg-gray radius-sm">
-					<div class="icon-md text-primary m-b20"> <a href="#" class="icon-cell text-primary"><i class="ti-image" ></i></a> </div>
-						<div class="icon-content">
-							<h5 class="dlab-tilte text-uppercase">نشر فرصة عمل الكترونية</h5>
-                            <p>يمكن للمؤسسات المسجلة على الموقع و بطريقة سهلة  نشر فرصة عمل الكترونياً, حيث  تمكّن الباحثين عن عمل من الوصول إاليها بسهولة و الاطلاع على تفاصيل هذا العمل بكل بساطة والتقدم لهذا العمل في حال توافرت الشروط المناسبة لهم</p>
-							
-						</div>
-					</div>
-				</div>
-         
-    <hr>
-            <div class="">
-				<div class="icon-bx-wraper p-a30 center bg-gray radius-sm">
-					<div class="icon-md text-primary m-b20"> <a href="#" class="icon-cell text-primary"><i class="ti-search" ></i></a> </div>
-						<div class="icon-content">
-							<h5 class="dlab-tilte text-uppercase">   بحث عن موظفين</h5>
-                            <p> هذه المنصة تمكّن المؤسسات من البحث عن موظفين مؤهلين في حال عدم نشر فرص عمل على الموقع والتواصل معهم مع الحصول على معلومات السير الذاتية الخاصة بهم  </p>
-							
-						</div>
-					</div>
-				</div>
-            </div>
-            <hr>
-            <div class="">
-				<div class="icon-bx-wraper p-a30 center bg-gray radius-sm">
-					<div class="icon-md text-primary m-b20"> <a href="#" class="icon-cell text-primary"><i class="ti-list" ></i></a> </div>
-						<div class="icon-content">
-							<h5 class="dlab-tilte text-uppercase">    عرض فرص العمل المنشورة </h5>
-                            <p> هذه المنصة تمكّن المؤسسات من البحث عن موظفين مؤهلين في حال عدم نشر فرص عمل على الموقع والتواصل معهم مع الحصول على معلومات السير الذاتية الخاصة بهم  </p>
-							
-						</div>
-					</div>
-				</div>
-            </div>
-
-            </div>   
-  
-
-						</div>
-					</div>
-
-
-
-
-
-
-
-
+						@if(Session::get('success'))
+							<div class="alert alert-success" style="font-size:20px">
+								{{Session::get('success')}}
+							</div>
+						@endif
+						@if(Session::get('fail'))
+							<div class="alert alert-danger" style="font-size:20px">
+								{{Session::get('success')}}
+							</div>
+						@endif	
+						
+                        <h5 class="widget-title font-weight-700 text-uppercase" style="color:blue"> الفرص المنتهية  </h5>
+							<br>
 
 						
-				</div>
-			</div>
-		</div>
-			<br><br>
-    </div>
+							<ul class="post-job-bx">
+                            
+                               
+                                
+								 
+                                <li>
+								@if(count($jobs)) 
+                                	@foreach($jobs as $item)
+								
+									<a href="/job/details/{{$item['id']}}">
+									<div class="d-flex">
+											<div class="job-time mr-auto">
+												<span>{{$item->end_job}}</span>
+											</div>
+										</div>
+										<div class="d-flex m-b30">
+											<div class="job-post-company">
+												<span><img src="{{asset('images/logo/icon1.png')}}"/></span>
+											</div>
+											<div class="job-post-info">
+												<h4>{{$item-> job_title}}</h4>
+												<ul>
+													<li> {{$item->city}}</li>
+													<li> {{$item->job_type}}</li>
+													<li> {{$item->job_position}}</li>
+												</ul>
+											</div>
+										</div>
+										
+									@if($item->end_job > NOW())
+										<form action="/job/update_EndJob/{{$item['id']}}" method="POST">
+											@csrf
+												
+													
+													<button type="submit" class="btn btn-primary">انهاء</button>
+												
+
+										</form>
+									@else
+										<button class="btn btn-danger ">منتهية    </button>
+									@endif
+										
+										<div class="d-flex">
+											<div class="job-time mr-auto">
+												<span>{{$item->company_name}}</span>
+											</div>
+										</div>
+										
+									</a>
+                                    <br><hr>
+                                    @endforeach
+									@else
+										<li>  عذراً لايوجد فرص عمل  لعرضها </li>
+									@endif
+								</li>
+								
+                              
+								
+								<span>{{$jobs->links('layouts.paginationlinks')}}</span>
+							 
+								
+								
+							
+							</ul>
+                        </div>
+			        </div>
+		        </div>
+		    </div>
+        </div>
+	</div>
 </div>
  
     

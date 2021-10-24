@@ -39,20 +39,77 @@
 							<div class="row">
 								<div class="col-lg-12 col-md-6">
 									<div class="m-b30">
-									<img src="{{asset('images/blog/grid/6.jpg')}}" alt="">
+										<img src="{{asset('images/blog/grid/6.jpg')}}" alt="">
 									</div>
 								</div>
 										
 								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
 									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
                                          <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="#" > لوحة التحكم<a></h4>
-                                            <ul>
-                                                
-                                                <li><strong class="font-weight-700 text-black"> <a href="{{route('CompanyViewProfile')}}" > عرض الملف الشخصي </a></strong><span class="text-black-light"> </span></li>
-                                                <li><strong class="font-weight-700 text-black"><li><a href="{{route('addJob')}}" > نشر فرصة عمل جديدة </a></li></strong> </li>
-                                                <li><strong class="font-weight-700 text-black"><li><a href="{{route('CompanyJob')}}" > عرض فرص العمل المنشورة  </a></li></strong> </li>
-                                                <li><strong class="font-weight-700 text-black"><a href="{{route('resuems')}}" >   عرض السير الذاتية المتاحة</a>  </strong></li>
-                                            </ul>
+										 <ul>
+											
+											@if(isset(auth()->user()->GetCompany))
+												<li>
+													<strong class="font-weight-700 text-black"> 
+														<a href="{{route('CompanyViewProfile')}}" > عرض الملف الشخصي </a>
+													</strong><span class="text-black-light"> </span>
+												</li>
+												<li>
+													<strong class="font-weight-700 text-black">
+														<a href="{{route('addJob')}}" > نشر فرصة عمل جديدة </a>
+													</strong> 
+												</li>
+												<li>
+													<strong class="font-weight-700 text-black">
+														<a href="{{route('CompanyJob')}}" > عرض فرص العمل المنشورة  </a>
+													</strong>
+												</li>
+												<li>
+													<strong class="font-weight-700 text-black">
+														<a href="{{route('resuems')}}" >   عرض السير الذاتية المتاحة</a> 
+													 </strong>
+												</li>	
+												<li>
+													<strong class="font-weight-700 text-black">
+														<a href="{{route('CompanyEndJobs')}}" >   الوظائف المنتهية  </a>  
+													</strong>
+												</li>
+											
+												<div class="dropdown " >
+													<li>
+														<strong class="font-weight-700 text-black">
+															<h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5> 
+														 </strong>
+													</li>
+											 		<div class="dropdown-content">
+											 			<ul>
+															<li>
+																<a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a> 
+															</li>
+														</ul>
+														<ul>
+															<li>
+																<a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a>
+															</li>
+														</ul>
+														<ul>
+															<li>
+																<a href="{{route('password.change')}}" >    تغيير كلمة المرور</a> 
+															</li>
+														</ul>
+														<ul>
+															<li>
+																<a href="{{route('profile.delete')}}" >  حذف الحساب </a>
+															 </li>
+														</ul>	
+									 				</div>
+												</div>
+											@else
+												<li><strong class="font-weight-700 text-black"><li><a href="{{route('company.profile')}}" > ادخال معلومات الشركة </a></li></strong> </li>
+
+											@endif
+											
+										</ul>
 									</div>
 								</div>
 
@@ -84,14 +141,20 @@
                                 
 								 
                                 <li>
-								@if(count($company->Job) > 0) 
-                                	@foreach($company->Job as $item)
+								@if(count($jobs)) 
+                                	@foreach($jobs as $item)
 								
 									<a href="/job/details/{{$item['id']}}">
+									<div class="d-flex">
+											<div class="job-time mr-auto">
+												<span>{{$item->created_at->diffForHumans()}}</span>
+											</div>
+										</div>
 										<div class="d-flex m-b30">
 											<div class="job-post-company">
 												<span><img src="{{asset('images/logo/icon1.png')}}"/></span>
 											</div>
+
 											<div class="job-post-info">
 												<h4>{{$item-> job_title}}</h4>
 												<ul>
@@ -101,26 +164,24 @@
 												</ul>
 											</div>
 										</div>
-										<div class="d-flex">
-											<div class="job-time mr-auto">
-												<span>{{$item->company_name}}</span>
-											</div>
-											
-						
-
-
-
-
-											
-											<form action="/job/update_EndJob/{{$item['id']}}" method="POST">
+										
+									@if($item->end_job > NOW())
+										<form action="/job/update_EndJob/{{$item['id']}}" method="POST">
 											@csrf
 												<div class="salary-bx">
 													
 													<button type="submit" class="btn btn-primary">انهاء</button>
 												</div>
 
-											</form>
-											
+										</form>
+										@else
+										<button class="btn btn-danger ">منتهية    </button>
+									@endif
+										
+										<div class="d-flex">
+											<div class="job-time mr-auto">
+												<span>{{$item->company_name}}</span>
+											</div>
 										</div>
 										
 									</a>

@@ -26,8 +26,10 @@ use Illuminate\Routing\Redirector;
 |
 */
 
-
-Route::get('/','CompanyController@index')->name('index');
+Route::get('/', function () {
+    return view('index');
+});
+// Route::get('/','CompanyController@index')->name('index');
 Route::get('/JobCategory','JobCategoryController@showJobJobCategory');
 Auth::routes();
    
@@ -71,7 +73,7 @@ Route::get('/company/editProfile','CompanyController@editCompanyProfile')->name(
 Route::post('/company/editProfile/{id}','CompanyController@updatCompanyProfile');
 Route::get('company/shortList','CompanyController@getJob')->name('CompanyJob');
 
-
+Route::get('company/endJobs','CompanyController@endJobs')->name('CompanyEndJobs');
 
 
 //********************************************* */

@@ -77,16 +77,16 @@ textarea.form-control{
 						
 					<div class="col-lg-8">
 						<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
-							@if(Session::get('success'))
-								<div class="alert alert-success">
-									{{Session::get('success')}}
-								</div>
-							@endif
-							@if(Session::get('fail'))
-								<div class="alert alert-danger">
-									{{Session::get('success')}}
-								</div>
-							@endif	
+						@if(Session::get('success'))
+						<div class="alert alert-success" style="font-size:20px">
+							{{Session::get('success')}}
+						</div>
+					@endif
+					@if(Session::get('fail'))
+						<div class="alert alert-danger" style="font-size:20px">
+							{{Session::get('success')}}
+						</div>
+					@endif
 							<h3 class="m-t0 m-b10 font-weight-700 title-head">
 								<a href="#" class="text-secondry m-r30"> 
 									<p style="color:red">{{$job->company_name}}</p> <br>
