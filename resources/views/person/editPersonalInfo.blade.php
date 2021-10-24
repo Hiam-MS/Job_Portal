@@ -34,8 +34,18 @@
                     <span style="color:red"> @error('user_id'){{$message}}@enderror</span>
 						<div class="form-group">
 							<label>الاسم الكامل</label>
-							<input type="text" class="form-control" placeholder="Your Full Name" name="name" value="{{ $person->name }}" style="width:58%" data-parsly-trigger="keyup" >
-							<span style="color:red"> @error('name'){{$message}}@enderror</span>
+							<input type="text" class="form-control" placeholder="" name="fname" value="{{ $person->Fname }}" style="width:58%" data-parsly-trigger="keyup" >
+							<span style="color:red"> @error('fname'){{$message}}@enderror</span>
+						</div>
+						<div class="form-group">
+							<label>الاسم الكامل</label>
+							<input type="text" class="form-control" placeholder="" name="father_name" value="{{ $person->Father_name }}" style="width:58%" data-parsly-trigger="keyup" >
+							<span style="color:red"> @error('father_name'){{$message}}@enderror</span>
+						</div>
+						<div class="form-group">
+							<label>الاسم الكامل</label>
+							<input type="text" class="form-control" placeholder="" name="Lname" value="{{ $person->Lname }}" style="width:58%" data-parsly-trigger="keyup" >
+							<span style="color:red"> @error('Lname'){{$message}}@enderror</span>
 						</div>
 						<div class="form-group">
 							<label>عنوان البريد الالكتروني</label>
