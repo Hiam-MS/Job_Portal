@@ -37,11 +37,23 @@
 					<form action="/resume/store" method="POST" id="resume" >
                     @csrf
                     <span style="color:red"> @error('user_id'){{$message}}@enderror</span>
-						<div class="form-group">
-							<label>الاسم الكامل</label>
-							<input type="text" class="form-control" placeholder="Your Full Name" name="name" value="{{old('name')}}" style="width:58%" data-parsly-trigger="keyup" >
-							<span style="color:red"> @error('name'){{$message}}@enderror</span>
+					<div class="form-group">
+							<label>الاسم </label>
+							<input type="text" class="form-control" placeholder="" name="fname" value="{{old('fname')}}" style="width:58%" data-parsly-trigger="keyup" >
+							<span style="color:red"> @error('fname'){{$message}}@enderror</span>
 						</div>
+
+						<div class="form-group">
+							<label>اسم الاب </label>
+							<input type="text" class="form-control" placeholder="" name="father_name" value="{{old('fatherName')}}" style="width:58%" data-parsly-trigger="keyup" >
+							<span style="color:red"> @error('father_name'){{$message}}@enderror</span>
+						</div>
+						<div class="form-group">
+							<label>الكنية </label>
+							<input type="text" class="form-control" placeholder="" name="Lname" value="{{old('Lname')}}" style="width:58%" data-parsly-trigger="keyup" >
+							<span style="color:red"> @error('Lname'){{$message}}@enderror</span>
+						</div>
+						
 						<div class="form-group">
 							<label>عنوان البريد الالكتروني</label>
 							<input type="email" class="form-control" placeholder="info@gmail.com" name="email" value="{{old('email')}}"  style="width:58%" data-parsly-trigger="keyup">
@@ -100,7 +112,7 @@
                         
 						<div class="form-group">
 							<label>تاريخ الميلاد</label>
-							<input type="date" class="form-control" placeholder="Web Designer"  value="{{old('dob')}}" name="dob" style="width:58%" data-parsly-trigger="keyup">
+							<input type="date" class="form-control" placeholder=" "  value="{{old('dob')}}" name="dob" style="width:58%" data-parsly-trigger="keyup">
 							<span style="color:red"> @error('dob'){{$message}}@enderror</span>
 						</div>
 						<div class="form-group">
@@ -119,12 +131,12 @@
                         
                             <div class="form-group">
 							<label>الهاتف الأرضي</label>
-							<input type="text" class="form-control" placeholder="" name="fixed_phone" value="{{old('fixed_phone')}}" style="width:58% " data-parsly-trigger="keyup">
+							<input type="text" class="form-control" placeholder="3333333" pattern="[0-9]{7}" name="fixed_phone" value="{{old('fixed_phone')}}" style="width:58% " data-parsly-trigger="keyup">
 							<span style="color:red"> @error('fixed_phone'){{$message}}@enderror</span>
 						</div>
                         <div class="form-group">
 							<label>رقم الخليوي</label>
-							<input type="text" class="form-control" placeholder=""  name="mobile_number" value="{{old('mobile_number')}}" style="width:58% " data-parsly-trigger="keyup">
+							<input type="text" class="form-control" placeholder="0933333333"  name="mobile_number"  pattern="[0]{1}[9]{1}[0-9]{8}" value="{{old('mobile_number')}}" style="width:58% " data-parsly-trigger="keyup">
 							<span style="color:red"> @error('mobile_number'){{$message}}@enderror</span>
 						</div>
 					

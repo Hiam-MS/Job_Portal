@@ -9,6 +9,7 @@ use DB;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Job;
 
 
 class AdminController extends Controller
@@ -42,6 +43,50 @@ class AdminController extends Controller
         $city->city_name="دبي";
         $country->cities()->save($city);
         return "DOne";
+
+    }
+
+
+    public function pendingJob()
+    {
+        
+        $job = DB::table('jobs')->where('status', 'pending')->get();
+        return view('admin.pending_job',compact('job'));
+         
+
+
+    }
+
+    public function accepte_JobStatuse($id){
+      
+        $job = Job::find($id);
+        $job->status ='accepted' ;
+        $job->save();
+            
+        if($job){
+           
+            return redirect()->route('pendingJob')->with('success','  تمت القبول بنجاح');
+        }else{
+            
+            return redirect()->route('pendingJob')->with('fail','  هناك خطأ ما');
+        }
+
+    }
+
+    public function denied_JobStatuse($id){
+      
+        
+        $job = Job::find($id);
+        $job->status = 'denied';
+        $job->save();
+            
+        if($job){
+           
+            return redirect()->route('pendingJob')->with('success','  تمت القبول بنجاح');
+        }else{
+            
+            return redirect()->route('pendingJob')->with('fail','  هناك خطأ ما');
+        }
 
     }
     

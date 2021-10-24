@@ -29,6 +29,7 @@ class CreateJobsTable extends Migration
             $table->string('degree');
             $table->string('job_type');
             $table->date('end_job');
+            $table->string('status')->default('pending');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('job_categories')->onDelete('cascade');
             $table->unsignedBigInteger('company_id');

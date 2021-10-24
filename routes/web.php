@@ -155,6 +155,12 @@ Route::post('/resume/storePersonJobCat','PersonController@storePersonJobCat');
     Route::get('/country','AdminController@addCountry');
     Route::get('/city/{id}','AdminController@addCity');
     Route::get('/admin/dashboard','AdminController@getDash')->name('admin.Dash');
+    Route::get('/admin/pending_jobs','AdminController@pendingJob')->name('pendingJob');
+    Route::post('/job/accepte_Job/{id}', 'AdminController@accepte_JobStatuse')->name('accepte_JobStatuse');
+    Route::post('/job/denie_Job/{id}', 'AdminController@denied_JobStatuse')->name('denied_JobStatuse');
+    
+
+    
     
 
 
