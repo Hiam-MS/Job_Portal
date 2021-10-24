@@ -73,68 +73,93 @@
 						</div>
 					@endif
 
-                                    <form action="{{url('/company/editProfile',$company->id)}}" method="POST">
+                                    <form >
                                     @csrf
                                     <table  id ="gen_info" dir="rtl">
 									<tr>
 										
 											<td>  اسم الشركة بالعربي</td>
-											<td>
-												 <input type="text" value ="{{$company->company_name_ar}}" name="company_name_ar"  id="company_name_ar" class="form-control">
-												  </td>
+											<td> 
+                                                <!-- <input type="text" value ="{{$company->company_name_ar}}" name="company_name_ar"  id="company_name_ar">  -->
+                                                {{$company->company_name_ar}}
+                                            </td>
 													
 									</tr>
 									<tr>
 										<td>   اسم الشركة بالانكليزي </td>
-                                        <td> <input type="text" value ="{{$company->company_name_en}}" name="company_name_en"  id="company_name_en" class="form-control">  </td>
+                                        <td> 
+                                            <!-- <input type="text" value ="{{$company->company_name_en}}" name="company_name_en"  id="company_name_en">  -->
+                                            {{$company->company_name_en}}
+                                        </td>
 										
 
 									</tr>
 									<tr>
 										<td>  اختصاص الشركة </td>
-                                        <td> 
-											<!-- <input type="text" value ="{{$company->company_specialist}}" name="company_specialist"  id="company_specialist" class="form-control">   -->
-										<textarea name="company_specialist" id="company_specialist" class="form-control" >{{$company->company_specialist}}</textarea>
-										</td>
+                                        <td>
+                                             <!-- <input type="text" value ="{{$company->company_specialist}}" name="company_specialist"  id="company_specialist">  -->
+                                             {{$company->company_specialist}}
+                                        </td>
 										
 									</tr>
 									<tr>
 										<td>  السجل التجاري </td>
-                                        <td> <input type="text" value ="{{$company->commercial_record}}" name="commercial_record"  id="commercial_record" class="form-control">  </td>
+                                        <td>
+                                             <!-- <input type="text" value ="{{$company->commercial_record}}" name="commercial_record"  id="commercial_record">  -->
+                                             {{$company->commercial_record}}
+                                        </td>
 										
 									</tr>
 									
 									<tr>
 										<td>   السجل الصناعي </td>
-                                        <td> <input type="text" value ="{{$company->industria_record}}" name="industria_record"  id="industria_record" class="form-control">  </td>
+                                        <td> 
+                                            <!-- <input type="text" value ="{{$company->industria_record}}" name="industria_record"  id="industria_record"> -->
+                                            {{$company->industria_record}}  
+                                        </td>
 										
 									</tr>
 
 									<tr>
 										<td>   مكان الشركة  </td>
-                                        <td> <input type="text" value ="{{$company->location}}" name="location"  id="location" class="form-control">  </td>
+                                        <td>
+                                             <!-- <input type="text" value ="{{$company->location}}" name="location"  id="location">   -->
+                                             {{$company->location}}
+                                    </td>
 										
 									</tr>
                                     <tr>
 										<td>    الرقم الثابت  </td>
-                                        <td> <input type="text" value ="{{$company->fixed_phone}}" name="fixed_phone"  id="fixed_phone" class="form-control">  </td>
+                                        <td> 
+                                            <!-- <input type="text" value ="{{$company->fixed_phone}}" name="fixed_phone"  id="fixed_phone">  -->
+                                            {{$company->fixed_phone}}
+                                     </td>
 										
 									</tr>
                                     <tr>
 										<td>    رقم الفاكس  </td>
-                                        <td> <input type="text" value ="{{$company->fax_phone}}" name="fax_phone"  id="fax_phone" class="form-control">  </td>
+                                        <td> 
+                                            <!-- <input type="text" value ="{{$company->fax_phone}}" name="fax_phone"  id="fax_phone"> -->
+                                            {{$company->fax_phone}}
+                                      </td>
 									
 									</tr>
 
 									<tr>
 										<td>    البريد الالكتروني </td>
-                                        <td> <input type="text" value ="{{$company->email}}" name="email"  id="email" class="form-control">  </td>
+                                        <td> 
+                                            <!-- <input type="text" value ="{{$company->email}}" name="email"  id="email"> -->
+                                            {{$company->email}}
+                                      </td>
 										
 									</tr>
 
 									<tr>
 										<td>  موقع الانترنت </td>
-                                        <td> <input type="text" value ="{{$company->website}}" name="website"  id="website" class="form-control">  </td>
+                                        <td>
+                                             <!-- <input type="text" value ="{{$company->website}}" name="website"  id="website">  -->
+                                             {{$company->website}}
+                                     </td>
 										
 									</tr>
 
@@ -148,9 +173,12 @@
 									
 								</table>
 									
-
-                                <button type="submit" class="btn btn-primary"> حفظ</button>
-								<button type="submit" class="btn btn-primary"> رجوع</button>
+                                <a href="{{route('CompanyEditProfile')}}" class="btn btn-primary"> تعديل
+                                </a>
+                                
+                                <button type="submit" class="btn btn-primary">طباعة</button>
+                                
+							
 					
 								
 										

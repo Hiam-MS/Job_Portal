@@ -28,6 +28,7 @@ class CreateJobsTable extends Migration
             $table->string('military_service');
             $table->string('degree');
             $table->string('job_type');
+            $table->date('end_job');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('job_categories')->onDelete('cascade');
             $table->unsignedBigInteger('company_id');

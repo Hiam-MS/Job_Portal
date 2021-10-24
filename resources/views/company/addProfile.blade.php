@@ -42,54 +42,76 @@
 						<div class="form-group">
 							<label>اسم الشركة بالعربي</label>
 							<input type="text" class="form-control" placeholder="" name="company_name_ar" value="{{old('company_name_ar')}}" style="width:60%" data-parsly-trigger="keyup" >
-							<span style="color:red"> @error('name'){{$message}}@enderror</span>
+							@if($errors->any('company_name_ar'))
+								<span class="text-danger">{{$errors->first('company_name_ar')}}</span>
+							@endif
 						</div>
                         <div class="form-group">
 							<label>اسم الشركة بالانكليزي</label>
 							<input type="text" class="form-control" placeholder="" name="company_name_en" value="{{old('company_name_en')}}" style="width:60%" data-parsly-trigger="keyup" >
-							<span style="color:red"> @error('name'){{$message}}@enderror</span>
+							@if($errors->any('company_name_en'))
+								<span class="text-danger">{{$errors->first('company_name_en')}}</span>
+							@endif
 						</div>
 						<div class="form-group">
 							<label>عنوان البريد الالكتروني</label>
 							<input type="text" class="form-control" placeholder="info@gmail.com" name="email" value="{{old('email')}} " style="width:60%" data-parsly-trigger="keyup">
-							<span style="color:red"> @error('email'){{$message}}@enderror</span>
+							@if($errors->any('email'))
+								<span class="text-danger">{{$errors->first('email')}}</span>
+							@endif
 						</div>
                        
                         <div class="form-group">
 							<label>  الهاتف الأرضي</label>
 							<input type="text" class="form-control" placeholder="963-11-2222222+" name="fixed_phone" value="{{old('fixed_phone')}} " s style="width:60%" data-parsly-trigger="keyup">
-							<span style="color:red"> @error('fixed_phone'){{$message}}@enderror</span>
+							@if($errors->any('fixed_phone'))
+								<span class="text-danger">{{$errors->first('fixed_phone')}}</span>
+							@endif
 						</div>
                         <div class="form-group">
 							<label>  رقم الفاكس </label>
 							<input type="text" class="form-control" placeholder=" 963-11-2222222+" name="fax_phone" value="{{old('fax_phone')}} " style="width:60%" data-parsly-trigger="keyup">
-							<span style="color:red"> @error('fax_phone'){{$message}}@enderror</span>
+							@if($errors->any('fax_phone'))
+								<span class="text-danger">{{$errors->first('fax_phone')}}</span>
+							@endif
 						</div>
 
                         <div class="form-group">
 							<label>  العنوان  </label>
-							<input type="text" class="form-control" placeholder="" name="location" value="{{old('location')}} "style="width:60%" data-parsly-trigger="keyup">
-							<span style="color:red"> @error('location'){{$message}}@enderror</span>
+							<input type="text" class="form-control" placeholder="" name="location" value="{{old('location')}} " style="width:60%" data-parsly-trigger="keyup">
+							@if($errors->any('location'))
+								<span class="text-danger">{{$errors->first('location')}}</span>
+							@endif
 						</div>
                         <div class="form-group">
 							<label>  اختصاص الشركة  </label>
-							<input type="text" class="form-control" placeholder="" name="company_specialist"  value="{{old('company_specialist')}} " style=width:60% data-parsly-trigger="keyup">
-							<span style="color:red"> @error('company_specialist'){{$message}}@enderror</span>
+							<textarea name="company_specialist" id="company_specialist" class="form-control" style="width:60%"></textarea>
+							<!-- <input type="text" class="form-control" placeholder="" name="company_specialist"  value="{{old('company_specialist')}} " style=width:60% data-parsly-trigger="keyup"> -->
+							@if($errors->any('company_specialist'))
+								<span class="text-danger">{{$errors->first('company_specialist')}}</span>
+							@endif
+							
 						</div>
 						<div class="form-group">
 							<label>   السجل التجاري  </label>
 							<input type="text" class="form-control" placeholder="" name="commercial_record"  value="{{old('commercial_record')}} " style=width:60% data-parsly-trigger="keyup">
-							<span style="color:red"> @error('commercial_record'){{$message}}@enderror</span>
+							@if($errors->any('commercial_record'))
+								<span class="text-danger">{{$errors->first('commercial_record')}}</span>
+							@endif
 						</div>
 						<div class="form-group">
 							<label>  السجل  الصناعي  </label>
 							<input type="text" class="form-control" placeholder="" name="industria_record"  value="{{old('industria_record')}}" style=width:60% data-parsly-trigger="keyup">
-							<span style="color:red"> @error('industria_record'){{$message}}@enderror</span>
+							@if($errors->any('industria_record'))
+								<span class="text-danger">{{$errors->first('industria_record')}}</span>
+							@endif
 						</div>
 						<div class="form-group">
 							<label>  موقع الانترنت    </label>
 							<input type="text" class="form-control" placeholder="" name="website"  value="{{old('website')}}" style=width:60% data-parsly-trigger="keyup">
-							<span style="color:red"> @error('website'){{$message}}@enderror</span>
+							@if($errors->any('website'))
+								<span class="text-danger">{{$errors->first('website')}}</span>
+							@endif
 						</div>
 						
 						
@@ -108,7 +130,7 @@
 					
 						
 						
-						<button type="submit" class="btn btn-primary" >Submit</button>
+						<button type="submit" class="btn btn-primary" >ادخال</button>
 					</form>
 				</div>
 			</div>

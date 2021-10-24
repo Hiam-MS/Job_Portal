@@ -9,6 +9,7 @@ use App\Models\JobCategory;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
+use Carbon\Carbon;
 
 class JobsController extends Controller
 {
@@ -81,37 +82,25 @@ class JobsController extends Controller
     {
         $categories = JobCategory::all();
         $category = $request->input('category');
-        $search = $request->input('search');
-       
-        
-
-        if($request->has('category')) {
+        if($request->has('category')) 
+        {
             $jobs = Job::where('category_id', $category)
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(5)
-                    ;
             
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
         }
-        else{
-            $jobs = Job::paginate(5);
+        else
+        {
+            $jobs = Job::whereDate('end_job', '>', Carbon::today()->toDateString())->paginate(10);
         }
-
+         
         
 
-
-
-        // if(isset($_GET['category'])){
-            
-        //     $search_text= $_GET['category'];
-        //     $jobs= Job::where('category_id',$category)->paginate(2);
-           
-            
-        //     }else{
-        //         $jobs = Job::paginate(5);
-               
-        //     }
+     
         
-        return view('job.showJobs',compact('categories','jobs','category','search'));
+        return view('job.showJobs',compact('jobs','category','categories'));
+        
+       
     }
 
     
@@ -130,10 +119,40 @@ class JobsController extends Controller
     { 
         $Request->validate([
             'category'=>'required',
-            'job_title'=>'required'
+            'job_title'=>'required',
+            'number_of_employess'=>'required',
+            'budget'=>'required',
+            'job_requirement'=>'required',
+            'functional_tasks'=>'required',
+            'end_job'=>'required',
+           
+            'city'=>'required',
+            'gender'=>'required',
+            'military_service'=>'required',
+            'degree'=>'required',
+            'job_type'=>'required',
+            
         ],[
+            'job_title.required'=>'يجب ادخال المسمى الوظيفي لفرصة العمل',
             'category.required'=>'يجب اختيار اختصاص العمل المطلوب',
+            'number_of_employess.required'=>'يجب اختيار اختصاص العمل المطلوب',
+            'budget.required'=>'يجب  ادخال الراتب المطلوب لهذه الوظيفة او الفوائد',
+            'job_requirement.required'=>'يجب  ادخال  المؤهلات المطلوبة لهذه الوظيفة  ',
+            'functional_tasks.required'=>'يجب  ادخال  المؤهلات المطلوبة لهذه الوظيفة  ',
+            'end_job.required'=>'يجب  اختيار المدة المعينة لعرض فرصة العمل  ',
+            
+            'city.required'=>'يجب  اختيار المدينة  ',
+            'gender.required'=>'يجب  اختيار الجنس المطلوب للعمل  ',
+            'military_service.required'=>'يجب  اختيار  طبيعة خدمة العلم  ',
+            'degree.required'=>'يجب  اختيار  الحد الادنى المطلوب لفرصة العمل  ',
+            
+            'job_type.required'=>'يجب  اختيار   طبيعة فرصة العمل  ',
         ]);
+
+        $selected=$Request->input("end_job");
+
+
+   
         
         $job =new Job ;
         $job->company_name = $Request->input("company_name");
@@ -142,6 +161,8 @@ class JobsController extends Controller
         $job->budget= $Request->input("budget");
         $job->job_requirement = $Request->input("job_requirement");
         $job->functional_tasks = $Request->input("functional_tasks");
+        // $job->end_job=$Request->input("end_job");
+        $job->end_job = Carbon::now()->addDays($selected);
         $job->country= $Request->input("country");
         $job->city= $Request->input("city");
         $job->gender= $Request->input("gender");
