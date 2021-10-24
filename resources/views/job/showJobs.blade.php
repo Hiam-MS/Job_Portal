@@ -72,7 +72,7 @@
 										<li style="font-size:20px">  لايوجد فرص عمل  لعرضها</li>
 									@endif
 								@endif
-									<span>{{$jobs->links('layouts.paginationlinks')}}</span>
+								<span>{{$jobs->links('layouts.paginationlinks')}}</span>
 								
 								</ul>
 								

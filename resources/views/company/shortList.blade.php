@@ -48,7 +48,7 @@
                                          <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="#" > لوحة التحكم<a></h4>
                                             <ul>
                                                 
-                                                <li><strong class="font-weight-700 text-black"> <a href="{{route('CompanyProfile')}}" > عرض الملف الشخصي </a></strong><span class="text-black-light"> </span></li>
+                                                <li><strong class="font-weight-700 text-black"> <a href="{{route('CompanyViewProfile')}}" > عرض الملف الشخصي </a></strong><span class="text-black-light"> </span></li>
                                                 <li><strong class="font-weight-700 text-black"><li><a href="{{route('addJob')}}" > نشر فرصة عمل جديدة </a></li></strong> </li>
                                                 <li><strong class="font-weight-700 text-black"><li><a href="{{route('CompanyJob')}}" > عرض فرص العمل المنشورة  </a></li></strong> </li>
                                                 <li><strong class="font-weight-700 text-black"><a href="{{route('resuems')}}" >   عرض السير الذاتية المتاحة</a>  </strong></li>
@@ -76,14 +76,16 @@
 						
                         <h5 class="widget-title font-weight-700 text-uppercase" style="color:blue"> الفرص المنشورة  </h5>
 							<br>
+
+						
 							<ul class="post-job-bx">
-                                <form action="">
+                            
                                
                                 
 								 
                                 <li>
 								@if(count($company->Job) > 0) 
-                                @foreach($company->Job as $item)
+                                	@foreach($company->Job as $item)
 								
 									<a href="/job/details/{{$item['id']}}">
 										<div class="d-flex m-b30">
@@ -103,9 +105,22 @@
 											<div class="job-time mr-auto">
 												<span>{{$item->company_name}}</span>
 											</div>
-											<div class="salary-bx">
-												<span>{{$item->salary}}</span>
-											</div>
+											
+						
+
+
+
+
+											
+											<form action="/job/update_EndJob/{{$item['id']}}" method="POST">
+											@csrf
+												<div class="salary-bx">
+													
+													<button type="submit" class="btn btn-primary">انهاء</button>
+												</div>
+
+											</form>
+											
 										</div>
 										
 									</a>
@@ -116,9 +131,9 @@
 									@endif
 								</li>
 								
-                                </form>
+                              
 								
-								
+								<span>{{$jobs->links('layouts.paginationlinks')}}</span>
 							 
 								
 								

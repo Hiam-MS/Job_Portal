@@ -120,6 +120,16 @@ textarea.form-control{
 							<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 							<p style="font-size:20px">{{$job->job_requirement}}</p>
 
+							<h5 class="font-weight-600">   تم النشر بتاريخ </h5>
+
+							<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+							<p style="font-size:20px">{{$job->created_at->diffForHumans()}}</p>
+
+							<h5 class="font-weight-600">    تاريخ الانتهاء  </h5>
+
+							<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+							<p style="font-size:20px">{{$job->end_job}}</p>
+
 							@if(auth::user())
 								@if(auth()->user()->role == 'p')
 									@if ($result == 'exist')

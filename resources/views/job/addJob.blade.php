@@ -42,7 +42,7 @@
                                          <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="#" > لوحة التحكم<a></h4>
                                             <ul>
                                                 
-                                                <li><strong class="font-weight-700 text-black"> <a href="{{route('CompanyProfile')}}" > عرض الملف الشخصي </a></strong><span class="text-black-light"> </span></li>
+                                                <li><strong class="font-weight-700 text-black"> <a href="{{route('CompanyViewProfile')}}" > عرض الملف الشخصي </a></strong><span class="text-black-light"> </span></li>
                                                 <li><strong class="font-weight-700 text-black"><li><a href="{{route('addJob')}}" > نشر فرصة عمل جديدة </a></li></strong> </li>
                                                 <li><strong class="font-weight-700 text-black"><li><a href="{{route('CompanyJob')}}" > عرض فرص العمل المنشورة  </a></li></strong> </li>
                                                 <li><strong class="font-weight-700 text-black"><a href="{{route('resuems')}}" >   عرض السير الذاتية المتاحة</a>  </strong></li>
@@ -100,7 +100,8 @@
 						</div>
 						<div class="form-group">
 							<label> الراتب والفوائد  </label>
-							<input type="text" name="budget" value="{{old('budget')}} " class="form-control" placeholder=" الراتب والفوائد" style="width:100% ">
+							<!-- <input type="text" name="budget" value="{{old('budget')}} " class="form-control" placeholder=" الراتب والفوائد" style="width:100% "> -->
+							<textarea name="budget" id="budget" class="form-control" style="width:100% ">{{old('budget')}}</textarea>
 							@if($errors->any('budget'))
 								<span class="text-danger">{{$errors->first('budget')}}</span>
 							@endif
@@ -109,7 +110,8 @@
 
 						<div class="form-group">
 							<label>  متطلبات خاصة بالوظيفة (المؤهلات) </label>
-							<input type="text" name="job_requirement" value="{{old('job_requirement')}} " class="form-control" placeholder=" متطلبات خاصة بالوظيفة" style="width:100% ">
+							<!-- <input type="text" name="job_requirement" value="{{old('job_requirement')}} " class="form-control" placeholder=" متطلبات خاصة بالوظيفة" style="width:100% "> -->
+							<textarea name="job_requirement" id="job_requirement" class="form-control" style="width:100% ">{{old('job_requirement')}}</textarea>
 							@if($errors->any('job_requirement'))
 								<span class="text-danger">{{$errors->first('job_requirement')}}</span>
 							@endif
@@ -117,18 +119,32 @@
 
 						<div class="form-group">
 							<label>  المهام الوظيفية  </label>
-							<input type="text" name="functional_tasks" value="{{old('functional_tasks')}} " class="form-control" placeholder=" المهام الوظيفية" style="width:100% ">
+							<!-- <input type="text" name="functional_tasks" value="{{old('functional_tasks')}} " class="form-control" placeholder=" المهام الوظيفية" style="width:100% "> -->
+							<textarea name="functional_tasks" id="functional_tasks" class="form-control" style="width:100% ">{{old('functional_tasks')}}</textarea>
 							@if($errors->any('functional_tasks'))
 								<span class="text-danger">{{$errors->first('functional_tasks')}}</span>
 							@endif
 						</div>
 
-						
+						<div class="form-group">
+							<label> مدة عرض فرصة العمل </label>
+							<select name="end_job" class="form-control form-control-lg" style="width:300px">
+								<option  selected disabled>يرجى الاختيار</option>
+								<option value="30" selected>شهر</option>
+								<option value="60">شهرين</option>
+								<option value="90">ثلاث شهور</option>
+								
+								
+							</select> 
+						</div>
+
                         <div class="form-group" >
 							<label>الدولة  
 							<select name="country" class="form-control form-control-lg" style="width:300px">
 								<option  selected disabled>يرجى الاختيار</option>
-								<option value="سورية" > سورية </option>
+								
+								<option value="سورية" selected>سورية</option>
+								
 								
 								
 							</select> 
@@ -222,7 +238,10 @@
 								<option value="دوام ليلي">دوام ليلي</option>
 
 								
-							</select></label>
+							</select>
+							@if($errors->any('job_type'))
+								<span class="text-danger">{{$errors->first('job_type')}}</span>
+							@endif</label>
 						</div>
 						<button type="submit" class="btn btn-primary">نشر</button>
 					</form>
