@@ -15,7 +15,7 @@ class CompanyController extends Controller
     //
     public function index()
     {
-        return view('welcome');
+        return view('index');
     }
     
     public function getAddCompanyForm()
@@ -148,14 +148,39 @@ class CompanyController extends Controller
             $company_id=auth()->user()->GetCompany->id;
 
             $jobs = Job::where('company_id', $company_id)
-            
+            ->whereDate('end_job', '>', Carbon::today()->toDateString())
             ->orderBy('created_at', 'desc')
             ->paginate(5);
 
-            
+          
             return view('company.shortList', compact('company','jobs'));
         }
-        else{
+        else
+        {
+            return redirect()->route('company.profile');
+        }
+       
+       
+    }
+
+    public function endJobs()
+    {
+        
+        if(isset(auth()->user()->GetCompany))
+        {
+            $company=auth()->user()->GetCompany;
+            $company_id=auth()->user()->GetCompany->id;
+
+            $jobs = Job::where('company_id', $company_id)
+            ->whereDate('end_job', '<=', Carbon::today()->toDateString())
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);
+
+          
+            return view('company.endJobs', compact('company','jobs'));
+        }
+        else
+        {
             return redirect()->route('company.profile');
         }
        

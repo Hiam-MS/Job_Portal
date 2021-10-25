@@ -85,7 +85,16 @@
 
 
 									</h3> -->
-
+									@if(Session::get('success'))
+						<div class="alert alert-success" style="font-size:20px">
+							{{Session::get('success')}}
+						</div>
+					@endif
+					@if(Session::get('fail'))
+						<div class="alert alert-danger" style="font-size:20px">
+							{{Session::get('success')}}
+						</div>
+					@endif
 									<h3 class="font-weight-600">  المعلومات الاساسية : </h5>
 									<!-- <div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div> -->
 									<br>

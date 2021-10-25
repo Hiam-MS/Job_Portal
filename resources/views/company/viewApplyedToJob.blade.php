@@ -54,6 +54,16 @@
                     <div class="col-lg-8">
 					    <div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
 							<div class="form-group">
+                            @if(Session::get('success'))
+						<div class="alert alert-success" style="font-size:20px">
+							{{Session::get('success')}}
+						</div>
+					@endif
+					@if(Session::get('fail'))
+						<div class="alert alert-danger" style="font-size:20px">
+							{{Session::get('success')}}
+						</div>
+					@endif
                                 <form action="" style="padding-right:20px;">
                                     @csrf
                                    

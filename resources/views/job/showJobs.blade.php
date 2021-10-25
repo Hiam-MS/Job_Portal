@@ -32,7 +32,17 @@
 					<div class="row">
 						<div class="col-xl-9 col-lg-8">
 							<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
-								<h5 class="widget-title font-weight-700 text-uppercase" style="color:blue">الفرص الحالية  </h5>
+							@if(Session::get('success'))
+						<div class="alert alert-success" style="font-size:20px">
+							{{Session::get('success')}}
+						</div>
+					@endif
+					@if(Session::get('fail'))
+						<div class="alert alert-danger" style="font-size:20px">
+							{{Session::get('success')}}
+						</div>
+					@endif	
+							<h5 class="widget-title font-weight-700 text-uppercase" style="color:blue">الفرص الحالية  </h5>
 								
 								@csrf
 								<ul class="post-job-bx">

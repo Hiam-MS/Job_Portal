@@ -71,7 +71,7 @@ Route::get('/company/editProfile','CompanyController@editCompanyProfile')->name(
 Route::post('/company/editProfile/{id}','CompanyController@updatCompanyProfile');
 Route::get('company/shortList','CompanyController@getJob')->name('CompanyJob');
 
-
+Route::get('company/endJobs','CompanyController@endJobs')->name('CompanyEndJobs');
 
 
 //********************************************* */

@@ -63,20 +63,13 @@
 									
 										@endif	
 
-										<!-- <div class="dropdown font-weight-700 text-black">
-										<button class="dropbtn"> ادارة الحساب</button>
-                                        <div class="dropdown-content">
-                                        <p> <a href="#">Link 1</a></p>
-                                        <p> <a href="#">Link 2</a></p>
-                                        <p> <a href="#">Link 3</a></p>
-                                         </div>
-                                          </div> -->
+									
 
 
 										  <div class="dropdown " >
-										  <li><strong class="font-weight-700 text-black"><h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5>  </strong>	</li>
-                                         <div class="dropdown-content">
-                                         <ul><li><a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a> </li></ul>
+												<li><strong class="font-weight-700 text-black"><h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5>  </strong>	</li>
+                                         		<div class="dropdown-content">
+                                         		<ul><li><a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a> </li></ul>
 										<ul><li><a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a> </li></ul>
 										<ul><li><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a> </li></ul>
 										<ul><li><a href="{{route('profile.delete')}}" >  حذف الحساب </a> </li>	
@@ -107,13 +100,13 @@
 						<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
                             <div>
 							@if(Session::get('success'))
-						<div class="alert alert-success">
+						<div class="alert alert-success" style="font-size:20px">
 							{{Session::get('success')}}
 						</div>
 					@endif
 					@if(Session::get('fail'))
-						<div class="alert alert-danger">
-							{{Session::get('fail')}}
+						<div class="alert alert-danger" style="font-size:20px">
+							{{Session::get('success')}}
 						</div>
 					@endif
 							<h4 ><p>اهلا و سهلا : {{auth()->user()->name}} </p></h4> 

@@ -20,28 +20,28 @@ class JobsController extends Controller
 
     public function addJob()
     {
-        if(isset(auth()->user()->GetCompany)){
-        $categories = JobCategory::all();
-        $company=auth()->user()->getCompany;
-        return view('job.addJob',compact('company','categories'));
-    }
-    else
-    return redirect()->route('company.profile');
+        if(isset(auth()->user()->GetCompany))
+        {
+            $categories = JobCategory::all();
+            $company=auth()->user()->getCompany;
+            return view('job.addJob',compact('company','categories'));
+        }
+        else
+        {
+            return redirect()->route('company.profile');
+        }
+   
       
     }
 
     public function JobDetails($id)
-
     {
         if(auth()->user())
         {
-            if(Auth()->user()->role == 'p') {
+            if(Auth()->user()->role == 'p')
+            {
                 $job = Job::find($id);
                 $person_id = auth()->user()->GetPerson->id;
-
-
-               
-
 
                 $exist = DB::table('applyed_jobs')->where('job_id', $id)->where('person_id', $person_id)->first();
                 if ($exist == null)
@@ -52,10 +52,11 @@ class JobsController extends Controller
                 {
                     $result = 'exist';
                 }  
-             return view('job.jobDetails',compact('job','result'));
+                return view('job.jobDetails',compact('job','result'));
             }
-          else{
-            $job = Job::find($id);
+          else
+            {
+                $job = Job::find($id);
             
             
             return view('job.jobDetails',compact('job'));
@@ -85,7 +86,7 @@ class JobsController extends Controller
         if($request->has('category')) 
         {
             $jobs = Job::where('category_id', $category)
-            
+            ->whereDate('end_job', '>', Carbon::today()->toDateString())
             ->orderBy('created_at', 'desc')
             ->paginate(10);
         }
