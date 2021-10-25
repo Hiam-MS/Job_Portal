@@ -8,7 +8,7 @@ use tiagomichaelsousa\LaravelFilters\Traits\Filterable;
 class Job extends Model
 {
     use HasFactory;
-    use Filterable;
+    // use Filterable;
 
     //Job belongs to one Company
     function Company() 

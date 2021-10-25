@@ -50,8 +50,8 @@
 									@if(count($jobs) > 0)
 										@foreach($jobs as $job)
 											<li>
-												
-												<a href="/job/details/{{ $job->id }}">
+											
+												<a href="{{asset('/job/details',$job->id)}}">
 													<div class="d-flex m-b30">
 														<div class="job-post-company">
 															<span><img src="{{asset('images/logo/icon1.png')}}"/></span>

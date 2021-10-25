@@ -15,12 +15,14 @@ class CreatePeopleTable extends Migration
     {
         Schema::create('people', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
+            $table->string('Fname')->nullable();
+            $table->string('Father_name')->nullable();
+            $table->string('Lname')->nullable();
             $table->string('email')->nullable();
             $table->string('gender')->nullable();
             $table->date('dob')->nullable();
             $table->string('place_Of_b')->nullable();
-            $table->unsignedBigInteger('national_number')->nullable();
+            $table->text('national_number')->nullable();
             $table->string('marital_status')->nullable();
             $table->string('military_service')->nullable();
             $table->string('Current_address')->nullable();

@@ -68,6 +68,27 @@ textarea.form-control{
 											<li><i  class="ti-location-pin"></i><strong class="font-weight-700 text-black">العنوان: {{$job->city}} </strong><span class="text-black-light"> </span></li>
 											<li><i class="ti-money"></i><strong class="font-weight-700 text-black">الراتب : {{$job->budget}}</strong> </li>
 											<li><i class="ti-user"></i><strong class="font-weight-700 text-black">عدد الاشخاص المطلوبين:  {{$job->number_of_employess}} </strong></li>
+											
+											<br>
+											@if(auth::user())
+								@if(auth()->user()->role == 'a')
+								<li><strong class="font-weight-700 text-black">الحالة : {{$job->status}}</strong> </li>
+								@if($job->status == 'pending' | $job->status == 'denied')
+
+							<form action="/job/accepte_Job/{{$job->id}}" method="POST">
+											@csrf
+											<button id="viewApplyedJob" type="submit" class="btn btn-primary btn-block">موافقة على النشر</button>
+											</form>
+											@endif
+											@if($job->status == 'pending' | $job->status == 'accepted')
+											<form action="/job/denie_Job/{{$job->id}}" method="POST">
+											@csrf
+											<button id="viewApplyedJob" type="submit" class="btn btn-primary btn-block w-100">عدم الموافقة على النشر</button>
+											</form>
+											@endif
+											@endif
+											@endif
+											
 										</ul>
 									</div>
 								</div>
@@ -161,7 +182,11 @@ textarea.form-control{
 													
 										</form>
 									</div>
+									
 								@endif
+								
+							
+
 							@endif
 
 							<br>

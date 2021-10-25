@@ -113,20 +113,25 @@ public function searchResume(Request $request)
        
 
         $Request->validate([
-            'name'=> ['required','string'] ,
+            'fname'=> ['required','string' , 'max:20'] ,
+            'father_name'=> ['required','string' , 'max:20'] ,
+            'Lname'=> ['required','string', 'max:20'] ,
             'email'=> ['required','string'] ,
-            'dob'=> ['required','string'] ,
+            'dob'=> ['required','date'] ,
             'place_Of_b'=> ['required','string'] ,
-            'national_number'=> ['required','integer'] ,
+            'national_number'=> ['required','numeric', 'max:11'] ,
             'fixed_phone'=> ['required','integer'] ,
             'Current_address'=> ['required','string'] ,
             'mobile_number'=> ['required','string'] ,
-            // 'user_id'=>['unique:Person'] ,
+
+            'user_id'=>['unique:Person'] ,
           
         ]);
         
         $person =new Person ;
-            $person->name = $Request->input("name");
+            $person->Fname = $Request->input("fname");
+            $person->Father_name = $Request->input("father_name");
+            $person->Lname = $Request->input("Lname");
             $person->email =  $Request->input("email");
             $person->gender= $Request->input("gender");
             $person->dob= $Request->input("dob");
@@ -167,24 +172,27 @@ public function searchResume(Request $request)
 
 public function updatPersonalInfo(Request $Request)
  {
-//     $Request->validate([
-//         //  'degree_name'=> ['required','string'] ,
-//         //     'Institution'=> ['string'] ,
-//         //     'Degree'=> ['string'] ,
-//         //     'Major'=> ['string'] ,
-//         //     'Graduation_year'=> ['Date'] ,
-     
-      
-//     ]);
-
-    
-  
-
-    
+      $Request->validate([
+            'fname'=> ['required','string' , 'max:20'] ,
+            'father_name'=> ['required','string' , 'max:20'] ,
+            'Lname'=> ['required','string', 'max:20'] ,
+            'email'=> ['required','string'] ,
+            'dob'=> ['required','date'] ,
+            'place_Of_b'=> ['required','string'] ,
+            'national_number'=> ['required','numeric', 'max:11'] ,
+            'fixed_phone'=> ['required','integer'] ,
+            'Current_address'=> ['required','string'] ,
+            'mobile_number'=> ['required','string'] ,
+        
        
-    $person = auth()->user()->GetPerson;
+          
+        ]);
 
-    $person->name = $Request->input("name");
+ $person = auth()->user()->GetPerson;
+
+            $person->Fname = $Request->input("fname");
+            $person->Father_name = $Request->input("father_name");
+            $person->Lname = $Request->input("Lname");
             $person->email =  $Request->input("email");
             $person->gender= $Request->input("gender");
             $person->dob= $Request->input("dob");

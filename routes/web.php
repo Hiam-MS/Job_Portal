@@ -26,8 +26,10 @@ use Illuminate\Routing\Redirector;
 |
 */
 
-
-Route::get('/','CompanyController@index')->name('index');
+Route::get('/', function () {
+    return view('index');
+});
+// Route::get('/','CompanyController@index')->name('index');
 Route::get('/JobCategory','JobCategoryController@showJobJobCategory');
 Auth::routes();
    
@@ -61,23 +63,22 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::group(['middleware' => 'role:company'], function(){
 
-        Route::get('/company/dashboard','CompanyController@getDash')->name('CompanyDash');
-
-
-Route::get('/company/profile','CompanyController@getAddCompanyForm')->name('company.profile');
-Route::post('/company/storeProfile','CompanyController@storeProfile')->name('company.addCompany');
+Route::get('/company/dashboard','CompanyController@getDash')->name('CompanyDash');
+Route::get('/company/profile','CompanyController@createProfile')->name('CompanyProfile');
+Route::post('/company/storeProfile','CompanyController@storeProfile')->name('CompanyStoreProfile');
 Route::get('/company/viewProfile','CompanyController@viewProfile')->name('CompanyViewProfile');
 Route::get('/company/editProfile','CompanyController@editCompanyProfile')->name('CompanyEditProfile');
 Route::post('/company/editProfile/{id}','CompanyController@updatCompanyProfile');
 Route::get('company/shortList','CompanyController@getJob')->name('CompanyJob');
 
 Route::get('company/endJobs','CompanyController@endJobs')->name('CompanyEndJobs');
-
+Route::post('/company/update_EndJob/{id}', 'CompanyController@update_JobEnd')->name('update_JobEnd');
 
 //********************************************* */
 
 Route::get('/job/addJob','JobsController@addJob')->name('addJob');
 Route::post('/job/storeJob','JobsController@storeJob');
+
 
 
 
@@ -153,6 +154,12 @@ Route::post('/resume/storePersonJobCat','PersonController@storePersonJobCat');
     Route::get('/country','AdminController@addCountry');
     Route::get('/city/{id}','AdminController@addCity');
     Route::get('/admin/dashboard','AdminController@getDash')->name('admin.Dash');
+    Route::get('/admin/pending_jobs','AdminController@pendingJob')->name('pendingJob');
+    Route::post('/job/accepte_Job/{id}', 'AdminController@accepte_JobStatuse')->name('accepte_JobStatuse');
+    Route::post('/job/denie_Job/{id}', 'AdminController@denied_JobStatuse')->name('denied_JobStatuse');
+    
+
+    
     
 
 
@@ -178,7 +185,6 @@ Route::get('/job/applyedToJob/{id}/{user}/reject', 'ApplicantController@reject')
 
 Route::get('/job/applicationForm/{id}','ApplicantController@getApplicationForm');
 
-Route::post('/job/update_EndJob/{id}', 'CompanyController@update_JobEnd')->name('update_JobEnd');
 //Route::get('res_det','PersonController@res_det');
 // //auth _ register _ login
 // Route::get('auth/login','HomeController@login');
