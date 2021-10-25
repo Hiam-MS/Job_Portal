@@ -81,6 +81,7 @@ Route::get('company/endJobs','CompanyController@endJobs')->name('CompanyEndJobs'
 Route::get('/job/addJob','JobsController@addJob')->name('addJob');
 Route::post('/job/storeJob','JobsController@storeJob');
 
+Route::post('/job/update_EndJob/{id}', 'CompanyController@update_JobEnd')->name('update_JobEnd');
 
 
 
@@ -186,7 +187,6 @@ Route::get('/job/applyedToJob/{id}/{user}/reject', 'ApplicantController@reject')
 
 Route::get('/job/applicationForm/{id}','ApplicantController@getApplicationForm');
 
-Route::post('/job/update_EndJob/{id}', 'CompanyController@update_JobEnd')->name('update_JobEnd');
 //Route::get('res_det','PersonController@res_det');
 // //auth _ register _ login
 // Route::get('auth/login','HomeController@login');
