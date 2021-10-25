@@ -65,7 +65,7 @@
 														</div>
 													</div>
 												@else
-													<li><strong class="font-weight-700 text-black"><li><a href="{{route('company.profile')}}" > ادخال معلومات الشركة </a></li></strong> </li>
+													<li><strong class="font-weight-700 text-black"><li><a href="{{route('CompanyProfile')}}" > ادخال معلومات الشركة </a></li></strong> </li>
 
 												@endif
 												

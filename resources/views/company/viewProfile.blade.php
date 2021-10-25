@@ -31,13 +31,70 @@
 											<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
 									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
                                     <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="{{route('CompanyDash')}}" > لوحة التحكم<a></h4>
-                                    <ul>
-                                                
-                                                <li><strong class="font-weight-700 text-black"> <a href="{{route('CompanyViewProfile')}}" > عرض الملف الشخصي </a></strong><span class="text-black-light"> </span></li>
-                                                <li><strong class="font-weight-700 text-black"><li><a href="{{route('addJob')}}" > نشر فرصة عمل جديدة </a></li></strong> </li>
-                                                <li><strong class="font-weight-700 text-black"><li><a href="{{route('CompanyJob')}}" > عرض فرص العمل المنشورة  </a></li></strong> </li>
-                                                <li><strong class="font-weight-700 text-black"><a href="{{route('resuems')}}" >   عرض السير الذاتية المتاحة</a>  </strong></li>
-                                            </ul>
+									<ul>
+											
+											@if(isset(auth()->user()->GetCompany))
+												<li>
+													<strong class="font-weight-700 text-black"> 
+														<a href="{{route('CompanyViewProfile')}}" > عرض الملف الشخصي </a>
+													</strong><span class="text-black-light"> </span>
+												</li>
+												<li>
+													<strong class="font-weight-700 text-black">
+														<a href="{{route('addJob')}}" > نشر فرصة عمل جديدة </a>
+													</strong> 
+												</li>
+												<li>
+													<strong class="font-weight-700 text-black">
+														<a href="{{route('CompanyJob')}}" > عرض فرص العمل المنشورة  </a>
+													</strong>
+												</li>
+												<li>
+													<strong class="font-weight-700 text-black">
+														<a href="{{route('resuems')}}" >   عرض السير الذاتية المتاحة</a> 
+													 </strong>
+												</li>	
+												<li>
+													<strong class="font-weight-700 text-black">
+														<a href="{{route('CompanyEndJobs')}}" >   الوظائف المنتهية  </a>  
+													</strong>
+												</li>
+											
+												<div class="dropdown " >
+													<li>
+														<strong class="font-weight-700 text-black">
+															<h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5> 
+														 </strong>
+													</li>
+											 		<div class="dropdown-content">
+											 			<ul>
+															<li>
+																<a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a> 
+															</li>
+														</ul>
+														<ul>
+															<li>
+																<a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a>
+															</li>
+														</ul>
+														<ul>
+															<li>
+																<a href="{{route('password.change')}}" >    تغيير كلمة المرور</a> 
+															</li>
+														</ul>
+														<ul>
+															<li>
+																<a href="{{route('profile.delete')}}" >  حذف الحساب </a>
+															 </li>
+														</ul>	
+									 				</div>
+												</div>
+											@else
+												<li><strong class="font-weight-700 text-black"><li><a href="{{route('CompanyProfile')}}" > ادخال معلومات الشركة </a></li></strong> </li>
+
+											@endif
+											
+										</ul>
 									</div>
 								</div>
 										</div>

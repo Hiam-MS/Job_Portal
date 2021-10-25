@@ -18,7 +18,7 @@ class CompanyController extends Controller
         return view('index');
     }
     
-    public function getAddCompanyForm()
+    public function createProfile()
     {
         return view('company.addProfile');
     }
