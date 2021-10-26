@@ -1,49 +1,122 @@
 @extends('header')
 @section('content')
-    <!-- header END -->
-    <!-- Content -->
-    <!-- Content -->
-    <div class="page-content bg-white">
-        <!-- inner page banner -->
-        <div class="dez-bnr-inr overlay-black-dark" style="background-image:url({{ asset('images/banner/bnr1.jpg')}});">
-        
-            <div class="container">
-                <div class="dez-bnr-inr-entry">
-                    <h1 class="text-white">السيرة الذاتية</h1>
-					<!-- Breadcrumb row -->
-					<div class="breadcrumb-row">
-                    <h6 class="text-white">المعلومات الشخصية</h1>
-					</div>
-					<!-- Breadcrumb row END -->
-                </div>
-            </div>
+@csrf
+<style>
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 250px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+<div class="page-content bg-white">
+    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{ asset('images/banner/bnr1.jpg')}});">
+		<div class="container">
+            <div class="dez-bnr-inr-entry">
+                <h1 class="text-white">لوحة التحكم </h1>
+			</div>
         </div>
-        <!-- inner page banner END -->
-        <!-- contact area -->
-       
+    </div>
+     
+    <div class="content-block">
+        <div class="section-full content-inner-1">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4">
+						<div class="sticky-top">
+							<div class="row">
+								<div class="col-lg-12 col-md-6">
+									<div class="m-b30">
+										<!-- <img src="images/blog/grid/6.jpg" alt=""> -->
+									</div>
+								</div>
+										
+								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
+									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
+                                    	<h4 class="text-black font-weight-700 p-t10 m-b15"><a href="{{route('PersonDash')}}" > لوحة التحكم<a></h4>
+                                    	<ul>
+											@if(isset(auth()->user()->GetPerson))
+										
+												<li><strong class="font-weight-700 text-black"><a href="{{route('PersonProfile')}}" >  معاينةالسيرة الذاتية</a>  </strong></li>
+												<li><strong class="font-weight-700 text-black"><li><a href="{{route('PersonalInfo.edit')}}"  >تعديل السيرة الذاتية</a></li></strong> </li>
+												<li><strong class="font-weight-700 text-black"><li><a href="{{route('edu')}}" >اضافة/تعديل التعليم و المهارات  </a></li></strong> </li>
+												<li><strong class="font-weight-700 text-black"><li><a href="{{route('ApplyedJob')}}" >سجل التقدمات  </a></li></strong> </li>			
+											@else
+									  
+											<li><strong class="font-weight-700 text-black"> <a href="{{route('resuem.create')}}" >انشاء السيرة الذاتية</a></strong><span class="text-black-light"> </span></li>
+									
+											@endif	
 
-        <div  class="content-block">
-			<!-- Submit Resume -->
-			<div class="section-full bg-white submit-resume content-inner-2">
-				<div dir="rtl" lang="ar" class="container" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
+									
 
-		
-					<form action="/resume/update-Personal-Info" method="POST" id="resume" >
+
+											<div class="dropdown " >
+												<li><strong class="font-weight-700 text-black"><h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5>  </strong>	</li>
+												<div class="dropdown-content">
+													<ul>
+														<li><a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a> </li>
+													</ul>
+													<ul>
+														<li><a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a> </li>
+													</ul>
+													<ul>
+														<li><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a> </li>
+													</ul>
+													<ul>
+														<li><a href="{{route('profile.delete')}}" >  حذف الحساب </a> </li>
+													</ul>	
+												</div>
+											</div><br> <br> <br>  
+										</ul>
+  									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				
+
+					<div class="col-lg-8">
+						<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
+							@if(Session::get('success'))
+								<div class="alert alert-success" style="font-size:20px">
+									{{Session::get('success')}}
+								</div>
+							@endif
+							@if(Session::get('fail'))
+								<div class="alert alert-danger" style="font-size:20px">
+									{{Session::get('success')}}
+								</div>
+							@endif     
+						
+							<form action="{{route('PersonUpdateInfo')}}" method="POST" id="resume" >
                     @csrf
                     @method('PUT')
                     <span style="color:red"> @error('user_id'){{$message}}@enderror</span>
 						<div class="form-group">
-							<label>الاسم الكامل</label>
+							<label>الاسم </label>
 							<input type="text" class="form-control" placeholder="" name="fname" value="{{ $person->Fname }}" style="width:58%" data-parsly-trigger="keyup" >
 							<span style="color:red"> @error('fname'){{$message}}@enderror</span>
 						</div>
 						<div class="form-group">
-							<label>الاسم الكامل</label>
+							<label>اسم الاب </label>
 							<input type="text" class="form-control" placeholder="" name="father_name" value="{{ $person->Father_name }}" style="width:58%" data-parsly-trigger="keyup" >
 							<span style="color:red"> @error('father_name'){{$message}}@enderror</span>
 						</div>
 						<div class="form-group">
-							<label>الاسم الكامل</label>
+							<label>الكنية </label>
 							<input type="text" class="form-control" placeholder="" name="Lname" value="{{ $person->Lname }}" style="width:58%" data-parsly-trigger="keyup" >
 							<span style="color:red"> @error('Lname'){{$message}}@enderror</span>
 						</div>
@@ -61,7 +134,7 @@
 
 						<div class="form-group" >
 							<label> الجنس 
-							<select name="gender" class="form-control" style="width:300px;" value="{{ $person->gender }}">
+							<select name="gender" class="form-control" style="width:180px;" value="{{ $person->gender }}">
 								
 								<option value="انثى"  > انثى </option>
                                 <option value="ذكر"  > ذكر </option>
@@ -71,7 +144,7 @@
 							</select> </label>
                             
 							<label style="padding-right:60px">  خدمة العلم 
-							 <select name="military_service"  class="form-control" style="width:300px;"  value="{{ $person->military_service }}">
+							 <select name="military_service"  class="form-control" style="width:190px;"  value="{{ $person->military_service }}">
 							
 							<option  value="منتهية">منتهية</option>
 								<option  value="غير منتهية">غير منتهية</option>
@@ -87,7 +160,7 @@
 						</div>
 						<div class="form-group" >
 							<label> الوضع العائلي 
-							<select name="marital_status" class="form-control" style="width:660px"  value="{{ $person->marital_status }}">
+							<select name="marital_status" class="form-control" style="width:440px"  value="{{ $person->marital_status }}">
 								
 								<option value="عازب">عازب</option>
 								<option  value="غير عازب">غير عازب</option>
@@ -137,8 +210,8 @@
 						<div class="form-group" >
 							<label>  اللغات  </label> <span> (اضغط مع الاستمرار على مفتاح CTRL وحدد أكثر من عنصر واحد من القائمة.)</span> 
                             
-							<select name="lang[]" id="category" multiple='multiple' size="3" data-parsly-trigger="keyup" class="form-control" style="width:660px" size="4" >
-								<option  >يرجى الاختيار</option>
+							<select name="lang[]" id="category" multiple='multiple' size="3" data-parsly-trigger="keyup" class="form-control" style="width:660px" size="4"  >
+								<option  selected disabled>يرجى الاختيار</option>
 								<option  ></option>
 								<option value="عربي">عربي</option>
                                      <option value="الماني">الماني</option>
@@ -163,11 +236,26 @@
  <input type="button" value="الغاء" onclick="history.back()" class="btn btn-primary">
 </form>
 					</form>
+						</div>
+					</div>
+
+
+
+
+
+
+
+
+
+						
 				</div>
 			</div>
-            <!-- Submit Resume END -->
 		</div>
+			<br><br>
     </div>
-    <!-- Content END-->
-	<!-- Footer -->
-@endsection
+</div>
+
+
+ 
+    
+ @endsection

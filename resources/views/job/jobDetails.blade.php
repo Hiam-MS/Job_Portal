@@ -174,6 +174,7 @@ textarea.form-control{
 
 							@if(auth::user())
 								@if(auth()->user()->role == 'c')
+								@if(auth()->user()->id == $job->company_id)
 									<div class="card card-default mt-5">  
 										<form action="{{url("/job/applyedToJob/$job->id")}}" method="">
 											{{ csrf_field() }}
@@ -182,7 +183,7 @@ textarea.form-control{
 													
 										</form>
 									</div>
-									
+									@endif
 								@endif
 								
 							
@@ -192,7 +193,7 @@ textarea.form-control{
 							<br>
 							<button type="submit" class=" btn btn-primary">طباعة</button>
 							
-							<button type="submit" class="  btn btn-primary" ">رجوع</button>
+							<button type="submit" onclick="history.back()" class="  btn btn-primary" ">رجوع</button>
 						</div>
 					</div>
 				</div>

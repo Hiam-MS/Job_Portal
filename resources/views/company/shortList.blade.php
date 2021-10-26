@@ -75,40 +75,39 @@
 													</strong>
 												</li>
 											
-												<div class="dropdown " >
-													<li>
-														<strong class="font-weight-700 text-black">
-															<h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5> 
-														 </strong>
-													</li>
-											 		<div class="dropdown-content">
-											 			<ul>
-															<li>
-																<a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a> 
-															</li>
-														</ul>
-														<ul>
-															<li>
-																<a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a>
-															</li>
-														</ul>
-														<ul>
-															<li>
-																<a href="{{route('password.change')}}" >    تغيير كلمة المرور</a> 
-															</li>
-														</ul>
-														<ul>
-															<li>
-																<a href="{{route('profile.delete')}}" >  حذف الحساب </a>
-															 </li>
-														</ul>	
-									 				</div>
-												</div>
+												
 											@else
 												<li><strong class="font-weight-700 text-black"><li><a href="{{route('CompanyProfile')}}" > ادخال معلومات الشركة </a></li></strong> </li>
 
 											@endif
 											
+											<div class="dropdown " >
+														<li>
+															<strong class="font-weight-700 text-black"><h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5></strong>
+														</li>
+														<div class="dropdown-content">
+															<ul>
+																<li>
+																	<a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a> 
+																</li>
+															</ul>
+															<ul>
+																<li>
+																	<a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a>
+																</li>
+															</ul>
+															<ul>
+																<li>
+																	<a href="{{route('password.change')}}" >    تغيير كلمة المرور</a> 
+																</li>
+															</ul>
+															<ul>
+																<li>
+																	<a href="{{route('profile.delete')}}" >  حذف الحساب </a>
+																</li>
+															</ul>	
+														</div>
+													</div>
 										</ul>
 									</div>
 								</div>
@@ -143,8 +142,8 @@
                                 <li>
 								@if(count($jobs)) 
                                 	@foreach($jobs as $item)
-								
-									<a href="/job/details/{{$item['id']}}">
+									
+									<a href="{{url('/job/details',$item->id)}}">
 									<div class="d-flex">
 											<div class="job-time mr-auto">
 												<span>{{$item->created_at->diffForHumans()}}</span>
@@ -166,7 +165,7 @@
 										</div>
 										
 									@if($item->end_job > NOW())
-										<form action="/job/update_EndJob/{{$item['id']}}" method="POST">
+										<form action="{{url('/company/update_EndJob',$item->id)}}" method="POST">
 											@csrf
 												<div class="salary-bx">
 													

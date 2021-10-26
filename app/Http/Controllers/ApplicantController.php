@@ -47,7 +47,7 @@ class ApplicantController extends Controller
 
         $job = Job::findOrFail($id);
         $person =auth()->user()->GetPerson;
-
+        
         $applicants = DB::table('applyed_jobs')
        
         ->join('jobs', 'applyed_jobs.job_id', '=', 'jobs.id')
@@ -57,6 +57,8 @@ class ApplicantController extends Controller
              })  
         ->orderBy('applyed_jobs.created_at', 'desc')
         ->get();
+
+      
            
        return view('company.viewApplyedToJob', compact('job', 'applicants'));
 
@@ -72,8 +74,14 @@ class ApplicantController extends Controller
             ->when($user, function ($query) use ($user) {
                     return $query->where('person_id', $user);
                 })
-            ->update(['status' => 'hired']);   
-        return redirect()->route('Applicants',['id' => $id]);
+            ->update(['status' => 'hired']); 
+            if($applicant)  {
+                return redirect()->route('Applicants',['id' => $id])->with('success','  تم قبول المرشح بنجاح  ');
+            }else{
+                return back()->withInput()->with('fail','هناك خطأ ما');
+            }
+          
+        
     }  
 
     public function reject($id,$user) {
@@ -87,7 +95,13 @@ class ApplicantController extends Controller
                     return $query->where('person_id', $user);
                 })
             ->update(['status' => 'rejected']);   
-            return redirect()->route('Applicants',['id' => $id]);
+            if($applicant)  {
+                return redirect()->route('Applicants',['id' => $id])->with('success','  تم رفض المرشح بنجاح  ');
+            }else{
+                return back()->withInput()->with('fail','هناك خطأ ما');
+            }
+            
+           
     }  
 
 
@@ -108,7 +122,7 @@ class ApplicantController extends Controller
            
             if($Applyedjob){
                 $Applyedjob->save();
-                return redirect()->route('applyedJob')->with('success','  تمّ التقدم بنجاح');
+                return redirect()->route('ApplyedJob')->with('success','  تمّ التقدم بنجاح');
             }else{
                 return back()->withInput()->with('fail','هناك خطأ ما');
             }

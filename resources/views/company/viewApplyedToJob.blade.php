@@ -39,12 +39,79 @@
 										
 								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
 									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
-										<h4 class="text-black font-weight-700 p-t10 m-b15">تفاصيل العمل</h4>
+                                    <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="#" > لوحة التحكم<a></h4>
+										 <ul>
+											
+											@if(isset(auth()->user()->GetCompany))
+												<li>
+													<strong class="font-weight-700 text-black"> 
+														<a href="{{route('CompanyViewProfile')}}" > عرض الملف الشخصي </a>
+													</strong><span class="text-black-light"> </span>
+												</li>
+												<li>
+													<strong class="font-weight-700 text-black">
+														<a href="{{route('addJob')}}" > نشر فرصة عمل جديدة </a>
+													</strong> 
+												</li>
+												<li>
+													<strong class="font-weight-700 text-black">
+														<a href="{{route('CompanyJob')}}" > عرض فرص العمل المنشورة  </a>
+													</strong>
+												</li>
+												<li>
+													<strong class="font-weight-700 text-black">
+														<a href="{{route('resuems')}}" >   عرض السير الذاتية المتاحة</a> 
+													 </strong>
+												</li>	
+												<li>
+													<strong class="font-weight-700 text-black">
+														<a href="{{route('CompanyEndJobs')}}" >   الوظائف المنتهية  </a>  
+													</strong>
+												</li>
+											
+												
+											@else
+												<li><strong class="font-weight-700 text-black"><li><a href="{{route('CompanyProfile')}}" > ادخال معلومات الشركة </a></li></strong> </li>
+
+											@endif
+											
+											<div class="dropdown " >
+														<li>
+															<strong class="font-weight-700 text-black"><h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5></strong>
+														</li>
+														<div class="dropdown-content">
+															<ul>
+																<li>
+																	<a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a> 
+																</li>
+															</ul>
+															<ul>
+																<li>
+																	<a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a>
+																</li>
+															</ul>
+															<ul>
+																<li>
+																	<a href="{{route('password.change')}}" >    تغيير كلمة المرور</a> 
+																</li>
+															</ul>
+															<ul>
+																<li>
+																	<a href="{{route('profile.delete')}}" >  حذف الحساب </a>
+																</li>
+															</ul>	
+														</div>
+													</div>
+										</ul><hr><br>
+                                        <!-- <div>
+                                        <h4 class="text-black font-weight-700 p-t10 m-b15">تفاصيل العمل</h4>
 										<ul>
 											<li><i  class="ti-location-pin"></i><strong class="font-weight-700 text-black">العنوان: {{$job->city}} </strong><span class="text-black-light"> </span></li>
 											<li><i class="ti-money"></i><strong class="font-weight-700 text-black">الراتب : {{$job->salary}}</strong> </li>
 											<li><i class="ti-user"></i><strong class="font-weight-700 text-black">عدد الاشخاص المطلوبين:  {{$job->number_of_employess}} </strong></li>
 										</ul>
+                                        </div> -->
+										
 									</div>
 								</div>
 							</div>
@@ -79,14 +146,14 @@
                                                     @else 
                                                         <td class="text-center"><i class="ti-user" ></i></td>
                                                     @endif 
-                                                    <td class="text-nowrap"><h5 class="h5"> <a class="text-info" href="/proposal/{{$applicant->job_id}}/{{$applicant->id}}">{{ $applicant->name }}</a></h5>
+                                                    <td class="text-nowrap"><h5 class="h5"> <a class="text-info" href="">{{ $applicant->Fname }} {{ $applicant->Father_name }} {{ $applicant->Lname }}</a></h5>
                                                         <p>{{ $applicant->job_title }}</p>
                                                         <p class="small"> 
                                                             <span class="mr-5"><i class="fa fa-envelope"></i> تم التقدم بتاريخ: {{ $applicant->created_at }}</span>                                            
                                                             <span><i class="fa fa-map-marker-alt"></i> {{ $applicant->country }}</span>
                                                         </p>
                                                     </td>
-
+										
                                                      @if ($applicant->status == 'hired')
                                                         <td>
                                                             <h4><span class="badge badge-success w-100"><i class="text-white fa fa-check"></i> <strong>مطلوب</strong></span></h4>
@@ -97,12 +164,12 @@
                                                         </td>
                                                     @else
                                                         <td>
-                                                            <a href="/job/applyedToJob/{{ $job->id }}/{{$applicant->id}}/hire" data-toggle="tooltip" data-placement="top" title="قبول المرشح">
+                                                            <a href="{{url("/job/applyedToJob/$job->id/$applicant->id/hire")}}"  data-toggle="tooltip" data-placement="top" title="قبول المرشح">
                                                                 <i class="fa fa-thumbs-up fa-3x " style="color:green"></i>
                                                             </a>
                                                         </td>
                                                         <td>
-                                                            <a href="/job/applyedToJob/{{ $job->id }}/{{$applicant->id}}/reject" data-toggle="tooltip" data-placement="top" title="رفض المرشح">
+                                                            <a href="{{url("/job/applyedToJob/$job->id/$applicant->id/reject")}}" data-toggle="tooltip" data-placement="top" title="رفض المرشح">
                                                                 <i class="fa fa-thumbs-down fa-3x" style="color:red"></i>
                                                             </a>
                                                         </td>
@@ -114,6 +181,9 @@
 									@endif
                                         </tbody>
                                     </table>
+
+
+                              
                                 </form>
                             </div>
                         </div>

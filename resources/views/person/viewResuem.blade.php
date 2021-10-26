@@ -67,7 +67,7 @@
 											@if(count($Person) > 0)
 												@foreach($Person as $item)
 													<tr>
-														<td>{{$item->name}}</td>
+														<td>{{$item->Fname}} {{$item->Father_name}} {{$item->Lname}}</td>
 														<td>
 															@foreach($item->PersonEducation as $edu)
 																{{$edu['degree_name'] }} <br>
@@ -179,7 +179,7 @@ $('body').on( 'keyup', '#search-resume',function(){
 			   $('#serch-result').html('');
 
 			   $.each(res , function(index, value){
-				tableRow ='<tr><td>'+value.name+'</td><td>'+value.degree_name+'</td><td>'+value.gender+'</td><td><a href="Person/details/'+value.id+' class="btn "> تفاصيل</a></td> </tr>';
+				tableRow ='<tr><td>'+value.Fname+' '+value.Fname+' '+value.Lname+'</td><td>'+value.degree_name+'</td><td>'+value.gender+'</td><td><a href="Person/details/'+value.id+' class="btn "> تفاصيل</a></td> </tr>';
 				$('#serch-result').append(tableRow);
 			})
 

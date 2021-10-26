@@ -37,7 +37,12 @@
 														<strong class="font-weight-700 text-black"><a href="{{route('CompanyEndJobs')}}" >   الوظائف المنتهية  </a></strong>
 													</li>
 												
-													<div class="dropdown " >
+												@else
+													<li><strong class="font-weight-700 text-black"><li><a href="{{route('CompanyProfile')}}" > ادخال معلومات الشركة </a></li></strong> </li>
+
+												@endif
+												
+												<div class="dropdown " >
 														<li>
 															<strong class="font-weight-700 text-black"><h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5></strong>
 														</li>
@@ -64,10 +69,6 @@
 															</ul>	
 														</div>
 													</div>
-												@else
-													<li><strong class="font-weight-700 text-black"><li><a href="{{route('CompanyProfile')}}" > ادخال معلومات الشركة </a></li></strong> </li>
-
-												@endif
 												
 											</ul>
 										</div>

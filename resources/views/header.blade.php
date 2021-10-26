@@ -63,6 +63,12 @@
   color: black;}
 </style>
 <style>
+	.form-control{
+		color:black;
+		
+	}
+</style>
+<style>
 .dropdown {
   position: relative;
   display: inline-block;
@@ -207,12 +213,12 @@
 									
 								</ul>
 							</li>-->
-							<li>
+							<!-- <li>
 								<a href="{{ route('company.show') }}">    الشركات الحالية</i></a>
 								<ul class="sub-menu">
 									
 								</ul>
-							</li>
+							</li> -->
 							<li>
 								<a href="/#aboutUs">  نبذة عن الموقع</i></a>
 								<ul class="sub-menu">
@@ -220,7 +226,7 @@
 								</ul>
 							</li>
 							<li>
-								<a href="{{ asset('https://ccdcp.net/new/')}}">موقع الغرفة      </i></a>
+								<a href="{{ asset('https://ccdcp.net/')}}">موقع الغرفة      </i></a>
 								<ul class="sub-menu">
 									
 								</ul>

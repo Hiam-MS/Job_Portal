@@ -44,32 +44,41 @@
 										</div>
 										<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
 									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
-                                    <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="#" > لوحة التحكم<a></h4>
-                                    <ul>
-                                                
-									@if(isset(auth()->user()->GetPerson))
-									
-									   <li><strong class="font-weight-700 text-black"><a href="/resume/ViewpersonalInfo" >  معاينةالسيرة الذاتية</a>  </strong></li>
-										<li><strong class="font-weight-700 text-black"><li><a href="#" >تعديل السيرة الذاتية</a></li></strong> </li>
-										<li><strong class="font-weight-700 text-black"><li><a href="/resume/createEdu" >اضافة/تعديل التعليم و المهارات  </a></li></strong> </li>
-										<li><strong class="font-weight-700 text-black"><li><a href="/resume/applyedJob" >سجل التقدمات  </a></li></strong> </li>			
-
-									  
-									  @else
-
-									<li><strong class="font-weight-700 text-black"> <a href="/resume/create" >انشاء السيرة الذاتية</a></strong><span class="text-black-light"> </span></li>
-									
-										@endif	
-
+									<h4 class="text-black font-weight-700 p-t10 m-b15"><a href="{{route('PersonDash')}}" > لوحة التحكم<a></h4>
+                                    	<ul>
+											@if(isset(auth()->user()->GetPerson))
 										
-							
-								
-										<li><strong class="font-weight-700 text-black"><h5 >      ادارة الحساب</h5>  </strong>
-										<ul>
-										<ul><li><strong class="font-weight-700 text-black"><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a>  </strong></li></ul>
-										<ul><li><strong class="font-weight-700 text-black"><a href="{{route('edit.form')}}" >   تعديل   الحساب</a>  </strong></li></ul>
-										<ul><li><strong class="font-weight-700 text-black"><a href="{{route('profile.delete')}}" >  حذف الحساب </a>  </strong></li>	
-                                            </ul>
+												<li><strong class="font-weight-700 text-black"><a href="{{route('PersonProfile')}}" >  معاينةالسيرة الذاتية</a>  </strong></li>
+												<li><strong class="font-weight-700 text-black"><li><a href="{{route('PersonalInfo.edit')}}"  >تعديل السيرة الذاتية</a></li></strong> </li>
+												<li><strong class="font-weight-700 text-black"><li><a href="{{route('edu')}}" >اضافة/تعديل التعليم و المهارات  </a></li></strong> </li>
+												<li><strong class="font-weight-700 text-black"><li><a href="{{route('ApplyedJob')}}" >سجل التقدمات  </a></li></strong> </li>			
+											@else
+									  
+											<li><strong class="font-weight-700 text-black"> <a href="{{route('resuem.create')}}" >انشاء السيرة الذاتية</a></strong><span class="text-black-light"> </span></li>
+									
+											@endif	
+
+									
+
+
+											<div class="dropdown " >
+												<li><strong class="font-weight-700 text-black"><h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5>  </strong>	</li>
+												<div class="dropdown-content">
+													<ul>
+														<li><a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a> </li>
+													</ul>
+													<ul>
+														<li><a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a> </li>
+													</ul>
+													<ul>
+														<li><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a> </li>
+													</ul>
+													<ul>
+														<li><a href="{{route('profile.delete')}}" >  حذف الحساب </a> </li>
+													</ul>	
+												</div>
+											</div><br> <br> <br>  
+										</ul>
 									</div>
 								</div>
 										
@@ -101,7 +110,7 @@
 									<tr>
 										
 											<td  style="font-weight:bold;" > الاسم الكامل</td>
-											<td> {{$Person->name}} </td>
+											<td> {{$Person->Fname}} {{$Person->Father_name}} {{$Person->Lname}}</td>
 													
 									</tr>
 									<tr>

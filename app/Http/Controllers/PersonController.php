@@ -97,7 +97,7 @@ public function searchResume(Request $request)
     {
         if(isset(auth()->user()->GetPerson)){
 
-            return redirect()->route('edu');
+            return redirect()->route('PersonDash');
 
             
 
@@ -116,16 +116,37 @@ public function searchResume(Request $request)
             'fname'=> ['required','string' , 'max:20'] ,
             'father_name'=> ['required','string' , 'max:20'] ,
             'Lname'=> ['required','string', 'max:20'] ,
-            'email'=> ['required','string'] ,
+            // 'email'=> ['required','string'] ,
+            // 'national_number'=> ['required','numeric', 'max:11'] ,
+            'gender'=> ['required'] ,
+            'military_service'=> ['required'] ,
+            'marital_status'=> ['required'] ,
             'dob'=> ['required','date'] ,
             'place_Of_b'=> ['required','string'] ,
-            'national_number'=> ['required','numeric', 'max:11'] ,
-            'fixed_phone'=> ['required','integer'] ,
             'Current_address'=> ['required','string'] ,
+            'fixed_phone'=> ['required','integer'] ,
             'mobile_number'=> ['required','string'] ,
+            'lang'=>['required'] ,
 
             'user_id'=>['unique:Person'] ,
           
+        ],[
+            'fname.required'=>'يجب تعبئة حقل الاسم',
+            'father_name.required'=>'يجب  تعبئة  حقل اسم الأب',
+            'Lname.required'=>'يجب تعبئة حقل الكنية  ',
+            // 'email.required'=>'يجب  ادخال البريد الالكتروني ',
+            // 'national_number.required'=>'يجب  ادخال حقل الرقم الوطني  ',
+            
+            'gender.required'=>'يجب اختيار حقل الجنس  ',
+            'military_service.required'=>'يجب   اختيار حقل خدمة العلم ',
+            'marital_status.required'=>'يجب  اختيار حقل الوضع العائلي   ',
+            'dob.required'=>'يجب ادخال  حقل  تاريخ  الميلاد   ',
+            'place_Of_b.required'=>'يجب ادخال  حقل  مكان  الولادة   ',
+           
+            'Current_address.required'=>'يجب  ادخال حقل  مكان الاقامة الحالي   ',
+            'fixed_phone.required'=>'يجب  تعبئة  حقل الهاتف الأرضي  ',
+            'mobile_number.required'=>'يجب تعبئة حقل رقم الموبايل   ',
+            'lang.required'=>'يجب  اختيار حقل  اللغة   ',
         ]);
         
         $person =new Person ;
@@ -150,7 +171,7 @@ public function searchResume(Request $request)
 
         $person->save();
     
-       return redirect()->route('edu');
+       return redirect()->route('PersonDash');
 
      }
 
@@ -179,7 +200,7 @@ public function updatPersonalInfo(Request $Request)
             'email'=> ['required','string'] ,
             'dob'=> ['required','date'] ,
             'place_Of_b'=> ['required','string'] ,
-            'national_number'=> ['required','numeric', 'max:11'] ,
+            // 'national_number'=> ['required','numeric', 'max:11'] ,
             'fixed_phone'=> ['required','integer'] ,
             'Current_address'=> ['required','string'] ,
             'mobile_number'=> ['required','string'] ,
@@ -251,14 +272,26 @@ public function updatPersonalInfo(Request $Request)
     public function storePersonEdu(Request $Request)
 
     {
-          $Request->validate([
-            // 'degree_name'=> ['required','string'] ,
-            // 'Institution'=> ['required','string'] ,
-            // 'Degree'=> ['required','string'] ,
-            // 'Major'=> ['required','string'] ,
-            // 'Graduation_year'=> ['required','integer'] ,
-            
+        $Request->validate([
+            'degree_name'=> ['required','string'] ,
+            'Institution'=> ['required','string'] ,
+            'Degree'=> ['required','string'] ,
+            'Major'=> ['required','string'] ,
+            'Graduation_year'=> ['required'] ,
+            'Country'=> ['required'] ,
+            'person_id'=>['unique:Person'] ,
           
+
+           
+          
+        ],[
+            'degree_name.required'=>'يجب تعبئة حقل اسم الشهادة',
+            'Institution.required'=>'يجب  تعبئة  حقل  المؤسسة التعليمية',
+            'Degree.required'=>'يجب  اختيار الدرجة/الشهادة    ',
+            'Major.required'=>'يجب    تعبئة حقل اختصاص الشهادة ',
+            'Graduation_year.required'=>'يجب     اختيار تاريخ سنة التخرج  ',
+            'Country.required'=>'يجب   ادخال حقل دولة الدراسة   ',
+           
         ]);
 
         
@@ -291,14 +324,23 @@ public function updatPersonalInfo(Request $Request)
     {
 
         $Request->validate([
-            // 'Job_title'=> ['required','string'] ,
-            // 'job_Specialize'=> ['required','string'] ,
-            // 'company_name'=> ['required','string'] ,
-            // 'company_address'=> ['required','string'] ,
-            // 'Start_date'=> ['required','integer'] ,
-            // 'end_date'=> ['required','integer'] ,
-            // 'Responsibilities'=> ['required','integer'] ,
+            'Job_title'=> ['required','string'] ,
+            'job_Specialize'=> ['required','string'] ,
+            'company_name'=> ['required','string'] ,
+            'company_address'=> ['required','string'] ,
+            'Start_date'=> ['required','date'] ,
+            'end_date'=> ['required','date'] ,
+            'Responsibilities'=> ['required'] ,
           
+        ],[
+            'Job_title.required'=>'يجب تعبئة حقل  المنصب الوظيفي',
+            'job_Specialize.required'=>'يجب  تعبئة  حقل   اختصاص العمل',
+            'company_name.required'=>'يجب   تعبئة حقل اسم الشركة',
+            'company_address.required'=>'يجب    تعبئة حقل  عنوان الشركة ',
+            'Start_date.required'=>'يجب     اختيار تاريخ بدء العمل   ',
+            'end_date.required'=>'يجب     اختيار تاريخ انتهاء العمل   ',
+            'Responsibilities.required'=>'يجب  تعبئة حقل المسؤوليات   ',
+           
         ]);
 
             $personExp =new PersonExperience ;
@@ -310,12 +352,16 @@ public function updatPersonalInfo(Request $Request)
             $personExp->end_date = $Request->input("end_date");
             $personExp->Responsibilities= $Request->input("Responsibilities");
             $personExp->person_id= auth()->user()->GetPerson->id;
-
-            $personExp->save();
+            if($personExp){
+                $personExp->save();
+                return redirect()->route('edu')->with('success','  تمت الاضافة بنجاح');
+            }else{
+                return back()->withInput()->with('fail','هناك خطأ ما');
+            }
+           
             
            
-           return redirect()->route('edu');
-
+       
       
         }
 
@@ -331,19 +377,26 @@ public function updatPersonalInfo(Request $Request)
 
     {
         $Request->validate([
-            // 'name'=> ['required','string'] ,
+            'name'=> ['required','string'] ,
          
           
+        ],[
+            'name.required'=>'يجب   ادخال حقل اسم المهارة     ',
         ]);
 
         $personSkill =new PersonSkill ;
             $personSkill->name = $Request->input("name");
            $personSkill->person_id= auth()->user()->GetPerson->id;
            
-           $personSkill->save();
           
+           if($personSkill){
+            $personSkill->save();
+            return redirect()->route('edu')->with('success','  تمت الاضافة بنجاح');
+        }else{
+            return back()->withInput()->with('fail','هناك خطأ ما');
+        }
             
-           return redirect()->route('edu');
+           
            
  }
 
@@ -360,7 +413,7 @@ public function updatPersonalInfo(Request $Request)
 
     {
         $Request->validate([
-            // 'name'=> ['required','string'] ,
+            'name'=> ['required','string'] ,
          
           
         ]);
@@ -370,10 +423,14 @@ public function updatPersonalInfo(Request $Request)
            $PersonCourse->person_id= auth()->user()->GetPerson->id;
            
 
-            $PersonCourse->save();
            
-            
-           return redirect()->route('edu');
+            if($PersonCourse){
+                $PersonCourse->save();
+                return redirect()->route('edu')->with('success','  تمت الاضافة بنجاح');
+            }else{
+                return back()->withInput()->with('fail','هناك خطأ ما');
+            }
+           
            
         }
 
@@ -500,8 +557,15 @@ public function updateCourse(Request $Request)
         'person_id' => auth()->user()->GetPerson->id,
 
        ]);
-         
-        return redirect()->route('edu');
+       if ($course){
+    
+        return redirect()->route('edu')->with('success', ' تم التعديل بنجاح');
+    }else{
+        
+        return redirect()->back()->with('fail', ' لم يتم التعديل يرجى المحاولة مرة ثانية');
+     
+      }   
+        
 
 
     }
@@ -530,14 +594,21 @@ public function updateSkill(Request $Request)
     ]);
     $cid = $Request->input("cid");
 
-    $course = PersonSkill::where('id' , $cid)
+    $skill = PersonSkill::where('id' , $cid)
        ->update([
         'name' => $Request->input("name"),
         'person_id' => auth()->user()->GetPerson->id,
 
        ]);
          
-        return redirect()->route('edu');
+       if ($skill){
+    
+        return redirect()->route('edu')->with('success', ' تم التعديل بنجاح');
+    }else{
+        
+        return redirect()->back()->with('fail', ' لم يتم التعديل يرجى المحاولة مرة ثانية');
+     
+      }   
 }
 
 
@@ -583,8 +654,13 @@ public function updateEdu(Request $Request)
         'person_id' =>  auth()->user()->GetPerson->id,
 
        ]);
+       if($Edu){
+        return redirect()->route('edu')->with('success','  تمّ التعديل بنجاح');
+    }else{
+        return back()->withInput()->with('fail','هناك خطأ ما');
+    }
          
-        return redirect()->route('edu');
+        
 
 
     }
@@ -606,17 +682,7 @@ public function updateEdu(Request $Request)
 // update oerson exp
 public function updateExperience(Request $Request)
  {
-//     $Request->validate([
-//         //  'Job_title'=> ['required','string'] ,
-//         //     'job_Specialize'=> ['string'] ,
-//         //     'company_name'=> ['string'] ,
-//         //     'company_address'=> ['string'] ,
-//         //     'Start_date'=> ['Date'] ,
-// 'end_date'=> ['Date'] ,
-// 'Responsibilities'=> ['string'] ,
-     
-      
-//     ]);
+
 
     
     $cid = $Request->input("cid");
@@ -635,8 +701,14 @@ public function updateExperience(Request $Request)
         'person_id' =>  auth()->user()->GetPerson->id,
 
        ]);
+       if($Exp){
+        
+        return redirect()->route('edu')->with('success','  تمّ التعديل بنجاح');
+    }else{
+        return back()->withInput()->with('fail','هناك خطأ ما');
+    }
          
-        return redirect()->route('edu');
+   
 
 
     }

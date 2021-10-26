@@ -57,14 +57,82 @@
 
 									<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
 									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
+										
                                     <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="#" > لوحة التحكم<a></h4>
+									<ul>
+											
+											@if(isset(auth()->user()->GetCompany))
+												<li>
+													<strong class="font-weight-700 text-black"> 
+														<a href="{{route('CompanyViewProfile')}}" > عرض الملف الشخصي </a>
+													</strong><span class="text-black-light"> </span>
+												</li>
+												<li>
+													<strong class="font-weight-700 text-black">
+														<a href="{{route('addJob')}}" > نشر فرصة عمل جديدة </a>
+													</strong> 
+												</li>
+												<li>
+													<strong class="font-weight-700 text-black">
+														<a href="{{route('CompanyJob')}}" > عرض فرص العمل المنشورة  </a>
+													</strong>
+												</li>
+												<li>
+													<strong class="font-weight-700 text-black">
+														<a href="{{route('resuems')}}" >   عرض السير الذاتية المتاحة</a> 
+													 </strong>
+												</li>	
+												<li>
+													<strong class="font-weight-700 text-black">
+														<a href="{{route('CompanyEndJobs')}}" >   الوظائف المنتهية  </a>  
+													</strong>
+												</li>
+											
+											@else
+												<li><strong class="font-weight-700 text-black"><li><a href="{{route('CompanyProfile')}}" > ادخال معلومات الشركة </a></li></strong> </li>
+
+											@endif
+											
+											<div class="dropdown " >
+													<li>
+														<strong class="font-weight-700 text-black">
+															<h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5> 
+														 </strong>
+													</li>
+											 		<div class="dropdown-content">
+											 			<ul>
+															<li>
+																<a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a> 
+															</li>
+														</ul>
+														<ul>
+															<li>
+																<a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a>
+															</li>
+														</ul>
+														<ul>
+															<li>
+																<a href="{{route('password.change')}}" >    تغيير كلمة المرور</a> 
+															</li>
+														</ul>
+														<ul>
+															<li>
+																<a href="{{route('profile.delete')}}" >  حذف الحساب </a>
+															 </li>
+														</ul>	
+									 				</div>
+												</div>
+											
+										</ul>
                                     <ul>
-                                                
+									@if(isset(auth()->user()->GetPerson))  
 									<li><strong class="font-weight-700 text-black"> <a href="/resume/create" >انشاء السيرة الذاتية</a></strong><span class="text-black-light"> </span></li>
 													<li><strong class="font-weight-700 text-black"><li><a href="#" >تعديل السيرة الذاتية</a></li></strong> </li>
 													<li><strong class="font-weight-700 text-black"><li><a href="/resume/createEdu" >اضافة/تعديل التعليم و المهارات  </a></li></strong> </li>
 													<li><strong class="font-weight-700 text-black"><a href="/resume/ViewpersonalInfo" >  معاينةالسيرة الذاتية</a>  </strong></li>
-                                            </ul>
+                                            
+											@endif
+												</ul>
 									</div>
 								</div>
 										
@@ -102,7 +170,7 @@
 									<tr>
 										
 											<td> الاسم الكامل</td>
-											<td> {{$Person->name}} </td>
+											<td> {{$Person->Fname}} {{$Person->Father_name}} {{$Person->Lname}}</td>
 													
 									</tr>
 									<tr>
@@ -168,12 +236,12 @@
 									<!-- <div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div> -->
 
 
-									<br>
+									<br>@if(count($Person->PersonExperience) > 0)
 									<h3 class="font-weight-600">  الخبرات </h5>
 									
 									<br>
 									<table >
-										@if(count($Person->PersonExperience))
+										
 									@foreach($Person->PersonExperience as $exp)
 										<tr>
 											<td>  المنصب الوظيفي</td>
@@ -206,14 +274,10 @@
 											<td>{{$exp['Responsibilities'] }}</td>
 										</tr>
 										@endforeach <br>
-										@else
-										<tr>
-											<td>لايوجد خبرات سابقة</td>
-											
-										</tr>
-										@endif
+										
+										
 									</table>
-								
+									@endif
 
 
 										<br>
@@ -226,11 +290,11 @@
 										
 									
 								
-					<br>
+					<br>	@if(count($Person->PersonEducation) > 0)
 									<h3 class="font-weight-600">  التعليم </h5>
 									<br>
 									<table >
-									@if(count($Person->PersonEducation))
+								
 									@foreach($Person->PersonEducation as $exp)
 										<tr>
 											<td> اسم الشهادة</td>
@@ -260,12 +324,9 @@
 										</tr>
 										
 										@endforeach
-										@else
-										<tr>
-											<td>لايوجد شهادات علمية سابقة</td>
-										</tr>
-										@endif
-									</table>	<br><br>
+										
+										
+									</table>	@endif<br><br>
 									<!-- <div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div> -->
 									
 									
@@ -273,48 +334,56 @@
 									
 								
 
+									@if(count($Person->PersonSkill) > 0)
 									<h3 class="font-weight-600">  المهارات </h5>
 									<br>
-									
-									<table id ="skill" dir="rtl">
-											<tr>
-												<th>رقم  </th>
-												<th>اسم المهارة   </th>
-												
-											</tr>
 
-											@foreach($Person->PersonSkill as $exp)
-												<tr>
-													<td> {{$exp['id'] }}</td>
-													<td>{{$exp['name'] }} </td>
-													
-													
-												</tr>
-											@endforeach
+									<br>
+
+									
+									@foreach($Person->PersonSkill as $exp)
+									<table  id ="skill" dir="rtl">
+									<tr>
 										
-										</table><br><br>
+											<td style="font-weight:bold;">  المهارة</td>
+											<td>{{$exp['name'] }}</td>
+													
+									</tr>
+									</table>
+									@endforeach
+									@endif
 										<!-- <div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div> -->
 
-										<h3 class="font-weight-600">  الدورات </h3>
-										<br>
-									
-									<table dir="rtl">
-											<tr>
-												<th>رقم  </th>
-												<th>اسم الدورة   </th>
-												
-											</tr>
+										@if(count($Person->PersonCousre) > 0)
+										<h3 class="font-weight-600">  الدورات التدريبية المتبعة </h5>
+									<br>
 
-											@foreach($Person->PersonSkill as $exp)
-												<tr>
-													<td> {{$exp['id'] }}</td>
-													<td>{{$exp['name'] }} </td>
-													
-													
-												</tr>
-											@endforeach
+									<br>
+
+									
+									@foreach($Person->PersonCousre as $exp)
+									<table  id ="skill" dir="rtl">
+									<tr>
 										
-										</table>
+											<td style="font-weight:bold;"> الدورة المتبعة  </td>
+											<td>{{$exp['name'] }}</td>
+													
+									</tr>
+									</table>
+									@endforeach
+									@endif
+									@if(!empty($Person->lang))
+									<h3 class="font-weight-600">  االلغات </h5>
+									
+									
+									@foreach($Person->lang as $lan)
+									
+										<p  style="font-weight:bold;"> {{ $lan}} </p>
+										@endforeach
+										@endif
+										
+
+									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 <!-- 
 										<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div> -->
 								
