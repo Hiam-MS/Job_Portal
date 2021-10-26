@@ -114,9 +114,9 @@
                                                         <a href="{{url('/job/details',$job->id)}}" style="font-size:20px">{{ $job->job_title }}</a>
                                                     </td>
                                                     <td>
-                                                    @if ($job->status =='hired')
+                                                    @if ($job->choice =='hired')
 						      		                    <h4><span class="badge badge-success w-100">تم القبول</span></h4>
-						                        	@elseif($job->status =='rejected')
+						                        	@elseif($job->choice =='rejected')
 						      		                    <h4><span class="badge badge-danger w-100">تم الرفض</span></h4>
 						      	                    @else
 						      		                    <h4><span class="badge badge-primary w-100">في حالة انتظار</span></h4>

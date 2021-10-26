@@ -154,11 +154,11 @@
                                                         </p>
                                                     </td>
 										
-                                                     @if ($applicant->status == 'hired')
+                                                     @if ($applicant->choice == 'hired')
                                                         <td>
                                                             <h4><span class="badge badge-success w-100"><i class="text-white fa fa-check"></i> <strong>مطلوب</strong></span></h4>
                                                         </td>
-                                                     @elseif ($applicant->status == 'rejected')
+                                                     @elseif ($applicant->choice == 'rejected')
                                                         <td>
                                                             <h4><span class="badge badge-danger w-100"><i class="text-white fa fa-times"></i> <strong>مرفوض</strong></span></h4>
                                                         </td>

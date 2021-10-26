@@ -74,7 +74,7 @@ class ApplicantController extends Controller
             ->when($user, function ($query) use ($user) {
                     return $query->where('person_id', $user);
                 })
-            ->update(['status' => 'hired']); 
+            ->update(['choice' => 'hired']); 
             if($applicant)  {
                 return redirect()->route('Applicants',['id' => $id])->with('success','  تم قبول المرشح بنجاح  ');
             }else{
@@ -94,7 +94,7 @@ class ApplicantController extends Controller
             ->when($user, function ($query) use ($user) {
                     return $query->where('person_id', $user);
                 })
-            ->update(['status' => 'rejected']);   
+            ->update(['choice' => 'rejected']);   
             if($applicant)  {
                 return redirect()->route('Applicants',['id' => $id])->with('success','  تم رفض المرشح بنجاح  ');
             }else{
@@ -117,7 +117,7 @@ class ApplicantController extends Controller
             $Applyedjob =new ApplyedJob ;
             $Applyedjob->job_id=  $request->input('job');
             $Applyedjob->person_id= auth()->user()->GetPerson->id;
-            $Applyedjob->status='pennding';
+            $Applyedjob->choice='pennding';
 
            
             if($Applyedjob){
