@@ -18,15 +18,20 @@ class CreateJobsTable extends Migration
             $table->string('company_name');
             $table->string('job_title');
             $table->integer('number_of_employess');
-            $table->string('salary');
-            $table->string('job_requirement');
-            $table->string('functional_tasks');
+            $table->string('budget');
+            
+            $table->text('job_requirement');
+            $table->text('functional_tasks');
             $table->string('country');
             $table->string('city');
             $table->string('gender');
             $table->string('military_service');
             $table->string('degree');
             $table->string('job_type');
+            $table->date('end_job');
+            $table->string('status')->default('pending');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('job_categories')->onDelete('cascade');
             $table->unsignedBigInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             

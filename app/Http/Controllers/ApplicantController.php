@@ -96,7 +96,7 @@ class ApplicantController extends Controller
 
 
 
-    public function storeApplyedJob(Request $request,$id)
+    public function storeApplyedJob(Request $request)
     {
         
 
@@ -105,15 +105,16 @@ class ApplicantController extends Controller
             $Applyedjob->person_id= auth()->user()->GetPerson->id;
             $Applyedjob->status='pennding';
 
-            $Applyedjob->save();
+           
             if($Applyedjob){
-             
-                return redirect()->route('JobDetails',['id' => $id])->with('success','  تمت التقدّم بنجاح');
+                $Applyedjob->save();
+                return redirect()->route('applyedJob')->with('success','  تمّ التقدم بنجاح');
             }else{
                 return back()->withInput()->with('fail','هناك خطأ ما');
             }
 
-            
+
+
 
     }
   

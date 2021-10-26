@@ -1,5 +1,15 @@
 @extends('header')
 @section('content')
+<style>
+	td{
+		font-size:20px;
+	}
+	h3{
+		border: 1px solid DodgerBlue;
+		background-color:LightGray;
+		text-align:center;
+	}
+</style>
 
     <!-- header END -->
     <!-- Content -->
@@ -75,8 +85,18 @@
 
 
 									</h3> -->
-
+									@if(Session::get('success'))
+						<div class="alert alert-success" style="font-size:20px">
+							{{Session::get('success')}}
+						</div>
+					@endif
+					@if(Session::get('fail'))
+						<div class="alert alert-danger" style="font-size:20px">
+							{{Session::get('success')}}
+						</div>
+					@endif
 									<h3 class="font-weight-600">  المعلومات الاساسية : </h5>
+									<!-- <div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div> -->
 									<br>
 								<table  id ="gen_info" dir="rtl">
 									<tr>
@@ -141,100 +161,119 @@
 					
 								
 										
-									
+									<br>
 									
 										
 										
-									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+									<!-- <div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div> -->
 
 
 									<br>
 									<h3 class="font-weight-600">  الخبرات </h5>
+									
 									<br>
-									<table id="expr" dir="rtl">
-										<thead >
-											<tr>
-												
-												<td>المنصب الوظيفي </td>
-												<td> اختصاص العمل</td>
-												<td> اسم الشركة</td>
-												<td> عنوان الشركة</td>
-												<td>  تاريخ بدء العمل</td>
-												<td> تاريخ انتهاء العمل</td>
-												<td>  المسؤوليات</td>
-
-											</tr>
+									<table >
+										@if(count($Person->PersonExperience))
+									@foreach($Person->PersonExperience as $exp)
+										<tr>
+											<td>  المنصب الوظيفي</td>
 											
-										</thead>
-										<tbody>
-											@foreach($Person->PersonExperience as $exp)
-												<tr>
-													
-													<td>{{$exp['Job_title'] }} </td>
-													<td>{{$exp['job_Specialize'] }} </td>
-													<td>{{$exp['company_name'] }} </td>
-													<td>{{$exp['company_address'] }} </td>
-													<td>{{$exp['Start_date'] }} </td>
-													<td>{{$exp['end_date'] }} </td>
-													<td>{{$exp['Responsibilities'] }} </td>
-													
+											<td>{{$exp['Job_title'] }}</td>
+											
+										</tr>
+										<tr>
+											<td> اختصاص العمل</td>
+											<td>{{$exp['job_Specialize'] }}</td>
+										</tr>
+										<tr>
+											<td> اسم الشركة</td>
+											<td>{{$exp['company_name'] }}</td>
+										</tr>
+										<tr>
+											<td> عنوان الشركة</td>
+											<td>{{$exp['company_address'] }}</td>
+										</tr>
+										<tr>
+											<td> تاريخ بدء العمل </td>
+											<td>{{$exp['Start_date'] }}</td>
+										</tr>
+										<tr>
+											<td>تاريخ انتهاء العمل </td>
+											<td>{{$exp['end_date'] }}</td>
+										</tr>
+										<tr>
+											<td> المسؤوليات  </td>
+											<td>{{$exp['Responsibilities'] }}</td>
+										</tr>
+										@endforeach <br>
+										@else
+										<tr>
+											<td>لايوجد خبرات سابقة</td>
+											
+										</tr>
+										@endif
+									</table>
+								
 
-													
-												</tr>
-											@endforeach
-										</tbody>
 
-
-										
+										<br>
 									
 							
 									
-									</table>
-									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+									
+									<!-- <div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div> -->
 									
 										
 									
 								
-
-									<h5 class="font-weight-600"> التعليم</h5>
+					<br>
+									<h3 class="font-weight-600">  التعليم </h5>
 									<br>
-										<table id="edu" dir="rtl">
-											<tr>
-												<th>رقم الشهادة</th>
-												<th>اسم الشهادة </th>
-												<th>  المؤسسة التعليمية</th>
-												<th> الدرجة </th>
-												<th> الاختصاص  </th>
-												<th>سنة التخرج </th>
-												<th>  البلد </th>
-												
-											</tr>
-
-											@foreach($Person->PersonEducation as $exp)
-												<tr>
-													<td> {{$exp['id'] }}</td>
-													<td>{{$exp['degree_name'] }} </td>
-													<td>{{$exp['Institution'] }} </td>
-													<td>{{$exp['Degree'] }} </td>
-													<td>{{$exp['Major'] }} </td>
-													<td>{{$exp['Graduation_year'] }} </td>
-													<td>{{$exp['Country'] }} </td>
-													
-													
-
-													
-												</tr>
-											@endforeach
+									<table >
+									@if(count($Person->PersonEducation))
+									@foreach($Person->PersonEducation as $exp)
+										<tr>
+											<td> اسم الشهادة</td>
+											
+											<td>{{$exp['degree_name'] }}</td>
+											
+										</tr>
+										<tr>
+											<td>المؤسسة التعليمية</td>
+											<td>{{$exp['Institution'] }}</td>
+										</tr>
+										<tr>
+											<td> الدرجة</td>
+											<td>{{$exp['Degree'] }}</td>
+										</tr>
+										<tr>
+											<td> الاختصاص</td>
+											<td>{{$exp['Major'] }}</td>
+										</tr>
+										<tr>
+											<td> سنة التخرج</td>
+											<td>{{$exp['Graduation_year'] }}</td>
+										</tr>
+										<tr>
+											<td>البلد </td>
+											<td>{{$exp['Country'] }}</td>
+										</tr>
 										
-										</table>
-									<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+										@endforeach
+										@else
+										<tr>
+											<td>لايوجد شهادات علمية سابقة</td>
+										</tr>
+										@endif
+									</table>	<br><br>
+									<!-- <div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div> -->
 									
 									
 										
 									
 								
 
-									<h5 class="font-weight-600"> المهارات</h5>
+									<h3 class="font-weight-600">  المهارات </h5>
 									<br>
 									
 									<table id ="skill" dir="rtl">
@@ -253,10 +292,10 @@
 												</tr>
 											@endforeach
 										
-										</table>
-										<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+										</table><br><br>
+										<!-- <div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div> -->
 
-										<h5 class="font-weight-600"> الدورات</h5>
+										<h3 class="font-weight-600">  الدورات </h3>
 										<br>
 									
 									<table dir="rtl">
@@ -276,13 +315,16 @@
 											@endforeach
 										
 										</table>
-
-										<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+<!-- 
+										<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div> -->
 								
 									
 									
 
-                                    
+										<br>
+							<button type="submit" class="button btn btn-primary">طباعة</button>
+							
+							<button type="submit" class=" button btn btn-primary" ">رجوع</button>
 									
 										
 									

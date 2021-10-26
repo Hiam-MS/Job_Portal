@@ -10,6 +10,7 @@ use App\Http\Controllers\ApplicantController;
 
 
 
+
 use Illuminate\Routing\Redirector;
 
 
@@ -25,8 +26,10 @@ use Illuminate\Routing\Redirector;
 |
 */
 
-
-Route::get('/','CompanyController@index')->name('index');
+Route::get('/', function () {
+    return view('index');
+});
+// Route::get('/','CompanyController@index')->name('index');
 Route::get('/JobCategory','JobCategoryController@showJobJobCategory');
 Auth::routes();
    
@@ -36,36 +39,40 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/job/details/{id}','JobsController@JobDetails')->name('JobDetails');
 Route::get('/job/showJobs','JobsController@showJob')->name('job');
 //
-
-
+Route::group(['middleware' => 'prevent-back-history'],function(){
+    
+    Auth::routes();
 
 
 //    *******************   auth  *****************
 
 Route::group(['middleware' => 'auth'], function(){
-
     Route::get('/change-password','Auth\ChangePasswordController@index')->name('password.change'); 
     Route::post('/update-password','Auth\ChangePasswordController@ChangePassword')->name('password.update'); 
 
     Route::get('/edit-profile','UserController@editform')->name('edit.form'); 
     Route::post('/update-profile','UserController@updateprofile')->name('profile.update');
 
+    Route::get('/edit-profile-email','UserController@editformEmail')->name('edit.formEmail'); 
+    Route::post('','UserController@updateprofileEmail')->name('profile.updateEmail');
+
     Route::get('/delete-profile', 'UserController@Deleteprofile')->name('profile.delete');
 
-
+// ********************* role company *******************
    
 
     Route::group(['middleware' => 'role:company'], function(){
 
-        Route::get('/company/dashboard','CompanyController@getDash')->name('CompanyDash');
-
-
-Route::get('/company/profile','CompanyController@getAddCompanyForm')->name('company.profile');
-Route::post('/company/storeProfile','CompanyController@storeProfile')->name('company.addCompany');
-Route::get('/company/editProfile','CompanyController@editCompanyProfile')->name('CompanyProfile');
+Route::get('/company/dashboard','CompanyController@getDash')->name('CompanyDash');
+Route::get('/company/profile','CompanyController@createProfile')->name('CompanyProfile');
+Route::post('/company/storeProfile','CompanyController@storeProfile')->name('CompanyStoreProfile');
+Route::get('/company/viewProfile','CompanyController@viewProfile')->name('CompanyViewProfile');
+Route::get('/company/editProfile','CompanyController@editCompanyProfile')->name('CompanyEditProfile');
 Route::post('/company/editProfile/{id}','CompanyController@updatCompanyProfile');
 Route::get('company/shortList','CompanyController@getJob')->name('CompanyJob');
 
+Route::get('company/endJobs','CompanyController@endJobs')->name('CompanyEndJobs');
+Route::post('/company/update_EndJob/{id}', 'CompanyController@update_JobEnd')->name('update_JobEnd');
 
 //********************************************* */
 
@@ -75,12 +82,19 @@ Route::post('/job/storeJob','JobsController@storeJob');
 
 
 
+
 });
+
+
+// ********************* role company + admin *******************
 
 Route::group(['middleware' => 'role:company|admin'], function(){
 // view all resume and resume details
 Route::get('view_resuem','PersonController@viewResuemForm')->name('resuems');
 Route::get('Person/details/{id}','PersonController@ResuemDetails'); 
+
+Route::post('/resume/search','PersonController@searchResume')->name('search.Resume');
+
 //
 
 });
@@ -99,6 +113,8 @@ Route::get('Person/details/{id}','PersonController@ResuemDetails');
 //show form (add personal info)
     Route::get('/resume/create','PersonController@createResume')->name('resuem.create');
     Route::post('/resume/store','PersonController@store');
+    Route::get('/resume/edit-Personal-Info', 'PersonController@editPersonalInfo')->name('PersonalInfo.edit');
+    Route::PUT('/resume/update-Personal-Info','PersonController@updatPersonalInfo');
 //show form for add Edu _ Exp _ skill
     Route::get('/resume/createEdu','PersonController@createResumeEdu')->name('edu');
 //Education
@@ -138,6 +154,12 @@ Route::post('/resume/storePersonJobCat','PersonController@storePersonJobCat');
     Route::get('/country','AdminController@addCountry');
     Route::get('/city/{id}','AdminController@addCity');
     Route::get('/admin/dashboard','AdminController@getDash')->name('admin.Dash');
+    Route::get('/admin/pending_jobs','AdminController@pendingJob')->name('pendingJob');
+    Route::post('/job/accepte_Job/{id}', 'AdminController@accepte_JobStatuse')->name('accepte_JobStatuse');
+    Route::post('/job/denie_Job/{id}', 'AdminController@denied_JobStatuse')->name('denied_JobStatuse');
+    
+
+    
     
 
 
@@ -147,7 +169,7 @@ Route::post('/resume/storePersonJobCat','PersonController@storePersonJobCat');
 
 });
 
-
+});
 
 
 Route::get('/resume/applyedJob','ApplicantController@applyedJob')->name('applyedJob');
@@ -163,10 +185,11 @@ Route::get('/job/applyedToJob/{id}/{user}/reject', 'ApplicantController@reject')
 
 Route::get('/job/applicationForm/{id}','ApplicantController@getApplicationForm');
 
-
 //Route::get('res_det','PersonController@res_det');
 // //auth _ register _ login
 // Route::get('auth/login','HomeController@login');
 // Route::get('auth/register','HomeController@register');
 
-
+Route::get('/select2', function () {
+    return view('person.testselect2');
+});

@@ -46,38 +46,42 @@ class PersonController extends Controller
 
     public function viewResuemForm(Request $request)
     {
-        if(isset($_GET['query'])){
+        // if(isset($_GET['query'])){
             
-        $search_text= $_GET['query'];
-        $Person= Person::where('name','LIKE','%'.$search_text.'%')->paginate(2);
-        //$Person=appends($request->all());
+        // $search_text= $_GET['query'];
+        // $Person= Person::where('name','LIKE','%'.$search_text.'%')->paginate(2);
+        // //$Person=appends($request->all());
+        // return view('person.viewResuem',compact('Person'));
+        // }else{
+        //     $Person=Person::paginate(10);
+        //     return view('person.viewResuem',compact('Person'));
+        // }
+
+        $Person=Person::paginate(10);
         return view('person.viewResuem',compact('Person'));
-        }else{
-            $Person=Person::paginate(10);
-            return view('person.viewResuem',compact('Person'));
-        }
 
-    }
+}
+
+//   search resume    //
 
 
-  
-    // public function viewResuem(Request $request)
-    // {
-    //     if(isset($_GET['query'])){
-            
-    //     $search_text= $_GET['query'];
-    //     $Person= exc::where('name','LIKE','%'.$search_text.'%')->paginate(2);
-    //     //$Person=appends($request->all());
-    //     return view('person.viewResuem',compact('Person'));
-    //     }else{
-    //         $Person=Person::paginate(10);
-    //         return view('person.viewResuem',compact('Person'));
-    //     }
 
-    // }
+public function searchResume(Request $request)
+    {
 
-  
-    
+        $Person = DB::table('people')
+        ->join('person_education', 'people.id', '=', 'person_education.person_id')
+        ->where('degree_name','LIKE','%' . $request->get('serchQuest') . '%')->get();
+
+        return json_encode( $Person);
+        
+        
+
+ }
+
+
+
+
 
     public function ResuemDetails($id)
     {
@@ -87,12 +91,15 @@ class PersonController extends Controller
     }
 
  
-
+// personal inf
 
     public function createResume()
     {
         if(isset(auth()->user()->GetPerson)){
+
             return redirect()->route('edu');
+
+            
 
         }
         else
@@ -106,20 +113,25 @@ class PersonController extends Controller
        
 
         $Request->validate([
-            'name'=> ['required','string'] ,
+            'fname'=> ['required','string' , 'max:20'] ,
+            'father_name'=> ['required','string' , 'max:20'] ,
+            'Lname'=> ['required','string', 'max:20'] ,
             'email'=> ['required','string'] ,
-            'dob'=> ['required','string'] ,
+            'dob'=> ['required','date'] ,
             'place_Of_b'=> ['required','string'] ,
-            'national_number'=> ['required','integer'] ,
+            'national_number'=> ['required','numeric', 'max:11'] ,
             'fixed_phone'=> ['required','integer'] ,
             'Current_address'=> ['required','string'] ,
             'mobile_number'=> ['required','string'] ,
-            // 'user_id'=>['unique:Person'] ,
+
+            'user_id'=>['unique:Person'] ,
           
         ]);
         
         $person =new Person ;
-            $person->name = $Request->input("name");
+            $person->Fname = $Request->input("fname");
+            $person->Father_name = $Request->input("father_name");
+            $person->Lname = $Request->input("Lname");
             $person->email =  $Request->input("email");
             $person->gender= $Request->input("gender");
             $person->dob= $Request->input("dob");
@@ -141,6 +153,76 @@ class PersonController extends Controller
        return redirect()->route('edu');
 
      }
+
+
+    //Edit  Personal-Info
+
+    public function editPersonalInfo()
+{
+
+    if(isset(auth()->user()->GetPerson)){
+        $person = auth()->user()->GetPerson;
+        return view('person.editPersonalInfo',compact('person'));
+
+    }
+    else
+    return view('person.addResume');
+   
+ }
+
+public function updatPersonalInfo(Request $Request)
+ {
+      $Request->validate([
+            'fname'=> ['required','string' , 'max:20'] ,
+            'father_name'=> ['required','string' , 'max:20'] ,
+            'Lname'=> ['required','string', 'max:20'] ,
+            'email'=> ['required','string'] ,
+            'dob'=> ['required','date'] ,
+            'place_Of_b'=> ['required','string'] ,
+            'national_number'=> ['required','numeric', 'max:11'] ,
+            'fixed_phone'=> ['required','integer'] ,
+            'Current_address'=> ['required','string'] ,
+            'mobile_number'=> ['required','string'] ,
+        
+       
+          
+        ]);
+
+ $person = auth()->user()->GetPerson;
+
+            $person->Fname = $Request->input("fname");
+            $person->Father_name = $Request->input("father_name");
+            $person->Lname = $Request->input("Lname");
+            $person->email =  $Request->input("email");
+            $person->gender= $Request->input("gender");
+            $person->dob= $Request->input("dob");
+            $person->place_Of_b = $Request->input("place_Of_b");
+            $person->national_number= $Request->input("national_number");
+            $person->marital_status= $Request->input("marital_status");
+            $person->military_service= $Request->input("military_service");
+            $person->Current_address= $Request->input("Current_address");
+            $person->fixed_phone= $Request->input("fixed_phone");
+            $person->mobile_number= $Request->input("mobile_number");
+            $person->lang= $Request->input("lang");
+            $person->img= $Request->input("img");
+            $person->user_id= auth()->user()->id;
+
+    $person->save();
+
+    if($person){
+        return redirect()->route('PersonDash')->with('success','  تم تعديل المعلومات الشخصية بنجاح');
+    }else{
+        return back()->withInput()->with('fail','هناك خطأ ما');
+    }
+
+
+        
+    }
+
+
+
+
+
 
 ///////////////////////////////////////////////////////////edit///////////////////
  

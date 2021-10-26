@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use tiagomichaelsousa\LaravelFilters\Traits\Filterable;
 class Job extends Model
 {
     use HasFactory;
+    // use Filterable;
 
     //Job belongs to one Company
     function Company() 

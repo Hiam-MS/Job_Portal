@@ -1,7 +1,12 @@
 @extends('header')
 
 @section('content')
-
+<style>
+    select.form-control{
+        font-size:18px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+</style>
 
     <!-- Content -->
     <div class="page-content bg-white">
@@ -98,6 +103,7 @@
                             <label for="role" class="col-md-4 col-form-label text-md-right" >الدور</label>
                             <div class="col-md-6">
                                 <select class="form-control" name="role"  class="form-control{{ $errors->has('role') ? ' is-invalid' : '' }}" required>
+                                
                                     <option selected disabled>اختر دور ....</option>
                                     <option value="p">باحث عن عمل</option>
                                     <option value="c">باحث عن موظف</option>

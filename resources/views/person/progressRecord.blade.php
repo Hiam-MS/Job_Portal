@@ -1,5 +1,10 @@
 @extends('header')
 @section('content')
+<style>
+	th{
+		font-size:20px;
+	}
+</style>
 @csrf
     
     
@@ -32,6 +37,7 @@
                                     <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="#" > لوحة التحكم<a></h4>
                                     <ul>
 									@if(isset(auth()->user()->GetPerson))
+									
 									   <li><strong class="font-weight-700 text-black"><a href="/resume/ViewpersonalInfo" >  معاينةالسيرة الذاتية</a>  </strong></li>
 										<li><strong class="font-weight-700 text-black"><li><a href="#" >تعديل السيرة الذاتية</a></li></strong> </li>
 										<li><strong class="font-weight-700 text-black"><li><a href="/resume/createEdu" >اضافة/تعديل التعليم و المهارات  </a></li></strong> </li>
@@ -41,7 +47,17 @@
 									  @else
 
 									<li><strong class="font-weight-700 text-black"> <a href="/resume/create" >انشاء السيرة الذاتية</a></strong><span class="text-black-light"> </span></li>
-										@endif			
+									
+										@endif	
+
+										
+							
+								
+										<li><strong class="font-weight-700 text-black"><h5 >      ادارة الحساب</h5>  </strong>
+										<ul>
+										<ul><li><strong class="font-weight-700 text-black"><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a>  </strong></li></ul>
+										<ul><li><strong class="font-weight-700 text-black"><a href="{{route('edit.form')}}" >   تعديل   الحساب</a>  </strong></li></ul>
+										<ul><li><strong class="font-weight-700 text-black"><a href="{{route('profile.delete')}}" >  حذف الحساب </a>  </strong></li>		
                                             </ul>
 									</div>
 								</div>
@@ -53,6 +69,16 @@
 
 					<div class="col-lg-8">
 						<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
+                        @if(Session::get('success'))
+						<div class="alert alert-success" style="font-size:20px">
+							{{Session::get('success')}}
+						</div>
+					@endif
+					@if(Session::get('fail'))
+						<div class="alert alert-danger" style="font-size:20px">
+							{{Session::get('success')}}
+						</div>
+					@endif
                             <div>
                                 <h4><p>
                                     سجل التقدمات
@@ -75,15 +101,15 @@
                                                 @foreach($jobs as $job)
                                                 <tr>
                                                     <td>
-                                                        <a href="/job/details/{{$job->job_id}}">{{ $job->job_title }}</a>
+                                                        <a href="/job/details/{{$job->job_id}}" style="font-size:20px">{{ $job->job_title }}</a>
                                                     </td>
                                                     <td>
                                                     @if ($job->status =='hired')
-						      		                    <h4><span class="badge badge-success w-100">{{ $job->status }}</span></h4>
+						      		                    <h4><span class="badge badge-success w-100">تم القبول</span></h4>
 						                        	@elseif($job->status =='rejected')
-						      		                    <h4><span class="badge badge-danger w-100">{{ $job->status }}</span></h4>
+						      		                    <h4><span class="badge badge-danger w-100">تم الرفض</span></h4>
 						      	                    @else
-						      		                    <h4><span class="badge badge-primary w-100">{{ $job->status }}</span></h4>
+						      		                    <h4><span class="badge badge-primary w-100">في حالة انتظار</span></h4>
 						      	                    @endif
                                                     </td>
                                                 </tr>

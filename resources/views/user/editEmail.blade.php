@@ -31,28 +31,28 @@
                 <div class="btn btn-primary"><h3 class="h3">تعديل   الحساب</h3></div>
                 @if(auth::user())
                 <div class="card-body">
-                    <form method="POST" action="{{ route('profile.update') }}">
+                    <form method="POST" action="{{ route('profile.updateEmail') }}">
                         @csrf
                        
 
+                      
+                       
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">اسم المستخدم</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">البريد الالكتروني</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" placeholder="" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name }}" required autofocus>
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{$user->email}}" >
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('email'))
                                     <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
-                       
-                        
                       
 
-                        
+                       
 
 
                        
@@ -65,7 +65,11 @@
                                 <form>
  <input type="button" value="الغاء" onclick="history.back()" class="btn btn-primary">
 </form>
+
+
                             </div>
+
+                            
                         </div>
                     </form>
                     @endif

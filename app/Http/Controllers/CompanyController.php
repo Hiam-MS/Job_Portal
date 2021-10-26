@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\Company;
+use Carbon\Carbon;
 
 
 use Illuminate\Support\Facades\DB;
@@ -14,10 +15,10 @@ class CompanyController extends Controller
     //
     public function index()
     {
-        return view('welcome');
+        return view('index');
     }
     
-    public function getAddCompanyForm()
+    public function createProfile()
     {
         return view('company.addProfile');
     }
@@ -27,6 +28,11 @@ class CompanyController extends Controller
         $company=Company::all();
 
         return view ('company.showCompany',compact('company'));
+    }
+    public function viewProfile()
+    {
+        $company=auth()->user()->GetCompany;
+        return view('company.viewProfile',compact('company'));
     }
 
     public function editCompanyProfile()
@@ -83,7 +89,21 @@ class CompanyController extends Controller
             'industria_record'=>'required',
             'website'=>'required:companies'
 
+        ],[
+            'company_name_ar.required'=>'يجد ادخال الاسم بالعربي',
+            'company_name_en.required'=>'يجد ادخال الاسم بالانكليزي',
+            'email.required'=>'يجد ادخال البريد الالكتروني للشركة  ',
+            'fixed_phone.required'=>'يجد ادخال رقم الهاتف الأرضي ',
+            'fax_phone.required'=>'يجد ادخال رقم  الفاكس ',
+            'location.required'=>'يجد ادخال عنوان الشركة   ',
+            'company_specialist.required'=>'يجد ادخال اختصاص عمل الشركة  ',
+            'commercial_record.required'=>'يجد ادخال  السجل التجاري ',
+            'industria_record.required'=>'يجد ادخال  السجل الصناعي  ',
+            'website.required'=>'يجد ادخال موقع  الشركة  ',
         ]);
+
+
+      
 
         $company =new Company ;
             $company->company_name_ar = $Request->input("company_name_ar");
@@ -121,13 +141,62 @@ class CompanyController extends Controller
 // get company published jobs
     public function getJob()
     {
-        if(isset(auth()->user()->GetCompany)){
-        $company=auth()->user()->GetCompany;
-        return view('company.shortList', compact('company'));
+        
+        if(isset(auth()->user()->GetCompany))
+        {
+            $company=auth()->user()->GetCompany;
+            $company_id=auth()->user()->GetCompany->id;
+
+            $jobs = Job::where('company_id', $company_id)
+            ->whereDate('end_job', '>', Carbon::today()->toDateString())
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);
+
+          
+            return view('company.shortList', compact('company','jobs'));
         }
         else
-        return redirect()->route('company.profile');
+        {
+            return redirect()->route('company.profile');
+        }
        
+       
+    }
+
+    public function endJobs()
+    {
+        
+        if(isset(auth()->user()->GetCompany))
+        {
+            $company=auth()->user()->GetCompany;
+            $company_id=auth()->user()->GetCompany->id;
+
+            $jobs = Job::where('company_id', $company_id)
+            ->whereDate('end_job', '<=', Carbon::today()->toDateString())
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);
+
+          
+            return view('company.endJobs', compact('company','jobs'));
+        }
+        else
+        {
+            return redirect()->route('company.profile');
+        }
+       
+       
+    }
+
+
+    public function update_JobEnd($id){
+      
+        $company=auth()->user()->GetCompany;
+        $job = Job::find($id);
+        $job->end_job =Carbon::now() ;
+        $job->save();
+            
+            return back()->withInput()->with('success','  تم الانهاء بنجاح');
+
     }
 
 

@@ -14,9 +14,9 @@ class UserController extends Controller
     public function editform()
 
     {
-        $person = auth()->user()->GetPerson;
+        $user = User::find(Auth::id());
 
-        return view('user.EditProfile');
+        return view('user.EditProfile', compact('user'));
     }
 
 
@@ -39,40 +39,79 @@ $Request->validate([
     $user = User::find(Auth::id());
 
     $user->name =  $Request->input("name");
-    $user->mobile  = $Request->input("mobile");
     $user->email  =  $Request->input("email");
+      // $user->mobile  = $Request->input("mobile");
     $user->save();
-    return view('welcome');
+    if($user){
+
+        return view('welcome');
+
+    }
+    else
+    return back()->withInput()->with('fail','هناك خطأ ما');
+   
+
 
          
-        
-
-      
-
-        // $hashPassword= Auth::user()->password;
-        // if(Hash::check($Request->input("oldpassword") , $hashPassword)){
-
-        //     $user = User::find(Auth::id());
-        //     $user->password = Hash::make($Request->input("password"));
-        //     $user->save();
-        //     Auth::logout();
-        //     return redirect()->route('login')->with('successMsg', ' تم تغيير كلمة المرور بنجاح');
-        // }
-        // else
-        // return redirect()->back()->with('erorrMsg', ' كلمة المرور القديمة خاطئة');
-
-
-
- 
 
 
     }
 
+    //************ */ Edit Email ********************
+
+    public function editformEmail()
+
+    {
+        $user = User::find(Auth::id());
+
+        return view('user.EditEmail', compact('user'));
+    }
+
+
+
+
+
+    public function updateprofileEmail(Request $Request){
+
+$Request->validate([
+           
+            'email'=>  'string|nullable|unique:users',
+            // 'mobile'=> ['required', 'string', 'max:10', 'unique:users'] ,
+           
+           
+          
+        ]);
+
+
+
+    $user = User::find(Auth::id());
+
+   
+    $user->email  =  $Request->input("email");
+      // $user->mobile  = $Request->input("mobile");
+    $user->save();
+    if($user){
+
+        return view('welcome');
+
+    }
+    else
+    return back()->withInput()->with('fail','هناك خطأ ما');
+   
+
+
+         
+
+
+    }
+
+// ************ Delete Profile *******************
 public function Deleteprofile()
     {
         $user = User::find(Auth::id());
 
          $res=$user->delete();
+         Auth::logout();
   if ($res){
     
     return view('welcome');

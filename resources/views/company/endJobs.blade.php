@@ -39,14 +39,14 @@
 							<div class="row">
 								<div class="col-lg-12 col-md-6">
 									<div class="m-b30">
-										<img src="{{asset('images/blog/grid/6.jpg')}}" alt="">
+									<img src="{{asset('images/blog/grid/6.jpg')}}" alt="">
 									</div>
 								</div>
 										
 								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
 									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
                                          <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="#" > لوحة التحكم<a></h4>
-										 <ul>
+                                         <ul>
 											
 											@if(isset(auth()->user()->GetCompany))
 												<li>
@@ -110,6 +110,7 @@
 											@endif
 											
 										</ul>
+
 									</div>
 								</div>
 
@@ -131,7 +132,7 @@
 							</div>
 						@endif	
 						
-                        <h5 class="widget-title font-weight-700 text-uppercase" style="color:blue"> الفرص المنشورة  </h5>
+                        <h5 class="widget-title font-weight-700 text-uppercase" style="color:blue"> الفرص المنتهية  </h5>
 							<br>
 
 						
@@ -147,14 +148,13 @@
 									<a href="/job/details/{{$item['id']}}">
 									<div class="d-flex">
 											<div class="job-time mr-auto">
-												<span>{{$item->created_at->diffForHumans()}}</span>
+												<span>{{$item->end_job}}</span>
 											</div>
 										</div>
 										<div class="d-flex m-b30">
 											<div class="job-post-company">
 												<span><img src="{{asset('images/logo/icon1.png')}}"/></span>
 											</div>
-
 											<div class="job-post-info">
 												<h4>{{$item-> job_title}}</h4>
 												<ul>
@@ -168,13 +168,13 @@
 									@if($item->end_job > NOW())
 										<form action="/job/update_EndJob/{{$item['id']}}" method="POST">
 											@csrf
-												<div class="salary-bx">
+												
 													
 													<button type="submit" class="btn btn-primary">انهاء</button>
-												</div>
+												
 
 										</form>
-										@else
+									@else
 										<button class="btn btn-danger ">منتهية    </button>
 									@endif
 										
@@ -188,7 +188,7 @@
                                     <br><hr>
                                     @endforeach
 									@else
-										<li>  لايوجد فرص عمل  لعرضها</li>
+										<li>  عذراً لايوجد فرص عمل  لعرضها </li>
 									@endif
 								</li>
 								

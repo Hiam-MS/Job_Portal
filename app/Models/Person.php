@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Crypt;
 
 class Person extends Model
 {
     use HasFactory;
+
     protected $table = 'people';
 
     protected $primaryKey = 'id';
@@ -17,6 +19,25 @@ class Person extends Model
     ];
 
     //protected $fillable = ['name'];
+
+    public function setNationalNumberAttribute($value)
+    {
+         $this->attributes['national_number'] = Crypt::encryptString($value);
+    }
+
+    public function getNationalNumberAttribute($value)
+    {
+        try{
+
+             return Crypt::decryptString($value);
+           }catch(DecryptException $e) {
+                return $value;
+}
+    }
+
+
+
+
 
 
 
@@ -48,7 +69,7 @@ class Person extends Model
     public function JobCategory()
 
     {
-        return $this->belongsToMany(JobCategory::class);
+        return $this->belongsToMany(JobCategory::class,'person_categories');
 
     }
 
