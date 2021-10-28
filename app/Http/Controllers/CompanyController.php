@@ -78,16 +78,17 @@ class CompanyController extends Controller
 
 
         $Request->validate([
-            'company_name_ar'=>['required','string'],
-            'company_name_en'=>'required|string',
+            'company_name_ar'=>'required',
+            'company_name_en'=>'required',
             'email'=>'required|email',
-            'fixed_phone'=>'required|integer',
-            'fax_phone'=>'required|integer',
+            'fixed_phone'=>'required|alpha_num',
+            'fax_phone'=>'required|alpha_num',
             'location'=>'required',
             'company_specialist'=>'required',
-            'commercial_record'=>'required',
-            'industria_record'=>'required',
-            'website'=>'required:companies'
+            'commercial_record'=>'required|alpha_num',
+            'industria_record'=>'required|alpha_num',
+            'website'=>'required:companies',
+        
 
         ],[
             'company_name_ar.required'=>'يجد ادخال الاسم بالعربي',
@@ -102,7 +103,7 @@ class CompanyController extends Controller
             'website.required'=>'يجد ادخال موقع  الشركة  ',
         ]);
 
-
+       
       
 
         $company =new Company ;
@@ -121,10 +122,10 @@ class CompanyController extends Controller
 
           
 
-        $company->save();
+        
        
        if($company){
-           
+        $company->save();
            return redirect()->route('CompanyDash')->with('success','  تمت الاضافة بنجاح');
        }else{
            return back()->withInput()->with('fail','هناك خطأ ما');

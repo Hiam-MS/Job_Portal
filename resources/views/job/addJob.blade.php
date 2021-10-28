@@ -169,7 +169,7 @@
 						<div class="form-group">
 							<label>  متطلبات خاصة بالوظيفة (المؤهلات) </label>
 							<!-- <input type="text" name="job_requirement" value="{{old('job_requirement')}} " class="form-control" placeholder=" متطلبات خاصة بالوظيفة" style="width:100% "> -->
-							<textarea name="job_requirement" id="job_requirement" class="form-control" style="width:100% ">{{old('job_requirement')}}</textarea>
+							<textarea name="job_requirement"  id="article-ckeditor" class="form-control" style="width:100% ">{{old('job_requirement')}}</textarea>
 							@if($errors->any('job_requirement'))
 								<span class="text-danger">{{$errors->first('job_requirement')}}</span>
 							@endif
@@ -182,6 +182,8 @@
 							@if($errors->any('functional_tasks'))
 								<span class="text-danger">{{$errors->first('functional_tasks')}}</span>
 							@endif
+
+
 						</div>
 
 						<div class="form-group">
@@ -318,4 +320,10 @@
 </div>
     </div>
     <!-- Content END-->
+
+	
+  <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+  <script>
+      CKEDITOR.replace( 'article-ckeditor' );
+  </script>
 	@endsection

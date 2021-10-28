@@ -154,8 +154,8 @@
                     
 						<div class="form-group">
 							<label>اسم الشركة بالعربي<span style="color:red">*</span></label>
-							<input type="text" class="form-control" placeholder="" name="company_name_ar" value="{{old('company_name_ar')}}" style="width:60%" data-parsly-trigger="keyup" >
-							@if($errors->any('company_name_ar'))
+							<input type="text"  class="form-control" placeholder="" name="company_name_ar" value="{{old('company_name_ar')}}" style="width:60%" data-parsly-trigger="keyup"  >
+							@if($errors->any('company_name_ar'))  
 								<span>{{$errors->first('company_name_ar')}}</span>
 							@endif
 						</div>
@@ -239,4 +239,6 @@
 </div>
     </div>
     <!-- Content END-->
+
+
 	@endsection
