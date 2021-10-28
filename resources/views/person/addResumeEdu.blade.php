@@ -79,11 +79,21 @@
 							</div>
 						</div>
 					</div> 
+					
 						
 					@csrf
 					<div class="col-lg-8" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
 						<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
-						
+						@if(Session::get('success'))
+						<div class="alert alert-success" style="font-size:20px">
+							{{Session::get('success')}}
+						</div>
+					@endif
+					@if(Session::get('fail'))
+						<div class="alert alert-danger" style="font-size:20px">
+							{{Session::get('fail')}}
+						</div>
+					@endif
 							<form action="{{route('PersonJobCategory')}}" method="POST" id="resume" >
                                 @csrf
 								<br>
@@ -102,8 +112,34 @@
 								<br><br>
 
                                 <p><button type="submit" class="btn btn-primary" > أضف</button></p>
+								<p></p>
 
- 								
+
+
+
+ 								<br>
+
+								 <div dir="rtl" lang="ar" class="container" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
+								 @if(count($person_cat) > 0)
+						<table>
+							<tr style="border-bottom: 1px solid #ddd; background-color: rgba(250, 247, 246 ); color:black;font-size: 105%;">
+                                <th> اختصاص العمل</th>
+                                <th>خيارات</th>
+                            </tr>
+
+							@foreach($person_cat as $cat)
+							<tr>
+								<th style=" color:black;">{{$cat->name}} </th>
+                                <th style=" color:black;"> <a href="{{url('/resume/deleteCat',$cat->id)}}" style="color:red">  حذف</a></th>
+                            </tr>
+                            @endforeach
+						</table>
+					@else
+						<p> لم يتم اختيار  اختصاص العمل المطلوب</p>
+									
+					@endif
+				</div>
+								
 								
 
 								
@@ -276,21 +312,9 @@ $(document).ready(function() {
 									
 					@endif
 				</div>
-									<!-- @if ($message = Session::get('success'))
-    <div class="alert alert-success alert-block">
-        <button type="button" class="close" data-dismiss="alert">×</button>    
-        <strong>{{ $message }}</strong>
-    </div>
-    @endif -->
-	@if(session()->has('success'))
-	<script>
-    var msg = '{{Session::get('success')}}';
-    var exist = '{{Session::has('success')}}';
-    if(exist){
-      alert(msg);
-    }
-  </script>
-@endif <br><br><div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div><br>
+									
+	
+ <br><br><div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div><br>
 				<h3 class="font-weight-600">الدورات التدريبية المتبعة  </h3>
 					<!-- Submit Resume COURSE -->
 			

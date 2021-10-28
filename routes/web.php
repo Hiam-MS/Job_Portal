@@ -144,6 +144,7 @@ Route::get('/resume/editCourse/{cid}', 'PersonController@editPersonCourse');
 Route::PUT('/resume/updateCourse','PersonController@updateCourse')->name('PersonUpdateCourse');
 Route::post('/resume/storePersonJobCat','PersonController@storePersonJobCat')->name('PersonJobCategory');
 
+Route::get('/resume/deleteCat/{id}', 'PersonController@DeletePersonCat');
 
  });
 

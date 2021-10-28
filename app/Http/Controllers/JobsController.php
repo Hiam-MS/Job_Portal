@@ -92,7 +92,7 @@ class JobsController extends Controller
         }
         else
         {
-            $jobs = Job::whereDate('end_job', '>', Carbon::today()->toDateString())->paginate(10);
+            $jobs = Job::whereDate('end_job', '>', Carbon::today()->toDateString())->Where('status','=','accepted')->paginate(10);
         }
          
         

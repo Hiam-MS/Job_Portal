@@ -47,7 +47,7 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/jquery.multiselect.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/multiselect.css')}}">
 <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css')}}" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 
@@ -339,13 +339,13 @@
 <!--select2 -->
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js')}}" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
 
-
-<script src="D:\job\Job_Portal\public\js\jquery.multiselect.js"></script>
+<!-- <script src="D:\job\Job_Portal\public\js\jquery.multiselect.js"></script>
 <script src="D:\job\Job_Portal\public\js\multiselect.core.js"></script>
 <script src="D:\job\Job_Portal\public\js\multiselect.min.js"></script>
-<script src="D:\job\Job_Portal\public\js\multiselect.js"></script>
+<script src="D:\job\Job_Portal\public\js\multiselect.js"></script> -->
 
 
 												<!--select2 -->
