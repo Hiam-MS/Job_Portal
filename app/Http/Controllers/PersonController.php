@@ -253,8 +253,13 @@ public function updatPersonalInfo(Request $Request)
         if(isset(auth()->user()->GetPerson)){
         $jobCat =JobCategory::all();
         $person = auth()->user()->GetPerson;
+        $pid= $person->id;
+
+        $person_cat = DB::table('job_categories')
+        ->join('person_categories', 'job_categories.id', '=', 'person_categories.category_id')
+        ->where('person_categories.person_id', $pid)->get();
        
-        return view('person.addResumeEdu',compact('person','jobCat'));
+        return view('person.addResumeEdu',compact('person','jobCat','person_cat'));
         }
         else
         return redirect()->route('resuem.create');
@@ -510,6 +515,24 @@ public function DeletePersonCourse($id)
 public function DeletePersonExperience($id)
     {
          $res=PersonExperience::find($id)->delete();
+  if ($res){
+    
+    return redirect()->back()->with('success', ' تم الحذف بنجاح');
+}else{
+    
+    return redirect()->back()->with('success', ' لم يتم الحذف يرجى المحاولة مرة ثانية');
+ 
+  }
+}
+
+public function DeletePersonCat($id)
+    {
+        if(isset(auth()->user()->GetPerson)){
+            $person = auth()->user()->GetPerson;}
+            $pid= $person->id;
+
+
+        $res=PersonCategory::where('person_id',$pid)->where('category_id',$id)->delete();
   if ($res){
     
     return redirect()->back()->with('success', ' تم الحذف بنجاح');
