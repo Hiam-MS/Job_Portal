@@ -78,7 +78,7 @@ class CompanyController extends Controller
 
 
         $Request->validate([
-            'company_name_ar'=>'required|string',
+            'company_name_ar'=>['required','string'],
             'company_name_en'=>'required|string',
             'email'=>'required|email',
             'fixed_phone'=>'required|integer',

@@ -39,7 +39,7 @@
 										
 								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
 									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
-                                         <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="#" > لوحة التحكم<a></h4>
+									<h4 class="text-black font-weight-700 p-t10 m-b15"><a href="#" > لوحة التحكم<a></h4>
 										 <ul>
 											
 											@if(isset(auth()->user()->GetCompany))
@@ -69,7 +69,12 @@
 													</strong>
 												</li>
 											
-												<div class="dropdown " >
+												
+											@else
+												<li><strong class="font-weight-700 text-black"><li><a href="{{route('CompanyProfile')}}" > ادخال معلومات الشركة </a></li></strong> </li>
+
+											@endif
+											<div class="dropdown " >
 													<li>
 														<strong class="font-weight-700 text-black">
 															<h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5> 
@@ -98,10 +103,6 @@
 														</ul>	
 									 				</div>
 												</div>
-											@else
-												<li><strong class="font-weight-700 text-black"><li><a href="{{route('company.profile')}}" > ادخال معلومات الشركة </a></li></strong> </li>
-
-											@endif
 											
 										</ul>
 									</div>

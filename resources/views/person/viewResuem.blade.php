@@ -179,7 +179,7 @@ $('body').on( 'keyup', '#search-resume',function(){
 			   $('#serch-result').html('');
 
 			   $.each(res , function(index, value){
-				tableRow ='<tr><td>'+value.Fname+' '+value.Fname+' '+value.Lname+'</td><td>'+value.degree_name+'</td><td>'+value.gender+'</td><td><a href="Person/details/'+value.id+' class="btn "> تفاصيل</a></td> </tr>';
+				tableRow ='<tr><td>'+value.Fname+' '+value.Father_name+' '+value.Lname+'</td><td>'+value.degree_name+'</td><td>'+value.gender+'</td><td><a href="Person/details/'+value.id+' class="btn "> تفاصيل</a></td> </tr>';
 				$('#serch-result').append(tableRow);
 			})
 
