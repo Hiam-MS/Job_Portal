@@ -55,4 +55,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Company::class);
     }
+    public function GetAdmin()
+    {
+        return $this->hasOne(Admin::class);
+    }
+
 }

@@ -20,10 +20,7 @@
 
     
     @csrf
-    <a href="{{ route('company.profile') }}">
-
-        <button type="submit" class="btn btn-primary" >  اضافة شركة جديدة</button>
-	</a>
+ 
   
 <div>
         <table>
@@ -47,7 +44,7 @@
                         <td>{{$comp->company_specialist}}</td>
                         <td>{{$comp->commercial_record}}</td>
                         <td>
-                            <a href="{{url('/company/editProfile',$comp->id)}}" class="btn">تعديل</a>
+                           
                         </td>
                         
                     </tr>

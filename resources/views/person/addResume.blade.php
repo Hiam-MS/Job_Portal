@@ -9,6 +9,7 @@
 	span{
 		font-size:18px;
 	}
+
 </style>
     <!-- header END -->
     <!-- Content -->
@@ -122,8 +123,10 @@
 							<label> الوضع العائلي <span style="color:red">*</span>
 							<select name="marital_status" class="form-control  form-control-lg" style="width:660px" >
 								<option  selected disabled>يرجى الاختيار</option>
-								<option value="عازب" {{(old('marital_status') && old('marital_status')=='عازب' )?'selected':''}}>عازب   </option>
-								<option value="غير عازب" {{(old('marital_status') && old('marital_status')=='غير عازب' )?'selected':''}}> غير عازب </option>
+								<option value="عازب" {{(old('marital_status') && old('marital_status')=='عازب' )?'selected':''}}>عازب /ة</option>
+								<option value="متزوج " {{(old('marital_status') && old('marital_status')==' متزوج' )?'selected':''}}> متزوج /ة </option>
+								<option value="مطلق " {{(old('marital_status') && old('marital_status')==' مطلق' )?'selected':''}}>  مطلق/ة </option>
+								<option value="أرمل " {{(old('marital_status') && old('marital_status')=='أرمل ' )?'selected':''}}>  أرمل/ة </option>
 						
 								
 								
@@ -167,7 +170,7 @@
 						</div>
                         <div class="form-group">
 							<label>رقم الخليوي <span style="color:red">*</span></label>
-							<input type="text" class="form-control" placeholder="0933333333"  name="mobile_number"  pattern="[0]{1}[9]{1}[0-9]{8}" value="{{old('mobile_number')}}" style="width:58% " data-parsly-trigger="keyup">
+							<input type="text" class="form-control" placeholder="0933333333"  name="mobile_number"  pattern="[0]{1}[9]{1}[0-9]{8}" value="{{ Auth::user()->mobile }}" style="width:58% " data-parsly-trigger="keyup">
 							<span style="color:red"> @error('mobile_number'){{$message}}@enderror</span>
 						</div>
 					
@@ -185,7 +188,7 @@
 							@if($errors->any('lang'))
 								<span style="color:red">{{$errors->first('lang')}}</span>
 							@endif	
-                            </div>
+                        </div>
 
 												
 							

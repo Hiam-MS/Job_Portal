@@ -11,7 +11,7 @@
     <!-- Content -->
     <div class="page-content bg-white">
         <!-- inner page banner -->
-        <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(images/banner/bnr1.jpg);">
+        <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}});">
             <div class="container">
                 <div class="dez-bnr-inr-entry">
                     <h1 class="text-white">تسجيل حساب جديد</h1>
@@ -101,8 +101,8 @@
 
                         <div class="form-group row">
                             <label for="role" class="col-md-4 col-form-label text-md-right" >الدور</label>
-                            <div class="col-md-6">
-                                <select class="form-control" name="role"  class="form-control{{ $errors->has('role') ? ' is-invalid' : '' }}" required>
+                            <div class="col-md-6"> 
+                                <select class="form-control form-control-lg" name="role"  class="form-control{{ $errors->has('role') ? ' is-invalid' : '' }}" required>
                                 
                                     <option selected disabled>اختر دور ....</option>
                                     <option value="p">باحث عن عمل</option>

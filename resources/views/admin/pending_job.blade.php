@@ -45,7 +45,7 @@
 										
 								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
 									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
-                                         <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="#" > لوحة التحكم<a></h4>
+                                         <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="{{route('admin.Dash')}}" > لوحة التحكم<a></h4>
                                             <ul>
 											
 										
@@ -72,7 +72,7 @@
 						@endif
 						@if(Session::get('fail'))
 							<div class="alert alert-danger" style="font-size:20px">
-								{{Session::get('success')}}
+								{{Session::get('fail')}}
 							</div>
 						@endif	
 						
@@ -88,8 +88,8 @@
                                 <li>
 								@if(count($job) >0)
                                 	@foreach($job as $item)
-								
-									<a href="/job/details/{{ $item->id }}">
+									
+									<a href="{{url('/job/details',$item->id)}}">
 										<div class="d-flex m-b30">
 											<div class="job-post-company">
 												<span><img src="{{asset('images/logo/icon1.png')}}"/></span>

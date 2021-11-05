@@ -50,7 +50,7 @@
 									<div class="row">
 										<div class="col-lg-12 col-md-6">
 											<div class="m-b30">
-												<img  src="images/blog/grid/6.jpg" alt="">
+												<!-- <img  src="images/blog/grid/6.jpg" alt=""> -->
 											</div>
 										</div>
 
@@ -60,8 +60,18 @@
 										
                                     <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="#" > لوحة التحكم<a></h4>
 									<ul>
-											
-											@if(isset(auth()->user()->GetCompany))
+									@if(auth()->user()->role == 'a')
+											<li><strong class="font-weight-700 text-black"> <a href="{{route('company.show')}}" > الشركات الحالية </a></strong><span class="text-black-light"> </span></li>
+                                                <li><strong class="font-weight-700 text-black"><a href="{{route('resuems')}}" >   عرض السير الذاتية المتاحة</a>  </strong></li>	
+												<li><strong class="font-weight-700 text-black"><a href="{{route('pendingJob')}}" >      وظائف معلقة</a>  </strong></li>	
+                                            
+											@endif
+									</ul>
+
+									
+									<ul>
+									
+									@if(auth()->user()->role == 'c')
 												<li>
 													<strong class="font-weight-700 text-black"> 
 														<a href="{{route('CompanyViewProfile')}}" > عرض الملف الشخصي </a>
@@ -87,13 +97,7 @@
 														<a href="{{route('CompanyEndJobs')}}" >   الوظائف المنتهية  </a>  
 													</strong>
 												</li>
-											
-											@else
-												<li><strong class="font-weight-700 text-black"><li><a href="{{route('CompanyProfile')}}" > ادخال معلومات الشركة </a></li></strong> </li>
-
-											@endif
-											
-											<div class="dropdown " >
+												<div class="dropdown " >
 													<li>
 														<strong class="font-weight-700 text-black">
 															<h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5> 
@@ -122,6 +126,12 @@
 														</ul>	
 									 				</div>
 												</div>
+
+												
+
+											@endif
+											
+											
 											
 										</ul>
                                     <ul>
@@ -132,6 +142,9 @@
 													<li><strong class="font-weight-700 text-black"><a href="/resume/ViewpersonalInfo" >  معاينةالسيرة الذاتية</a>  </strong></li>
                                             
 											@endif
+
+											
+							
 												</ul>
 									</div>
 								</div>
@@ -192,10 +205,7 @@
 										<td> {{$Person->place_Of_b}} </td>
 									</tr>
 
-									<tr>
-										<td> الرقم الوطني : </td>
-										<td> {{$Person->national_number}} </td>
-									</tr>
+								
 
 									<tr>
 										<td> الوضع  العائلي : </td>
@@ -237,7 +247,7 @@
 
 
 									<br>@if(count($Person->PersonExperience) > 0)
-									<h3 class="font-weight-600">  الخبرات </h5>
+									<h3 class="font-weight-600">  خبرات العمل </h5>
 									
 									<br>
 									<table >
@@ -291,7 +301,7 @@
 									
 								
 					<br>	@if(count($Person->PersonEducation) > 0)
-									<h3 class="font-weight-600">  التعليم </h5>
+									<h3 class="font-weight-600">  الشهادات التعليمية </h5>
 									<br>
 									<table >
 								
@@ -393,7 +403,7 @@
 										<br>
 							<button type="submit" class="button btn btn-primary">طباعة</button>
 							
-							<button type="submit" class=" button btn btn-primary" ">رجوع</button>
+							<button type="submit" onclick="history.back()" class="  btn btn-primary" ">رجوع</button>
 									
 										
 									

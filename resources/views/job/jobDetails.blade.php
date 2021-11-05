@@ -66,7 +66,7 @@ textarea.form-control{
 										<h4 class="text-black font-weight-700 p-t10 m-b15">تفاصيل العمل</h4>
 										<ul>
 											<li><i  class="ti-location-pin"></i><strong class="font-weight-700 text-black">العنوان: {{$job->city}} </strong><span class="text-black-light"> </span></li>
-											<li><i class="ti-money"></i><strong class="font-weight-700 text-black">الراتب : {{$job->budget}}</strong> </li>
+											<li><i class="ti-money"></i><strong class="font-weight-700 text-black">المسمى الوظيفي : {{$job->job_title}}</strong> </li>
 											<li><i class="ti-user"></i><strong class="font-weight-700 text-black">عدد الاشخاص المطلوبين:  {{$job->number_of_employess}} </strong></li>
 											
 											<br>
@@ -74,14 +74,15 @@ textarea.form-control{
 								@if(auth()->user()->role == 'a')
 								<li><strong class="font-weight-700 text-black">الحالة : {{$job->status}}</strong> </li>
 								@if($job->status == 'pending' | $job->status == 'denied')
-
-							<form action="/job/accepte_Job/{{$job->id}}" method="POST">
+								
+							<form action="{{url('/job/accepte_Job',$job->id)}}"method="POST">
 											@csrf
 											<button id="viewApplyedJob" type="submit" class="btn btn-primary btn-block">موافقة على النشر</button>
 											</form>
 											@endif
 											@if($job->status == 'pending' | $job->status == 'accepted')
-											<form action="/job/denie_Job/{{$job->id}}" method="POST">
+											
+											<form action="{{url('/job/denie_Job',$job->id)}}" method="POST">
 											@csrf
 											<button id="viewApplyedJob" type="submit" class="btn btn-primary btn-block w-100">عدم الموافقة على النشر</button>
 											</form>
@@ -105,12 +106,12 @@ textarea.form-control{
 					@endif
 					@if(Session::get('fail'))
 						<div class="alert alert-danger" style="font-size:20px">
-							{{Session::get('success')}}
+							{{Session::get('fail')}}
 						</div>
 					@endif
 							<h3 class="m-t0 m-b10 font-weight-700 title-head">
 								<a href="#" class="text-secondry m-r30"> 
-									<p style="color:red">{{$job->company_name}}</p> <br>
+									<p style="color:darkBlue">{{$job->company_name}}</p> <br>
 									<p style="color:blue">{{$job->job_title }} </p>
 								</a>
 							</h3>
@@ -150,6 +151,11 @@ textarea.form-control{
 
 							<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 							<p style="font-size:20px">{{$job->end_job}}</p>
+
+
+							
+
+
 
 							@if(auth::user())
 								@if(auth()->user()->role == 'p')

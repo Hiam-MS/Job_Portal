@@ -145,30 +145,30 @@
 					@endif
 					@if(Session::get('fail'))
 						<div class="alert alert-danger" style="font-size:20px">
-							{{Session::get('success')}}
+							{{Session::get('fail')}}
 						</div>
 					@endif
-
-					<form action="storeProfile" method="POST" style="padding-right:20px" >
+					
+					<form action="{{url('/company/storeProfile')}}" method="POST" style="padding-right:20px" >
                     @csrf
                     
 						<div class="form-group">
 							<label>اسم الشركة بالعربي<span style="color:red">*</span></label>
-							<input type="text"  class="form-control" placeholder="" name="company_name_ar" value="{{old('company_name_ar')}}" style="width:60%" data-parsly-trigger="keyup"  >
+							<input type="text"  class="form-control" placeholder="" name="company_name_ar" value="{{old('company_name_ar')}}" style="width:80%" data-parsly-trigger="keyup"  >
 							@if($errors->any('company_name_ar'))  
 								<span>{{$errors->first('company_name_ar')}}</span>
 							@endif
 						</div>
                         <div class="form-group">
 							<label>اسم الشركة بالانكليزي<span style="color:red">*</span></label>
-							<input type="text" class="form-control" placeholder="" name="company_name_en" value="{{old('company_name_en')}}" style="width:60%" data-parsly-trigger="keyup" >
+							<input type="text" class="form-control" placeholder="" name="company_name_en" value="{{old('company_name_en')}}" style="width:80%" data-parsly-trigger="keyup" >
 							@if($errors->any('company_name_en'))
 								<span >{{$errors->first('company_name_en')}}</span>
 							@endif
 						</div>
 						<div class="form-group">
 							<label>عنوان البريد الالكتروني<span style="color:red">*</span></label>
-							<input type="text" class="form-control" placeholder="info@gmail.com" name="email" value="{{old('email')}} " style="width:60%" data-parsly-trigger="keyup">
+							<input type="text" class="form-control" placeholder="info@gmail.com" name="email" value="{{old('email')}} " style="width:80%" data-parsly-trigger="keyup">
 							@if($errors->any('email'))
 								<span >{{$errors->first('email')}}</span>
 							@endif
@@ -176,14 +176,14 @@
                        
                         <div class="form-group">
 							<label>  الهاتف الأرضي<span style="color:red">*</span></label>
-							<input type="text" class="form-control" placeholder="963-11-2222222+" name="fixed_phone" value="{{old('fixed_phone')}} " s style="width:60%" data-parsly-trigger="keyup">
+							<input type="text" class="form-control" placeholder="963-11-2222222+" name="fixed_phone" value="{{old('fixed_phone')}} " style="width:80%" data-parsly-trigger="keyup">
 							@if($errors->any('fixed_phone'))
 								<span >{{$errors->first('fixed_phone')}}</span>
 							@endif
 						</div>
                         <div class="form-group">
 							<label>  رقم الفاكس <span style="color:red">*</span></label>
-							<input type="text" class="form-control" placeholder=" 963-11-2222222+" name="fax_phone" value="{{old('fax_phone')}} " style="width:60%" data-parsly-trigger="keyup">
+							<input type="text" class="form-control" placeholder=" 963-11-2222222+" name="fax_phone" value="{{old('fax_phone')}} " style="width:80%" data-parsly-trigger="keyup">
 							@if($errors->any('fax_phone'))
 								<span >{{$errors->first('fax_phone')}}</span>
 							@endif
@@ -191,14 +191,14 @@
 
                         <div class="form-group">
 							<label>  العنوان  <span style="color:red">*</span></label>
-							<input type="text" class="form-control" placeholder="" name="location" value="{{old('location')}} " style="width:60%" data-parsly-trigger="keyup">
+							<input type="text" class="form-control" placeholder="" name="location" value="{{old('location')}} " style="width:80%" data-parsly-trigger="keyup">
 							@if($errors->any('location'))
 								<span>{{$errors->first('location')}}</span>
 							@endif
 						</div>
                         <div class="form-group">
 							<label>  اختصاص الشركة  <span style="color:red">*</span></label>
-							<textarea name="company_specialist" id="company_specialist" class="form-control" style="width:60%"></textarea>
+							<textarea name="company_specialist" id="company_specialist" class="form-control"  style="width:80%">{{old('company_specialist')}}</textarea>
 							<!-- <input type="text" class="form-control" placeholder="" name="company_specialist"  value="{{old('company_specialist')}} " style=width:60% data-parsly-trigger="keyup"> -->
 							@if($errors->any('company_specialist'))
 								<span >{{$errors->first('company_specialist')}}</span>
@@ -207,21 +207,21 @@
 						</div>
 						<div class="form-group">
 							<label>   السجل التجاري  <span style="color:red">*</span></label>
-							<input type="text" class="form-control" placeholder="" name="commercial_record"  value="{{old('commercial_record')}} " style=width:60% data-parsly-trigger="keyup">
+							<input type="text" class="form-control" placeholder="" name="commercial_record"  value="{{old('commercial_record')}} " style=width:80% data-parsly-trigger="keyup">
 							@if($errors->any('commercial_record'))
 								<span >{{$errors->first('commercial_record')}}</span>
 							@endif
 						</div>
 						<div class="form-group">
 							<label>  السجل  الصناعي <span style="color:red">*</span> </label>
-							<input type="text" class="form-control" placeholder="" name="industria_record"  value="{{old('industria_record')}}" style=width:60% data-parsly-trigger="keyup">
+							<input type="text" class="form-control" placeholder="" name="industria_record"  value="{{old('industria_record')}}" style=width:80% data-parsly-trigger="keyup">
 							@if($errors->any('industria_record'))
 								<span >{{$errors->first('industria_record')}}</span>
 							@endif
 						</div>
 						<div class="form-group">
 							<label>  موقع الانترنت   <span style="color:red">(اختياري)</span> </label>
-							<input type="text" class="form-control" placeholder="" name="website"  value="{{old('website')}}" style=width:60% data-parsly-trigger="keyup">
+							<input type="text" class="form-control" placeholder="" name="website"  value="{{old('website')}}" style=width:80% data-parsly-trigger="keyup">
 							@if($errors->any('website'))
 								<span >{{$errors->first('website')}}</span>
 							@endif

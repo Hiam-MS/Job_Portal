@@ -39,7 +39,7 @@
 					@endif
 					@if(Session::get('fail'))
 						<div class="alert alert-danger" style="font-size:20px">
-							{{Session::get('success')}}
+							{{Session::get('fail')}}
 						</div>
 					@endif	
 							<h5 class="widget-title font-weight-700 text-uppercase" style="color:blue">الفرص الحالية  </h5>

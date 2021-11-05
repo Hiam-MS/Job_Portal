@@ -152,7 +152,7 @@ class JobsController extends Controller
 
         $selected=$Request->input("end_job");
 
-
+    
    
         
         $job =new Job ;
@@ -173,12 +173,13 @@ class JobsController extends Controller
         $job->category_id = $Request->input('category');
         $job->company_id= auth()->user()->GetCompany->id;
 
-        $job->save();
-
        
+
+    
 
 
         if($job){
+            $job->save();
             return redirect()->route('CompanyJob')->with('success','  تمت الاضافة بنجاح');
         }else{
             return back()->withInput()->with('fail','هناك خطأ ما');

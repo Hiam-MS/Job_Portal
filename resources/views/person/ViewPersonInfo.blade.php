@@ -1,6 +1,15 @@
 @extends('header')
 @section('content')
-
+<style>
+	td{
+		font-size:20px;
+	}
+	h3{
+		border: 1px solid DodgerBlue;
+		background-color:LightGray;
+		text-align:right;
+	}
+</style>
     <!-- header END -->
     <!-- Content -->
     @csrf
@@ -90,18 +99,10 @@
 
 							<div class="col-lg-8">
 								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
-									<h3 class="m-t0 m-b10 font-weight-700 title-head">
-										<a href="#" class="text-secondry m-r30"></a>
-										<!-- <p>
-											المعلومات الشخصية
-										</p> -->
-										<br>
-
-
-									</h3>
+								
 
 									
-									<h2 class="font-weight-600" style="background:rgb(230, 230, 230);">   المعلومات الاساسية </h2>
+									<h3 class="font-weight-600">  المعلومات الاساسية : </h5>
 									<br>
 									
 								
@@ -173,8 +174,7 @@
 									
 									<br>
 									@if(count($Person->PersonExperience) > 0)
-									<h2 class="font-weight-600" style="background: rgb(230, 230, 230);">خبرات العمل
- </h2>
+									<h3 class="font-weight-600">  خبرات العمل </h5>
 									<br>
 									
 									@foreach($Person->PersonExperience as $exp)
@@ -236,8 +236,7 @@
 									<br>
 
 									@if(count($Person->PersonEducation) > 0)
-									<h2 class="font-weight-600" style="background: rgb(230, 230, 230);">   الشهادات التعليمية
- </h2>
+									<h3 class="font-weight-600">  الشهادات التعليمية </h5>
 									<br>
 
 								
@@ -302,7 +301,7 @@
 								
 
 									@if(count($Person->PersonSkill) > 0)
-									<h2 class="font-weight-600" style="background:rgb(230, 230, 230);">   المهارات </h2>
+									<h3 class="font-weight-600">  المهارات </h5>
 									<br>
 
 									<br>
@@ -333,7 +332,7 @@
 									
 
 										@if(count($Person->PersonCousre) > 0)
-									<h2 class="font-weight-600" style="background: rgb(230, 230, 230);">      الدورات التدريبية المتبعة </h2>
+										<h3 class="font-weight-600">  الدورات التدريبية المتبعة </h5>
 									<br>
 
 									<br>
@@ -355,7 +354,7 @@
 
 								
 									@if(!empty($Person->lang))
-									<h2 class="font-weight-600" style="background: rgb(230, 230, 230);">   اللغات </h2>
+									<h3 class="font-weight-600">  االلغات </h5>
 									
 									
 									@foreach($Person->lang as $lan)
@@ -369,7 +368,7 @@
 									
 
                                     
-									
+									<button type="submit" onclick="history.back()" class="  btn btn-primary" ">رجوع</button>
 										
 									
 								

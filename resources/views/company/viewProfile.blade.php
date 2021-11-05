@@ -127,7 +127,7 @@
 					@endif
 					@if(Session::get('fail'))
 						<div class="alert alert-danger" style="font-size:20px">
-							{{Session::get('success')}}
+							{{Session::get('fail')}}
 						</div>
 					@endif
 

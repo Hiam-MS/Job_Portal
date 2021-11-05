@@ -4,7 +4,7 @@
     <!-- Content -->
     <div class="page-content">
 		<!-- Section Banner -->
-		<div class="dez-bnr-inr dez-bnr-inr-md overlay-black-dark" style="background-image:url(images/main-slider/4.jpg);">
+		<div class="dez-bnr-inr dez-bnr-inr-md overlay-black-dark" style="background-image:url({{asset('images/banner/bnr1.jpg')}});">
             <div class="container">
                 <div class="dez-bnr-inr-entry align-m text-white">
 					<div class=" job-search-form">
@@ -34,7 +34,7 @@
 							<!--<a href="#" class="site-button">Read More</a>-->
 						</div>
 						<div class="col-md-12 col-lg-6">
-							<img src="images/our-work/pic1.jpg" alt=""/>
+							<img src="{{asset('images/our-work/pic1.jpg')}}" alt=""/>
 						</div>
 					</div>
 					<br>
@@ -72,7 +72,7 @@
 			
 		<!-- About Us END -->
 		<!-- Call To Action -->
-		<div class="section-full content-inner-2 call-to-action overlay-black-dark text-white text-center bg-img-fix" style="background-image: url(images/background/bg4.jpg);">
+		<div class="section-full content-inner-2 call-to-action overlay-black-dark text-white text-center bg-img-fix" style="background-image: url({{asset('images/background/bg4.jpg')}});">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
@@ -80,7 +80,7 @@
 						<p class="m-b0"></p>
 						@if(auth::user())
 						@if(auth()->user()->role == 'p')
-						<a href="/resume/dashboard" class="site-button m-t20 outline outline-2 radius-xl">سجل الآن</a>
+						<a href="{{asset('/resume/dashboard')}}" class="site-button m-t20 outline outline-2 radius-xl">سجل الآن</a>
 						@endif
 								@if(auth()->user()->role == 'c')
 								<a href="{{ asset('/company/dashboard')}}" class="site-button m-t20 outline outline-2 radius-xl">سجل الآن</a>
@@ -110,13 +110,13 @@
 				<div class="section-head text-black text-center">
 					<h2 class="text-uppercase m-b0">لمحة عن الغرفة</h2>
 					
-					<p> غرفة تجارة دمشق تشمل وشركات بالإضافة كونها تشغل منصب الخازن الدائم لاتحاد الغرف التجارية السورية و عضويتها في مجلس إدارة الاتحاد وعضويتها في تجمع غرف التجارة والصناعة والزراعة لبلدان البحر الأبيض المتوسط</p>
+					<p> غرفة تجارة ريف دمشق تشمل وشركات بالإضافة كونها تشغل منصب الخازن الدائم لاتحاد الغرف التجارية السورية و عضويتها في مجلس إدارة الاتحاد وعضويتها في تجمع غرف التجارة والصناعة والزراعة لبلدان البحر الأبيض المتوسط</p>
 					<br>
 				</div>
 				<div dir="ltr" lang="en"  class="blog-carousel owl-carousel owl-btn-center-lr owl-btn-3 owl-theme owl-btn-center-lr owl-btn-1">
 					<div class="item">
 						<div class="blog-post blog-grid blog-style-1">
-							<div class="dez-post-media dez-img-effect radius-sm"> <a href="#"><img src="images/blog/grid/pic5.jpg" alt=""></a> </div>
+							<div class="dez-post-media dez-img-effect radius-sm"> <a href="#"><img src="{{asset('images/blog/grid/pic5.jpg')}}" alt=""></a> </div>
 							
 							
 							
@@ -124,19 +124,19 @@
 					</div>
 					<div class="item">
 						<div class="blog-post blog-grid blog-style-1">
-							<div class="dez-post-media dez-img-effect radius-sm"> <a href="#"><img src="images/blog/grid/عمال.jpg" alt=""></a> </div>
+							<div class="dez-post-media dez-img-effect radius-sm"> <a href="#"><img src="{{ asset('images/blog/grid/عمال.jpg')}}" alt=""></a> </div>
 							
 						</div>
 					</div>
 					<div class="item">
 						<div class="blog-post blog-grid blog-style-1">
-							<div class="dez-post-media dez-img-effect radius-sm"> <a href="#"><img src="images/blog/grid/4.jpg" alt=""></a> </div>
+							<div class="dez-post-media dez-img-effect radius-sm"> <a href="#"><img src="{{ asset('images/blog/grid/4.jpg')}}" alt=""></a> </div>
 							
 						</div>
 					</div>
 					<div class="item">
 						<div class="blog-post blog-grid blog-style-1">
-							<div class="dez-post-media dez-img-effect radius-sm"> <a href="#"><img src="images/blog/grid/pic6.jpg" alt=""></a> </div>
+							<div class="dez-post-media dez-img-effect radius-sm"> <a href="#"><img src="{{ asset('images/blog/grid/pic6.jpg')}}" alt=""></a> </div>
 							
 						</div>
 					</div>

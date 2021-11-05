@@ -77,7 +77,7 @@ Route::post('/company/update_EndJob/{id}', 'CompanyController@update_JobEnd')->n
 //********************************************* */
 
 Route::get('/job/addJob','JobsController@addJob')->name('addJob');
-Route::post('/job/storeJob','JobsController@storeJob');
+Route::post('/job/storeJob','JobsController@storeJob')->name('storeJob');
 
 
 
@@ -152,8 +152,8 @@ Route::get('/resume/deleteCat/{id}', 'PersonController@DeletePersonCat');
  Route::group(['middleware' => 'role:admin'], function(){
 
     Route::get('/company/show','CompanyController@showCompany')->name('company.show');
-    Route::get('/country','AdminController@addCountry');
-    Route::get('/city/{id}','AdminController@addCity');
+    // Route::get('/country','AdminController@addCountry');
+    // Route::get('/city/{id}','AdminController@addCity');
     Route::get('/admin/dashboard','AdminController@getDash')->name('admin.Dash');
     Route::get('/admin/pending_jobs','AdminController@pendingJob')->name('pendingJob');
     Route::post('/job/accepte_Job/{id}', 'AdminController@accepte_JobStatuse')->name('accepte_JobStatuse');

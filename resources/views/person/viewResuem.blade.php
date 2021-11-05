@@ -26,7 +26,7 @@
     <!-- Content -->
     <div class="page-content bg-white">
         <!-- inner page banner -->
-        <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(images/banner/bnr1.jpg);">
+        <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}});">
             <div class="container">
                 <div class="dez-bnr-inr-entry">
                     <h1 class="text-white"> السير الذاتية الحالية</h1>
@@ -76,7 +76,7 @@
 														</td>
 														<td> {{$item->gender}} </td>
 														<td>  
-															<a href="Person/details/{{ $item->id }}" class="btn "> تفاصيل</a>
+															<a href="{{url('Person/details',$item->id)}}" class="btn "> تفاصيل</a>
 														</td>
 													</tr>
 

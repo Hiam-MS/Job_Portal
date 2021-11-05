@@ -41,10 +41,10 @@ $Request->validate([
     $user->name =  $Request->input("name");
     $user->email  =  $Request->input("email");
       // $user->mobile  = $Request->input("mobile");
-    $user->save();
+    
     if($user){
-
-        return view('welcome');
+        $user->save();
+        return view('index');
 
     }
     else

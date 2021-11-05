@@ -47,6 +47,31 @@ class CompanyController extends Controller
 
     public function updatCompanyProfile(Request $Request,$id)
     {
+        $Request->validate([
+            'company_name_ar'=>'required',
+            'company_name_en'=>'required',
+            'email'=>'required|email',
+            'fixed_phone'=>'required|alpha_num',
+            'fax_phone'=>'required|alpha_num',
+            'location'=>'required',
+            'company_specialist'=>'required',
+            'commercial_record'=>'required|alpha_num',
+            'industria_record'=>'required|alpha_num',
+            'website'=>'required:companies',
+        
+
+        ],[
+            'company_name_ar.required'=>'بجب ادخال الاسم بالعربي',
+            'company_name_en.required'=>'بجب ادخال الاسم بالانكليزي',
+            'email.required'=>'بجب ادخال البريد الالكتروني للشركة  ',
+            'fixed_phone.required'=>'بجب ادخال رقم الهاتف الأرضي ',
+            'fax_phone.required'=>'بجب ادخال رقم  الفاكس ',
+            'location.required'=>'بجب ادخال عنوان الشركة   ',
+            'company_specialist.required'=>'بجب ادخال اختصاص عمل الشركة  ',
+            'commercial_record.required'=>'بجب ادخال  السجل التجاري ',
+            'industria_record.required'=>'بجب ادخال  السجل الصناعي  ',
+            'website.required'=>'بجب ادخال موقع  الشركة  ',
+        ]);
         $company=Company::find($id);
         $company->company_name_ar=$Request->company_name_ar;
         $company->company_name_en=$Request->company_name_en;
@@ -59,9 +84,10 @@ class CompanyController extends Controller
         $company->industria_record=$Request->industria_record;
         $company->website=$Request->website;
 
-        $company->save();
+        
 
         if($company){
+            $company->save();
             return back()->withInput()->with('success','  تم التعديل بنجاح');
         }else{
             return back()->withInput()->with('fail','هناك خطأ ما');
@@ -78,29 +104,29 @@ class CompanyController extends Controller
 
 
         $Request->validate([
-            'company_name_ar'=>'required',
-            'company_name_en'=>'required',
+            'company_name_ar'=>'required|',
+            
             'email'=>'required|email',
-            'fixed_phone'=>'required|alpha_num',
-            'fax_phone'=>'required|alpha_num',
+            'fixed_phone'=>'required|numeric',
+            'fax_phone'=>'required|numeric',
             'location'=>'required',
             'company_specialist'=>'required',
-            'commercial_record'=>'required|alpha_num',
+            'commercial_record'=>'required|alpha_num|',
             'industria_record'=>'required|alpha_num',
-            'website'=>'required:companies',
+            'website'=>'required|starts_with:www',
         
 
         ],[
-            'company_name_ar.required'=>'يجد ادخال الاسم بالعربي',
-            'company_name_en.required'=>'يجد ادخال الاسم بالانكليزي',
-            'email.required'=>'يجد ادخال البريد الالكتروني للشركة  ',
-            'fixed_phone.required'=>'يجد ادخال رقم الهاتف الأرضي ',
-            'fax_phone.required'=>'يجد ادخال رقم  الفاكس ',
-            'location.required'=>'يجد ادخال عنوان الشركة   ',
-            'company_specialist.required'=>'يجد ادخال اختصاص عمل الشركة  ',
-            'commercial_record.required'=>'يجد ادخال  السجل التجاري ',
-            'industria_record.required'=>'يجد ادخال  السجل الصناعي  ',
-            'website.required'=>'يجد ادخال موقع  الشركة  ',
+            'company_name_ar.required'=>'بجب ادخال الاسم بالعربي',
+      
+            'email.required'=>'بجب ادخال البريد الالكتروني للشركة  ',
+            'fixed_phone.required'=>'بجب ادخال رقم الهاتف الأرضي ',
+            'fax_phone.required'=>'بجب ادخال رقم  الفاكس ',
+            'location.required'=>'بجب ادخال عنوان الشركة   ',
+            'company_specialist.required'=>'بجب ادخال اختصاص عمل الشركة  ',
+            'commercial_record.required'=>'بجب ادخال  السجل التجاري ',
+            'industria_record.required'=>'بجب ادخال  السجل الصناعي  ',
+            'website.required'=>'بجب ادخال موقع الانترنت للشركة  ',
         ]);
 
        

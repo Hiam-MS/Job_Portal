@@ -174,7 +174,7 @@ $(document).ready(function() {
 							<table>
 								<tr>
 						  			<th style="width: 20%" >اسم الشهادة :</th>
-						  				<td style="width: 50%"><input type="text" class="form-control" placeholder="  " value="{{old('degree_name')}}" name="degree_name" style="width:60%" >
+						  				<td style="width: 50%"><input type="text" class="form-control form-control-lg" placeholder="  " value="{{old('degree_name')}}" name="degree_name" style="width:60%" >
 										  @if($errors->any('degree_name'))
 									<span style="color:red">{{$errors->first('degree_name')}}</span>
 								@endif
@@ -182,7 +182,7 @@ $(document).ready(function() {
 						  		</tr>
 								<tr>
 									<th style="width: 20%" > المؤسسة التعليمية :</th>
-										<td style="width: 50%"><input type="text" class="form-control" placeholder="" value="{{old('Institution')}}" name="Institution" style="width:60%">
+										<td style="width: 50%"><input type="text" class="form-control form-control-lg" placeholder="" value="{{old('Institution')}}" name="Institution" style="width:60%">
 										@if($errors->any('Institution'))
 									<span style="color:red">{{$errors->first('Institution')}}</span>
 								@endif
@@ -190,7 +190,7 @@ $(document).ready(function() {
 								</tr>
 								<tr>
 									<th style="width: 20%" >  الاختصاص :</th>
-										<td style="width: 50%"><input type="text" class="form-control" placeholder="" value="{{old('Major')}}" name="Major" style="width:60%">
+										<td style="width: 50%"><input type="text" class="form-control form-control-lg" placeholder="" value="{{old('Major')}}" name="Major" style="width:60%">
 										@if($errors->any('Major'))
 									<span style="color:red">{{$errors->first('Major')}}</span>
 								@endif
@@ -199,7 +199,7 @@ $(document).ready(function() {
 								<tr>
 						  			<th style="width: 20%" >  الدرجة/ الشهادة   :</th>
 						  				<td style="width: 50%" >
-											<select name="Degree" class="form-control" style="width:60%" >
+											<select name="Degree" class="form-control form-control-lg" style="width:60%" >
 												<option selected disabled>يرجى الاختيار</option>
 												<option value="أقل من ثانوية عامة" {{(old('Degree') && old('Degree')=='أقل من ثانوية عامة' )?'selected':''}}>أقل من ثانوية عامة</option>
 												<option value="ثانوية عامة " {{(old('Degree') && old('Degree')=='ثانوية عامة' )?'selected':''}}>ثانوية عامة</option>
@@ -219,7 +219,7 @@ $(document).ready(function() {
                         		</tr>
 								<tr>
 									<th style="width: 20%" >    سنة التخرج :</th>
-										<td style="width: 50%"><input type="date" class="form-control" placeholder="Web Designer"  value="{{old('Graduation_year')}}" name="Graduation_year" style="width:60%">
+										<td style="width: 50%"><input type="date" class="form-control form-control-lg" placeholder="Web Designer"  value="{{old('Graduation_year')}}" name="Graduation_year" style="width:60%">
 										@if($errors->any('Graduation_year'))
 									<span style="color:red">{{$errors->first('Graduation_year')}}</span>
 								@endif
@@ -227,7 +227,7 @@ $(document).ready(function() {
 								</tr>
 								<tr>
 									<th style="width: 20%" >     دولة الدراسة :</th>
-										<td><input type="text" class="form-control" placeholder=""  value="{{old('Country')}}" name="Country" style="width:60%">
+										<td><input type="text" class="form-control form-control-lg" placeholder=""  value="{{old('Country')}}" name="Country" style="width:60%">
 										@if($errors->any('Country'))
 									<span style="color:red">{{$errors->first('Country')}}</span>
 								@endif
@@ -277,7 +277,7 @@ $(document).ready(function() {
                     @csrf
                     	<div class="form-group">
 							<label>    اسم المهارة </label>
-							<input type="text"class="form-control"  placeholder="" value="{{old('name')}}" name="name" style="width:80% "  >
+							<input type="text"class="form-control form-control-lg"  placeholder="" value="{{old('name')}}" name="name" style="width:80% "  >
 							@if($errors->any('name'))
 									<span style="color:red">{{$errors->first('name')}}</span>
 								@endif
@@ -323,7 +323,7 @@ $(document).ready(function() {
                     @csrf
                     	<div class="form-group">
 							<label>     اسم الدورة  </label>
-							<input type="text" class="form-control" placeholder="" value="{{old('name')}}" name="name"  style="width:80%">
+							<input type="text" class="form-control form-control-lg" placeholder="" value="{{old('name')}}" name="name"  style="width:80%">
 							@if($errors->any('name'))
 									<span style="color:red">{{$errors->first('name')}}</span>
 								@endif
@@ -364,37 +364,37 @@ $(document).ready(function() {
                    		<table>
 							<tr>
 						  		<th style="width: 20%" >  المنصب الوظيفي :</th>
-						  			<td style="width: 50%"><input type="text" class="form-control" placeholder="  " value="{{old('Job_title')}}" name="Job_title" style="width:60%" >
+						  			<td style="width: 50%"><input type="text" class="form-control form-control-lg" placeholder="  " value="{{old('Job_title')}}" name="Job_title" style="width:60%" >
 						  				<span style="color:red"> @error('Job_title'){{$message}}@enderror</span>
 									</td>
 						  	</tr>
 						  	<tr>
 						  		<th style="width: 20%" >  اختصاص عملك  :</th>
-						  			<td style="width: 50%"><input type="text" class="form-control" placeholder="" value="{{old('job_Specialize')}}" name="job_Specialize" style="width:60%">
+						  			<td style="width: 50%"><input type="text" class="form-control form-control-lg" placeholder="" value="{{old('job_Specialize')}}" name="job_Specialize" style="width:60%">
 						  				<span style="color:red"> @error('job_Specialize'){{$message}}@enderror</span>
 									</td>
                         	</tr>
 							<tr>
 						  		<th style="width: 20%" >  اسم الشركة :</th>
-						  			<td style="width: 50%"><input type="text" class="form-control" placeholder="" value="{{old('company_name')}}" name="company_name" style="width:60%">
+						  			<td style="width: 50%"><input type="text" class="form-control form-control-lg" placeholder="" value="{{old('company_name')}}" name="company_name" style="width:60%">
 										<span style="color:red"> @error('company_name'){{$message}}@enderror</span>
 									</td>
                         	</tr>
 							<tr>
 								<th style="width: 20%" >  عنوان الشركة :</th>
-						  			<td style="width: 50%"><input type="text" class="form-control" placeholder="" value="{{old('company_address')}}" name="company_address" style="width:60%">
+						  			<td style="width: 50%"><input type="text" class="form-control form-control-lg" placeholder="" value="{{old('company_address')}}" name="company_address" style="width:60%">
 										<span style="color:red"> @error('company_address'){{$message}}@enderror</span>
 									</td>
                         	</tr>
 							<tr>
 						  		<th style="width: 20%" >    تاريخ الالتحاق  :</th>
-						  			<td style="width: 50%"><input type="date" class="form-control" placeholder="Web Designer"  value="{{old('Start_date')}}" name="Start_date" style="width:60%">
+						  			<td style="width: 50%"><input type="date" class="form-control form-control-lg" placeholder="Web Designer"  value="{{old('Start_date')}}" name="Start_date" style="width:60%">
 										<span style="color:red"> @error('Start_date'){{$message}}@enderror</span>
 									</td>
 							</tr>
 							<tr>
 						  		<th style="width: 20%" >     تاريخ الانتهاء   :</th>
-						  			<td style="width: 50%"><input type="date" class="form-control" placeholder="Web Designer"  value="{{old('end_date')}}" name="end_date" style="width:60%">
+						  			<td style="width: 50%"><input type="date" class="form-control form-control-lg" placeholder="Web Designer"  value="{{old('end_date')}}" name="end_date" style="width:60%">
 										<span style="color:red"> @error('end_date'){{$message}}@enderror</span>
 									</td>
                         	</tr>
@@ -402,7 +402,7 @@ $(document).ready(function() {
 						  		<th style="width: 20%" >     المهام الوظيفية  :</th>
 						  			<td>
 										
-									 <textarea name="Responsibilities" id="Responsibilities" class="form-control" style="width:60%">{{old('Responsibilities')}}</textarea>
+									 <textarea name="Responsibilities" id="Responsibilities" class="form-control form-control-lg" style="width:60%">{{old('Responsibilities')}}</textarea>
 									  <span style="color:red"> @error('Responsibilities'){{$message}}@enderror</span>
 									
 									

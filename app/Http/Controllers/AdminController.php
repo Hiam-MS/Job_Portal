@@ -10,7 +10,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Job;
-
+use App\Models\Person;
 
 class AdminController extends Controller
 {
@@ -27,24 +27,24 @@ class AdminController extends Controller
     }
 
 
-    public function addCountry()
-    {
-        $country =new Country();
+    // public function addCountry()
+    // {
+    //     $country =new Country();
 
-        $country->country_name="امارات";
-        $country->save();
-        return "DOOOOON";
+    //     $country->country_name="امارات";
+    //     $country->save();
+    //     return "DOOOOON";
         
-    }
-    public function addCity($id)
-    {
-        $country =Country::find($id);
-        $city= new City();
-        $city->city_name="دبي";
-        $country->cities()->save($city);
-        return "DOne";
+    // }
+    // public function addCity($id)
+    // {
+    //     $country =Country::find($id);
+    //     $city= new City();
+    //     $city->city_name="دبي";
+    //     $country->cities()->save($city);
+    //     return "DOne";
 
-    }
+    // }
 
 
     public function pendingJob()

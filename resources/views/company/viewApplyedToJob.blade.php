@@ -39,7 +39,7 @@
 										
 								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
 									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
-                                    <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="#" > لوحة التحكم<a></h4>
+                                    <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="{{route('CompanyDash')}}" > لوحة التحكم<a></h4>
 										 <ul>
 											
 											@if(isset(auth()->user()->GetCompany))
@@ -142,7 +142,7 @@
                                             @foreach($applicants->sortByDesc('created_at') as $applicant )
                                                 <tr>
                                                     @if(!empty($applicant->photo))
-                                                        <td class="text-center" ><img src="/storage/photo/{{ $applicant->photo }}" class="p-0 rounded-circle" style="height: 80px"></td> 
+                                                        <td class="text-center" ><img src="{{asset('/storage/photo/{{ $applicant->photo }}')}}" class="p-0 rounded-circle" style="height: 80px"></td> 
                                                     @else 
                                                         <td class="text-center"><i class="ti-user" ></i></td>
                                                     @endif 

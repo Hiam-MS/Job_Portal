@@ -17,8 +17,8 @@
 	<!-- FAVICONS ICON -->
 	<link rel="icon" href="{{ asset('images/favicon.ico')}}" type="image/x-icon" />
 	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png')}}" />
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	<link href="{{ asset('https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css')}}" rel="stylesheet">
+	<link href="{{ asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css')}}" rel="stylesheet" />
 
 	
 	<!-- PAGE TITLE HERE -->
@@ -46,18 +46,18 @@
 <!-- select2 -->
 <link rel="stylesheet" type="text/css" href="{{asset('css/jquery.multiselect.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/multiselect.css')}}">
-<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-<link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css')}}" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" type="text/css" href="{{asset('semantic/dist/semantic.min.css')}}">
+<link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css')}}" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 
-<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+<link rel="stylesheet" type="text/css" href="{{asset('semantic/dist/semantic.min.css')}}">
 <script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  src="{{asset('https://code.jquery.com/jquery-3.1.1.min.js')}}"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
-<script src="semantic/dist/semantic.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="{{asset('semantic/dist/semantic.min.js')}}"></script>
+<script src="{{asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js')}}"></script>
 <style>
 	   body {
   color: black;}
@@ -100,7 +100,7 @@
                 <div class="container clearfix">
                     <!-- website logo -->
                     <div class="logo-header mostion">
-						<a href="index-2.html"><img src="{{ asset('images/logo.png')}}" class="logo" alt=""></a>
+						<a href="{{ asset('https://ccdcp.net/')}}"><img src="{{ asset('images/logo.png')}}" class="logo" alt=""></a>
 					</div>
                     <!-- nav toggle button -->
                     <!-- nav toggle button -->
@@ -168,29 +168,7 @@
 									</li>
 							<li class="sub-menu">
 								<a href="{{ asset('/')}}">الرئيسية </i></a>
-								<!--<ul class="sub-menu">
-									<li><a href="index-2.html" class="dez-page">Home 1</a></li>
-									<li><a href="index-3.html" class="dez-page">Home 2</a></li>
-								</ul>
-							</li>-->
-							<!-- <li>
-								<a href="#">التسجيل في الموقع <i class="fa fa-chevron-down"></i></a>
-								<ul class="sub-menu">
-									<li><a href="{{ route('register') }}" class="dez-page">باحث عن موظف</a></li>
-									<li><a href="{{ route('register') }}" class="dez-page">باحث عن عمل</a></li>
-									
-								</ul>
-							</li> -->
-							
-							<!--<li>
-								<a href="#">فرص العمل <i class="fa fa-chevron-down"></i></a>
-								<ul class="sub-menu">
-									<li><a href="{{ route('job') }}" class="dez-page">حسب المدينة</a></li>
-									<li><a href="{{ route('job') }}" class="dez-page">حسب الاختصاص</a></li>
-									
-									
-								</ul>
-							</li>-->
+								
 							<li>
 								<a href="{{ route('job') }}">  فرص العمل</i></a>
 								<ul class="sub-menu">
@@ -207,18 +185,7 @@
 							</li>
 							@endif
 							@endif
-							<!--<li>
-								<a href="{{ route('resuem.create') }}">  انشاء سيرة ذاتية</i></a>
-								<ul class="sub-menu">
-									
-								</ul>
-							</li>-->
-							<!-- <li>
-								<a href="{{ route('company.show') }}">    الشركات الحالية</i></a>
-								<ul class="sub-menu">
-									
-								</ul>
-							</li> -->
+							
 							<li>
 								<a href="/#aboutUs">  نبذة عن الموقع</i></a>
 								<ul class="sub-menu">
@@ -231,16 +198,7 @@
 									
 								</ul>
 							
-							 <!--<li>
-								<a href="#">Blog <i class="fa fa-chevron-down"></i></a>
-								<ul class="sub-menu">
-									<li><a href="blog-classic.html" class="dez-page">Classic</a></li>
-									<li><a href="blog-classic-sidebar.html" class="dez-page">Classic Sidebar</a></li>
-									<li><a href="blog-detailed-grid.html" class="dez-page">Detailed Grid</a></li>
-									<li><a href="blog-detailed-grid-sidebar.html" class="dez-page">Detailed Grid Sidebar</a></li>
-									<li><a href="blog-left-img.html" class="dez-page">Left Image Sidebar</a></li>
-									<li><a href="blog-details.html" class="dez-page">Blog Details</a></li>
-								</ul> -->
+							
 							</li>
 						</ul>			
                     </div>
@@ -315,32 +273,32 @@
     <button class="scroltop fa fa-chevron-up"></button>
 </div>
 <!-- JAVASCRIPT FILES ========================================= -->
-<script src="js/jquery.min.js"></script><!-- JQUERY.MIN JS -->
-<script src="plugins/wow/wow.js"></script><!-- WOW JS -->
-<script src="plugins/bootstrap/js/popper.min.js"></script><!-- BOOTSTRAP.MIN JS -->
-<script src="plugins/bootstrap/js/bootstrap.min.js"></script><!-- BOOTSTRAP.MIN JS -->
-<script src="plugins/bootstrap-select/bootstrap-select.min.js"></script><!-- FORM JS -->
-<script src="plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script><!-- FORM JS -->
-<script src="plugins/magnific-popup/magnific-popup.js"></script><!-- MAGNIFIC POPUP JS -->
-<script src="plugins/counter/waypoints-min.js"></script><!-- WAYPOINTS JS -->
-<script src="plugins/counter/counterup.min.js"></script><!-- COUNTERUP JS -->
-<script src="plugins/imagesloaded/imagesloaded.js"></script><!-- IMAGESLOADED -->
-<script src="plugins/masonry/masonry-3.1.4.js"></script><!-- MASONRY -->
-<script src="plugins/masonry/masonry.filter.js"></script><!-- MASONRY -->
-<script src="plugins/owl-carousel/owl.carousel.js"></script><!-- OWL SLIDER -->
-<script src="plugins/rangeslider/rangeslider.js" ></script><!-- Rangeslider -->
-<script src="js/custom.js"></script><!-- CUSTOM FUCTIONS  -->
-<script src="js/dz.carousel.js"></script><!-- SORTCODE FUCTIONS  -->
-<script src='js/recaptcha/api.js'></script> <!-- Google API For Recaptcha  -->
-<script src="js/dz.ajax.js"></script><!-- CONTACT JS  -->
-<script src="plugins/paroller/skrollr.min.js"></script><!-- PAROLLER -->
+<script src="{{ asset('js/jquery.min.js')}}"></script><!-- JQUERY.MIN JS -->
+<script src="{{ asset('plugins/wow/wow.js')}}"></script><!-- WOW JS -->
+<script src="{{ asset('plugins/bootstrap/js/popper.min.js')}}"></script><!-- BOOTSTRAP.MIN JS -->
+<script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js')}}"></script><!-- BOOTSTRAP.MIN JS -->
+<script src="{{ asset('plugins/bootstrap-select/bootstrap-select.min.js')}}"></script><!-- FORM JS -->
+<script src="{{ asset('plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js')}}"></script><!-- FORM JS -->
+<script src="{{ asset('plugins/magnific-popup/magnific-popup.js')}}"></script><!-- MAGNIFIC POPUP JS -->
+<script src="{{ asset('plugins/counter/waypoints-min.js')}}"></script><!-- WAYPOINTS JS -->
+<script src="{{ asset('plugins/counter/counterup.min.js')}}"></script><!-- COUNTERUP JS -->
+<script src="{{ asset('plugins/imagesloaded/imagesloaded.js')}}"></script><!-- IMAGESLOADED -->
+<script src="{{ asset('plugins/masonry/masonry-3.1.4.js')}}"></script><!-- MASONRY -->
+<script src="{{ asset('plugins/masonry/masonry.filter.js')}}"></script><!-- MASONRY -->
+<script src="{{ asset('plugins/owl-carousel/owl.carousel.js')}}"></script><!-- OWL SLIDER -->
+<script src="{{ asset('plugins/rangeslider/rangeslider.js')}}" ></script><!-- Rangeslider -->
+<script src="{{ asset('js/custom.js')}}"></script><!-- CUSTOM FUCTIONS  -->
+<script src="{{ asset('js/dz.carousel.js')}}"></script><!-- SORTCODE FUCTIONS  -->
+<script src="{{ asset('js/recaptcha/api.js')}}"></script> <!-- Google API For Recaptcha  -->
+<script src="{{ asset('js/dz.ajax.js')}}"></script><!-- CONTACT JS  -->
+<script src="{{ asset('plugins/paroller/skrollr.min.js')}}"></script><!-- PAROLLER -->
 
 <!-- select2 -->
 <!--select2 -->
 
 
 <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js')}}" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+<script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js')}}" defer></script>
 
 <!-- <script src="D:\job\Job_Portal\public\js\jquery.multiselect.js"></script>
 <script src="D:\job\Job_Portal\public\js\multiselect.core.js"></script>
@@ -350,10 +308,10 @@
 
 												<!--select2 -->
 												<script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  src="{{ asset('https://code.jquery.com/jquery-3.1.1.min.js')}}"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
-<script src="semantic/dist/semantic.min.js"></script>
+<script src="{{ asset('semantic/dist/semantic.min.js')}}"></script>
 
 
 

@@ -60,6 +60,8 @@ class PersonController extends Controller
         $Person=Person::paginate(10);
         return view('person.viewResuem',compact('Person'));
 
+    
+
 }
 
 //   search resume    //
@@ -86,8 +88,10 @@ public function searchResume(Request $request)
     public function ResuemDetails($id)
     {
         $Person = Person::find($id);
-       
+     
         return view('person.ResuemDetail',compact('Person'));
+
+
     }
 
  
@@ -117,7 +121,7 @@ public function searchResume(Request $request)
             'father_name'=> ['required','string' , 'max:20'] ,
             'Lname'=> ['required','string', 'max:20'] ,
             // 'email'=> ['required','string'] ,
-            // 'national_number'=> ['required','numeric', 'max:11'] ,
+          'national_number'=> ['required','numeric', 'start_with:0','max:11'] ,
             'gender'=> ['required'] ,
             'military_service'=> ['required'] ,
             'marital_status'=> ['required'] ,
@@ -135,7 +139,7 @@ public function searchResume(Request $request)
             'father_name.required'=>'يجب  تعبئة  حقل اسم الأب',
             'Lname.required'=>'يجب تعبئة حقل الكنية  ',
             // 'email.required'=>'يجب  ادخال البريد الالكتروني ',
-            // 'national_number.required'=>'يجب  ادخال حقل الرقم الوطني  ',
+           'national_number.required'=>'يجب  ادخال حقل الرقم الوطني  ',
             
             'gender.required'=>'يجب اختيار حقل الجنس  ',
             'military_service.required'=>'يجب   اختيار حقل خدمة العلم ',
@@ -200,7 +204,7 @@ public function updatPersonalInfo(Request $Request)
             'email'=> ['required','string'] ,
             'dob'=> ['required','date'] ,
             'place_Of_b'=> ['required','string'] ,
-            // 'national_number'=> ['required','numeric', 'max:11'] ,
+             'national_number'=> ['required','numeric','start_with:0','max:11'] ,
             'fixed_phone'=> ['required','integer'] ,
             'Current_address'=> ['required','string'] ,
             'mobile_number'=> ['required','string'] ,
