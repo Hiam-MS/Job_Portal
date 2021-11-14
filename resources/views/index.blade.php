@@ -9,8 +9,8 @@
                 <div class="dez-bnr-inr-entry align-m text-white">
 					<div class=" job-search-form">
 						<h2 class="text-center">أسهل طريقة للحصول على وظيفتك الجديدة</h2>
-						<h3>ابحث عن الوظائف والتوظيف وفرص العمل</h3>
-				
+						<h3>ابحث عن الوظائف والتوظيف وفرص العمل</h3><br><br>
+						<h4><p>للمساعدة في التسجيل اتصل على 9841</p></h4>
 					</div>
 				</div>
             </div>
@@ -76,7 +76,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
-						<h2 class="m-b10">اصنع فرقًا مع سيرتك الذاتية على الإنترنت!</h2>
+						<h2 class="m-b10">اصنع فرقًا مع سيرتك الذاتية على الإنترنت!</h2><br>
+						<h4><p>للمساعدة في التسجيل اتصل على 9841</p></h4>
 						<p class="m-b0"></p>
 						@if(auth::user())
 						@if(auth()->user()->role == 'p')

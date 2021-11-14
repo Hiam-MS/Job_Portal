@@ -127,6 +127,11 @@
                                             </tbody>
                                         </thead>
                                     </table>
+								
+									<form>
+									<br><br><br><br>
+ <input type="button" value="رجوع" onclick="history.back()" class="btn btn-primary">
+</form>
                                 </form>
 
                             </div>

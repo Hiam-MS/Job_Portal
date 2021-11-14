@@ -167,6 +167,11 @@
 						
 						
 						<button type="submit" class="btn btn-primary" > تعديل</button>
+						<form>
+									
+ <input type="button" value="رجوع" onclick="history.back()" class="btn btn-primary">
+</form>
+                                </form>
 					</form>
   
 

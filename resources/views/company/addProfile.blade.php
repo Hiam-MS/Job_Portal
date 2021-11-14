@@ -34,43 +34,41 @@
 }
 </style>
     <!-- Content -->
-    <div class="page-content bg-white">
-        <!-- inner page banner -->
-        <div class="dez-bnr-inr overlay-black-dark" style="background-image:url({{ asset('images/banner/bnr1.jpg')}});">
-            <div class="container">
-                <div class="dez-bnr-inr-entry">
-                    <h1 class="text-white"> نشر فرصة عمل </h1>
-					<!-- Breadcrumb row -->
-				
-					<!-- Breadcrumb row END -->
-                </div>
+<div class="page-content bg-white">
+    <div class="dez-bnr-inr overlay-black-dark" style="background-image:url({{ asset('images/banner/bnr1.jpg')}});">
+        <div class="container">
+            <div class="dez-bnr-inr-entry">
+                <h1 class="text-white"> تسجيل المعلومات الأساسية  </h1>
+					
             </div>
         </div>
-        <!-- inner page banner END -->
-        <!-- contact area -->
-        <div class="content-block">
-			<!-- Submit Resume -->
-			<div class="section-full bg-white submit-resume content-inner-2">
-				<div class="container">
+    </div>
+    <div class="content-block">
+		<div class="section-full bg-white submit-resume content-inner-2">
+			<div class="container">
 				<div class="row">
 					<div class="col-lg-4">
 						<div class="sticky-top">
 							<div class="row">
-								<div class="col-lg-12 col-md-6">
+								<div class="col-lg-8 col-md-6">
 									<div class="m-b30">
-									<img src="{{asset('images/blog/grid/6.jpg')}}" alt="">
+										<img src="{{asset('images/blog/grid/6.jpg')}}" alt="">
 									</div>
 								</div>
 										
-								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
+								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" >
 									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
-									<h4 class="text-black font-weight-700 p-t10 m-b15"><a href="{{route('CompanyDash')}}" > لوحة التحكم<a></h4>
-										 <ul>
-											
+										<h4 class="text-black font-weight-700 p-t10 m-b15"><a href="{{route('CompanyDash')}}" > لوحة التحكم<a></h4>
+										<ul>
 											@if(isset(auth()->user()->GetCompany))
 												<li>
 													<strong class="font-weight-700 text-black"> 
 														<a href="{{route('CompanyViewProfile')}}" > عرض الملف الشخصي </a>
+													</strong><span class="text-black-light"> </span>
+												</li>
+												<li>
+													<strong class="font-weight-700 text-black"> 
+														<a href="{{route('CompanyViewProfile')}}" > اضافة معلومات أخرى   </a>
 													</strong><span class="text-black-light"> </span>
 												</li>
 												<li>
@@ -93,17 +91,15 @@
 														<a href="{{route('CompanyEndJobs')}}" >   الوظائف المنتهية  </a>  
 													</strong>
 												</li>
-											
 												
 											@else
 												<li><strong class="font-weight-700 text-black"><li><a href="{{route('CompanyProfile')}}" > ادخال معلومات الشركة </a></li></strong> </li>
-
 											@endif
 											<div class="dropdown " >
 													<li>
 														<strong class="font-weight-700 text-black">
 															<h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5> 
-														 </strong>
+														</strong>
 													</li>
 											 		<div class="dropdown-content">
 											 			<ul>
@@ -124,120 +120,111 @@
 														<ul>
 															<li>
 																<a href="{{route('profile.delete')}}" >  حذف الحساب </a>
-															 </li>
+															</li>
 														</ul>	
 									 				</div>
 												</div>
-											
 										</ul>
 									</div>
 								</div>
-
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-8">
-						<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">	
-					@if(Session::get('success'))
-						<div class="alert alert-success" style="font-size:20px">
-							{{Session::get('success')}}
-						</div>
-					@endif
-					@if(Session::get('fail'))
-						<div class="alert alert-danger" style="font-size:20px">
-							{{Session::get('fail')}}
-						</div>
-					@endif
 					
-					<form action="{{url('/company/storeProfile')}}" method="POST" style="padding-right:20px" >
-                    @csrf
-                    
-						<div class="form-group">
-							<label>اسم الشركة بالعربي<span style="color:red">*</span></label>
-							<input type="text"  class="form-control" placeholder="" name="company_name_ar" value="{{old('company_name_ar')}}" style="width:80%" data-parsly-trigger="keyup"  >
-							@if($errors->any('company_name_ar'))  
-								<span>{{$errors->first('company_name_ar')}}</span>
+					<div class="col-lg-8">
+						<div style="margin: right 20px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">	
+							@if(Session::get('success'))
+								<div class="alert alert-success" style="font-size:20px">
+									{{Session::get('success')}}
+								</div>
 							@endif
-						</div>
-                        <div class="form-group">
-							<label>اسم الشركة بالانكليزي<span style="color:red">*</span></label>
-							<input type="text" class="form-control" placeholder="" name="company_name_en" value="{{old('company_name_en')}}" style="width:80%" data-parsly-trigger="keyup" >
-							@if($errors->any('company_name_en'))
-								<span >{{$errors->first('company_name_en')}}</span>
+							@if(Session::get('fail'))
+								<div class="alert alert-danger" style="font-size:20px">
+									{{Session::get('fail')}}
+								</div>
 							@endif
-						</div>
-						<div class="form-group">
-							<label>عنوان البريد الالكتروني<span style="color:red">*</span></label>
-							<input type="text" class="form-control" placeholder="info@gmail.com" name="email" value="{{old('email')}} " style="width:80%" data-parsly-trigger="keyup">
-							@if($errors->any('email'))
-								<span >{{$errors->first('email')}}</span>
-							@endif
-						</div>
-                       
-                        <div class="form-group">
-							<label>  الهاتف الأرضي<span style="color:red">*</span></label>
-							<input type="text" class="form-control" placeholder="963-11-2222222+" name="fixed_phone" value="{{old('fixed_phone')}} " style="width:80%" data-parsly-trigger="keyup">
-							@if($errors->any('fixed_phone'))
-								<span >{{$errors->first('fixed_phone')}}</span>
-							@endif
-						</div>
-                        <div class="form-group">
-							<label>  رقم الفاكس <span style="color:red">*</span></label>
-							<input type="text" class="form-control" placeholder=" 963-11-2222222+" name="fax_phone" value="{{old('fax_phone')}} " style="width:80%" data-parsly-trigger="keyup">
-							@if($errors->any('fax_phone'))
-								<span >{{$errors->first('fax_phone')}}</span>
-							@endif
-						</div>
+							<div class="card card-warning">
+								<div class="card-header">
+									<h3 class="card-title" style="color:#200080">المعلومات الأساسية </h3>
+								</div>
+              				<!-- /.card-header -->
+							<div class="card-body">
+								<form action="{{url('/company/storeProfile')}}" method="POST" id="resume" >
+									@csrf
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>اسم الشركة<span>*</span></label>
+												<input type="text" class="form-control form-control-lg" placeholder="" name="company_name"  value="{{old('company_name')}}" data-parsly-trigger="keyup">
+												@if($errors->any('company_name'))
+													<span>{{$errors->first('company_name')}}</span>
+												@endif
+											</div>
+										</div>
 
-                        <div class="form-group">
-							<label>  العنوان  <span style="color:red">*</span></label>
-							<input type="text" class="form-control" placeholder="" name="location" value="{{old('location')}} " style="width:80%" data-parsly-trigger="keyup">
-							@if($errors->any('location'))
-								<span>{{$errors->first('location')}}</span>
-							@endif
-						</div>
-                        <div class="form-group">
-							<label>  اختصاص الشركة  <span style="color:red">*</span></label>
-							<textarea name="company_specialist" id="company_specialist" class="form-control"  style="width:80%">{{old('company_specialist')}}</textarea>
-							<!-- <input type="text" class="form-control" placeholder="" name="company_specialist"  value="{{old('company_specialist')}} " style=width:60% data-parsly-trigger="keyup"> -->
-							@if($errors->any('company_specialist'))
-								<span >{{$errors->first('company_specialist')}}</span>
-							@endif
-							
-						</div>
-						<div class="form-group">
-							<label>   السجل التجاري  <span style="color:red">*</span></label>
-							<input type="text" class="form-control" placeholder="" name="commercial_record"  value="{{old('commercial_record')}} " style=width:80% data-parsly-trigger="keyup">
-							@if($errors->any('commercial_record'))
-								<span >{{$errors->first('commercial_record')}}</span>
-							@endif
-						</div>
-						<div class="form-group">
-							<label>  السجل  الصناعي <span style="color:red">*</span> </label>
-							<input type="text" class="form-control" placeholder="" name="industria_record"  value="{{old('industria_record')}}" style=width:80% data-parsly-trigger="keyup">
-							@if($errors->any('industria_record'))
-								<span >{{$errors->first('industria_record')}}</span>
-							@endif
-						</div>
-						<div class="form-group">
-							<label>  موقع الانترنت   <span style="color:red">(اختياري)</span> </label>
-							<input type="text" class="form-control" placeholder="" name="website"  value="{{old('website')}}" style=width:80% data-parsly-trigger="keyup">
-							@if($errors->any('website'))
-								<span >{{$errors->first('website')}}</span>
-							@endif
-						</div>
-						
-						
-            <button type="submit" class="btn btn-primary" >ادخال</button>
-					</form>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>  العنوان  <span style="color:red">*</span></label>
+												<input type="text" class="form-control form-control-lg" placeholder="" name="location" value="{{old('location')}} "  data-parsly-trigger="keyup">
+												@if($errors->any('location'))
+													<span>{{$errors->first('location')}}</span>
+												@endif
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label>  اختصاص الشركة  <span style="color:red">*</span></label>
+										<textarea name="company_specialist" id="company_specialist" class="form-control  form-control-lg"  >{{old('company_specialist')}}</textarea>
+										@if($errors->any('company_specialist'))
+											<span >{{$errors->first('company_specialist')}}</span>
+										@endif
+									</div>
+										
+									<div class="row">
+										<div class="col-sm-4">
+											<div class="form-group">
+											<label>عنوان البريد الالكتروني<span>*</span></label>
+												<input type="text" class="form-control form-control-lg" placeholder="" name="email"  value="{{old('email')}}" data-parsly-trigger="keyup">
+												@if($errors->any('email'))
+													<span>{{$errors->first('email')}}</span>
+												@endif
+											</div>
+										</div>
+
+										<div class="col-sm-4">
+											<div class="form-group">
+												<label>  رقم الفاكس <span style="color:red">*</span></label>
+												<input type="text" class="form-control  form-control-lg" placeholder=" 963-11-2222222+" name="fax_phone" value="{{old('fax_phone')}} "  data-parsly-trigger="keyup">
+												@if($errors->any('fax_phone'))
+													<span >{{$errors->first('fax_phone')}}</span>
+												@endif
+											</div>
+										</div>
+
+
+										<div class="col-sm-4">
+											<div class="form-group">
+											<label>  الهاتف الأرضي<span style="color:red">*</span></label>
+												<input type="text" class="form-control  form-control-lg" placeholder="963-11-2222222+" name="fixed_phone" value="{{old('fixed_phone')}} "  data-parsly-trigger="keyup">
+												@if($errors->any('fixed_phone'))
+													<span >{{$errors->first('fixed_phone')}}</span>
+												@endif
+											</div>
+										</div>
+									</div>
+
+									<button type="submit" class="btn btn-primary" >إرسال</button>
+								</form>
+							</div>
+             			</div>
 					</div>
-			</div>
 				</div>
 			</div>
-            <!-- Submit Resume END -->
 		</div>
+	</div>
 </div>
-    </div>
+
     <!-- Content END-->
 
 

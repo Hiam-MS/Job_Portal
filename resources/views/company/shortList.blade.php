@@ -129,7 +129,7 @@
 								{{Session::get('fail')}}
 							</div>
 						@endif	
-						
+						<form method="post" action="#" id="printJS-form">
                         <h5 class="widget-title font-weight-700 text-uppercase" style="color:blue"> الفرص المنشورة  </h5>
 							<br>
 
@@ -194,8 +194,19 @@
                               
 								
 								<span>{{$jobs->links('layouts.paginationlinks')}}</span>
-							 
-								
+								<form>
+									<br><br>
+									<input type="button" value="رجوع" onclick="history.back()" class="btn btn-primary">
+								   </form>
+								  
+   
+ </form>
+
+ <button type="button" onclick="print('printJS-form', 'html')">
+    Print Form
+ </button>
+ <button type="button" onclick="printJS('images/print-01-highres.jpg', 'image')">	   Print Image
+ </button>		
 								
 							
 							</ul>

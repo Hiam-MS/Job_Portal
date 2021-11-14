@@ -19,7 +19,8 @@
 	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png')}}" />
 	<link href="{{ asset('https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css')}}" rel="stylesheet">
 	<link href="{{ asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css')}}" rel="stylesheet" />
-
+	
+	<link href="{{ asset('https://printjs-4de6.kxcdn.com/print.min.css')}}" type="text/css" rel="stylesheet" />
 	
 	<!-- PAGE TITLE HERE -->
 	<title>منصة التوظيف</title>
@@ -58,6 +59,7 @@
   crossorigin="anonymous"></script>
 <script src="{{asset('semantic/dist/semantic.min.js')}}"></script>
 <script src="{{asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js')}}"></script>
+<script src="{{asset('https://printjs-4de6.kxcdn.com/print.min.js')}}"></script>
 <style>
 	   body {
   color: black;}

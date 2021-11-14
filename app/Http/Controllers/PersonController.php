@@ -56,8 +56,10 @@ class PersonController extends Controller
         //     $Person=Person::paginate(10);
         //     return view('person.viewResuem',compact('Person'));
         // }
+        
+       
+        $Person=Person::select("*")->orderBy("created_at", "desc")->paginate(10);
 
-        $Person=Person::paginate(10);
         return view('person.viewResuem',compact('Person'));
 
     
@@ -121,14 +123,14 @@ public function searchResume(Request $request)
             'father_name'=> ['required','string' , 'max:20'] ,
             'Lname'=> ['required','string', 'max:20'] ,
             // 'email'=> ['required','string'] ,
-          'national_number'=> ['required','numeric', 'start_with:0','max:11'] ,
+        //   'national_number'=> ['numeric'] ,
             'gender'=> ['required'] ,
             'military_service'=> ['required'] ,
             'marital_status'=> ['required'] ,
             'dob'=> ['required','date'] ,
             'place_Of_b'=> ['required','string'] ,
-            'Current_address'=> ['required','string'] ,
-            'fixed_phone'=> ['required','integer'] ,
+            // 'Current_address'=> ['required','string'] ,
+            // 'fixed_phone'=> ['required','integer'] ,
             'mobile_number'=> ['required','string'] ,
             'lang'=>['required'] ,
 
@@ -139,7 +141,7 @@ public function searchResume(Request $request)
             'father_name.required'=>'يجب  تعبئة  حقل اسم الأب',
             'Lname.required'=>'يجب تعبئة حقل الكنية  ',
             // 'email.required'=>'يجب  ادخال البريد الالكتروني ',
-           'national_number.required'=>'يجب  ادخال حقل الرقم الوطني  ',
+        //    'national_number.required'=>'يجب  ادخال حقل الرقم الوطني  ',
             
             'gender.required'=>'يجب اختيار حقل الجنس  ',
             'military_service.required'=>'يجب   اختيار حقل خدمة العلم ',
@@ -147,8 +149,8 @@ public function searchResume(Request $request)
             'dob.required'=>'يجب ادخال  حقل  تاريخ  الميلاد   ',
             'place_Of_b.required'=>'يجب ادخال  حقل  مكان  الولادة   ',
            
-            'Current_address.required'=>'يجب  ادخال حقل  مكان الاقامة الحالي   ',
-            'fixed_phone.required'=>'يجب  تعبئة  حقل الهاتف الأرضي  ',
+            // 'Current_address.required'=>'يجب  ادخال حقل  مكان الاقامة الحالي   ',
+            // 'fixed_phone.required'=>'يجب  تعبئة  حقل الهاتف الأرضي  ',
             'mobile_number.required'=>'يجب تعبئة حقل رقم الموبايل   ',
             'lang.required'=>'يجب  اختيار حقل  اللغة   ',
         ]);
@@ -157,18 +159,18 @@ public function searchResume(Request $request)
             $person->Fname = $Request->input("fname");
             $person->Father_name = $Request->input("father_name");
             $person->Lname = $Request->input("Lname");
-            $person->email =  $Request->input("email");
             $person->gender= $Request->input("gender");
             $person->dob= $Request->input("dob");
             $person->place_Of_b = $Request->input("place_Of_b");
-            $person->national_number= $Request->input("national_number");
             $person->marital_status= $Request->input("marital_status");
             $person->military_service= $Request->input("military_service");
-            $person->Current_address= $Request->input("Current_address");
-            $person->fixed_phone= $Request->input("fixed_phone");
             $person->mobile_number= $Request->input("mobile_number");
-            $person->lang= $Request->input("lang");
-            $person->img= $Request->input("img");
+            // $person->national_number= $Request->input("national_number");
+            // $person->Current_address= $Request->input("Current_address");
+            // $person->fixed_phone= $Request->input("fixed_phone");
+             // $person->email =  $Request->input("email");
+            // $person->lang= $Request->input("lang");
+            // $person->img= $Request->input("img");
             $person->user_id= auth()->user()->id;
 
           
@@ -281,6 +283,7 @@ public function updatPersonalInfo(Request $Request)
     public function storePersonEdu(Request $Request)
 
     {
+        $person =auth()->user()->GetPerson;
         $Request->validate([
             'degree_name'=> ['required','string'] ,
             'Institution'=> ['required','string'] ,
@@ -303,6 +306,7 @@ public function updatPersonalInfo(Request $Request)
            
         ]);
 
+        $arrayTostring =implode(',',$Request->input('still_study'));
         
         $personEdu =new PersonEducation ;
             $personEdu->degree_name = $Request->input("degree_name");
@@ -310,7 +314,9 @@ public function updatPersonalInfo(Request $Request)
             $personEdu->Degree= $Request->input("Degree");
             $personEdu->Major= $Request->input("Major");
             $personEdu->Graduation_year = $Request->input("Graduation_year");
+            $personEdu->still_study = $arrayTostring;
             $personEdu->Country = $Request->input("Country");
+         
             $personEdu->person_id=  auth()->user()->GetPerson->id;
             $personEdu->save();
 

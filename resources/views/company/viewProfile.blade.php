@@ -235,7 +235,10 @@
                                 </a>
                                 
                                 <button type="submit" class="btn btn-primary">طباعة</button>
-                                
+								<form>
+									
+									<input type="button" value="رجوع" onclick="history.back()" class="btn btn-primary">
+								   </form>
 							
 					
 								

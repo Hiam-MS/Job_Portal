@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\Company;
 use Carbon\Carbon;
+use App\Models\CompanyAddInformation;
 
 
 use Illuminate\Support\Facades\DB;
@@ -48,8 +49,8 @@ class CompanyController extends Controller
     public function updatCompanyProfile(Request $Request,$id)
     {
         $Request->validate([
-            'company_name_ar'=>'required',
-            'company_name_en'=>'required',
+            'company_name'=>'required',
+            // 'company_name_en'=>'required',
             'email'=>'required|email',
             'fixed_phone'=>'required|alpha_num',
             'fax_phone'=>'required|alpha_num',
@@ -61,8 +62,8 @@ class CompanyController extends Controller
         
 
         ],[
-            'company_name_ar.required'=>'بجب ادخال الاسم بالعربي',
-            'company_name_en.required'=>'بجب ادخال الاسم بالانكليزي',
+            'company_name.required'=>'بجب ادخال الاسم بالعربي',
+            // 'company_name_en.required'=>'بجب ادخال الاسم بالانكليزي',
             'email.required'=>'بجب ادخال البريد الالكتروني للشركة  ',
             'fixed_phone.required'=>'بجب ادخال رقم الهاتف الأرضي ',
             'fax_phone.required'=>'بجب ادخال رقم  الفاكس ',
@@ -73,8 +74,8 @@ class CompanyController extends Controller
             'website.required'=>'بجب ادخال موقع  الشركة  ',
         ]);
         $company=Company::find($id);
-        $company->company_name_ar=$Request->company_name_ar;
-        $company->company_name_en=$Request->company_name_en;
+        $company->company_name=$Request->company_name;
+        // $company->company_name_en=$Request->company_name_en;
         $company->email=$Request->email;
         $company->fixed_phone=$Request->fixed_phone;
         $company->fax_phone=$Request->fax_phone;
@@ -104,45 +105,43 @@ class CompanyController extends Controller
 
 
         $Request->validate([
-            'company_name_ar'=>'required|',
-            
+            'company_name'=>'required|',
             'email'=>'required|email',
             'fixed_phone'=>'required|numeric',
             'fax_phone'=>'required|numeric',
             'location'=>'required',
             'company_specialist'=>'required',
-            'commercial_record'=>'required|alpha_num|',
-            'industria_record'=>'required|alpha_num',
-            'website'=>'required|starts_with:www',
+            // 'commercial_record'=>'required|alpha_num|',
+            // 'industria_record'=>'required|alpha_num',
+            // 'website'=>'required|starts_with:www',
         
 
         ],[
-            'company_name_ar.required'=>'بجب ادخال الاسم بالعربي',
-      
+            'company_name.required'=>'بجب ادخال الاسم بالعربي',
             'email.required'=>'بجب ادخال البريد الالكتروني للشركة  ',
             'fixed_phone.required'=>'بجب ادخال رقم الهاتف الأرضي ',
             'fax_phone.required'=>'بجب ادخال رقم  الفاكس ',
             'location.required'=>'بجب ادخال عنوان الشركة   ',
             'company_specialist.required'=>'بجب ادخال اختصاص عمل الشركة  ',
-            'commercial_record.required'=>'بجب ادخال  السجل التجاري ',
-            'industria_record.required'=>'بجب ادخال  السجل الصناعي  ',
-            'website.required'=>'بجب ادخال موقع الانترنت للشركة  ',
+            // 'commercial_record.required'=>'بجب ادخال  السجل التجاري ',
+            // 'industria_record.required'=>'بجب ادخال  السجل الصناعي  ',
+            // 'website.required'=>'بجب ادخال موقع الانترنت للشركة  ',
         ]);
 
        
       
 
         $company =new Company ;
-            $company->company_name_ar = $Request->input("company_name_ar");
-            $company->company_name_en =  $Request->input("company_name_en");
+            $company->company_name = $Request->input("company_name");
             $company->email= $Request->input("email");
             $company->fixed_phone= $Request->input("fixed_phone");
             $company->fax_phone = $Request->input("fax_phone");
             $company->location= $Request->input("location");
             $company->company_specialist= $Request->input("company_specialist");
-            $company->commercial_record= $Request->input("commercial_record");
-            $company->industria_record= $Request->input("industria_record");
-            $company->website= $Request->input("website");
+            // $company->company_name_en =  $Request->input("company_name_en");
+            // $company->commercial_record= $Request->input("commercial_record");
+            // $company->industria_record= $Request->input("industria_record");
+            // $company->website= $Request->input("website");
          
             $company->user_id= auth()->user()->id;
 
@@ -227,7 +226,45 @@ class CompanyController extends Controller
     }
 
 
-   
+    public function addCompanyInfo()
+    {
+        
+       
+        return view('company.additionalInfo',['id' => auth()->user()->GetCompany->id]);
+    }
+
+
+    public function storeAdditionalInfo(Request $Request)
+    {
+        if(isset(auth()->user()->GetCompany))
+        {   
+        //    $Request->validate([
+        //         'commercial_record'=>'alpha_num|',
+        //         'industria_record'=>'alpha_num',
+        //         'website'=>'starts_with:www',
+        //     ]);
+    
+           $company =new CompanyAddInformation ;
+                $company->commercial_record= $Request->input("commercial_record");
+                $company->industria_record= $Request->input("industria_record");
+                $company->website= $Request->input("website");
+                $company->company_id= auth()->user()->GetCompany->id;
+               
+            
+            if($company){
+            $company->save();
+               return redirect()->route('CompanyDash')->with('success','  تمت الاضافة بنجاح');
+           }else{
+               return back()->withInput()->with('fail','هناك خطأ ما');
+           }
+    
+    
+        }
+        else
+        {
+            return redirect()->route('company.profile');
+        }
+    }
 
 
 }

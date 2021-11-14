@@ -54,7 +54,7 @@
 							<br> -->
 								<ul class="post-job-bx">
 									@if(isset($Person))
-									<table id="resuems" dir="rtl">
+									<table id="resuems" dir="rtl" class="table table-bordered table-striped">
 										<thead>
 											<tr>
 												<th> الاسم</th>

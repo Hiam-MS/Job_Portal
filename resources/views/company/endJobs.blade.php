@@ -197,7 +197,10 @@
 								<span>{{$jobs->links('layouts.paginationlinks')}}</span>
 							 
 								
-								
+								<form>
+									<br><br>
+									<input type="button" value="رجوع" onclick="history.back()" class="btn btn-primary">
+								   </form>
 							
 							</ul>
                         </div>

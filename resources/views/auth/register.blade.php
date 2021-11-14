@@ -120,8 +120,13 @@
                                 <button type="submit" class="btn btn-primary">
                                   انشاء حساب
                                 </button>
+                               
+                                <a class="btn btn-link" href="">
+                                      للمساعدة في التسجيل اتصل على 9841
+                                </a>
                             </div>
                         </div>
+                       
                     </form>
                 </div>
             </div>

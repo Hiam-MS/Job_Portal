@@ -41,7 +41,7 @@
                    
 
                         <div class="form-group row">
-                            <label for="mobile" class="col-sm-4 col-form-label text-md-right">اسم المستخدم</label>
+                            <label for="mobile" class="col-sm-4 col-form-label text-md-right"> رقم الموبايل</label>
 
                             <div class="col-md-6">
                                 <input id="mobile" type="tel"  pattern="[0-9]{10}" class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}" name="mobile" placeholder="ادخل رقم هاتفك" value="{{ old('mobile') }}" required autofocus>
@@ -86,6 +86,11 @@
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     نسيت كلمة السر؟
+                                </a>
+
+                                <br>
+                                <a class="btn btn-link" href="">
+                                      للمساعدة في التسجيل اتصل على 9841
                                 </a>
                             </div>
                         </div>

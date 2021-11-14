@@ -37,6 +37,11 @@
 													</strong><span class="text-black-light"> </span>
 												</li>
 												<li>
+													<strong class="font-weight-700 text-black"> 
+														<a href="{{route('CompanyAdditionalInfo')}}" > اضافة معلومات أخرى   </a>
+													</strong><span class="text-black-light"> </span>
+												</li>
+												<li>
 													<strong class="font-weight-700 text-black">
 														<a href="{{route('addJob')}}" > نشر فرصة عمل جديدة </a>
 													</strong> 

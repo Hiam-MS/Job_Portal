@@ -73,6 +73,8 @@ Route::get('company/shortList','CompanyController@getJob')->name('CompanyJob');
 
 Route::get('company/endJobs','CompanyController@endJobs')->name('CompanyEndJobs');
 Route::post('/company/update_EndJob/{id}', 'CompanyController@update_JobEnd')->name('update_JobEnd');
+Route::get('company/additionalInfo','CompanyController@addCompanyInfo')->name('CompanyAdditionalInfo');
+Route::post('company/storeAdditionalInfo/{id}','CompanyController@storeAdditionalInfo')->name('StoreAdditionlInfo');
 
 //********************************************* */
 

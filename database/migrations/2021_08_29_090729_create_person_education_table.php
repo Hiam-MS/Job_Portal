@@ -20,7 +20,8 @@ class CreatePersonEducationTable extends Migration
             $table->string('Degree')->nullable();
             $table->string('Major')->nullable();
             $table->date('Graduation_year')->nullable();
-            $table->string('Country')->nullable();
+            $table->string('still_study')->nullable();
+           $table->string('Country')->nullable();
             $table->unsignedBigInteger('person_id');
            $table->foreign('person_id')->references('id')->on('people')->onDelete('cascade');
              $table->timestamps();

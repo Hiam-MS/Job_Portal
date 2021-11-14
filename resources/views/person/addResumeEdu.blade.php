@@ -218,8 +218,16 @@ $(document).ready(function() {
 										</td>
                         		</tr>
 								<tr>
-									<th style="width: 20%" >    سنة التخرج :</th>
-										<td style="width: 50%"><input type="date" class="form-control form-control-lg" placeholder="Web Designer"  value="{{old('Graduation_year')}}" name="Graduation_year" style="width:60%">
+									<th style="width: 20%" >سنة التخرج</th>
+										<td style="width: 50%"><input type="date" class="form-control form-control-lg" placeholder="" value="{{old('Graduation_year')}}" name="Graduation_year" style="width:60%">
+										
+										</td>
+								</tr>
+								
+								<tr>
+									<th style="width: 20%" > مازلت قيد الدراسة</th>
+										<td style="width: 50%"><input type="checkbox" name="still_study[]" id="" >
+										
 										@if($errors->any('Graduation_year'))
 									<span style="color:red">{{$errors->first('Graduation_year')}}</span>
 								@endif
@@ -240,7 +248,7 @@ $(document).ready(function() {
 					</div><br>
 				
 			
-            <!-- Submit Resume END EDU -->
+             <!-- Submit Resume END EDU  -->
 							<br>	
 					<div dir="rtl" lang="ar" class="container" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
 						@if(count($person->PersonEducation) > 0)
