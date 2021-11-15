@@ -32,7 +32,7 @@
 	<script src="js/html5shiv.min.js"></script>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-	
+	<link rel="stylesheet" href="{{asset('../../plugins/bs-stepper/css/bs-stepper.min.css')}}">
 	<!-- STYLESHEETS -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/plugins.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css')}}">
@@ -294,7 +294,7 @@
 <script src="{{ asset('js/recaptcha/api.js')}}"></script> <!-- Google API For Recaptcha  -->
 <script src="{{ asset('js/dz.ajax.js')}}"></script><!-- CONTACT JS  -->
 <script src="{{ asset('plugins/paroller/skrollr.min.js')}}"></script><!-- PAROLLER -->
-
+<script src="{{asset('plugins/bs-stepper/js/bs-stepper.min.js')}}"></script>
 <!-- select2 -->
 <!--select2 -->
 
