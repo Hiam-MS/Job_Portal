@@ -18,18 +18,18 @@ class CreatePeopleTable extends Migration
             $table->string('Fname')->nullable();
             $table->string('Father_name')->nullable();
             $table->string('Lname')->nullable();
-            // $table->string('email')->nullable();
+            $table->string('email')->nullable();
             $table->string('gender')->nullable();
             $table->date('dob')->nullable();
             $table->string('place_Of_b')->nullable();
             // $table->text('national_number')->nullable();
             $table->string('marital_status')->nullable();
             $table->string('military_service')->nullable();
-            // $table->string('Current_address')->nullable();
-            // $table->string('fixed_phone')->nullable();
+            $table->string('Current_address')->nullable();
+            $table->string('fixed_phone')->nullable();
             $table->string('mobile_number')->nullable();
             // $table->string('img')->nullable();
-            // $table->json('lang')->nullable();
+            $table->json('lang')->nullable();
             $table->unsignedBigInteger('user_id')->unique()->nullable();
             $table->foreign('user_id')
                     ->references('id')

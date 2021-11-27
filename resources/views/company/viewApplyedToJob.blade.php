@@ -13,7 +13,7 @@
     
 
     
-<div class="page-content bg-white">
+
         <!-- inner page banner -->
     <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}});">
         <div class="container">
@@ -24,99 +24,78 @@
     </div>
         <!-- inner page banner END -->
         <!-- contact area -->
-    <div class="content-block">
-        <div class="section-full content-inner-1">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-4">
-						<div class="sticky-top">
-							<div class="row">
-								<div class="col-lg-12 col-md-6">
-									<div class="m-b30">
-										<img src="{{asset('images/blog/grid/6.jpg')}}" alt="">
-									</div>
+		<div class="content-block">
+    <div class="section-full content-inner-1">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="sticky-top">
+						<div class="row">
+							<div class="col-lg-8 col-md-6">
+								<div class="m-b30">
+									<img src="{{asset('images/blog/grid/6.jpg')}}" alt="">
 								</div>
-										
-								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
-									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
-                                    <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="{{route('CompanyDash')}}" > لوحة التحكم<a></h4>
-										 <ul>
-											
-											@if(isset(auth()->user()->GetCompany))
-												<li>
-													<strong class="font-weight-700 text-black"> 
-														<a href="{{route('CompanyViewProfile')}}" > عرض الملف الشخصي </a>
-													</strong><span class="text-black-light"> </span>
-												</li>
-												<li>
-													<strong class="font-weight-700 text-black">
-														<a href="{{route('addJob')}}" > نشر فرصة عمل جديدة </a>
-													</strong> 
-												</li>
-												<li>
-													<strong class="font-weight-700 text-black">
-														<a href="{{route('CompanyJob')}}" > عرض فرص العمل المنشورة  </a>
-													</strong>
-												</li>
-												<li>
-													<strong class="font-weight-700 text-black">
-														<a href="{{route('resuems')}}" >   عرض السير الذاتية المتاحة</a> 
-													 </strong>
-												</li>	
-												<li>
-													<strong class="font-weight-700 text-black">
-														<a href="{{route('CompanyEndJobs')}}" >   الوظائف المنتهية  </a>  
-													</strong>
-												</li>
-											
-												
-											@else
-												<li><strong class="font-weight-700 text-black"><li><a href="{{route('CompanyProfile')}}" > ادخال معلومات الشركة </a></li></strong> </li>
+							</div>
+							
 
-											@endif
-											
-											<div class="dropdown " >
-														<li>
-															<strong class="font-weight-700 text-black"><h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5></strong>
-														</li>
-														<div class="dropdown-content">
-															<ul>
-																<li>
-																	<a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a> 
-																</li>
-															</ul>
-															<ul>
-																<li>
-																	<a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a>
-																</li>
-															</ul>
-															<ul>
-																<li>
-																	<a href="{{route('password.change')}}" >    تغيير كلمة المرور</a> 
-																</li>
-															</ul>
-															<ul>
-																<li>
-																	<a href="{{route('profile.delete')}}" >  حذف الحساب </a>
-																</li>
-															</ul>	
-														</div>
-													</div>
-										</ul><hr><br>
-                                        <!-- <div>
-                                        <h4 class="text-black font-weight-700 p-t10 m-b15">تفاصيل العمل</h4>
-										<ul>
-											<li><i  class="ti-location-pin"></i><strong class="font-weight-700 text-black">العنوان: {{$job->city}} </strong><span class="text-black-light"> </span></li>
-											<li><i class="ti-money"></i><strong class="font-weight-700 text-black">الراتب : {{$job->salary}}</strong> </li>
-											<li><i class="ti-user"></i><strong class="font-weight-700 text-black">عدد الاشخاص المطلوبين:  {{$job->number_of_employess}} </strong></li>
-										</ul>
-                                        </div> -->
-										
-									</div>
+							<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
+								<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
+                                    <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="{{route('CompanyDash')}}" > لوحة التحكم<a></h4>
+									<ul>
+										@if(isset(auth()->user()->GetCompany))
+											<li>
+												<strong class="font-weight-700 text-black"> 
+													<a href="{{route('CompanyAdditionalInfo')}}" > عرض/ تعديل/اضافة معلومات أخرى   </a>
+												</strong><span class="text-black-light"> </span>
+											</li>
+											<li>
+												<strong class="font-weight-700 text-black">
+													<a href="{{route('addJob')}}" > نشر فرصة عمل جديدة </a>
+												</strong> 
+											</li>
+											<li>
+												<strong class="font-weight-700 text-black">
+													<a href="{{route('CompanyJob')}}" > عرض فرص العمل المنشورة  </a>
+												</strong>
+											</li>
+											<li>
+												<strong class="font-weight-700 text-black">
+													<a href="{{route('resuems')}}" >   عرض السير الذاتية المتاحة</a> 
+												</strong>
+											</li>	
+											<li>
+												<strong class="font-weight-700 text-black">
+													<a href="{{route('CompanyEndJobs')}}" >   الوظائف المنتهية  </a>  
+												</strong>
+											</li>
+										@else
+											<li><strong class="font-weight-700 text-black"><li><a href="{{route('CompanyProfile')}}" > ادخال معلومات الشركة </a></li></strong> </li>
+										@endif
+										<div class="dropdown " >
+											<li>
+												<strong class="font-weight-700 text-black"><h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5></strong>
+											</li>
+											<div class="dropdown-content">
+												<ul>
+													<li><a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a></li>
+												</ul>
+												<ul>
+													<li><a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a></li>
+												</ul>
+												<ul>
+													<li><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a></li>
+												</ul>
+												<ul>
+													<li><a href="{{route('profile.delete')}}" >  حذف الحساب </a></li>
+												</ul>	
+											</div>
+										</div>
+									</ul>
 								</div>
 							</div>
 						</div>
 					</div>
+				</div>
 						
                     <div class="col-lg-8">
 					    <div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
@@ -128,7 +107,7 @@
 					@endif
 					@if(Session::get('fail'))
 						<div class="alert alert-danger" style="font-size:20px">
-							{{Session::get('success')}}
+							{{Session::get('fail')}}
 						</div>
 					@endif
                                 <form action="" style="padding-right:20px;">
@@ -142,7 +121,7 @@
                                             @foreach($applicants->sortByDesc('created_at') as $applicant )
                                                 <tr>
                                                     @if(!empty($applicant->photo))
-                                                        <td class="text-center" ><img src="{{asset('/storage/photo/{{ $applicant->photo }}')}}" class="p-0 rounded-circle" style="height: 80px"></td> 
+                                                        <td class="text-center" ><img src="{{asset('/storage/photo, $applicant->photo')}}" class="p-0 rounded-circle" style="height: 80px"></td> 
                                                     @else 
                                                         <td class="text-center"><i class="ti-user" ></i></td>
                                                     @endif 
@@ -192,7 +171,7 @@
 			</div>
 		</div><br><br>
     </div>
-</div>
+
 
     
  @endsection

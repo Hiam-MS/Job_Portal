@@ -13,7 +13,7 @@
 	<meta property="og:description" content="JobBoard - HTML Template" />
 	<meta property="og:image" content="JobBoard - HTML Template" />
 	<meta name="format-detection" content="telephone=no">
-	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- FAVICONS ICON -->
 	<link rel="icon" href="{{ asset('images/favicon.ico')}}" type="image/x-icon" />
 	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png')}}" />
@@ -22,6 +22,15 @@
 	
 	<link href="{{ asset('https://printjs-4de6.kxcdn.com/print.min.css')}}" type="text/css" rel="stylesheet" />
 	
+	<!-- Fonts -->
+    <link href="{{asset('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap')}}" rel="stylesheet">
+	
+	<!-- Datepicker -->
+	<link rel="stylesheet" href="{{asset('//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')}}">
+	
+	<!-- Datatables -->
+    <link rel="stylesheet" type="text/css"
+        href="{{asset('https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.20/b-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/r-2.2.3/datatables.min.css')}}" />
 	<!-- PAGE TITLE HERE -->
 	<title>منصة التوظيف</title>
 	
@@ -32,7 +41,7 @@
 	<script src="js/html5shiv.min.js"></script>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-	<link rel="stylesheet" href="{{asset('../../plugins/bs-stepper/css/bs-stepper.min.css')}}">
+	<link rel="stylesheet" href="{{asset('/plugins/bs-stepper/css/bs-stepper.min.css')}}">
 	<!-- STYLESHEETS -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/plugins.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css')}}">
@@ -47,22 +56,26 @@
 <!-- select2 -->
 <link rel="stylesheet" type="text/css" href="{{asset('css/jquery.multiselect.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/multiselect.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('semantic/dist/semantic.min.css')}}">
+<!-- <link rel="stylesheet" type="text/css" href="{{asset('semantic/dist/semantic.min.css')}}"> -->
 <link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css')}}" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+<link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css')}}">
 
-
-<link rel="stylesheet" type="text/css" href="{{asset('semantic/dist/semantic.min.css')}}">
+<!-- <link rel="stylesheet" type="text/css" href="{{asset('semantic/dist/semantic.min.css')}}"> -->
 <script
   src="{{asset('https://code.jquery.com/jquery-3.1.1.min.js')}}"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
-<script src="{{asset('semantic/dist/semantic.min.js')}}"></script>
+<!-- <script src="{{asset('semantic/dist/semantic.min.js')}}"></script> -->
 <script src="{{asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js')}}"></script>
 <script src="{{asset('https://printjs-4de6.kxcdn.com/print.min.js')}}"></script>
 <style>
-	   body {
-  color: black;}
+	body 
+	   {
+  color: black;
+  font-family: 'Nunito', sans-serif;}
+
 </style>
 <style>
 	.form-control{
@@ -89,6 +102,7 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
 </style>
 </head>
 <body id="bg">
@@ -177,16 +191,14 @@
 									
 								</ul>
 							</li>
-							@if(auth::user())
-							@if(auth()->user()->role == 'c')
+							
 							<li>
 								<a href="{{ route('resuems') }}">السير الذاتية الحالية</i></a>
 								<ul class="sub-menu">
 									
 								</ul>
 							</li>
-							@endif
-							@endif
+							
 							
 							<li>
 								<a href="/#aboutUs">  نبذة عن الموقع</i></a>
@@ -295,6 +307,7 @@
 <script src="{{ asset('js/dz.ajax.js')}}"></script><!-- CONTACT JS  -->
 <script src="{{ asset('plugins/paroller/skrollr.min.js')}}"></script><!-- PAROLLER -->
 <script src="{{asset('plugins/bs-stepper/js/bs-stepper.min.js')}}"></script>
+
 <!-- select2 -->
 <!--select2 -->
 
@@ -309,13 +322,29 @@
 
 
 												<!--select2 -->
+
+
 												<script
   src="{{ asset('https://code.jquery.com/jquery-3.1.1.min.js')}}"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
-<script src="{{ asset('semantic/dist/semantic.min.js')}}"></script>
+<!-- <script src="{{ asset('semantic/dist/semantic.min.js')}}"></script> -->
+<script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js')}}"></script>
+<script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js')}}"></script>
+<script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js')}}"></script>
 
-
+  <!-- Font Awesome -->
+  <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js')}}"></script>
+    <!-- Datepicker -->
+    <script src="{{asset('https://code.jquery.com/ui/1.12.1/jquery-ui.js')}}"></script>
+    <!-- Datatables -->
+    <script type="text/javascript" src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js')}}"></script>
+    <script type="text/javascript"
+        src="{{asset('https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.20/b-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/r-2.2.3/datatables.min.js')}}">
+    </script>
+    <!-- Momentjs -->
+    <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js')}}"></script>
 
 @yield('javascript')
 

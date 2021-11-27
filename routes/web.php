@@ -7,8 +7,10 @@ use App\Http\Controllers\PersonController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\JobCategoryController;
 use App\Http\Controllers\ApplicantController;
-
-
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\SkillController;
+use App\Http\Controllers\ExpController;
+use App\Http\Controllers\PAddController;
 
 
 use Illuminate\Routing\Redirector;
@@ -29,6 +31,8 @@ use Illuminate\Routing\Redirector;
 Route::get('/', function () {
     return view('index');
 });
+
+
 // Route::get('/','CompanyController@index')->name('index');
 Route::get('/JobCategory','JobCategoryController@showJobJobCategory');
 Auth::routes();
@@ -38,7 +42,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //     list jobs and job details
 Route::get('/job/details/{id}','JobsController@JobDetails')->name('JobDetails');
 Route::get('/job/showJobs','JobsController@showJob')->name('job');
-//
+Route::get('job/records','JobsController@records')->name('job/records');;
+Route::get('view_resuem','PersonController@viewResuemForm')->name('resuems');
+// Route::get('view_resuems','PersonController@index2')->name('resuemss');
+Route::get('students/records','PersonController@records')->name('students/records');;
+
+
 Route::group(['middleware' => 'prevent-back-history'],function(){
     
     Auth::routes();
@@ -58,48 +67,43 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/delete-profile', 'UserController@Deleteprofile')->name('profile.delete');
 
-// ********************* role company *******************
+    // ********************* role company *******************
    
 
     Route::group(['middleware' => 'role:company'], function(){
 
-Route::get('/company/dashboard','CompanyController@getDash')->name('CompanyDash');
-Route::get('/company/profile','CompanyController@createProfile')->name('CompanyProfile');
-Route::post('/company/storeProfile','CompanyController@storeProfile')->name('CompanyStoreProfile');
-Route::get('/company/viewProfile','CompanyController@viewProfile')->name('CompanyViewProfile');
-Route::get('/company/editProfile','CompanyController@editCompanyProfile')->name('CompanyEditProfile');
-Route::post('/company/editProfile/{id}','CompanyController@updatCompanyProfile');
-Route::get('company/shortList','CompanyController@getJob')->name('CompanyJob');
+    Route::get('/company/dashboard','CompanyController@getDash')->name('CompanyDash');
+    Route::get('/company/profile','CompanyController@createProfile')->name('CompanyProfile');
+    Route::post('/company/storeProfile','CompanyController@storeProfile')->name('CompanyStoreProfile');
+    Route::get('/company/viewProfile','CompanyController@viewProfile')->name('CompanyViewProfile');
+    Route::get('/company/editProfile','CompanyController@editCompanyProfile')->name('CompanyEditProfile');
+    Route::PUT('/company/editProfile','CompanyController@updatCompanyProfile')->name('edititing');
+    Route::PUT('/company/editProfile2','CompanyController@updatCompanyProfile2')->name('edititing2');
+    Route::get('company/shortList','CompanyController@getJob')->name('CompanyJob');
 
-Route::get('company/endJobs','CompanyController@endJobs')->name('CompanyEndJobs');
-Route::post('/company/update_EndJob/{id}', 'CompanyController@update_JobEnd')->name('update_JobEnd');
-Route::get('company/additionalInfo','CompanyController@addCompanyInfo')->name('CompanyAdditionalInfo');
-Route::post('company/storeAdditionalInfo/{id}','CompanyController@storeAdditionalInfo')->name('StoreAdditionlInfo');
+    Route::get('company/endJobs','CompanyController@endJobs')->name('CompanyEndJobs');
+    Route::post('/company/update_EndJob/{id}', 'CompanyController@update_JobEnd')->name('update_JobEnd');
+    Route::get('company/additionalInfo','CompanyController@addCompanyInfo')->name('CompanyAdditionalInfo');
+    Route::post('company/storeAdditionalInfo/{id}','CompanyController@storeAdditionalInfo')->name('StoreAdditionlInfo');
 
-//********************************************* */
+    //********************************************* */
 
-Route::get('/job/addJob','JobsController@addJob')->name('addJob');
-Route::post('/job/storeJob','JobsController@storeJob')->name('storeJob');
-
-
-
-
-
-});
+    Route::get('/job/addJob','JobsController@addJob')->name('addJob');
+    Route::post('/job/storeJob','JobsController@storeJob')->name('storeJob');
+    });
 
 
-// ********************* role company + admin *******************
+    // ********************* role company + admin *******************
 
-Route::group(['middleware' => 'role:company|admin'], function(){
-// view all resume and resume details
-Route::get('view_resuem','PersonController@viewResuemForm')->name('resuems');
-Route::get('Person/details/{id}','PersonController@ResuemDetails'); 
+    Route::group(['middleware' => 'role:company|admin'], function(){
+    // view all resume and resume details
 
-Route::post('/resume/search','PersonController@searchResume')->name('search.Resume');
+    Route::get('Person/details/{id}','PersonController@ResuemDetails'); 
 
-//
+    Route::post('/resume/search','PersonController@searchResume')->name('search.Resume');
 
-});
+    //
+    });
 
 
  //******************   role  person     ************
@@ -112,62 +116,66 @@ Route::post('/resume/search','PersonController@searchResume')->name('search.Resu
     // CV preview
     Route::get('/resume/ViewpersonalInfo','PersonController@ViewpersonalInfo')->name('PersonProfile');
     //
-//show form (add personal info)
+    //show form (add personal info)
     Route::get('/resume/create','PersonController@createResume')->name('resuem.create');
     Route::post('/resume/store','PersonController@store');
     Route::get('/resume/edit-Personal-Info', 'PersonController@editPersonalInfo')->name('PersonalInfo.edit');
     Route::PUT('/resume/update-Personal-Info','PersonController@updatPersonalInfo')->name('PersonUpdateInfo');
-//show form for add Edu _ Exp _ skill
+    Route::PUT('/resume/update-Personal-add','PersonController@updatPersonalInfo2')->name('PersonUpdateInfo2');
+
+    //show form for add Edu _ Exp _ skill
     Route::get('/resume/createEdu','PersonController@createResumeEdu')->name('edu');
-//Education
+    //Education
     Route::get('/resume/addEducation/{id}','PersonController@createPersonEdu');
     Route::post('/resume/storePersonEdu','PersonController@storePersonEdu')->name('PersonStoreEdu');
     Route::get('/resume/deleteEdu/{id}', 'PersonController@DeletePersonEdu');
     Route::get('/resume/editEdu/{cid}', 'PersonController@editPersonEdu');
     Route::PUT('/resume/updateEdu','PersonController@updateEdu')->name('PersonUpdateEdu');
 
-//Experience
-    Route::get('/resume/addExperience/{id}','PersonController@createPersonExp');
-    Route::post('/resume/storePersonExp','PersonController@storePersonExp')->name('PersonStoreExp');
-    Route::get('/resume/deleteExperience/{id}', 'PersonController@DeletePersonExperience');
-    Route::get('/resume/editExperience/{cid}', 'PersonController@editPersonExperience');
-    Route::PUT('/resume/updatExperience','PersonController@updateExperience')->name('PersonUpdateExp');
-//skill//
-Route::get('/resume/addSkill/{id}','PersonController@createPersonSkill');
-Route::post('/resume/storePersonSkill','PersonController@storePersonSkill')->name('PersonStoreSkill');
-Route::get('/resume/deleteSkill/{id}', 'PersonController@DeletePersonSkill');
-Route::get('/resume/editSkill/{cid}', 'PersonController@editPersonSkill');
-Route::PUT('/resume/updateSkill','PersonController@updateSkill')->name('PersonUpdateSkill');
-//Course //
-Route::get('/resume/addCourse/{id}','PersonController@createPersonCourse');
-Route::post('/resume/storePersonCourse','PersonController@storePersonCourse')->name('PersonStoreCourse');
-Route::get('/resume/deleteCourse/{id}', 'PersonController@DeletePersonCourse');
-Route::get('/resume/editCourse/{cid}', 'PersonController@editPersonCourse');
-Route::PUT('/resume/updateCourse','PersonController@updateCourse')->name('PersonUpdateCourse');
-Route::post('/resume/storePersonJobCat','PersonController@storePersonJobCat')->name('PersonJobCategory');
-
-Route::get('/resume/deleteCat/{id}', 'PersonController@DeletePersonCat');
-
- });
-
-/**************Admin******************** */
- Route::group(['middleware' => 'role:admin'], function(){
-
-    Route::get('/company/show','CompanyController@showCompany')->name('company.show');
-    // Route::get('/country','AdminController@addCountry');
-    // Route::get('/city/{id}','AdminController@addCity');
-    Route::get('/admin/dashboard','AdminController@getDash')->name('admin.Dash');
-    Route::get('/admin/pending_jobs','AdminController@pendingJob')->name('pendingJob');
-    Route::post('/job/accepte_Job/{id}', 'AdminController@accepte_JobStatuse')->name('accepte_JobStatuse');
-    Route::post('/job/denie_Job/{id}', 'AdminController@denied_JobStatuse')->name('denied_JobStatuse');
-    
-
-    
-    
+    //Experience
+    Route::get('/resume/addExperience/{id}','ExpController@createPersonExp');
+    Route::post('/resume/storePersonExp','ExpController@storePersonExp')->name('PersonStoreExp');
+    Route::get('/resume/deleteExperience/{id}', 'ExpController@DeletePersonExperience');
+    Route::get('/resume/editExperience/{cid}', 'ExpController@editPersonExperience');
+    Route::PUT('/resume/updatExperience','ExpController@updateExperience')->name('PersonUpdateExp');
 
 
+    //skill//
+    Route::get('/resume/addSkill/{id}','SkillController@createPersonSkill');
+    Route::post('/resume/storePersonSkill','SkillController@storePersonSkill')->name('PersonStoreSkill');
+    Route::get('/resume/deleteSkill/{id}', 'SkillController@DeletePersonSkill');
+    Route::get('/resume/editSkill/{cid}', 'SkillController@editPersonSkill');
+    Route::PUT('/resume/updateSkill','SkillController@updateSkill')->name('PersonUpdateSkill');
 
-});
+
+    //Course //
+    Route::get('/resume/addCourse/{id}','CourseController@createPersonCourse');
+    Route::post('/resume/storePersonCourse','CourseController@storePersonCourse')->name('PersonStoreCourse');
+    Route::get('/resume/deleteCourse/{id}', 'CourseController@DeletePersonCourse');
+    Route::get('/resume/editCourse/{cid}', 'CourseController@editPersonCourse');
+    Route::PUT('/resume/updateCourse','CourseController@updateCourse')->name('PersonUpdateCourse');
+
+    //PAdditional
+    Route::post('/resuem/additional','PAddController@storeAdditionalInfo')->name('StoreAdditional');
+
+
+    Route::post('/resume/storePersonJobCat','PersonController@storePersonJobCat')->name('PersonJobCategory');
+
+    Route::get('/resume/deleteCat/{id}', 'PersonController@DeletePersonCat');
+    });
+
+    /**************Admin******************** */
+    Route::group(['middleware' => 'role:admin'], function(){
+
+        Route::get('/company/show','CompanyController@showCompany')->name('company.show');
+        // Route::get('/country','AdminController@addCountry');
+        // Route::get('/city/{id}','AdminController@addCity');
+        Route::get('/admin/dashboard','AdminController@getDash')->name('admin.Dash');
+        Route::get('/admin/pending_jobs','AdminController@pendingJob')->name('pendingJob');
+        Route::post('/job/accepte_Job/{id}', 'AdminController@accepte_JobStatuse')->name('accepte_JobStatuse');
+        Route::post('/job/denie_Job/{id}', 'AdminController@denied_JobStatuse')->name('denied_JobStatuse');
+        
+    });
 
 
 });
@@ -193,6 +201,6 @@ Route::get('/job/applicationForm/{id}','ApplicantController@getApplicationForm')
 // Route::get('auth/login','HomeController@login');
 // Route::get('auth/register','HomeController@register');
 
-Route::get('/select2', function () {
-    return view('person.testselect2');
-});
+// Route::get('/select2', function () {
+//     return view('person.testselect2');
+// });

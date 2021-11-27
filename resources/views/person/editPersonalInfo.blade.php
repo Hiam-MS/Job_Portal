@@ -114,161 +114,342 @@
 								</div>
 							@endif     
 						
-							<form action="{{route('PersonUpdateInfo')}}" method="POST" id="resume" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right; padding-right:40px">
-                    @csrf
-                    @method('PUT')
-                    <span style="color:red"> @error('user_id'){{$message}}@enderror</span>
-						<div class="form-group">
-							<label>الاسم </label>
-							<input type="text" class="form-control form-control-lg" placeholder="" name="fname" value="{{ $person->Fname }}" style="width:70%" data-parsly-trigger="keyup" >
-							<span style="color:red"> @error('fname'){{$message}}@enderror</span>
-						</div>
-						<div class="form-group">
-							<label>اسم الاب </label>
-							<input type="text" class="form-control form-control-lg" placeholder="" name="father_name" value="{{ $person->Father_name }}" style="width:70%" data-parsly-trigger="keyup" >
-							<span style="color:red"> @error('father_name'){{$message}}@enderror</span>
-						</div>
-						<div class="form-group">
-							<label>الكنية </label>
-							<input type="text" class="form-control form-control-lg" placeholder="" name="Lname" value="{{ $person->Lname }}" style="width:70%" data-parsly-trigger="keyup" >
-							<span style="color:red"> @error('Lname'){{$message}}@enderror</span>
-						</div>
-						<div class="form-group">
-							<label>عنوان البريد الالكتروني</label>
-							<input type="email" class="form-control form-control-lg" placeholder="info@gmail.com" name="email" value="{{ $person->email }}"  style="width:70%" data-parsly-trigger="keyup">
-							<span style="color:red"> @error('email'){{$message}}@enderror</span>
-						</div>
-                        <div class="form-group">
-							<label>الرقم الوطني</label>
-							<input type="text" class="form-control form-control-lg" placeholder="" name="national_number" value="{{ $person->national_number }}"  style="width:70% "  data-parsly-trigger="keyup">
-							<span style="color:red"> @error('national_number'){{$message}}@enderror</span>
-						</div>
+							<div class="row">
+          						<div class="col-md-12">
+									<div class="card card-default">
+										<div class="card-header">
+											<h3 class="card-title">المعلومات الشخصية</h3>
+										</div>
 
+										<div class="card-body p-0">
+											<div class="bs-stepper">
+												<div class="bs-stepper-header" role="tablist">
+													<div class="step" data-target="#logins-part">
+														<button type="button" class="step-trigger" role="tab" aria-controls="logins-part" id="logins-part-trigger">
+															<span class="bs-stepper-circle">1</span>
+															<span class="bs-stepper-label">المعلومات الأساسية</span>
+														</button>
+													</div>
+													<div class="line"></div>
+														<div class="step" data-target="#information-part">
+															<button type="button" class="step-trigger" role="tab" aria-controls="information-part" id="information-part-trigger">
+																<span class="bs-stepper-circle">2</span>
+																<span class="bs-stepper-label">المعلومات الاضافية </span>
+															</button>
+														</div>
+													</div>
+													<div class="bs-stepper-content">
+														<div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
+															<form action="{{route('PersonUpdateInfo')}}" method="POST" id="resume" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right; padding-right:40px">
+																@csrf
+																@method('PUT')
+																<div class="row">
+																	<div class="col-sm-4">
+																		<div class="form-group">
+																			<label>الاسم </label>
+																			<input type="text" class="form-control form-control-lg" placeholder="" name="fname" value="{{ $person->Fname }}"  data-parsly-trigger="keyup" >
+																			@if($errors->any('fname'))
+																				<span>{{$errors->first('fname')}}</span>
+																			@endif
+																		</div>
+																	</div>
 
-						<div class="form-group" >
-							<label> الجنس 
-							<select name="gender" class="form-control form-control-lg" style="width:220px;" value="{{ $person->gender }}">
-								
-								<option value="انثى"  > انثى </option>
-                                <option value="ذكر"  > ذكر </option>
-								
-								
-								
-							</select> </label>
-                            
-							<label style="padding-right:60px">  خدمة العلم 
-							 <select name="military_service"  class="form-control form-control-lg" style="width:220px;"  value="{{ $person->military_service }}">
-							
-							<option  value="منتهية">منتهية</option>
-								<option  value="غير منتهية">غير منتهية</option>
-                                <option value="معفى">معفى</option>
-								<option value="*">اختر اذا كنت أنثى</option>
-								
-								
-							</select></label>
+																	<div class="col-sm-4">
+																		<div class="form-group">
+																			<label>اسم الاب </label>
+																			<input type="text" class="form-control form-control-lg" placeholder="" name="father_name" value="{{ $person->Father_name }}"  data-parsly-trigger="keyup" >
+																			@if($errors->any('father_name'))
+																				<span>{{$errors->first('father_name')}}</span>
+																			@endif
+																		</div>
+																	</div>
 
-						
-							
-							
-						</div>
-						<div class="form-group" >
-							<label> الوضع العائلي 
-							<select name="marital_status" class="form-control form-control-lg" style="width:500px"  value="{{ $person->marital_status }}">
-								
-								<option value="عازب/ة">عازب/ة</option>
-								<option  value="متزوج/ة"> متزوج/ة</option>
-								<option  value="مطلق/ة">مطلق/ة</option>
-								<option  value="أرمل/ة">أرمل/ة </option>
-								
-								
-							</select> </label>
-                            
-						
-							
-						</div>
-					
+															
+																	<div class="col-sm-4">
+																		<div class="form-group">
+																			<label>الكنية </label>
+																			<input type="text" class="form-control form-control-lg" placeholder="" name="Lname" value="{{ $person->Lname }}"  data-parsly-trigger="keyup" >
+																			@if($errors->any('Lname'))
+																				<span>{{$errors->first('Lname')}}</span>
+																			@endif
+																		</div>
+																	</div>
+																</div>
 
-						
-                        
-						<div class="form-group">
-							<label>تاريخ الميلاد</label>
-							<input type="date" class="form-control form-control-lg" placeholder="Web Designer"  value="{{ $person->dob }}" name="dob" style="width:70%" data-parsly-trigger="keyup">
-							<span style="color:red"> @error('dob'){{$message}}@enderror</span>
-						</div>
-						<div class="form-group">
-							<label>مكان الولادة</label>
-							<input type="text" class="form-control form-control-lg" placeholder=""  name="place_Of_b" value="{{ $person->place_Of_b }}" style="width:70% " data-parsly-trigger="keyup">
-							<span style="color:red"> @error('place_Of_b'){{$message}}@enderror</span>
-						</div>
-                        <div class="form-group">
-							<label>عنوان الاقامة الحالي</label>
-							
-                             <!--<textarea  name="" id="" cols="90" rows="10" class="form-control" name="Current_address" form="resume"></textarea>-->
-                            <input type="text" class="form-control form-control-lg" placeholder=""  name="Current_address" value="{{ $person->Current_address }}" style="width:70% " data-parsly-trigger="keyup">
-							<span style="color:red"> @error('Current_address'){{$message}}@enderror</span>
-						</div>
+																<div class="row">
+																	<div class="col-sm-4">
+																		<div class="form-group">
+																			<label> الجنس </label>
+																			<select name="gender" class="form-control form-control-lg"  value="{{ $person->gender }}">
+																				<option value="انثى"  > انثى </option>
+																				<option value="ذكر"  > ذكر </option>
+																			</select>
+																			@if($errors->any('gender'))
+																				<span>{{$errors->first('gender')}}</span>
+																			@endif
+																		</div>
+																	</div>
 
-                        
-                            <div class="form-group">
-							<label>الهاتف الأرضي</label>
-							<input type="text" class="form-control form-control-lg" placeholder="" name="fixed_phone" value="{{ $person->fixed_phone }}" style="width:70% " data-parsly-trigger="keyup">
-							<span style="color:red"> @error('fixed_phone'){{$message}}@enderror</span>
-						</div>
-                        <div class="form-group">
-							<label>رقم الخليوي</label>
-							<input type="text" class="form-control form-control-lg" placeholder=""  name="mobile_number" value="{{ $person->mobile_number }}" style="width:70% " data-parsly-trigger="keyup">
-							<span style="color:red"> @error('mobile_number'){{$message}}@enderror</span>
-						</div>
-					
+																	<div class="col-sm-4">
+																		<div class="form-group">
+																			<label> خدمة العلم <span>*</span></label>
+																			<select name="military_service"  class="form-control form-control-lg"   value="{{ $person->military_service }}">
+																				<option  value="منتهية">منتهية</option>
+																				<option  value="غير منتهية">غير منتهية</option>
+																				<option value="معفى">معفى</option>
+																				<option value="*">اختر اذا كنت أنثى</option>
+																			</select>
+																			@if($errors->any('military_service'))
+																				<span>{{$errors->first('military_service')}}</span>
+																			@endif
+																		</div>
+																	</div>
 
-						<div class="form-group form-control-lg" >
-							<label>  اللغات  </label> <span> (اضغط مع الاستمرار على مفتاح CTRL وحدد أكثر من عنصر واحد من القائمة.)</span> 
-                            
-							<select name="lang[]" id="category" multiple='multiple' size="3" data-parsly-trigger="keyup" class="form-control form-control-lg" style="width:660px" size="4"  >
-								<option  selected disabled>يرجى الاختيار</option>
-								<option  ></option>
-								<option value="عربي">عربي</option>
-                                     <option value="الماني">الماني</option>
-                                     <option value="اسباني">اسباني</option>
-									 <option value="تركي">تركي</option>
-									 <option value="ايطالي">ايطالي</option>
-									 <option value="انكليزي">انكليزي</option>
-								
-								
-								
-							</select> 
-                            
-						
-							
-						</div>
-					
-						
-						
-						
-						<button type="submit" class="btn btn-primary" >إرسال</button>
-						<form>
- <input type="button" value="الغاء" onclick="history.back()" class="btn btn-primary">
-</form>
-					</form>
+																	<div class="col-sm-4">
+																		<div class="form-group">
+																			<label> الوضع العائلي <span>*</span></label>
+																			<select name="marital_status" class="form-control form-control-lg"   value="{{ $person->marital_status }}">
+																				<option value="عازب/ة">عازب/ة</option>
+																				<option  value="متزوج/ة"> متزوج/ة</option>
+																				<option  value="مطلق/ة">مطلق/ة</option>
+																				<option  value="أرمل/ة">أرمل/ة </option>
+																			</select>	
+																			@if($errors->any('marital_status'))
+																				<span>{{$errors->first('marital_status')}}</span>
+																			@endif
+																		</div>
+																	</div>
+																</div>
+
+																<div class="row">
+																	<div class="col-sm-6">
+																		<div class="form-group">
+																			<label>تاريخ الميلاد</label>
+																			<input type="date" class="form-control form-control-lg" placeholder="Web Designer"  value="{{ $person->dob }}" name="dob"  data-parsly-trigger="keyup">
+																			@if($errors->any('dob'))
+																				<span>{{$errors->first('dob')}}</span>
+																			@endif
+																		</div>
+																	</div>
+
+																	<div class="col-sm-6">
+																		<div class="form-group">
+																			<label>مكان الولادة</label>
+																			<input type="text" class="form-control form-control-lg" placeholder=""  name="place_Of_b" value="{{ $person->place_Of_b }}"  data-parsly-trigger="keyup">
+																			@if($errors->any('place_Of_b'))
+																				<span>{{$errors->first('place_Of_b')}}</span>
+																			@endif
+																		</div>
+																	</div>
+																</div>
+
+																<div class="row">
+																	<div class="col-sm-6">
+																		<div class="form-group">
+																			<label>رقم الخليوي <span>*</span></label>
+																			<input type="text" class="form-control form-control-lg" placeholder="0933333333"  name="mobile_number"  pattern="[0]{1}[9]{1}[0-9]{8}" value="{{ Auth::user()->mobile }}"  data-parsly-trigger="keyup">
+																			@if($errors->any('mobile_number'))
+																				<span>{{$errors->first('mobile_number')}}</span>
+																			@endif		
+																		</div>
+																	</div>
+
+																	<div class="col-sm-6">
+																		<div class="form-group" >
+																			<label>  اللغات <span>*</span></label><br>
+																			<select class="js-example-basic-multiple form-control form-control-lg" name="lang[]" multiple="multiple" >
+																				<option value="عربي" selected>عربي </option>	
+																				<option value="انكليزي">انكليزي</option>
+																				<option value="اسباني">اسباني</option>
+																				<option value="ايطالي">ايطالي</option>
+																			</select>
+																			@if($errors->any('lang'))
+																				<span>{{$errors->first('lang')}}</span>
+																			@endif	
+																		</div>
+																	</div>
+																</div>
+
+																<button class="btn btn-primary" >حفظ</button>
+																<form action="">
+																	<input type="button" value="التالي" onclick="stepper.next()" class="btn btn-primary">
+																</form>
+															</form>
+														</div>
+
+														<div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
+															<form action="{{route('PersonUpdateInfo2')}}" method="POST" id="resume" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right; padding-right:40px">
+																@csrf
+																@method('PUT')
+																<div class="form-group">
+																	<label>الهاتف الأرضي</label>
+																	<input type="text" class="form-control form-control-lg" placeholder="" name="fixed_phone" value="{{ $person->fixed_phone }}"  data-parsly-trigger="keyup">
+																	<span style="color:red"> @error('fixed_phone'){{$message}}@enderror</span>
+																</div>
+																<div class="form-group">
+																	<label>عنوان الاقامة الحالي</label>
+																	<input type="text" class="form-control form-control-lg" placeholder=""  name="Current_address" value="{{ $person->Current_address }}"  data-parsly-trigger="keyup">
+																	<span style="color:red"> @error('Current_address'){{$message}}@enderror</span>
+																</div>
+																<div class="form-group">
+																	<label>عنوان البريد الالكتروني</label>
+																	<input type="email" class="form-control form-control-lg" placeholder="info@gmail.com" name="email" value="{{ $person->email }}"   data-parsly-trigger="keyup">
+																	<span style="color:red"> @error('email'){{$message}}@enderror</span>
+																</div>
+																<button type="submit" class="btn btn-primary">ارسال</button>
+																<form action="">
+																	<input type="button" value="السابق" class="btn btn-primary" onclick="stepper.previous()">
+																</form>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-
-
-
-
-
-
-
-
-
-						
 				</div>
-			</div>
+			</div><br><br>
 		</div>
-			<br><br>
-    </div>
+	</div>
 </div>
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
 
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+    //Datemask dd/mm/yyyy
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    //Datemask2 mm/dd/yyyy
+    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Money Euro
+    $('[data-mask]').inputmask()
+
+    //Date picker
+    $('#reservationdate').datetimepicker({
+        format: 'L'
+    });
+
+    //Date and time picker
+    $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+
+    //Date range picker
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({
+      timePicker: true,
+      timePickerIncrement: 30,
+      locale: {
+        format: 'MM/DD/YYYY hh:mm A'
+      }
+    })
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+      {
+        ranges   : {
+          'Today'       : [moment(), moment()],
+          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
+      },
+      function (start, end) {
+        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
+    )
+
+    //Timepicker
+    $('#timepicker').datetimepicker({
+      format: 'LT'
+    })
+
+    //Bootstrap Duallistbox
+    $('.duallistbox').bootstrapDualListbox()
+
+    //Colorpicker
+    $('.my-colorpicker1').colorpicker()
+    //color picker with addon
+    $('.my-colorpicker2').colorpicker()
+
+    $('.my-colorpicker2').on('colorpickerChange', function(event) {
+      $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+    })
+
+    $("input[data-bootstrap-switch]").each(function(){
+      $(this).bootstrapSwitch('state', $(this).prop('checked'));
+    })
+
+  })
+  // BS-Stepper Init
+  document.addEventListener('DOMContentLoaded', function () {
+    window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+  })
+
+  // DropzoneJS Demo Code Start
+  Dropzone.autoDiscover = false
+
+  // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
+  var previewNode = document.querySelector("#template")
+  previewNode.id = ""
+  var previewTemplate = previewNode.parentNode.innerHTML
+  previewNode.parentNode.removeChild(previewNode)
+
+  var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
+    url: "/target-url", // Set the url
+    thumbnailWidth: 80,
+    thumbnailHeight: 80,
+    parallelUploads: 20,
+    previewTemplate: previewTemplate,
+    autoQueue: false, // Make sure the files aren't queued until manually added
+    previewsContainer: "#previews", // Define the container to display the previews
+    clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
+  })
+
+  myDropzone.on("addedfile", function(file) {
+    // Hookup the start button
+    file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file) }
+  })
+
+  // Update the total progress bar
+  myDropzone.on("totaluploadprogress", function(progress) {
+    document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
+  })
+
+  myDropzone.on("sending", function(file) {
+    // Show the total progress bar when upload starts
+    document.querySelector("#total-progress").style.opacity = "1"
+    // And disable the start button
+    file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")
+  })
+
+  // Hide the total progress bar when nothing's uploading anymore
+  myDropzone.on("queuecomplete", function(progress) {
+    document.querySelector("#total-progress").style.opacity = "0"
+  })
+
+  // Setup the buttons for all transfers
+  // The "add files" button doesn't need to be setup because the config
+  // `clickable` has already been specified.
+  document.querySelector("#actions .start").onclick = function() {
+    myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED))
+  }
+  document.querySelector("#actions .cancel").onclick = function() {
+    myDropzone.removeAllFiles(true)
+  }
+  // DropzoneJS Demo Code End
+</script>
 
  
     

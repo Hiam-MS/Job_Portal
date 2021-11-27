@@ -109,38 +109,37 @@ textarea.form-control{
 							{{Session::get('fail')}}
 						</div>
 					@endif
-							<h3 class="m-t0 m-b10 font-weight-700 title-head">
-								<a href="#" class="text-secondry m-r30"> 
-									<p style="color:darkBlue">{{$job->company_name}}</p> <br>
-									<p style="color:blue">{{$job->job_title }} </p>
-								</a>
-							</h3>
-							<ul class="job-info">
-								<li style="font-size:20px"><strong >الحد الأدنى للمستوى التعليمي:</strong> <i class="ti-stamp text-black m-r5"></i>{{$job->degree}} </li>
-								<li style="font-size:20px"><i class="ti-location-pin text-black m-r5"></i> {{$job->city}} </li>
-							</ul><br>
-
-
-						
-							
-							
-						<br><br>
-
-							<h5 class="font-weight-600">متطلبات خاصة بهذه الفرصة</h5>
+					<h3><p>{{$company->company_name}}</p> </h3><hr>
+							<table>
+								<tr>
+									<td><h5>مكان وموقع العمل</h5></td>
+									<td><h6>{{$company->location}}</h6></td>
+								</tr>
+								<tr>
+									<td><h5>المنصب الوظيفي</h5></td>
+									<td><h6>{{$job->job_title }}</h6></td>
+								</tr>
+								<tr>
+									<td><h5>الحد الأدنى للمستوى التعليمي</h5></td>
+									<td><h6><i class="ti-stamp text-black m-r5"></i>{{$job->degree}}</h6></td>
+								</tr>
+								<tr>
+									<td><h5>متطلبات خاصة بهذه الفرصة</h5></td>
+								</tr>
+							</table>
+									
+									
 							<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 							<p class="p-t20" style="font-size:20px">{{$job->job_requirement}}</p><br><br>
 							<h5 class="font-weight-600">المهام الوظيفية</h5>
 
 							<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 							<p  style="font-size:20px">{{$job->functional_tasks}}</p><br><br>
-							<h5 class="font-weight-600">الراتب والفوائد</h5>
+							<h5 >الراتب والفوائد</h5>
 
 							<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
 							<p style="font-size:20px">{{$job->budget}}</p><br><br>
-							<h5 class="font-weight-600">متطلبات خاصة بهذه الفرصة</h5>
-
-							<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-							<p style="font-size:20px">{{$job->job_requirement}}</p>
+							
 
 							<h5 class="font-weight-600">   تم النشر بتاريخ </h5>
 
@@ -197,7 +196,7 @@ textarea.form-control{
 							@endif
 
 							<br>
-							<button type="submit" class=" btn btn-primary">طباعة</button>
+							
 							
 							<button type="submit" onclick="history.back()" class="  btn btn-primary" ">رجوع</button>
 						</div>

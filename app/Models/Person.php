@@ -20,20 +20,20 @@ class Person extends Model
 
     //protected $fillable = ['name'];
 
-    public function setNationalNumberAttribute($value)
-    {
-         $this->attributes['national_number'] = Crypt::encryptString($value);
-    }
+    // public function setNationalNumberAttribute($value)
+    // {
+    //      $this->attributes['national_number'] = Crypt::encryptString($value);
+    // }
 
-    public function getNationalNumberAttribute($value)
-    {
-        try{
+    //     public function getNationalNumberAttribute($value)
+    //     {
+    //         try{
 
-             return Crypt::decryptString($value);
-           }catch(DecryptException $e) {
-                return $value;
-}
-    }
+    //              return Crypt::decryptString($value);
+    //            }catch(DecryptException $e) {
+    //                 return $value;
+    // }
+    //     }
 
 
 
@@ -80,6 +80,17 @@ class Person extends Model
         return $this->belongsToMany(Job::class,'applyed_jobs');
     }
 
+   
+    public function getNextAttribute(){
+
+        return static::where('id', '>', $this->id)->orderBy('id','asc')->first();
+
+    }
+    public  function getPreviousAttribute(){
+
+        return static::where('id', '<', $this->id)->orderBy('id','desc')->first();
+
+    }
 
 
 

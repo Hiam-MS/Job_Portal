@@ -133,10 +133,10 @@
 										<td> {{$Person->place_Of_b}} </td>
 									</tr>
 
-									<tr>
+									<!-- <tr>
 										<td  style="font-weight:bold;" > الرقم الوطني : </td>
 										<td> {{$Person->national_number}} </td>
-									</tr>
+									</tr> -->
 
 									<tr>
 										<td style="font-weight:bold;"> الوضع  العائلي : </td>

@@ -14,10 +14,7 @@ use Illuminate\Support\Facades\DB;
 class CompanyController extends Controller
 {
     //
-    public function index()
-    {
-        return view('index');
-    }
+   
     
     public function createProfile()
     {
@@ -46,51 +43,50 @@ class CompanyController extends Controller
         return redirect()->route('company.profile');
     }
 
-    public function updatCompanyProfile(Request $Request,$id)
+    public function updatCompanyProfile(Request $Request)
     {
-        $Request->validate([
-            'company_name'=>'required',
-            // 'company_name_en'=>'required',
-            'email'=>'required|email',
-            'fixed_phone'=>'required|alpha_num',
-            'fax_phone'=>'required|alpha_num',
-            'location'=>'required',
-            'company_specialist'=>'required',
-            'commercial_record'=>'required|alpha_num',
-            'industria_record'=>'required|alpha_num',
-            'website'=>'required:companies',
+        $company = auth()->user()->GetCompany;
         
-
-        ],[
-            'company_name.required'=>'بجب ادخال الاسم بالعربي',
-            // 'company_name_en.required'=>'بجب ادخال الاسم بالانكليزي',
-            'email.required'=>'بجب ادخال البريد الالكتروني للشركة  ',
-            'fixed_phone.required'=>'بجب ادخال رقم الهاتف الأرضي ',
-            'fax_phone.required'=>'بجب ادخال رقم  الفاكس ',
-            'location.required'=>'بجب ادخال عنوان الشركة   ',
-            'company_specialist.required'=>'بجب ادخال اختصاص عمل الشركة  ',
-            'commercial_record.required'=>'بجب ادخال  السجل التجاري ',
-            'industria_record.required'=>'بجب ادخال  السجل الصناعي  ',
-            'website.required'=>'بجب ادخال موقع  الشركة  ',
-        ]);
-        $company=Company::find($id);
         $company->company_name=$Request->company_name;
-        // $company->company_name_en=$Request->company_name_en;
+        
         $company->email=$Request->email;
         $company->fixed_phone=$Request->fixed_phone;
         $company->fax_phone=$Request->fax_phone;
         $company->location=$Request->location;
         $company->company_specialist=$Request->company_specialist;
-        $company->commercial_record=$Request->commercial_record;
-        $company->industria_record=$Request->industria_record;
-        $company->website=$Request->website;
-
+        // $company->commercial_record=$Request->commercial_record;
+        // $company->industria_record=$Request->industria_record;
+        // $company->website=$Request->website;
+        $company->user_id= auth()->user()->id;
         
 
         if($company){
             $company->save();
-            return back()->withInput()->with('success','  تم التعديل بنجاح');
+            return back()->withInput();
         }else{
+            return back()->withInput()->with('fail','هناك خطأ ما');
+        }
+        
+        
+    }
+
+    public function updatCompanyProfile2(Request $Request)
+    {
+        
+
+        $company = auth()->user()->GetCompany;
+        $company->commercial_record=$Request->input("commercial_record");
+        $company->industria_record=$Request->input("industria_record");
+        $company->website=$Request->input("website");
+        $company->user_id= auth()->user()->id;
+        if($company)
+        {
+            $company->save();
+
+            return redirect()->route('CompanyDash');
+        }
+        else
+        {
             return back()->withInput()->with('fail','هناك خطأ ما');
         }
         
@@ -151,7 +147,7 @@ class CompanyController extends Controller
        
        if($company){
         $company->save();
-           return redirect()->route('CompanyDash')->with('success','  تمت الاضافة بنجاح');
+           return redirect()->route('CompanyDash')->with('success','  تمّ التسجيل بنجاح');
        }else{
            return back()->withInput()->with('fail','هناك خطأ ما');
        }
@@ -228,43 +224,20 @@ class CompanyController extends Controller
 
     public function addCompanyInfo()
     {
-        
-       
-        return view('company.additionalInfo',['id' => auth()->user()->GetCompany->id]);
-    }
-
-
-    public function storeAdditionalInfo(Request $Request)
-    {
         if(isset(auth()->user()->GetCompany))
-        {   
-        //    $Request->validate([
-        //         'commercial_record'=>'alpha_num|',
-        //         'industria_record'=>'alpha_num',
-        //         'website'=>'starts_with:www',
-        //     ]);
-    
-           $company =new CompanyAddInformation ;
-                $company->commercial_record= $Request->input("commercial_record");
-                $company->industria_record= $Request->input("industria_record");
-                $company->website= $Request->input("website");
-                $company->company_id= auth()->user()->GetCompany->id;
-               
-            
-            if($company){
-            $company->save();
-               return redirect()->route('CompanyDash')->with('success','  تمت الاضافة بنجاح');
-           }else{
-               return back()->withInput()->with('fail','هناك خطأ ما');
-           }
-    
-    
+        {
+            $company = auth()->user()->GetCompany;
+            return view('company.additionalInfo',compact('company'));
         }
         else
         {
-            return redirect()->route('company.profile');
+            return view('company.addProfile');
         }
+       
+        
     }
 
+
+    
 
 }

@@ -33,8 +33,7 @@
   display: block;
 }
 </style>
-    <!-- Content -->
-<div class="page-content bg-white">
+
     <div class="dez-bnr-inr overlay-black-dark" style="background-image:url({{ asset('images/banner/bnr1.jpg')}});">
         <div class="container">
             <div class="dez-bnr-inr-entry">
@@ -164,7 +163,7 @@
 
 										<div class="col-sm-6">
 											<div class="form-group">
-												<label>  العنوان  <span style="color:red">*</span></label>
+												<label>  عنوان [موقع الشركة]  <span style="color:red">*</span></label>
 												<input type="text" class="form-control form-control-lg" placeholder="" name="location" value="{{old('location')}} "  data-parsly-trigger="keyup">
 												@if($errors->any('location'))
 													<span>{{$errors->first('location')}}</span>
@@ -195,7 +194,7 @@
 										<div class="col-sm-4">
 											<div class="form-group">
 												<label>  رقم الفاكس <span style="color:red">*</span></label>
-												<input type="text" class="form-control  form-control-lg" placeholder=" 963-11-2222222+" name="fax_phone" value="{{old('fax_phone')}} "  data-parsly-trigger="keyup">
+												<input type="text" class="form-control  form-control-lg" placeholder=" " name="fax_phone" value="{{old('fax_phone')}} "  data-parsly-trigger="keyup">
 												@if($errors->any('fax_phone'))
 													<span >{{$errors->first('fax_phone')}}</span>
 												@endif
@@ -206,7 +205,7 @@
 										<div class="col-sm-4">
 											<div class="form-group">
 											<label>  الهاتف الأرضي<span style="color:red">*</span></label>
-												<input type="text" class="form-control  form-control-lg" placeholder="963-11-2222222+" name="fixed_phone" value="{{old('fixed_phone')}} "  data-parsly-trigger="keyup">
+												<input type="text" class="form-control  form-control-lg" placeholder="" name="fixed_phone" value="{{old('fixed_phone')}} "  data-parsly-trigger="keyup">
 												@if($errors->any('fixed_phone'))
 													<span >{{$errors->first('fixed_phone')}}</span>
 												@endif
@@ -223,7 +222,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+
 
     <!-- Content END-->
 

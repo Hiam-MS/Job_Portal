@@ -25,6 +25,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "bs-stepper": "^1.7.0",
         "gulp": "^4.0.2",
         "print-js": "^1.6.0",
         "semantic-ui-react": "^2.0.4"

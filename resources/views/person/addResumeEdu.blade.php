@@ -159,6 +159,52 @@ $(document).ready(function() {
 </script>
 
 
+<br>
+<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
+							</form>
+
+							<br>
+							<h3 class="font-weight-600" >  المعلومات الاضافية  </h3>
+						
+		
+						<div dir="rtl" lang="ar" class="container" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
+						<form action="{{route('StoreAdditional')}}" method="POST" id="resume" >
+                    	@csrf
+							<table>
+								<tr>
+						  			<th style="width: 20%" >الايميل  :</th>
+						  				<td style="width: 50%"><input type="text" class="form-control form-control-lg" placeholder="  " value="{{old('email')}}" name="email" style="width:60%" >
+										  @if($errors->any('email'))
+									<span style="color:red">{{$errors->first('degree_name')}}</span>
+								@endif
+										</td>
+						  		</tr>
+								<tr>
+									<th style="width: 20%" > السكن الحالي  :</th>
+										<td style="width: 50%"><input type="text" class="form-control form-control-lg" placeholder="" value="{{old('Current_address')}}" name="Current_address" style="width:60%">
+										@if($errors->any('Current_address'))
+									<span style="color:red">{{$errors->first('Current_address')}}</span>
+								@endif
+										</td>
+								</tr>
+								<tr>
+									<th style="width: 20%" >  رقم الهاتف :</th>
+										<td style="width: 50%"><input type="text" class="form-control form-control-lg" placeholder="" value="{{old('fixed_phone')}}" name="fixed_phone" style="width:60%">
+										@if($errors->any('fixed_phone'))
+									<span style="color:red">{{$errors->first('fixed_phone')}}</span>
+								@endif
+										</td>
+								</tr>
+								
+							
+							</table>
+
+					 		<button type="submit"  class="btn btn-primary" > أضف المعلومات  </button>
+						</form>
+
+
+
+
 
 								<br>
 								<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>

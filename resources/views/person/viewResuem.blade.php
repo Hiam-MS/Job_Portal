@@ -45,91 +45,61 @@
         <div class="content-block" >
 			<!-- Browse Jobs -->
 			<div class="section-full bg-white browse-job content-inner-2">
-				<div class="container">
-					<div class="row">
-					<div class="col-xl-9 col-lg-8" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
-							<h5 class="widget-title font-weight-700 text-uppercase"> السير الذاتية الحالية  </h5>
-							<br><br>
-							<!-- <h5 class="widget-title font-weight-700 text-uppercase"> السير الذاتية الحالية  </h5>
-							<br> -->
-								<ul class="post-job-bx">
-									@if(isset($Person))
-									<table id="resuems" dir="rtl" class="table table-bordered table-striped">
-										<thead>
-											<tr>
-												<th> الاسم</th>
-												<th>الشهادة</th>
-												<th> الجنس</th>
-												<th>عرض</th>
-											</tr>
-										</thead>
-										<tbody id="serch-result">
-											@if(count($Person) > 0)
-												@foreach($Person as $item)
-													<tr>
-														<td>{{$item->Fname}} {{$item->Father_name}} {{$item->Lname}}</td>
-														<td>
-															@foreach($item->PersonEducation as $edu)
-																{{$edu['degree_name'] }} <br>
-
-															@endforeach
-														</td>
-														<td> {{$item->gender}} </td>
-														<td>  
-															<a href="{{url('Person/details',$item->id)}}" class="btn "> تفاصيل</a>
-														</td>
-													</tr>
-
-												@endforeach
-											@else
-												<tr><td>  لايوجد سير ذاتية لعرضها</td></tr>
-											@endif
-										</tbody>
-									</table>
-									@endif
-									<span>{{$Person->links('layouts.paginationlinks')}}</span>
-								</ul>
-							</div>
-						
-					
-						<div class="col-xl-3 col-lg-4">
-							<div class="sticky-top">
-								<div class="clearfix m-b30">
-									
-								<!-- <form action="{{route('resuems')}}" method="GET"> -->
-								<ul class="post-job-bx">
-								<h5 class="widget-title font-weight-700 text-uppercase">البحث</h5>
-									<div class="">
-										<input type="text" class="form-control typeahead" name="query"  placeholder="...ابحث" id="search-resume" >
-									</div>
-
-									<br><b></b>
-									<!-- <div class="form-group">
-										<button type="submit" class="btn btn-primary">ابحث هنا</button>
-									</div> -->
-
-									</ul>
-
-
-						
-				
-							<!-- </form> -->
-									
-								</div>
-							
-								
-							
-							</div>
-						</div>
-
-
-
-
-
-					
-
-
-					</div>
+            <div class="container my-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">السير الذاتية   </h1>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mt-3">
+                <div class="row">
+                    <!-- <div class="col-md-6">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-info text-white" id="basic-addon1"><i
+                                        class="fas fa-calendar-alt"></i></span>
+                            </div>
+                            <input type="text" class="form-control" id="start_date" placeholder="Start Date" readonly>
+                        </div>
+                    </div> -->
+                    <!-- <div class="col-md-6">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-info text-white" id="basic-addon1"><i
+                                        class="fas fa-calendar-alt"></i></span>
+                            </div>
+                            <input type="text" class="form-control" id="end_date" placeholder="End Date" readonly>
+                        </div>
+                    </div> -->
+                </div>
+                <div>
+                    <button id="filter" class="btn btn-outline-info btn-sm">Filter</button>
+                    <button id="reset" class="btn btn-outline-warning btn-sm">Reset</button>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <!-- Table -->
+                        <div class="table-responsive">
+                            <table class="table table-borderless display nowrap" id="records" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>الرقم</th>
+                                        <th>الاسم</th>
+                                        <th>الجنس</th>
+                                        <th>مكان الولادة  </th>
+                                        <th>خدمة العلم </th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 				</div>
 			</div>
             <!-- Browse Jobs END -->
@@ -192,6 +162,101 @@ $('body').on( 'keyup', '#search-resume',function(){
 
 </script>
 
+<script>
+        $(function() {
+            $("#start_date").datepicker({
+                "dateFormat": "yy-mm-dd"
+            });
+            $("#end_date").datepicker({
+                "dateFormat": "yy-mm-dd"
+            });
+        });
+
+        // Fetch records
+        function fetch(start_date, end_date) {
+            $.ajax({
+                url: "{{ route('students/records') }}",
+                type: "GEt",
+                data: {
+                    start_date: start_date,
+                    end_date: end_date
+                },
+                dataType: "json",
+                success: function(data) {
+                    // Datatables
+                    var i = 1;
+                    $('#records').DataTable({
+                        "data": data.person,
+                        // buttons
+                        "dom": "<'row'<'col-sm-12 col-md-4'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4'f>>" +
+                            "<'row'<'col-sm-12'tr>>" +
+                            "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+                        "buttons": [
+                            'copy', 'csv', 'excel', 'pdf', 'print'
+                        ],
+                        // responsive
+                        "responsive": true,
+                        "columns": [{
+                                "data": "id",
+                                "render": function(data, type, row, meta) {
+                                    return i++;
+                                }
+                            },
+                            {
+                                "data": "Fname"
+                            },
+                            {
+                                "data": "gender",
+                                "render": function(data, type, row, meta) {
+                                    return `${row.gender}`;
+                                }
+                            },
+                            {
+                                "data": "place_Of_b",
+                                "render": function(data, type, row, meta) {
+                                    return `${row.place_Of_b}`;
+                                }
+                            },
+                            {
+                                "data": "military_service"
+                            },
+                            {
+                                "data": "created_at",
+                                "render": function(data, type, row, meta) {
+                                    return moment(row.created_at).format('DD-MM-YYYY');
+                                }
+                            }
+                        ]
+                    });
+                }
+            });
+        }
+
+        fetch();
+
+        // Filter
+        $(document).on("click", "#filter", function(e) {
+            e.preventDefault();
+            var start_date = $("#start_date").val();
+            var end_date = $("#end_date").val();
+            if (start_date == "" || end_date == "") {
+                alert("Both date required");
+            } else {
+                $('#records').DataTable().destroy();
+                fetch(start_date, end_date);
+            }
+        });
+
+        // Reset
+        $(document).on("click", "#reset", function(e) {
+            e.preventDefault();
+            $("#start_date").val(''); // empty value
+            $("#end_date").val('');
+            $('#records').DataTable().destroy();
+            fetch();
+        });
+
+    </script>
 @endsection
 
 

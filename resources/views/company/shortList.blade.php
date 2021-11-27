@@ -20,7 +20,7 @@
 		color: black;
 		}
 </style>
-<div class="page-content bg-white">
+
     <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}});">
         <div class="container">
             <div class="dez-bnr-inr-entry">
@@ -30,91 +30,77 @@
         </div>
     </div>
      
-    <div class="content-block">
-        <div class="section-full content-inner-1">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-4">
-						<div class="sticky-top">
-							<div class="row">
-								<div class="col-lg-12 col-md-6">
-									<div class="m-b30">
-										<img src="{{asset('images/blog/grid/6.jpg')}}" alt="">
-									</div>
+	<div class="content-block">
+    <div class="section-full content-inner-1">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="sticky-top">
+						<div class="row">
+							<div class="col-lg-8 col-md-6">
+								<div class="m-b30">
+									<img src="{{asset('images/blog/grid/6.jpg')}}" alt="">
 								</div>
-										
-								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
-									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
-                                         <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="{{route('CompanyDash')}}" > لوحة التحكم<a></h4>
-										 <ul>
-											
-											@if(isset(auth()->user()->GetCompany))
-												<li>
-													<strong class="font-weight-700 text-black"> 
-														<a href="{{route('CompanyViewProfile')}}" > عرض الملف الشخصي </a>
-													</strong><span class="text-black-light"> </span>
-												</li>
-												<li>
-													<strong class="font-weight-700 text-black">
-														<a href="{{route('addJob')}}" > نشر فرصة عمل جديدة </a>
-													</strong> 
-												</li>
-												<li>
-													<strong class="font-weight-700 text-black">
-														<a href="{{route('CompanyJob')}}" > عرض فرص العمل المنشورة  </a>
-													</strong>
-												</li>
-												<li>
-													<strong class="font-weight-700 text-black">
-														<a href="{{route('resuems')}}" >   عرض السير الذاتية المتاحة</a> 
-													 </strong>
-												</li>	
-												<li>
-													<strong class="font-weight-700 text-black">
-														<a href="{{route('CompanyEndJobs')}}" >   الوظائف المنتهية  </a>  
-													</strong>
-												</li>
-											
-												
-											@else
-												<li><strong class="font-weight-700 text-black"><li><a href="{{route('CompanyProfile')}}" > ادخال معلومات الشركة </a></li></strong> </li>
+							</div>
 
-											@endif
-											
-											<div class="dropdown " >
-														<li>
-															<strong class="font-weight-700 text-black"><h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5></strong>
-														</li>
-														<div class="dropdown-content">
-															<ul>
-																<li>
-																	<a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a> 
-																</li>
-															</ul>
-															<ul>
-																<li>
-																	<a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a>
-																</li>
-															</ul>
-															<ul>
-																<li>
-																	<a href="{{route('password.change')}}" >    تغيير كلمة المرور</a> 
-																</li>
-															</ul>
-															<ul>
-																<li>
-																	<a href="{{route('profile.delete')}}" >  حذف الحساب </a>
-																</li>
-															</ul>	
-														</div>
-													</div>
-										</ul>
-									</div>
+							<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
+								<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
+                                    <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="{{route('CompanyDash')}}" > لوحة التحكم<a></h4>
+									<ul>
+										@if(isset(auth()->user()->GetCompany))
+											<li>
+												<strong class="font-weight-700 text-black"> 
+													<a href="{{route('CompanyAdditionalInfo')}}" > عرض/ تعديل/اضافة معلومات أخرى   </a>
+												</strong><span class="text-black-light"> </span>
+											</li>
+											<li>
+												<strong class="font-weight-700 text-black">
+													<a href="{{route('addJob')}}" > نشر فرصة عمل جديدة </a>
+												</strong> 
+											</li>
+											<li>
+												<strong class="font-weight-700 text-black">
+													<a href="{{route('CompanyJob')}}" > عرض فرص العمل المنشورة  </a>
+												</strong>
+											</li>
+											<li>
+												<strong class="font-weight-700 text-black">
+													<a href="{{route('resuems')}}" >   عرض السير الذاتية المتاحة</a> 
+												</strong>
+											</li>	
+											<li>
+												<strong class="font-weight-700 text-black">
+													<a href="{{route('CompanyEndJobs')}}" >   الوظائف المنتهية  </a>  
+												</strong>
+											</li>
+										@else
+											<li><strong class="font-weight-700 text-black"><li><a href="{{route('CompanyProfile')}}" > ادخال معلومات الشركة </a></li></strong> </li>
+										@endif
+										<div class="dropdown " >
+											<li>
+												<strong class="font-weight-700 text-black"><h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5></strong>
+											</li>
+											<div class="dropdown-content">
+												<ul>
+													<li><a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a></li>
+												</ul>
+												<ul>
+													<li><a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a></li>
+												</ul>
+												<ul>
+													<li><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a></li>
+												</ul>
+												<ul>
+													<li><a href="{{route('profile.delete')}}" >  حذف الحساب </a></li>
+												</ul>	
+											</div>
+										</div>
+									</ul>
 								</div>
-
 							</div>
 						</div>
 					</div>
+				</div>
 						
 
 					<div class="col-lg-8">
@@ -194,19 +180,17 @@
                               
 								
 								<span>{{$jobs->links('layouts.paginationlinks')}}</span>
-								<form>
-									<br><br>
-									<input type="button" value="رجوع" onclick="history.back()" class="btn btn-primary">
-								   </form>
+								<table>
+								<tr>
+										
+								<td><form><input type="button" value="رجوع" onclick="history.back()" class="btn btn-primary"></form></td>
+									
+								</tr>
+							</table>
 								  
    
  </form>
-
- <button type="button" onclick="print('printJS-form', 'html')">
-    Print Form
- </button>
- <button type="button" onclick="printJS('images/print-01-highres.jpg', 'image')">	   Print Image
- </button>		
+		
 								
 							
 							</ul>
@@ -216,7 +200,7 @@
 		    </div>
         </div>
 	</div>
-</div>
+
  
     
  @endsection

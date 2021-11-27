@@ -40,6 +40,7 @@ class JobsController extends Controller
         {
             if(Auth()->user()->role == 'p')
             {
+                $company=auth()->user()->GetCompany;
                 $job = Job::find($id);
                 $person_id = auth()->user()->GetPerson->id;
 
@@ -52,25 +53,25 @@ class JobsController extends Controller
                 {
                     $result = 'exist';
                 }  
-                return view('job.jobDetails',compact('job','result'));
+                return view('job.jobDetails',compact('job','result','company'));
             }
           else
-            {
+            { $company=auth()->user()->GetCompany;
                 $job = Job::find($id);
             
             
-            return view('job.jobDetails',compact('job'));
+            return view('job.jobDetails',compact('job','company'));
           }
 
 
        
         } 
      
-       
         else
         {
+            $company=auth()->user()->GetCompany;
             $job = Job::find($id);
-            return view('job.jobDetails',compact('job'));
+            return view('job.jobDetails',compact('job','company'));
         }
    
       
@@ -81,30 +82,71 @@ class JobsController extends Controller
 
     public function showJob(Request $request)
     {
-        $categories = JobCategory::all();
-        $category = $request->input('category');
-        if($request->has('category')) 
-        {
-            $jobs = Job::where('category_id', $category)
-            ->whereDate('end_job', '>', Carbon::today()->toDateString())
-            ->orderBy('created_at', 'desc')
-            ->paginate(10);
-        }
-        else
-        {
-            $jobs = Job::whereDate('end_job', '>', Carbon::today()->toDateString())->Where('status','=','accepted')->paginate(10);
-        }
+    //     $categories = JobCategory::all();
+    //     $category = $request->input('category');
+
+      
+
+    //     if($request->has('male')){
+    //         $jobs = Job::where('gender', 'ذكر')
+    //         ->whereDate('end_job', '>', Carbon::today()->toDateString())
+    //         ->orderBy('created_at', 'desc')
+    //         ->paginate(10);
+    //    }
+    //    else if($request->has('femail')){
+    //         $jobs = Job::where('gender', 'أنثى')
+    //         ->whereDate('end_job', '>', Carbon::today()->toDateString())
+    //         ->orderBy('created_at', 'desc')
+    //         ->paginate(10);
+    //    }
+    //    else if($request->has('category')) 
+    //     {
+    //         $jobs = Job::where('category_id', $category)
+    //         ->whereDate('end_job', '>', Carbon::today()->toDateString())
+    //         ->orderBy('created_at', 'desc')
+    //         ->paginate(10);
+    //     }
+    //     else
+    //     {
+    //         $jobs = Job::whereDate('end_job', '>', Carbon::today()->toDateString())->Where('status','=','accepted')->paginate(10);
+    //     }
          
         
 
      
         
-        return view('job.showJobs',compact('jobs','category','categories'));
-        
+    //     return view('job.showJobs',compact('jobs','category','categories'));
+    return view('job.showJobs');
        
     }
 
-    
+    public function records(Request $request)
+    {
+        if ($request->ajax()) {
+
+            if ($request->input('start_date') && $request->input('end_date')) {
+
+                $start_date = Carbon::parse($request->input('start_date'));
+                $end_date = Carbon::parse($request->input('end_date'));
+
+                if ($end_date->greaterThan($start_date)) {
+                    $jobs = Job::whereBetween('created_at', [$start_date, $end_date])->get();
+                } else {
+                    $jobs = Job::latest()->get();
+                }
+            } else {
+                $jobs = Job::latest()->get();
+            }
+
+            return response()->json([
+                'jobs' => $jobs
+            ]);
+        } else {
+            return response()->json([
+                'jobs' => $jobs
+            ]);
+        }
+    }
 
 
 
@@ -119,19 +161,19 @@ class JobsController extends Controller
     public function storeJob(Request $Request)
     { 
         $Request->validate([
-            'category'=>'required',
-            'job_title'=>'required',
-            'number_of_employess'=>'required',
-            'budget'=>'required',
-            'job_requirement'=>'required',
-            'functional_tasks'=>'required',
-            'end_job'=>'required',
+            // 'category'=>'required',
+            // 'job_title'=>'required',
+            // 'number_of_employess'=>'required',
+            // 'budget'=>'required',
+            // 'job_requirement'=>'required',
+            // 'functional_tasks'=>'required',
+            // 'end_job'=>'required',
            
-            'city'=>'required',
-            'gender'=>'required',
-            'military_service'=>'required',
-            'degree'=>'required',
-            'job_type'=>'required',
+            // 'city'=>'required',
+            // 'gender'=>'required',
+            // 'military_service'=>'required',
+            // 'degree'=>'required',
+            // 'job_type'=>'required',
             
         ],[
             'job_title.required'=>'يجب ادخال المسمى الوظيفي لفرصة العمل',
@@ -150,22 +192,19 @@ class JobsController extends Controller
             'job_type.required'=>'يجب  اختيار   طبيعة فرصة العمل  ',
         ]);
 
-        $selected=$Request->input("end_job");
+        $selected=30;
 
-    
-   
-        
         $job =new Job ;
-        $job->company_name = $Request->input("company_name");
+        // $job->company_name = $Request->input("company_name");
         $job->job_title =  $Request->input("job_title");
-        $job->number_of_employess= $Request->input("number_of_employess");
+        // $job->number_of_employess= $Request->input("number_of_employess");
         $job->budget= $Request->input("budget");
         $job->job_requirement = $Request->input("job_requirement");
         $job->functional_tasks = $Request->input("functional_tasks");
         // $job->end_job=$Request->input("end_job");
         $job->end_job = Carbon::now()->addDays($selected);
-        $job->country= $Request->input("country");
-        $job->city= $Request->input("city");
+        // $job->country= $Request->input("country");
+        // $job->city= $Request->input("city");
         $job->gender= $Request->input("gender");
         $job->military_service= $Request->input("military_service");
         $job->degree= $Request->input("degree");
@@ -173,14 +212,9 @@ class JobsController extends Controller
         $job->category_id = $Request->input('category');
         $job->company_id= auth()->user()->GetCompany->id;
 
-       
-
-    
-
-
-        if($job){
+       if($job){
             $job->save();
-            return redirect()->route('CompanyJob')->with('success','  تمت الاضافة بنجاح');
+            return redirect()->route('CompanyJob')->with('success',' تمّ تسجيل طلبكم بالنشر يرجى الانتظار لحين قبول المنشور');
         }else{
             return back()->withInput()->with('fail','هناك خطأ ما');
         }

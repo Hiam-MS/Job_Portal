@@ -49,7 +49,7 @@
                     				<div class="col-sm-4">
                       					<div class="form-group">
                         					<label>الاسم<span>*</span></label>
-                        					<input type="text" class="form-control form-control-lg" placeholder="" name="fname" data-parsly-trigger="keyup">
+                        					<input type="text" class="form-control form-control-lg" placeholder="" value="{{old('fname')}}" name="fname" data-parsly-trigger="keyup">
 											@if($errors->any('fname'))
 												<span>{{$errors->first('fname')}}</span>
 											@endif
@@ -59,7 +59,7 @@
 									<div class="col-sm-4">
                       					<div class="form-group">
 											<label> اسم الأب<span>*</span></label>
-											<input type="text" class="form-control form-control-lg" placeholder="" name="father_name" value="{{old('fatherName')}}" data-parsly-trigger="keyup">
+											<input type="text" class="form-control form-control-lg" placeholder="" name="father_name" value="{{old('father_name')}}" data-parsly-trigger="keyup">
 											@if($errors->any('father_name'))
 												<span>{{$errors->first('father_name')}}</span>
 											@endif
@@ -165,9 +165,10 @@
 											<label>  اللغات <span>*</span></label><br>
 											<select class="js-example-basic-multiple form-control form-control-lg" name="lang[]" multiple="multiple" >
 												<option value="عربي" selected>عربي </option>	
+												<option value="انكليزي">انكليزي</option>
 												<option value="اسباني">اسباني</option>
 												<option value="ايطالي">ايطالي</option>
-												<option value="انكليزي">انكليزي</option>
+												
 											</select>
 											@if($errors->any('lang'))
 												<span>{{$errors->first('lang')}}</span>
