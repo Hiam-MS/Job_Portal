@@ -84,7 +84,7 @@ class JobsController extends Controller
     {
         $categories = JobCategory::all();
         $category = $request->input('category');
-        $company = auth()->user()->GetCompany;
+        
       
 
     //     if($request->has('male')){
@@ -115,7 +115,7 @@ class JobsController extends Controller
 
      
         
-        return view('job.showJobs',compact('jobs','category','categories','company'));
+        return view('job.showJobs',compact('jobs','category','categories'));
     // return view('job.showJobs');
        
     }

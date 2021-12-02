@@ -1,131 +1,174 @@
 @extends('header')
 @section('content')
-
-
-
 <style>
+    .form-control{
+        font-size:20px;
+        font-family: Arial, Helvetica, sans-serif;
 
-
-#resuems tr:hover {background-color: #ddd;}
-#resuems th {
-		padding:5px;
-		text-align: center;
-		background-color:#200080;
-		color: white;
-		}
-
-		#resuems tr {
-		padding:5px;
-		text-align: center;
-		
-		color: black;
-		font-size:20px;
-		}
-        #records th{
-            font-size:20px;
-            border: 1px solid #ddd;
-            padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: center;
-  background-color: #4682B4;
-  color: white;
-        }
-        #records td{
-            font-size:18px;
-            border: 1px solid #ddd;
-        }
-        #records{
-            font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-        }
-
+    }
 </style>
-
-
+<div class="page-content bg-white">
+        <!-- inner page banner -->
         <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}});">
             <div class="container">
                 <div class="dez-bnr-inr-entry">
-                    <h1 class="text-white">الفرص المنشورة</h1>
+                    <h1 class="text-white"> فرص العمل</h1>
 					<!-- Breadcrumb row -->
-					<!-- <div class="breadcrumb-row">
+					<div class="breadcrumb-row">
 						<ul class="list-inline">
 							
 						</ul>
-					</div> -->
+					</div>
 					<!-- Breadcrumb row END -->
                 </div>
             </div>
         </div>
         <!-- inner page banner END -->
         <!-- contact area -->
-<div class="content-block" >
-	<div class="section-full  browse-job content-inner-2">
-            <div class="container ">
-       
-        <div class="row">
-            <div class="col-md-12 mt-3">
-                <div class="row">
-                    <!-- <div class="col-md-6">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text bg-info text-white" id="basic-addon1"><i
-                                        class="fas fa-calendar-alt"></i></span>
-                            </div>
-                            <input type="text" class="form-control" id="start_date" placeholder="Start Date" readonly>
-                        </div>
-                    </div> -->
-                    <!-- <div class="col-md-6">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text bg-info text-white" id="basic-addon1"><i
-                                        class="fas fa-calendar-alt"></i></span>
-                            </div>
-                            <input type="text" class="form-control" id="end_date" placeholder="End Date" readonly>
-                        </div>
-                    </div> -->
-                </div>
-                
-                <div class="row mt-3">
-                    <div class="col-md-12">
-                        <!-- Table -->
-                        <div class="table-responsive">
-                            <table class="table table-borderless display nowrap" id="records" style="width:100%;">
-                                <thead>
-                                    <tr>
-                                        <th>الرقم</th>
-                                        <th>المنصب الوظيفي</th>
-                                        <th>الشركة</th>
-                                        <th>اختصاص العمل   </th>
-                                        <th>المدينة  </th>
-                                        <th>تاريخ النشر</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        <div class="content-block">
+			<!-- Browse Jobs -->
+			<div class="section-full bg-white browse-job content-inner-2">
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-9 col-lg-8">
+							<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
+							@if(Session::get('success'))
+						<div class="alert alert-success" style="font-size:20px">
+							{{Session::get('success')}}
+						</div>
+					@endif
+					@if(Session::get('fail'))
+						<div class="alert alert-danger" style="font-size:20px">
+							{{Session::get('success')}}
+						</div>
+					@endif	
+							<h5 class="widget-title font-weight-700 text-uppercase" style="color:blue">الفرص الحالية  </h5>
+								
+								@csrf
+								<ul class="post-job-bx">
+								@if(isset($jobs))
+									@if(count($jobs) > 0)
+										@foreach($jobs as $job)
+											<li>
+											
+												<a href="{{asset('/job/details',$job->id)}}">
+													<div class="d-flex m-b30">
+														<div class="job-post-company">
+															<span><img src="{{asset('images/logo/icon1.png')}}"/></span>
+														</div>
+														<div class="job-post-info">
+															<h4>  {{$job->job_title}}</h4>
+															<ul >
+																<li style="color:blue"><i class="fa fa-map-marker"></i> {{$job->city}} </li>
+																<li style="color:blue"><i class="fa fa-bookmark-o"></i>{{$job->job_type}} </li>
+																<li style="color:blue"><i class="fa fa-clock-o"></i> {{$job->created_at->diffForHumans()}}</li>
+															</ul>
+														</div>
+													</div>
+													<div class="d-flex">
+														<div class="job-time mr-auto">
+															<!-- <span>Full Time</span> -->
+														</div>
+														<div class="salary-bx">
+															<!-- <span>$1200 - $ 2500</span> -->
+														</div>
+													</div>
+													
+												</a>
+											</li>
+											
+										@endforeach
+									@else
+										<li style="font-size:20px">  لايوجد فرص عمل  لعرضها</li>
+									@endif
+								@endif
+								<span>{{$jobs->links('layouts.paginationlinks')}}</span>
+								
+								</ul>
+								
+							</div>
+						</div>
+						<div class="col-xl-3 col-lg-4">
+							<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
+								<div class="sticky-top">
+									<div class="clearfix m-b30">
+										<h5 class="widget-title font-weight-700 text-uppercase" style="color:blue"> البحث</h5>
+										<div class="">
+											<input type="text" class="form-control" placeholder="Search">
+										</div>
+									</div>
+									<!-- <div class="clearfix m-b10">
+										<h5 class="widget-title font-weight-700 m-t0 text-uppercase">Location</h5>
+										<input type="text" class="form-control m-b30" placeholder="Location">
+										<div class="input-group m-b20">
+											<input type="text" class="form-control" placeholder="120">
+											<select>
+												<option>Km</option>
+												<option>miles</option>
+											</select>
+										</div>
+									</div> -->
+									<!-- <div class="clearfix m-b30">
+										<h5 class="widget-title font-weight-700 text-uppercase" style="color:blue"> طبيعة العمل</h5>
+										<div class="row">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-6">
+												<div class="product-brand">
+													<div class="custom-control custom-checkbox">
+														<input type="checkbox" class="custom-control-input" id="check1" name="example1">
+														<label class="custom-control-label" for="check1">Freelance</label>
+													</div>
+													
+													
+													
+													
+												</div>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-6">
+												<div class="product-brand">
+													
+													
+													
+													
+													
+												</div>
+											</div>
+										</div>
+									</div> -->
+									<div class="clearfix">
+										<form action="{{route('job')}}" method="GET">
+											<h5 class="widget-title font-weight-700 text-uppercase" style="color:blue">اختصاص العمل</h5>
+											<select name ="category" id="category" class="form-control form-control-lg" >
+												<option selected disabled> اختر اختصاص العمل </option>
+												@foreach($categories as $category)
+												
+													<option value="{{$category->id}}">{{$category->name}}</option>
+												@endforeach
+											</select> <br>
+											<button type="submit" class="btn btn-primary">بحث</button>
+										</form>
+									</div>
+									
+									
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
             <!-- Browse Jobs END -->
 		</div>
     </div>
-    <!-- Content END-->
-	<!-- Footer -->
 
 
 
-<!-- <script>
+	<script>
 	$(document).ready(function(){
 		$('#search').on('keyup',function(){
-			var query=$(this).val();
+			var category=$(this).val();
 			$.ajax({
 				url:"search",
 				type:"GET",
-				data:{'search':query},
+				data:{'search':category},
 				success:function(data){
 					$('#search_list').html(data);
 				}
@@ -133,138 +176,6 @@
 		});
 		//end of ajax call
 	});
-</script> -->
-
-
-
-<script type="text/javascript">
-
-$('body').on( 'keyup', '#search-resume',function(){
-       
-        var serchQuest = $(this).val();
-
-        $.ajax({
-			method: 'POST',
-            url: '{{ route("search.Resume")}}',
-            dataType: 'json',
-			data: {
-				'_token' : '{{ csrf_token() }}',
-				serchQuest: serchQuest,
-
-			},
-            success: function(res){            
-               var tableRow = '';
-			   $('#serch-result').html('');
-
-			   $.each(res , function(index, value){
-				tableRow ='<tr><td>'+value.Fname+' '+value.Father_name+' '+value.Lname+'</td><td>'+value.degree_name+'</td><td>'+value.gender+'</td><td><a href="Person/details/'+value.id+' class="btn "> تفاصيل</a></td> </tr>';
-				$('#serch-result').append(tableRow);
-			})
-
-			
-			   
-
-            }
-        });
-    });
-
 </script>
-
-<script>
-        $(function() {
-            $("#start_date").datepicker({
-                "dateFormat": "yy-mm-dd"
-            });
-            $("#end_date").datepicker({
-                "dateFormat": "yy-mm-dd"
-            });
-        });
-
-        // Fetch records
-        function fetch(start_date, end_date) {
-            $.ajax({
-                url: "{{ route('job/records') }}",
-                type: "GEt",
-                data: {
-                    start_date: start_date,
-                    end_date: end_date
-                },
-                dataType: "json",
-                success: function(data) {
-                    // Datatables
-                    var i = 1;
-                    $('#records').DataTable({
-                        "data": data.jobs,
-                        // buttons
-                        "dom": "<'row'<'col-sm-12 col-md-4'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4'f>>" +
-                            "<'row'<'col-sm-12'tr>>" +
-                            "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-                        "buttons": [
-                            'copy', 'csv', 'excel', 'pdf', 'print'
-                        ],
-                        // responsive
-                        "responsive": true,
-                        "columns": [{
-                                "data": "id",
-                                "render": function(data, type, row, meta) {
-                                    return i++;
-                                }
-                            },
-                            {
-                                "data": "job_title"
-                            },
-                            {
-                                "data": "company_name",
-                                "render": function(data, type, row, meta) {
-                                    return `${row.company_name}`;
-                                }
-                            },
-                            {
-                                "data": "name",
-                                "render": function(data, type, row, meta) {
-                                    return `${row.name}`;
-                                }
-                            },
-                            {
-                                "data": "city"
-                            },
-                            {
-                                "data": "created_at",
-                                "render": function(data, type, row, meta) {
-                                    return moment(row.created_at).format('DD-MM-YYYY');
-                                }
-                            }
-                        ]
-                    });
-                }
-            });
-        }
-
-        fetch();
-
-        // Filter
-        $(document).on("click", "#filter", function(e) {
-            e.preventDefault();
-            var start_date = $("#start_date").val();
-            var end_date = $("#end_date").val();
-            if (start_date == "" || end_date == "") {
-                alert("Both date required");
-            } else {
-                $('#records').DataTable().destroy();
-                fetch(start_date, end_date);
-            }
-        });
-
-        // Reset
-        $(document).on("click", "#reset", function(e) {
-            e.preventDefault();
-            $("#start_date").val(''); // empty value
-            $("#end_date").val('');
-            $('#records').DataTable().destroy();
-            fetch();
-        });
-
-    </script>
 @endsection
-
 
