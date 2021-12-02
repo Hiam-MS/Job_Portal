@@ -4,7 +4,31 @@
 
 
 <style>
+	#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  font-size:18px;
+  text-align: center;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #000080;
+  color: white;
+  
+}
 
 #resuems tr:hover {background-color: #ddd;}
 #resuems th {
@@ -22,84 +46,78 @@
 		font-size:20px;
 		}
 </style>
-    <!-- header END -->
-    <!-- Content -->
-    <div class="page-content bg-white">
-        <!-- inner page banner -->
-        <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}});">
-            <div class="container">
-                <div class="dez-bnr-inr-entry">
-                    <h1 class="text-white"> السير الذاتية الحالية</h1>
-					<!-- Breadcrumb row -->
-					<!-- <div class="breadcrumb-row">
-						<ul class="list-inline">
-							
-						</ul>
-					</div> -->
-					<!-- Breadcrumb row END -->
-                </div>
-            </div>
-        </div>
-        <!-- inner page banner END -->
-        <!-- contact area -->
-        <div class="content-block" >
-			<!-- Browse Jobs -->
-			<div class="section-full bg-white browse-job content-inner-2">
-            <div class="container my-5">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="text-center">السير الذاتية   </h1>
-                <hr>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 mt-3">
-                <div class="row">
-                    <!-- <div class="col-md-6">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text bg-info text-white" id="basic-addon1"><i
-                                        class="fas fa-calendar-alt"></i></span>
-                            </div>
-                            <input type="text" class="form-control" id="start_date" placeholder="Start Date" readonly>
-                        </div>
-                    </div> -->
-                    <!-- <div class="col-md-6">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text bg-info text-white" id="basic-addon1"><i
-                                        class="fas fa-calendar-alt"></i></span>
-                            </div>
-                            <input type="text" class="form-control" id="end_date" placeholder="End Date" readonly>
-                        </div>
-                    </div> -->
-                </div>
-                <div>
-                    <button id="filter" class="btn btn-outline-info btn-sm">Filter</button>
-                    <button id="reset" class="btn btn-outline-warning btn-sm">Reset</button>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-12">
-                        <!-- Table -->
-                        <div class="table-responsive">
-                            <table class="table table-borderless display nowrap" id="records" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>الرقم</th>
-                                        <th>الاسم</th>
-                                        <th>الجنس</th>
-                                        <th>مكان الولادة  </th>
-                                        <th>خدمة العلم </th>
-                                        <th>Date</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+<div class="dez-bnr-inr overlay-black-middle" style="background-image:url(images/banner/bnr1.jpg);">
+    <div class="container">
+        <div class="dez-bnr-inr-entry">
+            <h1 class="text-white"> السير الذاتية الحالية</h1>
+		</div>
     </div>
+</div>
+
+       
+<div class="content-block">
+	<div class="container">
+		<br><br>
+		<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">	
+			<div class=" col-lg-4">
+				<div class="sticky-top">
+					<h4 style="color:navy">البحث</h4><br>
+					<div class="">
+						<input type="text" class="form-control typeahead" name="query"  placeholder=" ابحث عن الشهادة المطلوبة...." id="search-resume" >
+					</div><br><br>
+				</div>
+			</div>
+		</div>
+		<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
+									@if(isset($Person))
+									<table id="customers" dir="rtl">
+										<thead>
+											<tr>
+												<th> الاسم</th>
+												<th>الشهادة</th>
+												<th> الجنس</th>
+												<th>خيارات</th>
+											</tr>
+										</thead>
+										<tbody id="serch-result">
+											@if(count($Person) > 0)
+												@foreach($Person as $item)
+													<tr>
+														<td>{{$item->Fname}} {{$item->Father_name}} {{$item->Lname}}</td>
+														<td>
+															@foreach($item->PersonEducation as $edu)
+																{{$edu['degree_name'] }} <br>
+
+															@endforeach
+														</td>
+														<td> {{$item->gender}} </td>
+														<td>  
+															<a href="Person/details/{{ $item->id }}" class="btn btn-primary "> تفاصيل</a>
+														</td>
+													</tr>
+
+												@endforeach
+											@else
+												<tr><td>  لايوجد سير ذاتية لعرضها</td></tr>
+											@endif
+										</tbody>
+									</table>
+									@endif
+									<span>{{$Person->links('layouts.paginationlinks')}}</span>
+							
+							</div>
+						
+					
+						
+
+
+
+
+					
+
+
+					</div>
 				</div>
 			</div>
             <!-- Browse Jobs END -->
@@ -149,114 +167,15 @@ $('body').on( 'keyup', '#search-resume',function(){
 			   $('#serch-result').html('');
 
 			   $.each(res , function(index, value){
-				tableRow ='<tr><td>'+value.Fname+' '+value.Father_name+' '+value.Lname+'</td><td>'+value.degree_name+'</td><td>'+value.gender+'</td><td><a href="Person/details/'+value.id+' class="btn "> تفاصيل</a></td> </tr>';
+				tableRow ='<tr><td>'+value.Fname+' ' +value.Father_name+' ' +value.Lname+'</td><td>'+value.degree_name+'</td><td>'+value.gender+'</td><td><a href="Person/details/'+value.id+' class="btn "> تفاصيل</a></td> </tr>';
 				$('#serch-result').append(tableRow);
 			})
-
-			
-			   
-
-            }
+        }
         });
     });
 
 </script>
 
-<script>
-        $(function() {
-            $("#start_date").datepicker({
-                "dateFormat": "yy-mm-dd"
-            });
-            $("#end_date").datepicker({
-                "dateFormat": "yy-mm-dd"
-            });
-        });
-
-        // Fetch records
-        function fetch(start_date, end_date) {
-            $.ajax({
-                url: "{{ route('students/records') }}",
-                type: "GEt",
-                data: {
-                    start_date: start_date,
-                    end_date: end_date
-                },
-                dataType: "json",
-                success: function(data) {
-                    // Datatables
-                    var i = 1;
-                    $('#records').DataTable({
-                        "data": data.person,
-                        // buttons
-                        "dom": "<'row'<'col-sm-12 col-md-4'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4'f>>" +
-                            "<'row'<'col-sm-12'tr>>" +
-                            "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-                        "buttons": [
-                            'copy', 'csv', 'excel', 'pdf', 'print'
-                        ],
-                        // responsive
-                        "responsive": true,
-                        "columns": [{
-                                "data": "id",
-                                "render": function(data, type, row, meta) {
-                                    return i++;
-                                }
-                            },
-                            {
-                                "data": "Fname"
-                            },
-                            {
-                                "data": "gender",
-                                "render": function(data, type, row, meta) {
-                                    return `${row.gender}`;
-                                }
-                            },
-                            {
-                                "data": "place_Of_b",
-                                "render": function(data, type, row, meta) {
-                                    return `${row.place_Of_b}`;
-                                }
-                            },
-                            {
-                                "data": "military_service"
-                            },
-                            {
-                                "data": "created_at",
-                                "render": function(data, type, row, meta) {
-                                    return moment(row.created_at).format('DD-MM-YYYY');
-                                }
-                            }
-                        ]
-                    });
-                }
-            });
-        }
-
-        fetch();
-
-        // Filter
-        $(document).on("click", "#filter", function(e) {
-            e.preventDefault();
-            var start_date = $("#start_date").val();
-            var end_date = $("#end_date").val();
-            if (start_date == "" || end_date == "") {
-                alert("Both date required");
-            } else {
-                $('#records').DataTable().destroy();
-                fetch(start_date, end_date);
-            }
-        });
-
-        // Reset
-        $(document).on("click", "#reset", function(e) {
-            e.preventDefault();
-            $("#start_date").val(''); // empty value
-            $("#end_date").val('');
-            $('#records').DataTable().destroy();
-            fetch();
-        });
-
-    </script>
 @endsection
 
 

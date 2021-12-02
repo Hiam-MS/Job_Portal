@@ -34,74 +34,59 @@
 	}
 	</style>
 	
-<div class="page-content bg-white">
-    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{ asset('images/banner/bnr1.jpg')}});">
-		<div class="container">
-            <div class="dez-bnr-inr-entry">
-                <h1 class="text-white">لوحة التحكم </h1>
-			</div>
-        </div>
+
+<div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{ asset('images/banner/bnr1.jpg')}});">
+	<div class="container">
+        <div class="dez-bnr-inr-entry">
+            <h1 class="text-white">لوحة التحكم </h1>
+		</div>
     </div>
+</div>
      
-    <div class="content-block">
-        <div class="section-full content-inner-1">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-4">
-						<div class="sticky-top">
-							<div class="row">
-								<div class="col-lg-12 col-md-6">
-									<div class="m-b30">
-										<!-- <img src="images/blog/grid/6.jpg" alt=""> -->
-									</div>
-								</div>
-										
-								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
-									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
-                                    	<h4 class="text-black font-weight-700 p-t10 m-b15"><a href="{{route('PersonDash')}}" > لوحة التحكم<a></h4>
-                                    	<ul>
-											@if(isset(auth()->user()->GetPerson))
-										
-												<li><strong class="font-weight-700 text-black"><a href="{{route('PersonProfile')}}" >  معاينةالسيرة الذاتية</a>  </strong></li>
-												<li><strong class="font-weight-700 text-black"><li><a href="{{route('PersonalInfo.edit')}}"  >تعديل السيرة الذاتية</a></li></strong> </li>
-												<li><strong class="font-weight-700 text-black"><li><a href="{{route('edu')}}" >اضافة/تعديل التعليم و المهارات  </a></li></strong> </li>
-												<li><strong class="font-weight-700 text-black"><li><a href="{{route('ApplyedJob')}}" >سجل التقدمات  </a></li></strong> </li>			
-											@else
-									  
-											<li><strong class="font-weight-700 text-black"> <a href="{{route('resuem.create')}}" >انشاء السيرة الذاتية</a></strong><span class="text-black-light"> </span></li>
-									
-											@endif	
-
-									
-
-
-											<div class="dropdown " >
-												<li><strong class="font-weight-700 text-black"><h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5>  </strong>	</li>
-												<div class="dropdown-content">
-													<ul>
-														<li><a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a> </li>
-													</ul>
-													<ul>
-														<li><a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a> </li>
-													</ul>
-													<ul>
-														<li><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a> </li>
-													</ul>
-													<ul>
-														<li><a href="{{route('profile.delete')}}" >  حذف الحساب </a> </li>
-													</ul>	
-												</div>
-											</div><br> <br> <br>  
-										</ul>
-  									</div>
-								</div>
-
+<div class="section-full content-inner-2">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3">
+				<div class="sticky-top">
+					<div class="row">
+						<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
+							<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
+                                <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="{{route('PersonDash')}}" > لوحة التحكم<a></h4>
+                                    <ul>
+										@if(isset(auth()->user()->GetPerson))
+											<li><strong class="font-weight-700 text-black"><a href="{{route('PersonProfile')}}" >  معاينةالسيرة الذاتية</a>  </strong></li>
+											<li><strong class="font-weight-700 text-black"><li><a href="{{route('PersonalInfo.edit')}}"  >تعديل السيرة الذاتية</a></li></strong> </li>
+											<li><strong class="font-weight-700 text-black"><li><a href="{{route('edu')}}" >اضافة/تعديل التعليم و المهارات  </a></li></strong> </li>
+											<li><strong class="font-weight-700 text-black"><li><a href="{{route('ApplyedJob')}}" >سجل التقدمات  </a></li></strong> </li>			
+										@else
+									  		<li><strong class="font-weight-700 text-black"> <a href="{{route('resuem.create')}}" >انشاء السيرة الذاتية</a></strong><span class="text-black-light"> </span></li>
+										@endif	
+										<div class="dropdown " >
+											<li><strong class="font-weight-700 text-black"><h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5>  </strong>	</li>
+											<div class="dropdown-content">
+												<ul>
+													<li><a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a> </li>
+												</ul>
+												<ul>
+													<li><a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a> </li>
+												</ul>
+												<ul>
+													<li><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a> </li>
+												</ul>
+												<ul>
+													<li><a href="{{route('profile.delete')}}" >  حذف الحساب </a> </li>
+												</ul>	
+											</div>
+										</div><br>  
+									</ul>
+  								</div>
 							</div>
 						</div>
 					</div>
+				</div>
 				
 
-					<div class="col-lg-8">
+					<div class="col-lg-9">
 						<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
 							@if(Session::get('success'))
 								<div class="alert alert-success" style="font-size:20px">
@@ -117,7 +102,7 @@
 							<div class="row">
           						<div class="col-md-12">
 									<div class="card card-default">
-										<div class="card-header">
+										<div class="card-header ">
 											<h3 class="card-title">المعلومات الشخصية</h3>
 										</div>
 
@@ -181,7 +166,8 @@
 																		<div class="form-group">
 																			<label> الجنس </label>
 																			<select name="gender" class="form-control form-control-lg"  value="{{ $person->gender }}">
-																				<option value="انثى"  > انثى </option>
+																			<option value="">{{ $person->gender }}</option>	
+																			<option value="انثى"  > انثى </option>
 																				<option value="ذكر"  > ذكر </option>
 																			</select>
 																			@if($errors->any('gender'))
@@ -192,13 +178,14 @@
 
 																	<div class="col-sm-4">
 																		<div class="form-group">
-																			<label> خدمة العلم <span>*</span></label>
-																			<select name="military_service"  class="form-control form-control-lg"   value="{{ $person->military_service }}">
-																				<option  value="منتهية">منتهية</option>
-																				<option  value="غير منتهية">غير منتهية</option>
-																				<option value="معفى">معفى</option>
-																				<option value="*">اختر اذا كنت أنثى</option>
-																			</select>
+																		<label> خدمة العلم <span>*</span></label>
+                        					<select name="military_service" class="form-control  form-control-lg" data-parsly-trigger="keyup">
+												<option value="">{{ $person->military_service }}</option>
+												<!-- <option value="منتهية" {{(old('military_service') && old('military_service')=='منتهية' )?'selected':''}}>منتهية</option>
+												<option value="غير منتهية" {{(old('military_service') && old('military_service')=='غير منتهية' )?'selected':''}}>غير منتهية</option>
+												<option value="معفى" {{(old('military_service') && old('military_service')=='معفى' )?'selected':''}}>معفى</option>
+												<option value="*" {{(old('military_service') && old('military_service')=='*' )?'selected':''}}>*   </option> -->
+											</select> 
 																			@if($errors->any('military_service'))
 																				<span>{{$errors->first('military_service')}}</span>
 																			@endif
@@ -262,6 +249,8 @@
 																				<option value="انكليزي">انكليزي</option>
 																				<option value="اسباني">اسباني</option>
 																				<option value="ايطالي">ايطالي</option>
+																				<option value="فرنسي">فرنسي</option>
+																				<option value="روسي">روسي</option>
 																			</select>
 																			@if($errors->any('lang'))
 																				<span>{{$errors->first('lang')}}</span>
@@ -270,10 +259,15 @@
 																	</div>
 																</div>
 
-																<button class="btn btn-primary" >حفظ</button>
-																<form action="">
-																	<input type="button" value="التالي" onclick="stepper.next()" class="btn btn-primary">
-																</form>
+									
+																<table>
+																	<tr>
+																		<td><form><input type="button" value="رجوع" onclick="history.back()" class="btn btn-primary"></form></td>
+																		<td><button type="submit" class="btn btn-primary">حفظ</button></td>
+																		<td><form><input type="button" value="التالي" onclick="stepper.next()" class="btn btn-primary"></form></td>
+																		
+																	</tr>
+																</table>
 															</form>
 														</div>
 
@@ -296,10 +290,16 @@
 																	<input type="email" class="form-control form-control-lg" placeholder="info@gmail.com" name="email" value="{{ $person->email }}"   data-parsly-trigger="keyup">
 																	<span style="color:red"> @error('email'){{$message}}@enderror</span>
 																</div>
-																<button type="submit" class="btn btn-primary">ارسال</button>
-																<form action="">
-																	<input type="button" value="السابق" class="btn btn-primary" onclick="stepper.previous()">
-																</form>
+															
+																<table>
+																	<tr>
+																	<tr>
+																		<td><form action=""><input type="button" value="السابق" onclick="stepper.previous()" class="btn btn-primary"></form></td>
+																		<td><button class="btn btn-primary" >حفظ</button></td>
+																	</tr>
+																		
+																	</tr>
+																</table>
 															</form>
 														</div>
 													</div>

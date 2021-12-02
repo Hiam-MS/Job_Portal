@@ -106,7 +106,8 @@ class PersonController extends Controller
            
         // } 
         // $Person=Person::select("*")->orderBy("created_at", "desc")->paginate(10);
-        return view('person.viewResuem');
+        $Person=Person::paginate(50);
+        return view('person.viewResuem',compact('Person'));
     }
 
         //   search resume    //
@@ -323,24 +324,16 @@ class PersonController extends Controller
             'Institution'=> ['required','string'] ,
             'Degree'=> ['required','string'] ,
             'Major'=> ['required','string'] ,
-            'Graduation_year'=> ['required'] ,
-            'Country'=> ['required'] ,
             'person_id'=>['unique:Person'] ,
-          
-
-           
           
         ],[
             'degree_name.required'=>'يجب تعبئة حقل اسم الشهادة',
             'Institution.required'=>'يجب  تعبئة  حقل  المؤسسة التعليمية',
             'Degree.required'=>'يجب  اختيار الدرجة/الشهادة    ',
             'Major.required'=>'يجب    تعبئة حقل اختصاص الشهادة ',
-            'Graduation_year.required'=>'يجب     اختيار تاريخ سنة التخرج  ',
-            'Country.required'=>'يجب   ادخال حقل دولة الدراسة   ',
-           
         ]);
 
-        $arrayTostring =implode(',',$Request->input('still_study'));
+      
         
         $personEdu =new PersonEducation ;
             $personEdu->degree_name = $Request->input("degree_name");
@@ -348,8 +341,11 @@ class PersonController extends Controller
             $personEdu->Degree= $Request->input("Degree");
             $personEdu->Major= $Request->input("Major");
             $personEdu->Graduation_year = $Request->input("Graduation_year");
-            $personEdu->still_study = $arrayTostring;
-            $personEdu->Country = $Request->input("Country");
+            if($Request->has('still_study')){
+                $arrayTostring =implode(',',$Request->input('still_study'));
+                $personEdu->still_study = $arrayTostring;}
+           
+            
          
             $personEdu->person_id=  auth()->user()->GetPerson->id;
             $personEdu->save();
@@ -474,33 +470,42 @@ public function editPersonEdu($cid)
 
 public function updateEdu(Request $Request)
  {
-//     $Request->validate([
-//         //  'degree_name'=> ['required','string'] ,
-//         //     'Institution'=> ['string'] ,
-//         //     'Degree'=> ['string'] ,
-//         //     'Major'=> ['string'] ,
-//         //     'Graduation_year'=> ['Date'] ,
-     
+
+    $person_id=auth()->user()->GetPerson->id;
+    
+    
+
+    
       
-//     ]);
-
+    // $Edu = PersonEducation::where('id' , $cid);
     
-    $cid = $Request->input("cid");
+    // $Edu->degree_name=$Request->degree_name;
+    // $Edu->Institution=$Request->Institution;
+    // $Edu->Degree=$Request->Degree;
+    // $Edu->Major=$Request->Major;
+    // if($Request->has('still_study')){
+    //     $Edu->$still_study=$Request->still_study;
+    //     }
+    //     // if($Request->has('still_study')){
+    //     //     $Edu->$still_study=$Request->still_study;
+    //     // }
+    // $Edu->Graduation_year=$Request->Graduation_year;
 
-    
-       
-    $Edu = PersonEducation::where('id' , $cid)
+    $Edu = PersonEducation::where('id' , $person_id)
        ->update([
         'degree_name' => $Request->input("degree_name"),
         'Institution' => $Request->input("Institution"),
         'Degree' => $Request->input("Degree"),
         'Major' => $Request->input("Major"),
+        'still_study' => $Request->input("still_study"),
         'Graduation_year' => $Request->input("Graduation_year"),
-        'Country' => $Request->input("Country"),
         'person_id' =>  auth()->user()->GetPerson->id,
-
+       
+        
        ]);
+      
        if($Edu){
+        
         return redirect()->route('edu')->with('success','  تمّ التعديل بنجاح');
     }else{
         return back()->withInput()->with('fail','هناك خطأ ما');

@@ -109,11 +109,11 @@ textarea.form-control{
 							{{Session::get('fail')}}
 						</div>
 					@endif
-					<h3><p>{{$company->company_name}}</p> </h3><hr>
+					<h3><p>{{$job->company_name}}</p> </h3><hr>
 							<table>
 								<tr>
 									<td><h5>مكان وموقع العمل</h5></td>
-									<td><h6>{{$company->location}}</h6></td>
+									<td><h6>{{$job->city}}</h6></td>
 								</tr>
 								<tr>
 									<td><h5>المنصب الوظيفي</h5></td>

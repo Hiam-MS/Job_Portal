@@ -1,5 +1,6 @@
-@extends('header')
+@extends ('header')
 @section('content')
+
 <style>
     .form-control{
         font-size:20px;
@@ -10,41 +11,34 @@
 		font-size:18px;
 		color:red;
 	}
-
 </style>
-    <!-- header END -->
-    <!-- Content -->
-    <!-- Content -->
-<div class="page-content bg-white">
-    <!-- inner page banner -->
-    <div class="dez-bnr-inr overlay-black-dark" style="background-image:url({{ asset('images/banner/bnr1.jpg')}});">
-        <div class="container">
-            <div class="dez-bnr-inr-entry">
-                <h1 class="text-white">السيرة الذاتية</h1>
-					<!-- Breadcrumb row -->
-				<div class="breadcrumb-row">
-                    <h6 class="text-white">المعلومات الشخصية</h1>
-				</div>
-					<!-- Breadcrumb row END -->
-            </div>
-        </div>
+<div class="dez-bnr-inr overlay-black-dark" style="background-image:url({{ asset('images/banner/bnr1.jpg')}});">
+    <div class="container">
+         <div class="dez-bnr-inr-entry">
+                <h1 class="text-white">المعلومات الشخصية </h1>
+		</div>
     </div>
-        <!-- inner page banner END -->
-        <!-- contact area -->
+</div>
+<div class="content-block">
 
-    <div  class="content-block">
-		<!-- Submit Resume -->
-		<div class="section-full bg-white submit-resume content-inner-2">
-			<div dir="rtl" lang="ar" class="container" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
-				<span> @error('user_id'){{$message}}@enderror</span>
-					<div class="card card-warning">
-              			<div class="card-header">
-                			<h3 class="card-title" style="color:#200080">المعلومات الأساسية </h3>
-              			</div>
-              				<!-- /.card-header -->
-            			<div class="card-body">
-							<form action="{{url('/resume/store')}}" method="POST" id="resume" >
-								@csrf
+		<div class="container">
+			
+				<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">	
+						@if(Session::get('success'))
+							<div class="alert alert-success" style="font-size:20px">
+								{{Session::get('success')}}
+							</div>
+						@endif
+						@if(Session::get('fail'))
+							<div class="alert alert-danger" style="font-size:20px">
+								{{Session::get('fail')}}
+							</div>
+						@endif
+						
+                			<br><h3 class="card-title">المعلومات الأساسية </h3><br>
+              			
+						<form action="{{url('/resume/store')}}" method="POST" id="resume" >
+							@csrf
                   				<div class="row">
                     				<div class="col-sm-4">
                       					<div class="form-group">
@@ -101,7 +95,7 @@
 												<option value="منتهية" {{(old('military_service') && old('military_service')=='منتهية' )?'selected':''}}>منتهية</option>
 												<option value="غير منتهية" {{(old('military_service') && old('military_service')=='غير منتهية' )?'selected':''}}>غير منتهية</option>
 												<option value="معفى" {{(old('military_service') && old('military_service')=='معفى' )?'selected':''}}>معفى</option>
-												<option value="*" {{(old('military_service') && old('military_service')=='*' )?'selected':''}}>اختر اذا كنت انثى</option>
+												<option value="أنثى" {{(old('military_service') && old('military_service')=='*' )?'selected':''}}>اختر اذا كنت انثى</option>
 											</select> 
 											@if($errors->any('military_service'))
 												<span>{{$errors->first('military_service')}}</span>
@@ -189,14 +183,24 @@
 									
 								});
 								</script>
-								<button type="submit" class="btn btn-primary" >إرسال</button>
+								
+								<table>
+								<tr>
+									<td></td>
+									<td><button type="submit" class="btn btn-primary">ارسال</button></td>
+									
+								</tr>
+							</table>
                 			</form>
-              			</div>
-             		</div>
-				</div>
-            </div>
-    	</div>
+					</div>
+				
+      		</div>
+		</div>
 	</div>
 </div>
 
+<script src="{{asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
+  <script>
+      CKEDITOR.replace( 'article-ckeditor' );
+  </script>
 @endsection

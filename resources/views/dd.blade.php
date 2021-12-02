@@ -21,32 +21,15 @@
 		color: black;
 		font-size:20px;
 		}
-        #records th{
-            font-size:20px;
-            border: 1px solid #ddd;
-            padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: center;
-  background-color: #4682B4;
-  color: white;
-        }
-        #records td{
-            font-size:18px;
-            border: 1px solid #ddd;
-        }
-        #records{
-            font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-        }
-
 </style>
-
-
+    <!-- header END -->
+    <!-- Content -->
+    <div class="page-content bg-white">
+        <!-- inner page banner -->
         <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}});">
             <div class="container">
                 <div class="dez-bnr-inr-entry">
-                    <h1 class="text-white">الفرص المنشورة</h1>
+                    <h1 class="text-white"> السير الذاتية الحالية</h1>
 					<!-- Breadcrumb row -->
 					<!-- <div class="breadcrumb-row">
 						<ul class="list-inline">
@@ -59,10 +42,16 @@
         </div>
         <!-- inner page banner END -->
         <!-- contact area -->
-<div class="content-block" >
-	<div class="section-full  browse-job content-inner-2">
-            <div class="container ">
-       
+        <div class="content-block" >
+			<!-- Browse Jobs -->
+			<div class="section-full bg-white browse-job content-inner-2">
+            <div class="container my-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">السير الذاتية   </h1>
+                <hr>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12 mt-3">
                 <div class="row">
@@ -85,20 +74,23 @@
                         </div>
                     </div> -->
                 </div>
-                
+                <div>
+                    <button id="filter" class="btn btn-outline-info btn-sm">Filter</button>
+                    <button id="reset" class="btn btn-outline-warning btn-sm">Reset</button>
+                </div>
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <!-- Table -->
                         <div class="table-responsive">
-                            <table class="table table-borderless display nowrap" id="records" style="width:100%;">
+                            <table class="table table-borderless display nowrap" id="resuems" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>الرقم</th>
-                                        <th>المنصب الوظيفي</th>
-                                        <th>الشركة</th>
-                                        <th>اختصاص العمل   </th>
-                                        <th>المدينة  </th>
-                                        <th>تاريخ النشر</th>
+                                        <th>الاسم</th>
+                                        <th>الجنس</th>
+                                        <th>مكان الولادة  </th>
+                                        <th>خدمة العلم </th>
+                                       
                                     </tr>
                                 </thead>
                             </table>
@@ -171,19 +163,12 @@ $('body').on( 'keyup', '#search-resume',function(){
 </script>
 
 <script>
-        $(function() {
-            $("#start_date").datepicker({
-                "dateFormat": "yy-mm-dd"
-            });
-            $("#end_date").datepicker({
-                "dateFormat": "yy-mm-dd"
-            });
-        });
+
 
         // Fetch records
         function fetch(start_date, end_date) {
             $.ajax({
-                url: "{{ route('job/records') }}",
+                url: "{{ route('students/records') }}",
                 type: "GEt",
                 data: {
                     start_date: start_date,
@@ -194,7 +179,7 @@ $('body').on( 'keyup', '#search-resume',function(){
                     // Datatables
                     var i = 1;
                     $('#records').DataTable({
-                        "data": data.jobs,
+                        "data": data.person,
                         // buttons
                         "dom": "<'row'<'col-sm-12 col-md-4'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4'f>>" +
                             "<'row'<'col-sm-12'tr>>" +
@@ -211,29 +196,24 @@ $('body').on( 'keyup', '#search-resume',function(){
                                 }
                             },
                             {
-                                "data": "job_title"
+                                "data": "Fname"
                             },
                             {
-                                "data": "company_name",
+                                "data": "gender",
                                 "render": function(data, type, row, meta) {
-                                    return `${row.company_name}`;
+                                    return `${row.gender}`;
                                 }
                             },
                             {
-                                "data": "name",
+                                "data": "place_Of_b",
                                 "render": function(data, type, row, meta) {
-                                    return `${row.name}`;
+                                    return `${row.place_Of_b}`;
                                 }
                             },
                             {
-                                "data": "city"
+                                "data": "military_service"
                             },
-                            {
-                                "data": "created_at",
-                                "render": function(data, type, row, meta) {
-                                    return moment(row.created_at).format('DD-MM-YYYY');
-                                }
-                            }
+                            
                         ]
                     });
                 }

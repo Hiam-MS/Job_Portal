@@ -15,14 +15,14 @@ class CreateJobsTable extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            // $table->string('company_name');
+            $table->string('company_name');
             $table->string('job_title');
             // $table->integer('number_of_employess');
             $table->string('budget')->nullable();
             $table->text('job_requirement')->nullable();
             $table->text('functional_tasks')->nullable();
             // $table->string('country');
-            // $table->string('city');
+            $table->string('city');
             $table->string('gender');
             $table->string('military_service');
             $table->string('degree');

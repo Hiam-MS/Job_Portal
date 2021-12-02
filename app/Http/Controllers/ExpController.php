@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\PersonExperience;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ExpController extends Controller
 {
@@ -13,10 +14,10 @@ class ExpController extends Controller
             'Job_title'=> ['required','string'] ,
             'job_Specialize'=> ['required','string'] ,
             'company_name'=> ['required','string'] ,
-            'company_address'=> ['required','string'] ,
             'Start_date'=> ['required','date'] ,
-            'end_date'=> ['required','date'] ,
+            // 'end_date'=> ['required','date'] ,
             'Responsibilities'=> ['required'] ,
+            'person_id'=>['unique:Person'] ,
           
         ],[
             'Job_title.required'=>'يجب تعبئة حقل  المنصب الوظيفي',
@@ -24,28 +25,33 @@ class ExpController extends Controller
             'company_name.required'=>'يجب   تعبئة حقل اسم الشركة',
             'company_address.required'=>'يجب    تعبئة حقل  عنوان الشركة ',
             'Start_date.required'=>'يجب     اختيار تاريخ بدء العمل   ',
-            'end_date.required'=>'يجب     اختيار تاريخ انتهاء العمل   ',
             'Responsibilities.required'=>'يجب  تعبئة حقل المسؤوليات   ',
         ]);
 
+       
+
         $personExp =new PersonExperience ;
-        $personExp->Job_title = $Request->input("Job_title");
-        $personExp->job_Specialize =  $Request->input("job_Specialize");
-        $personExp->company_name= $Request->input("company_name");
-        $personExp->company_address= $Request->input("company_address");
-        $personExp->Start_date = $Request->input("Start_date");
-        $personExp->end_date = $Request->input("end_date");
-        $personExp->Responsibilities= $Request->input("Responsibilities");
-        $personExp->person_id= auth()->user()->GetPerson->id;
-        if($personExp)
-        {
+            $personExp->Job_title = $Request->input("Job_title");
+            $personExp->job_Specialize =  $Request->input("job_Specialize");
+            $personExp->company_name= $Request->input("company_name");
+            $personExp->Start_date = $Request->input("Start_date");
+            $personExp->end_date = $Request->input("end_date");
+            if($Request->has('still_work')){
+                $arrayTostring =implode(',',$Request->input('still_work'));
+                $personExp->still_work = $arrayTostring;}
+            
+            $personExp->Responsibilities= $Request->input("Responsibilities");
+            $personExp->person_id= auth()->user()->GetPerson->id;
+
+
+        
             $personExp->save();
-            return redirect()->route('edu')->with('success','  تمت الاضافة بنجاح');
-        }
-        else
-        {
-            return back()->withInput()->with('fail','هناك خطأ ما');
-        }
+
+            return redirect()->route('edu');
+       
+            
+            
+      
     }
 
     public function editPersonExperience($cid)

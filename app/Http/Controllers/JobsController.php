@@ -82,9 +82,9 @@ class JobsController extends Controller
 
     public function showJob(Request $request)
     {
-    //     $categories = JobCategory::all();
-    //     $category = $request->input('category');
-
+        $categories = JobCategory::all();
+        $category = $request->input('category');
+        $company = auth()->user()->GetCompany;
       
 
     //     if($request->has('male')){
@@ -99,24 +99,24 @@ class JobsController extends Controller
     //         ->orderBy('created_at', 'desc')
     //         ->paginate(10);
     //    }
-    //    else if($request->has('category')) 
-    //     {
-    //         $jobs = Job::where('category_id', $category)
-    //         ->whereDate('end_job', '>', Carbon::today()->toDateString())
-    //         ->orderBy('created_at', 'desc')
-    //         ->paginate(10);
-    //     }
-    //     else
-    //     {
-    //         $jobs = Job::whereDate('end_job', '>', Carbon::today()->toDateString())->Where('status','=','accepted')->paginate(10);
-    //     }
+      if($request->has('category')) 
+        {
+            $jobs = Job::where('category_id', $category)
+            ->whereDate('end_job', '>', Carbon::today()->toDateString())
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+        }
+        else
+        {
+            $jobs = Job::whereDate('end_job', '>', Carbon::today()->toDateString())->Where('status','=','accepted')->paginate(10);
+        }
          
         
 
      
         
-    //     return view('job.showJobs',compact('jobs','category','categories'));
-    return view('job.showJobs');
+        return view('job.showJobs',compact('jobs','category','categories','company'));
+    // return view('job.showJobs');
        
     }
 
@@ -132,10 +132,27 @@ class JobsController extends Controller
                 if ($end_date->greaterThan($start_date)) {
                     $jobs = Job::whereBetween('created_at', [$start_date, $end_date])->get();
                 } else {
-                    $jobs = Job::latest()->get();
+                    // $jobs = Job::latest()->get();
+                    $jobs = DB::table('jobs')
+       
+        
+        ->join('job_categories', 'jobs.category_id', '=', 'job_categories.id')
+        
+        ->whereDate('end_job', '>', Carbon::today()->toDateString())->Where('status','=','accepted')->get();
                 }
             } else {
-                $jobs = Job::latest()->get();
+
+                
+        $jobs = DB::table('jobs')
+       
+        
+        ->join('job_categories', 'jobs.category_id', '=', 'job_categories.id')
+        
+        ->whereDate('end_job', '>', Carbon::today()->toDateString())->Where('status','=','accepted')->get();
+                   
+        
+       
+                // $jobs = Job::latest()->get();
             }
 
             return response()->json([
@@ -195,7 +212,7 @@ class JobsController extends Controller
         $selected=30;
 
         $job =new Job ;
-        // $job->company_name = $Request->input("company_name");
+        $job->company_name = $Request->input("company_name");
         $job->job_title =  $Request->input("job_title");
         // $job->number_of_employess= $Request->input("number_of_employess");
         $job->budget= $Request->input("budget");
@@ -204,7 +221,7 @@ class JobsController extends Controller
         // $job->end_job=$Request->input("end_job");
         $job->end_job = Carbon::now()->addDays($selected);
         // $job->country= $Request->input("country");
-        // $job->city= $Request->input("city");
+        $job->city= $Request->input("city");
         $job->gender= $Request->input("gender");
         $job->military_service= $Request->input("military_service");
         $job->degree= $Request->input("degree");

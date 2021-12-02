@@ -95,10 +95,10 @@
 												<span><img src="{{asset('images/logo/icon1.png')}}"/></span>
 											</div>
 											<div class="job-post-info">
-												<h4> شركة: {{$item->company_name}}</h4>
+											<h4>{{$item-> company_name}}</h4>
                                                 <h4>{{$item-> job_title}}</h4>
 												<ul>
-													<li> {{$item->city}}</li>
+													
 													<li> {{$item->job_type}}</li>
                                                     <li>    </li>
 

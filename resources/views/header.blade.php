@@ -82,6 +82,9 @@
 		color:black;
 		
 	}
+    .btn-primary{
+        background-color:#000080;
+    }
 </style>
 <style>
 .dropdown {
@@ -187,30 +190,22 @@
 								
 							<li>
 								<a href="{{ route('job') }}">  فرص العمل</i></a>
-								<ul class="sub-menu">
-									
-								</ul>
+								
 							</li>
 							
 							<li>
 								<a href="{{ route('resuems') }}">السير الذاتية الحالية</i></a>
-								<ul class="sub-menu">
-									
-								</ul>
+							
 							</li>
 							
 							
 							<li>
 								<a href="/#aboutUs">  نبذة عن الموقع</i></a>
-								<ul class="sub-menu">
-									
-								</ul>
+								
 							</li>
 							<li>
 								<a href="{{ asset('https://ccdcp.net/')}}">موقع الغرفة      </i></a>
-								<ul class="sub-menu">
-									
-								</ul>
+							
 							
 							
 							</li>

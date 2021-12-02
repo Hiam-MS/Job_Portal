@@ -20,179 +20,160 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+label{
+	font-size:20px;
+
+}
+span{
+	color:red;
+	font-size:20px;
+}
 </style>
-<div class="page-content bg-white">
+
     <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{ asset('images/banner/bnr1.jpg')}});">
 		<div class="container">
             <div class="dez-bnr-inr-entry">
-                <h1 class="text-white">لوحة التحكم </h1>
+                <h1 class="text-white"> تعديل الشهادة </h1>
 			</div>
         </div>
     </div>
      
-    <div class="content-block">
-        <div class="section-full content-inner-1">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-4">
-						<div class="sticky-top">
-							<div class="row">
-								<div class="col-lg-12 col-md-6">
-									<div class="m-b30">
-										<!-- <img src="images/blog/grid/6.jpg" alt=""> -->
-									</div>
+       
+<div class="section-full content-inner-2">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3">
+				<div class="sticky-top">
+					<div class="row">
+						<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
+							<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
+								<h4 class="text-black font-weight-700 p-t10 m-b15">لوحة التحكم</h4>
+								<ul>
+									@if(isset(auth()->user()->GetPerson))
+										<li><strong class="font-weight-700 text-black"><a href="{{route('PersonProfile')}}" >  معاينةالسيرة الذاتية</a>  </strong></li>
+										<li><strong class="font-weight-700 text-black"><li><a href="{{route('PersonalInfo.edit')}}"  >تعديل السيرة الذاتية</a></li></strong> </li>
+										<li><strong class="font-weight-700 text-black"><li><a href="{{route('edu')}}" >اضافة/تعديل التعليم و المهارات  </a></li></strong> </li>
+										<li><strong class="font-weight-700 text-black"><li><a href="{{route('ApplyedJob')}}" >سجل التقدمات  </a></li></strong> </li>			
+									@else
+										<li><strong class="font-weight-700 text-black"> <a href="{{route('resuem.create')}}" >انشاء السيرة الذاتية</a></strong><span class="text-black-light"> </span></li>
+									@endif	
+									<div class="dropdown " >
+										<li><strong class="font-weight-700 text-black"><h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5>  </strong>	</li>
+										<div class="dropdown-content">
+											<ul>
+												<li><a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a> </li>
+											</ul>
+											<ul>
+												<li><a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a> </li>
+											</ul>
+											<ul>
+												<li><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a> </li>
+											</ul>
+											<ul>
+												<li><a href="{{route('profile.delete')}}" >  حذف الحساب </a> </li>
+											</ul>	
+										</div>
+									</div><br> 
 								</div>
-										
-								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
-									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
-                                    	<h4 class="text-black font-weight-700 p-t10 m-b15"><a href="{{route('PersonDash')}}" > لوحة التحكم<a></h4>
-                                    	<ul>
-											@if(isset(auth()->user()->GetPerson))
-										
-												<li><strong class="font-weight-700 text-black"><a href="{{route('PersonProfile')}}" >  معاينةالسيرة الذاتية</a>  </strong></li>
-												<li><strong class="font-weight-700 text-black"><li><a href="{{route('PersonalInfo.edit')}}"  >تعديل السيرة الذاتية</a></li></strong> </li>
-												<li><strong class="font-weight-700 text-black"><li><a href="{{route('edu')}}" >اضافة/تعديل التعليم و المهارات  </a></li></strong> </li>
-												<li><strong class="font-weight-700 text-black"><li><a href="{{route('ApplyedJob')}}" >سجل التقدمات  </a></li></strong> </li>			
-											@else
-									  
-											<li><strong class="font-weight-700 text-black"> <a href="{{route('resuem.create')}}" >انشاء السيرة الذاتية</a></strong><span class="text-black-light"> </span></li>
-									
-											@endif	
-
-									
-
-
-											<div class="dropdown " >
-												<li><strong class="font-weight-700 text-black"><h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5>  </strong>	</li>
-												<div class="dropdown-content">
-													<ul>
-														<li><a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a> </li>
-													</ul>
-													<ul>
-														<li><a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a> </li>
-													</ul>
-													<ul>
-														<li><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a> </li>
-													</ul>
-													<ul>
-														<li><a href="{{route('profile.delete')}}" >  حذف الحساب </a> </li>
-													</ul>	
-												</div>
-											</div><br> <br> <br>  
-										</ul>
-  									</div>
-								</div>
-
 							</div>
 						</div>
 					</div>
+				</div> 
 				
+				<div class="col-lg-9">
+					<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
+						@if(Session::get('success'))
+							<div class="alert alert-success" style="font-size:20px">
+								{{Session::get('success')}}
+							</div>
+						@endif
+						@if(Session::get('fail'))
+							<div class="alert alert-danger" style="font-size:20px">
+								{{Session::get('fail')}}
+							</div>
+						@endif 
 
-					<div class="col-lg-8">
-						<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
-							@if(Session::get('success'))
-								<div class="alert alert-success" style="font-size:20px">
-									{{Session::get('success')}}
+						<form action="{{route('PersonUpdateEdu')}}" method="POST" id="resume" >
+                    		@csrf
+                   			@method('PUT')
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label> اسم الشهادة<span>*</span></label>
+										<input type="text" class="form-control form-control-lg" value="{{ $Edu->degree_name }}" name="degree_name" >
+										<span style="color:red"> @error('degree_name'){{$message}}@enderror</span>
+									</div>
 								</div>
-							@endif
-							@if(Session::get('fail'))
-								<div class="alert alert-danger" style="font-size:20px">
-									{{Session::get('success')}}
+
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label> المؤسسة التعليمية<span>*</span></label>
+										<input type="text" class="form-control form-control-lg" value="{{ $Edu->Institution }}" name="Institution" >
+										<span style="color:red"> @error('Institution'){{$message}}@enderror</span>
+									</div>
 								</div>
-							@endif     
-							<form action="{{route('PersonUpdateEdu')}}" method="POST" id="resume" >
-                    @csrf
-                    @method('PUT')
-                    
-                    
-                    
+							</div>
 
-						<div class="form-group">
-							<label> اسم الشهادة</label>
-							<input type="text" class="form-control" value="{{ $Edu->degree_name }}" name="degree_name" style="width:60%" >
-							<span style="color:red"> @error('degree_name'){{$message}}@enderror</span>
-						</div>
-						<div class="form-group">
-							<label> المؤسسة التعليمية</label>
-							<input type="text" class="form-control" value="{{ $Edu->Institution }}" name="Institution" style="width:60%">
-							<span style="color:red"> @error('Institution'){{$message}}@enderror</span>
-						</div>
-                        <div class="form-group">
-							<label>الاختصاص </label>
-							<input type="text" class="form-control" value="{{ $Edu->Major }}" name="Major" style="width:60%">
-							<span style="color:red"> @error('Major'){{$message}}@enderror</span>
-						</div>
-						<div class="form-group" >
-							<label>    الدرجة/ الشهادة              </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-							<select name="Degree" class="form-control" style="width:60%" value="{{ $Edu->Degree }}">
-                            <option  >يرجى الاختيار</option>
-								
-                                <option value="f+"  > أقل من ثانوية عامة </option>
-                                <option value="f"  > ثانوية عامة </option>
-                                <option value="a"  > معهد متوسط </option>
-                                <option value="B"  > بكالوريوس / اجازة </option>
-                                <option value="m"  > دبلوم دراسات عليا </option>
-                                <option value="M"  > ماجستير </option>
-								<option value="D"  > دكتوراه </option>
-                                
-								
-							</select>
-                            <spam> &nbsp                                     </spam>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            <label> &nbsp                    </label>
-                            
-                            
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label>الاختصاص <span>*</span></label>
+										<input type="text" class="form-control form-control-lg" value="{{ $Edu->Major }}" name="Major" >
+										<span style="color:red"> @error('Major'){{$message}}@enderror</span>
+									</div>
+								</div>
 
-                            
-						</div>
-                       
-						<div class="form-group">
-							<label>سنة التخرج </label>
-							<input type="date" class="form-control"  value="{{ $Edu->Graduation_year }}"  name="Graduation_year" style="width:60%">
-							<span style="color:red"> @error('Graduation_year'){{$message}}@enderror</span>
-						</div>
-						<div class="form-group">
-							<label>دولة الدراسة </label>
-							<input type="text" class="form-control" value="{{ $Edu->Country }}"  name="Country" style="width:60%">
-							<span style="color:red"> @error('Country'){{$message}}@enderror</span>
-							
-                            <input type="hidden" class="form-control" placeholder=""  name="cid" value="{{$Edu->id}}">
-							
-						</div>
-                        
+								<div class="col-sm-6">
+									<div class="form-group" >
+										<label>   الدرجة/ الشهادة<span>*</span></label>
+										<select name="Degree" class="form-control form-control-lg"  >
+											<option value="أقل من ثانوية عامة" {{(old('Degree') && old('Degree')=='أقل من ثانوية عامة' )?'selected':''}} selected>أقل من ثانوية عامة</option>
+											<option value="ثانوية عامة " {{(old('Degree') && old('Degree')=='ثانوية عامة' )?'selected':''}}>ثانوية عامة</option>
+											<option value="معهد متوسط" {{(old('Degree') && old('Degree')=='معهد متوسط' )?'selected':''}}>معهد متوسط</option>
+											<option value="بكالوريوس / اجازة" {{(old('Degree') && old('Degree')=='بكالوريوس / اجازة' )?'selected':''}}>بكالوريوس / اجازة</option>
+											<option value="دبلوم دراسات عليا" {{(old('Degree') && old('Degree')=='دبلوم دراسات عليا' )?'selected':''}}>دبلوم دراسات عليا</option>
+											<option value="ماجستير" {{(old('Degree') && old('Degree')=='ماجستير' )?'selected':''}}>ماجستير</option>
+											<option value="دكتوراه" {{(old('Degree') && old('Degree')=='دكتوراه' )?'selected':''}}>دكتوراه</option>
+										</select>
+										@if($errors->any('Degree'))
+											<span style="color:red">{{$errors->first('Degree')}}</span>
+										@endif
+                       				</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-sm-3">
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										@if(($Edu->still_study) == 'still study')
+											<label for=""> مازلت قيد الدراسة</label>
+											<input type="checkbox" class="form-control form-control-lg" placeholder="" name="still_study" value="{{old('still_study')}} " data-parsly-trigger="keyup" checked>
+										@else
+											<label>     سنة التخرج </label><br>
+											<input type="date" class="form-control form-control-lg" placeholder="" name="Graduation_year" value="{{ $Edu->Graduation_year }}"  data-parsly-trigger="keyup" >
+										@endif
+									</div>
+								</div>
+							</div>
 						
-						
-						<button type="submit" class="btn btn-primary" > تعديل</button>
-						<form>
-									
- <input type="button" value="رجوع" onclick="history.back()" class="btn btn-primary">
-</form>
-                                </form>
-					</form>
-  
-
-						</div>
+							<table>
+								<tr>
+									<td></td>
+									<td></td>
+									<td><form><input type="button" value="رجوع" onclick="history.back()" class="btn btn-primary"></form></td>
+									<td><button type="submit" class="btn btn-primary" > تعديل</button></td>
+								</tr>
+							</table>
+						</form>
 					</div>
-
-
-
-
-
-
-
-
-
-						
 				</div>
 			</div>
 		</div>
-			<br><br>
-    </div>
+	</div><br><br>
 </div>
+
 
 
  

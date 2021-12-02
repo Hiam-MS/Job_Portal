@@ -3,10 +3,12 @@
 @section('content')
 
 <style>
-    
+    span{
+		font-size:18px;
+		color:red;
+	}
 </style>
-    <!-- Content -->
-    <div class="page-content bg-white">
+
         <!-- inner page banner -->
         <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}});">
             <div class="container">
@@ -41,7 +43,7 @@
                    
 
                         <div class="form-group row">
-                            <label for="mobile" class="col-sm-4 col-form-label text-md-right"> رقم الموبايل</label>
+                            <label for="mobile" class="col-sm-4 col-form-label text-md-right"> رقم الموبايل<span>*</span></label>
 
                             <div class="col-md-6">
                                 <input id="mobile" type="tel"  pattern="[0-9]{10}" class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}" name="mobile" placeholder="ادخل رقم هاتفك" value="{{ old('mobile') }}" required autofocus>
@@ -55,7 +57,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">كلمة السر</i></label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">كلمة السر<span>*</span></i></label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
@@ -99,8 +101,5 @@
             </div>
         </div>
     </div>
-</div>
 
-</body>
-</html>
 @endsection

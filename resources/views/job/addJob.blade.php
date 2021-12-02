@@ -106,6 +106,27 @@
 
 						<form  action="{{route('storeJob')}}" method="POST" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right; padding-right:40px">
 						@csrf
+						<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label> الشركة<span>*</span></label>
+										<input type="text" name="company_name" value="{{$company->company_name}} " class="form-control" placeholder=""  " style="width:100% " readonly>
+										@if($errors->any('job_title'))
+											<span>{{$errors->first('job_title')}}</span>
+										@endif
+									</div>
+								</div>
+
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label> مكان العمل <span>*</span></label>
+										<input type="text" name="city" value="{{$company->location}} " class="form-control" placeholder=""  " style="width:100% " readonly>
+										@if($errors->any('category'))
+										<span >{{$errors->first('category')}}</span>
+										@endif
+									</div>
+								</div>
+							</div>
 							<div class="row">
 								<div class="col-sm-6">
 									<div class="form-group">
@@ -234,7 +255,7 @@
 							</div>
 							<table>
 								<tr>
-								<td><form><input type="button" value="رجوع" onclick="history.back()" class="btn btn-primary"></form></td>
+									<td><form><input type="button" value="رجوع" onclick="history.back()" class="btn btn-primary"></form></td>
 									<td><button type="submit" class="btn btn-primary">نشر</button></td>
 									
 								</tr>

@@ -49,10 +49,12 @@ class AdminController extends Controller
 
     public function pendingJob()
     {
-        
+       
         $job = DB::table('jobs')->where('status', 'pending')->get();
         return view('admin.pending_job',compact('job'));
-         
+
+     
+        return view('admin.pending_job',compact('job'));
 
 
     }
