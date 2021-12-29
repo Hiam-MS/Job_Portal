@@ -38,7 +38,10 @@ class Person extends Model
 
 
 
-
+    public function City()
+    {
+        return $this->belongsTo(City::class);
+    }
 
 
     //Person has one or more  Skill

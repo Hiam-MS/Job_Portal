@@ -125,11 +125,11 @@
                                                     @else 
                                                         <td class="text-center"><i class="ti-user" ></i></td>
                                                     @endif 
-                                                    <td class="text-nowrap"><h5 class="h5"> <a class="text-info" href="">{{ $applicant->Fname }} {{ $applicant->Father_name }} {{ $applicant->Lname }}</a></h5>
+                                                    <td class="text-nowrap"><h5 class="h5"> <a class="text-info" href="{{route('personDetail',$applicant->id)}}">{{ $applicant->Fname }} {{ $applicant->Father_name }} {{ $applicant->Lname }}</a></h5>
                                                         <p>{{ $applicant->job_title }}</p>
                                                         <p class="small"> 
                                                             <span class="mr-5"><i class="fa fa-envelope"></i> تم التقدم بتاريخ: {{ $applicant->created_at }}</span>                                            
-                                                            <span><i class="fa fa-map-marker-alt"></i> {{ $applicant->country }}</span>
+                                                            <span><i class="fa fa-map-marker-alt"></i> {{ $applicant->city }}</span>
                                                         </p>
                                                     </td>
 										

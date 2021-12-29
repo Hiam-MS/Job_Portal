@@ -24,7 +24,7 @@
     <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}});">
         <div class="container">
             <div class="dez-bnr-inr-entry">
-                <h1 class="text-white">لوحة التحكم </h1>
+                <h1 class="text-white"> الفرص المنشورة </h1>
 					
             </div>
         </div>
@@ -116,7 +116,7 @@
 							</div>
 						@endif	
 						<form method="post" action="#" id="printJS-form">
-                        <h5 class="widget-title font-weight-700 text-uppercase" style="color:blue"> الفرص المنشورة  </h5>
+                       
 							<br>
 
 						

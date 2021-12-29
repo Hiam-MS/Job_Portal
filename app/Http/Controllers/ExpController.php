@@ -74,9 +74,9 @@ class ExpController extends Controller
             'Job_title' => $Request->input("Job_title"),
             'job_Specialize' => $Request->input("job_Specialize"),
             'company_name' => $Request->input("company_name"),
-            'company_address' => $Request->input("company_address"),
             'Start_date' => $Request->input("Start_date"),
             'end_date' => $Request->input("end_date"),
+            'still_work'=> $Request->input("still_work"),
             'Responsibilities' => $Request->input("Responsibilities"),
             'person_id' =>  auth()->user()->GetPerson->id,
         ]);

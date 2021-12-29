@@ -38,7 +38,7 @@
     <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{ asset('images/banner/bnr1.jpg')}});">
 		<div class="container">
             <div class="dez-bnr-inr-entry">
-                <h1 class="text-white">لوحة التحكم </h1>
+                <h1 class="text-white">عرض و تعديل المعلومات الشخصية</h1>
 			</div>
         </div>
     </div>
@@ -47,18 +47,18 @@
         <div class="section-full content-inner-1">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-4">
+				<div class="col-lg-4">
 						<div class="sticky-top">
 							<div class="row">
-								<div class="col-lg-12 col-md-6">
+								<div class="col-lg-8 col-md-6">
 									<div class="m-b30">
-										<!-- <img src="images/blog/grid/6.jpg" alt=""> -->
+										<img src="{{asset('images/blog/grid/6.jpg')}}" alt="">
 									</div>
 								</div>
 										
-								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
+								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" >
 									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
-									<h4 class="text-black font-weight-700 p-t10 m-b15"><a href="{{route('CompanyDash')}}" > لوحة التحكم<a></h4>
+										<h4 class="text-black font-weight-700 p-t10 m-b15"><a href="{{route('CompanyDash')}}" > لوحة التحكم<a></h4>
 										<ul>
 											@if(isset(auth()->user()->GetCompany))
 												<li>
@@ -110,7 +110,7 @@
 									 			</div>
 											</div>
 										</ul>
-  									</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -133,9 +133,7 @@
 							<div class="row">
           						<div class="col-md-12">
 									<div class="card card-default">
-										<div class="card-header">
-											<h3 class="card-title">المعلومات الشخصية</h3>
-										</div>
+									
 
 										<div class="card-body p-0">
 											<div class="bs-stepper">
@@ -170,12 +168,20 @@
 																		<td>{{$company->company_name}}</td>
 																	</tr>
 																	<tr>
-																		<td>  اختصاص الشركة </td>
-																		<td>{{$company->company_specialist}}</td>
+																	
+																		
+																		<td>طبيعة النشاط (اختصاص الشركة)</td>
+																		
+																	
+																		<td>
+																			{{$company->activity_name}}
+																		</td>
+																		
+																			
 																	</tr>
 																	<tr>
 																		<td>  مكان وموقع الشركة  </td>
-																		<td>{{$company->location}}</td>
+																		<td>{{$company->city_name}}</td>
 																	</tr>
 																	<tr>
 																		<td>    الرقم الثابت  </td>
@@ -226,34 +232,47 @@
 																	<div class="col-sm-6">
 																		<div class="form-group">
 																			<label>  العنوان  <span style="color:red">*</span></label>
-																			<input type="text" class="form-control form-control-lg" placeholder="" name="location" value="{{$company->location}}"  data-parsly-trigger="keyup">
+																			<select class="select2bs4 form-control form-control-lg" name="city" id="city" style="width:100%;">
+																				@foreach ($cities as $city)
+																					<option  value="{{$city->city_id}}" {{$city->city_id =="$company->city_id" ? 'selected' : ''}}>{{$city->city_name}}</option>
+																				@endforeach
+																			</select>
+																			
 																			@if($errors->any('location'))
 																				<span>{{$errors->first('location')}}</span>
 																			@endif
 																		</div>
 																	</div>
 																</div>
-
-																<div class="form-group">
-																	<label>  اختصاص الشركة  <span style="color:red">*</span></label>
-																	<textarea name="company_specialist" id="company_specialist" class="form-control  form-control-lg"  >{{$company->company_specialist}}</textarea>
-																	@if($errors->any('company_specialist'))
-																		<span >{{$errors->first('company_specialist')}}</span>
-																	@endif
-																</div>
-
 																<div class="row">
-																	<div class="col-sm-4">
+																	<div class="col-sm-6">
 																		<div class="form-group">
-																		<label>عنوان البريد الالكتروني<span>*</span></label>
+																			<label>  اختصاص الشركة  <span style="color:red">*</span></label>
+																			<select class="select2bs4 form-control form-control-lg" name="activity" id="activity" style="width:100%">
+																				@foreach ($activities as $activity)
+																					<option value="{{$activity->activity_id}}" {{$activity->activity_id =="$company->activity_id" ? 'selected' : ''}}>{{$activity->activity_name}}</option>
+																				@endforeach
+																			</select>
+																		</div>
+																	</div>
+																	<div class="col-sm-6">
+																		<div class="form-group">
+																			<label>عنوان البريد الالكتروني<span>*</span></label>
 																			<input type="text" class="form-control form-control-lg" placeholder="" name="email"  value="{{$company->email}}" data-parsly-trigger="keyup">
 																			@if($errors->any('email'))
-																				<span>{{$errors->first('email')}}</span>
+																					<span>{{$errors->first('email')}}</span>
 																			@endif
 																		</div>
 																	</div>
+																</div>
 
-																	<div class="col-sm-4">
+														
+																	
+														
+
+																<div class="row">
+																	
+																	<div class="col-sm-6">
 																		<div class="form-group">
 																			<label>  رقم الفاكس <span style="color:red">*</span></label>
 																			<input type="text" class="form-control  form-control-lg" placeholder=" 963-11-2222222+" name="fax_phone" value="{{$company->fax_phone}}"  data-parsly-trigger="keyup">
@@ -264,7 +283,7 @@
 																	</div>
 
 
-																	<div class="col-sm-4">
+																	<div class="col-sm-6">
 																		<div class="form-group">
 																		<label>  الهاتف الأرضي<span style="color:red">*</span></label>
 																			<input type="text" class="form-control  form-control-lg" placeholder="963-11-2222222+" name="fixed_phone" value="{{$company->fixed_phone}}" data-parsly-trigger="keyup">
@@ -275,6 +294,9 @@
 																	</div>
 																</div>
 																<table>
+																<tr>
+																<p style="font-size:18px;; color:red"> ملاحظة:عند تعديل أي حقل يجب ضغط على زر الحفظ  قبل الانتقال للتالي</p> 
+																</tr>
 																	<tr>
 																		<td><form action=""><input type="button" value="السابق" onclick="stepper.previous()" class="btn btn-primary"></form></td>
 																		<td><button class="btn btn-primary" >حفظ</button></td>
@@ -304,6 +326,9 @@
 																	<span style="color:red"> @error('email'){{$message}}@enderror</span>
 																</div>
 																<table>
+																<tr>
+																	<p style="font-size:18px; color:red">ملاحظة :عند الانتهاء من تعبئة الحقول يجب الضغط على زر الحفظ</p>
+																</tr>
 																	<tr>
 																		<td><form action=""><input type="button" value="السابق" onclick="stepper.previous()" class="btn btn-primary"></form></td>
 																		<td><button class="btn btn-primary" >حفظ</button></td>
@@ -336,5 +361,23 @@
 </script>
 
  
-    
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+   
+  })
+ 
+
+
+
+
+
+</script>
  @endsection

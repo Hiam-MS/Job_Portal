@@ -9,11 +9,19 @@ class City extends Model
 {
     use HasFactory;
     
-    protected $primaryKey ='id';
+    protected $primaryKey ='city_id';
 
     //City belongs to a country
-    public function country()
+    public function Governorate()
     {
-        return $this->belongsTo(Country::class);
+        return $this->belongsTo(Governorate::class);
+    }
+    public function People()
+    {
+        return $this->hasMany(People::class);
+    }
+    public function Company()
+    {
+        return $this->hasMany(Company::class);
     }
 }

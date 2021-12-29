@@ -43,7 +43,7 @@
         </div>
     </div>
     <div class="content-block">
-		<div class="section-full bg-white submit-resume content-inner-2">
+		<div class="section-full  submit-resume content-inner-2">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-4">
@@ -164,24 +164,33 @@
 										<div class="col-sm-6">
 											<div class="form-group">
 												<label>  عنوان [موقع الشركة]  <span style="color:red">*</span></label>
-												<input type="text" class="form-control form-control-lg" placeholder="" name="location" value="{{old('location')}} "  data-parsly-trigger="keyup">
+									
+												<!-- <input type="text" class="form-control form-control-lg" placeholder="" name="location" value="{{old('location')}} "  data-parsly-trigger="keyup"> -->
+												<select class=" form-control form-control-lg select2bs4" name="city" id="city" >
+													@foreach ($cities as $city)
+														<option value="{{$city->city_id}}" {{(old('city') && old('city')==$city->city_id )?'selected':''}} >{{$city->city_name}}</option>
+													@endforeach
+												</select>
+												
 												@if($errors->any('location'))
 													<span>{{$errors->first('location')}}</span>
 												@endif
 											</div>
 										</div>
 									</div>
-
-									<div class="form-group">
-										<label>  اختصاص الشركة  <span style="color:red">*</span></label>
-										<textarea name="company_specialist" id="company_specialist" class="form-control  form-control-lg"  >{{old('company_specialist')}}</textarea>
-										@if($errors->any('company_specialist'))
-											<span >{{$errors->first('company_specialist')}}</span>
-										@endif
-									</div>
-										
 									<div class="row">
-										<div class="col-sm-4">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>  اختصاص الشركة  <span style="color:red">*</span></label>
+												<select class="form-control form-control-lg select2bs4" name="activity" id="activity">
+													@foreach ($activities as $activity)
+														<option value="{{$activity->activity_id}}" {{(old('activity') && old('activity')==$activity->activity_id )?'selected':''}} >{{$activity->activity_name}}</option>
+													@endforeach
+												</select>
+
+											</div>
+										</div>
+										<div class="col-sm-6">
 											<div class="form-group">
 											<label>عنوان البريد الالكتروني<span>*</span></label>
 												<input type="text" class="form-control form-control-lg" placeholder="" name="email"  value="{{old('email')}}" data-parsly-trigger="keyup">
@@ -190,8 +199,14 @@
 												@endif
 											</div>
 										</div>
+									</div>
+									
+									
+										
+									<div class="row">
+										
 
-										<div class="col-sm-4">
+										<div class="col-sm-6">
 											<div class="form-group">
 												<label>  رقم الفاكس <span style="color:red">*</span></label>
 												<input type="text" class="form-control  form-control-lg" placeholder=" " name="fax_phone" value="{{old('fax_phone')}} "  data-parsly-trigger="keyup">
@@ -202,7 +217,7 @@
 										</div>
 
 
-										<div class="col-sm-4">
+										<div class="col-sm-6">
 											<div class="form-group">
 											<label>  الهاتف الأرضي<span style="color:red">*</span></label>
 												<input type="text" class="form-control  form-control-lg" placeholder="" name="fixed_phone" value="{{old('fixed_phone')}} "  data-parsly-trigger="keyup">
@@ -223,8 +238,25 @@
 		</div>
 	</div>
 
+	<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
 
-    <!-- Content END-->
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+   
+  })
+ 
 
 
-	@endsection
+
+
+
+</script>
+
+
+@endsection

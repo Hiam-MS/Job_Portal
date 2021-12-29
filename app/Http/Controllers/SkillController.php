@@ -69,13 +69,7 @@ class SkillController extends Controller
     public function DeletePersonSkill($id)
     {
         $res=PersonSkill::find($id)->delete();
-        if($res)
-        {
-            return redirect()->back()->with('success', ' تم الحذف بنجاح');
-        }
-        else
-        {
-            return redirect()->back()->with('fail', ' لم يتم الحذف يرجى المحاولة مرة ثانية');
-        }
+        return redirect()->back();
+       
     }   
 }

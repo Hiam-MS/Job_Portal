@@ -69,45 +69,9 @@
 <div class="section-full content-inner-2">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-3">
-				<div class="sticky-top">
-					<div class="row">
-						<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
-							<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
-								<h4 class="text-black font-weight-700 p-t10 m-b15">لوحة التحكم</h4>
-								<ul>
-									@if(isset(auth()->user()->GetPerson))
-										<li><strong class="font-weight-700 text-black"><a href="{{route('PersonProfile')}}" >  معاينةالسيرة الذاتية</a>  </strong></li>
-										<li><strong class="font-weight-700 text-black"><li><a href="{{route('PersonalInfo.edit')}}"  >تعديل السيرة الذاتية</a></li></strong> </li>
-										<li><strong class="font-weight-700 text-black"><li><a href="{{route('edu')}}" >اضافة/تعديل التعليم و المهارات  </a></li></strong> </li>
-										<li><strong class="font-weight-700 text-black"><li><a href="{{route('ApplyedJob')}}" >سجل التقدمات  </a></li></strong> </li>			
-									@else
-										<li><strong class="font-weight-700 text-black"> <a href="{{route('resuem.create')}}" >انشاء السيرة الذاتية</a></strong><span class="text-black-light"> </span></li>
-									@endif	
-									<div class="dropdown " >
-										<li><strong class="font-weight-700 text-black"><h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5>  </strong>	</li>
-										<div class="dropdown-content">
-											<ul>
-												<li><a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a> </li>
-											</ul>
-											<ul>
-												<li><a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a> </li>
-											</ul>
-											<ul>
-												<li><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a> </li>
-											</ul>
-											<ul>
-												<li><a href="{{route('profile.delete')}}" >  حذف الحساب </a> </li>
-											</ul>	
-										</div>
-									</div><br> 
-								</div>
-							</div>
-						</div>
-					</div>
-				</div> 
+			 
 
-				<div class="col-lg-9" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
+				<div class="col-lg-10" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;">
 					<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">				
 				
 						<h3 class="font-weight-600">  المعلومات الاساسية  </h5><br>
@@ -131,26 +95,35 @@
 								</tr>
 								<tr>
 									<th> الوضع  العائلي  </th>
-									@if($Person->gender == 'أنثى' )
-										@if( $Person->marital_status == 'عازب')
-											<td>عزباء</td>
-										@elseif($Person->marital_status == 'متزوج')
-											<td>متزوجة</td>
-										@elseif($Person->marital_status == 'مطلق')
-											<td>مطلقة</td>
-										@else($Person->marital_status == 'أرمل')
-											<td>أرملة</td>
-										@endif
+									@if($Person->marital_status == NULL)
+										<td>---</td>
 									@else
-										<td>{{$Person->marital_status}}</td>
+										@if($Person->gender == 'أنثى')
+											@if( $Person->marital_status == 'عازب')
+												<td>عزباء</td>
+											@elseif($Person->marital_status == 'متزوج')
+												<td>متزوجة</td>
+											@elseif($Person->marital_status == 'مطلق')
+												<td>مطلقة</td>
+											@else($Person->marital_status == 'أرمل')
+												<td>أرملة</td>
+											@endif
+										@else
+											<td>{{$Person->marital_status}}</td>
+										@endif
 									@endif
+								
 								</tr>
 								<tr>
 									<th> خدمة العلم </th>
-									@if($Person->gender == 'أنثى' )
-										<td>--</td>
+									@if($Person->military_service == NULL )
+										<td>---</td>
 									@else
-										<td> {{$Person->military_service}} </td>
+										@if($Person->gender == 'أنثى' )
+											<td>---</td>
+										@else
+											<td> {{$Person->military_service}} </td>
+										@endif
 									@endif
 								</tr>
 								<tr>

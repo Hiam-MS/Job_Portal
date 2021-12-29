@@ -1,143 +1,82 @@
 @extends('header')
 @section('content')
-<style>
-    .form-control{
-        font-size:20px;
-        font-family: Arial, Helvetica, sans-serif;
 
-    }
+
+
+<style>
+	#customers {
+
+  border-collapse: collapse;
+  
+}
+
+#customers td, #customers th {
+  border: 2px solid #ddd;
+  padding: 6px;
+  font-size:18px;
+  text-align: center;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #000080;
+  color: white;
+  
+}
+
+/* #resuems tr:hover {background-color: #ddd;}
+#resuems th {
+		padding:5px;
+		text-align: center;
+		background-color:#200080;
+		color: white;
+		}
+
+		#resuems tr {
+		padding:5px;
+		text-align: center;
+		
+		color: black;
+		font-size:20px;
+		} */
+
+
 </style>
-<div class="page-content bg-white">
-        <!-- inner page banner -->
-        <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}});">
-            <div class="container">
-                <div class="dez-bnr-inr-entry">
-                    <h1 class="text-white"> فرص العمل</h1>
-					<!-- Breadcrumb row -->
-					<div class="breadcrumb-row">
-						<ul class="list-inline">
-							
-						</ul>
-					</div>
-					<!-- Breadcrumb row END -->
-                </div>
-            </div>
-        </div>
-        <!-- inner page banner END -->
-        <!-- contact area -->
-        <div class="content-block">
-			<!-- Browse Jobs -->
-			<div class="section-full bg-white browse-job content-inner-2">
-				<div class="container">
-					<div class="row">
-						<div class="col-xl-9 col-lg-8">
-							<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
-							@if(Session::get('success'))
-						<div class="alert alert-success" style="font-size:20px">
-							{{Session::get('success')}}
-						</div>
-					@endif
-					@if(Session::get('fail'))
-						<div class="alert alert-danger" style="font-size:20px">
-							{{Session::get('success')}}
-						</div>
-					@endif	
-							<h5 class="widget-title font-weight-700 text-uppercase" style="color:blue">الفرص الحالية  </h5>
-								
-								@csrf
-								<ul class="post-job-bx">
-								@if(isset($jobs))
-									@if(count($jobs) > 0)
-										@foreach($jobs as $job)
-											<li>
-											
-												<a href="{{asset('/job/details',$job->id)}}">
-													<div class="d-flex m-b30">
-														<div class="job-post-company">
-															<span><img src="{{asset('images/logo/icon1.png')}}"/></span>
-														</div>
-														<div class="job-post-info">
-															<h4>  {{$job->job_title}}</h4>
-															<ul >
-																<li style="color:blue"><i class="fa fa-map-marker"></i> {{$job->city}} </li>
-																<li style="color:blue"><i class="fa fa-bookmark-o"></i>{{$job->job_type}} </li>
-																<li style="color:blue"><i class="fa fa-clock-o"></i> {{$job->created_at->diffForHumans()}}</li>
-															</ul>
-														</div>
-													</div>
-													<div class="d-flex">
-														<div class="job-time mr-auto">
-															<!-- <span>Full Time</span> -->
-														</div>
-														<div class="salary-bx">
-															<!-- <span>$1200 - $ 2500</span> -->
-														</div>
-													</div>
-													
-												</a>
-											</li>
-											
-										@endforeach
-									@else
-										<li style="font-size:20px">  لايوجد فرص عمل  لعرضها</li>
-									@endif
-								@endif
-								<span>{{$jobs->links('layouts.paginationlinks')}}</span>
-								
-								</ul>
-								
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-4">
-							<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
-								<div class="sticky-top">
-									<div class="clearfix m-b30">
-										<h5 class="widget-title font-weight-700 text-uppercase" style="color:blue"> البحث</h5>
-										<div class="">
-											<input type="text" class="form-control" placeholder="Search">
-										</div>
-									</div>
-									<!-- <div class="clearfix m-b10">
-										<h5 class="widget-title font-weight-700 m-t0 text-uppercase">Location</h5>
-										<input type="text" class="form-control m-b30" placeholder="Location">
-										<div class="input-group m-b20">
-											<input type="text" class="form-control" placeholder="120">
-											<select>
-												<option>Km</option>
-												<option>miles</option>
-											</select>
-										</div>
-									</div> -->
-									<!-- <div class="clearfix m-b30">
-										<h5 class="widget-title font-weight-700 text-uppercase" style="color:blue"> طبيعة العمل</h5>
-										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-6 col-6">
-												<div class="product-brand">
-													<div class="custom-control custom-checkbox">
-														<input type="checkbox" class="custom-control-input" id="check1" name="example1">
-														<label class="custom-control-label" for="check1">Freelance</label>
-													</div>
-													
-													
-													
-													
-												</div>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-6">
-												<div class="product-brand">
-													
-													
-													
-													
-													
-												</div>
-											</div>
-										</div>
-									</div> -->
-									<div class="clearfix">
-										<form action="{{route('job')}}" method="GET">
+
+<div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}});">
+    <div class="container">
+        <div class="dez-bnr-inr-entry">
+            <h1 class="text-white"> فرص العمل المنشورة</h1>
+		</div>
+    </div>
+</div>
+
+       
+<div class="content-block">
+	
+	<div class="container">
+		<br><br>
+	
+		
+	<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" >
+			<!-- <div class="row">
+			<div class="form-group">
+				<div class="col-md-4">
+					<label for="">بحث حسب:</label>
+					<input type="text" name="" id="" class="form-group">
+				</div>
+			</div>
+			<div class="form-group">
+		<div class="col-md-5">
+		<form action="{{route('job')}}" method="GET">
 											<h5 class="widget-title font-weight-700 text-uppercase" style="color:blue">اختصاص العمل</h5>
-											<select name ="category" id="category" class="form-control form-control-lg" >
+											<select name ="category" id="category" class="select2" >
 												<option selected disabled> اختر اختصاص العمل </option>
 												@foreach($categories as $category)
 												
@@ -146,29 +85,177 @@
 											</select> <br>
 											<button type="submit" class="btn btn-primary">بحث</button>
 										</form>
-									</div>
+		</div>
+										
+							
+
+			</div>
+			<script>
+    $(function () {
+      $('.select2').select2()
+    });
+</script>
+			<div class="form-group">
+				<div class="col-md-4">
+					<label for="">بحث عن المنطقة:</label>
+					<input type="text" name="" id="" class="form-group">
+				</div>
+			</div>
+		</div> -->
+
+		<script>
+    $(function () {
+      $('.select2').select2()
+	  $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+    });
+</script> 
+
+<table>
+<form action="{{route('job')}}" method="GET">
+	<tr>
+		<td>اختصاص العمل المطلوب</td>
+		<td>
+			<select name ="category" id="category" class="select2bs4 form-control form-control-lg" >
+			<option value=""></option>
+				@foreach($categories as $category)
+					<option value="{{$category->cat_id}}">{{$category->name}}</option>
+				@endforeach
+			</select>
+		</td>
+		<td>مكان العمل</td>
+		<td>
+			<select name ="city" id="city" class="select2bs4 form-control form-control-lg" >
+				<option value=""></option>
+				@foreach($cities as $city)
+					<option value="{{$city->city_name}}">{{$city->city_name}}</option>
+				@endforeach
+			</select>
+		</td>
+		<td>طبيعة العمل</td>
+		<td>
+			<select name="job_type"  class="select2bs4 form-control form-control-lg"  >
+				<option  selected disabled>يرجى الاختيار</option>
+				<option value=" دوام كامل " >دوام كامل  </option>
+				<option value=" دوام جزئي " >دوام جزئي  </option>
+				<option value=" تدريب " >تدريب  </option>	
+				<option value=" دوام ليلي " >دوام ليلي  </option>
+			</select>
+		</td>
+		<td>
+			<button type="submit" class="btn btn-primary">بحث</button>
+		</td>
+	</tr>
+</form>
+</table>   
+		<!-- <table>
+			<tr>
+				<th>حسب المسمى الوظيفي</th>
+
+				<th>حسب اختصاص العمل </th>
+				<th>حسب مكان العمل </th>
+			</tr>
+			<tr>
+			<form action="{{route('job')}}" method="GET">
+				<td><select name ="title" id="title" class="select2" >
+												<option selected disabled> اختر  المسمى الوظيفي </option>
+												@foreach($jobs as $job)
+												
+													<option value="{{$job->job_title}}">{{$job->job_title}}</option>
+												@endforeach
+											</select>
+</td>
+				<td>
+				
+				<select name ="category" id="category" class="select2" >
+												<option selected disabled> اختر اختصاص العمل </option>
+												@foreach($categories as $category)
+												
+													<option value="{{$category->cat_id}}">{{$category->name}}</option>
+												@endforeach
+											</select>
+
+				</td>
+				<td><select name ="city" id="city" class="select2" >
+												<option selected disabled> اختر اختصاص العمل </option>
+												@foreach($cities as $city)
+												
+													<option value="{{$city->city_id}}">{{$city->city_name}}</option>
+												@endforeach
+											</select></td>
+				<td><button type="submit"	class="btn btn-primary">بحث</button></td>
+				
+			</tr>
+</form>
+		</table> -->
+									<table class="" id="customers" style="width:100%">
+										<thead>
+											<tr>
+												<th> الرقم</th>
+												<th>المسمى الوظيفي</th>
+												<th>اختصاص العمل</th>
+												<th> الشركة</th>
+												<th>طبيعة العمل</th>
+												<th>خيارات</th>
+											</tr>
+										</thead>
+										<tbody id="serch-result">
+											@if(count($jobs) > 0)
+												@foreach($jobs as $item)
+													<tr>
+														<td>{{$item->id}} </td>
+												
+														<td> {{$item->job_title}} </td>
+														
+														<td>{{$item->name}}</td>	
+														<td>{{$item->company_name}}</td>
+														<td>{{$item->job_type}}</td>
+														<td>  	
+												
+															<a href="{{route('JobDetails',$item->id)}}" class="btn btn-primary"> <i class="ti-eye" style="size:25px"></i></a>
+														</td>
+													</tr>
+
+												@endforeach
+											@else
+												<tr><td>  لايوجد فرص عمل سابقة لعرضها</td></tr>
+											@endif
+										</tbody>
+									</table>
 									
-									
-								</div>
+									<span>{{$jobs->links('layouts.paginationlinks')}}</span>
+							
 							</div>
-						</div>
+						
+					
+							</div>	</div>
+
+
+
+
+					
+
+
 					</div>
 				</div>
 			</div>
             <!-- Browse Jobs END -->
 		</div>
     </div>
+    <!-- Content END-->
+	<!-- Footer -->
 
 
 
-	<script>
+<!-- <script>
 	$(document).ready(function(){
 		$('#search').on('keyup',function(){
-			var category=$(this).val();
+			var query=$(this).val();
 			$.ajax({
 				url:"search",
 				type:"GET",
-				data:{'search':category},
+				data:{'search':query},
 				success:function(data){
 					$('#search_list').html(data);
 				}
@@ -176,6 +263,39 @@
 		});
 		//end of ajax call
 	});
+</script> -->
+
+
+
+<script type="text/javascript">
+
+$('body').on( 'keyup', '#search-resume',function(){
+       
+        var serchQuest = $(this).val();
+
+        $.ajax({
+			method: 'POST',
+            url: '{{ route("search.Resume")}}',
+            dataType: 'json',
+			data: {
+				'_token' : '{{ csrf_token() }}',
+				serchQuest: serchQuest,
+
+			},
+            success: function(res){            
+               var tableRow = '';
+			   $('#serch-result').html('');
+
+			   $.each(res , function(inde, value){
+				tableRow ='<tr><td>'+value.Fname+' '+value.Father_name+' '+value.Lname+'</td><td>'+value.degree_name+'</td><td>'+value.gender+'</td><td><a href="Person/details/'+value.id+' class="btn "> تفاصيل</a></td> </tr>';
+				$('#serch-result').append(tableRow);
+			})
+        }
+        });
+    });
+
 </script>
+
 @endsection
+
 

@@ -118,9 +118,10 @@ p{
 									   <div class="col-sm-6">
 										   <div class="form-group">
 												<h4 style="color:navy">اختصاص العمل المطلوب</h4><br>
+												<p>اختصاص العمل المطلوب هو الاختصاص الذي ترغبه في العمل</p>
 												<select class="js-example-basic-multiple" id="category" name="category[]" multiple="multiple" style="width: 80%" >
 													@foreach($jobCat as $category)
-														<option value="{{$category->id}}" {{(old('category') && in_array($category->id,old('category')) )?'selected':''}} >{{$category->name}}</option>
+														<option value="{{$category->cat_id}}" {{(old('category') && in_array($category->cat_id,old('category')) )?'selected':''}}>{{$category->name}}</option>
 													@endforeach
 												</select>
 												<button type="submit" class="btn btn-primary" > أضف</button>	
@@ -137,7 +138,7 @@ p{
 														@foreach($person_cat as $cat)
 															<tr>
 																<td >{{$cat->name}} </td>
-																<td > <a href="{{url('/resume/deleteCat',$cat->id)}}" style="color:red">  حذف</a></td>
+																<td > <a href="{{url('/resume/deleteCat',$cat->cat_id)}}" style="color:red">  حذف</a></td>
 															</tr>
 														@endforeach
 													</table>
@@ -165,7 +166,7 @@ p{
 								<div class="dez-divider divider-2px bg-primary-dark mb-4 mt-0"></div>
 							</form>
 
-							<h3> الشهادات التعليمية  </h3><br>
+							<h3> الشهادات التعليمية  </h3> <span>ملاحظة  اذا لم يكن لديك شهادة تعليمة قم بتعبئة حقل اسم الشهادة ب (لايوجد)</span><br>
 							<form action="{{route('PersonStoreEdu')}}" method="POST" id="resume" >
 								@csrf
 								<div class="row">
@@ -226,22 +227,32 @@ p{
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label >     مازلت  قيد الدراسة</label>
-											<input type="checkbox" class="form-control form-control-lg" placeholder="" name="still_study[]" value="still study " data-parsly-trigger="keyup">
+											<input type="checkbox" id="stillstudy" onclick="Enableddl(this)" class="form-control form-control-lg" placeholder="" name="still_study[]" value="still study " data-parsly-trigger="keyup">
 											
 										</div>
 									</div>
-									<div class="col-sm-6">
-										<div class="form-group">
+									<div class="col-sm-6" >
+										<div class="form-group" >
 											<label>     سنة التخرج <span></span></label>
-											<input type="date" class="form-control form-control-lg" placeholder="" name="Graduation_year" value="{{old('Graduation_year')}} " data-parsly-trigger="keyup">
+											<input type="date"  id="DDL" class="form-control form-control-lg" placeholder="" name="Graduation_year" value="{{old('Graduation_year')}} " data-parsly-trigger="keyup" enabled="enabled">
 											@if($errors->any('Graduation_year'))
 												<span>{{$errors->first('Graduation_year')}}</span>
 											@endif
+										
 										</div>
 									</div>
 
 									
-									
+									<script>
+										function Enableddl(stillstudy) {
+											var ddl=document.getElementById("DDL");
+											ddl.disabled=stillstudy.checked ? true : false;
+											if(!ddl.disabled)
+											{
+												ddl.foucs();
+											}
+										}
+									</script>
 									
 								</div><br>
 								<table>
@@ -270,7 +281,7 @@ p{
 												<td >{{$edu['Graduation_year']}} </td>
 											@endif
 											
-											<td ><a href="{{url('/resume/editEdu',$edu['id'])}}" >تعديل</a> / <a href="{{url('/resume/deleteEdu',$edu['id'])}}" style="color:red">  حذف</a></td>
+											<td ><a href="{{url('/resume/editEdu',$edu['edu_id'])}}" >تعديل</a> / <a href="{{url('/resume/deleteEdu',$edu['edu_id'])}}" style="color:red">  حذف</a></td>
 										</tr>
 									@endforeach
 								</table>
@@ -415,10 +426,12 @@ p{
 											@endif
 										</div>
 									</div>
-									<div class="col-sm-3">
+									<div class="col-sm-4">
 										<div class="form-group">
 											<label>     مازلت على رأس عملي</label>
-											<input type="checkbox" class="form-control form-control-lg" placeholder="" name="still_work[]" value="still work " data-parsly-trigger="keyup">
+											<input type="checkbox" id="stillwork" onclick="Enablewo(this)" class="form-control form-control-lg" placeholder="" name="still_work[]" value="still work " data-parsly-trigger="keyup">
+
+											
 											@if($errors->any('still_work'))
 												<span>{{$errors->first('still_work')}}</span>
 											@endif
@@ -427,12 +440,26 @@ p{
 									<div class="col-sm-4">
 										<div class="form-group">
 											<label>    تاريخ الانتهاء <span></span></label>
-											<input type="date" class="form-control form-control-lg" placeholder="" name="end_date" value="{{old('end_date')}} " data-parsly-trigger="keyup">
+											<input type="date"  id ="FIN" class="form-control form-control-lg" placeholder="" name="end_date" value="{{old('end_date')}} " data-parsly-trigger="keyup" enabled="enabled">
 											@if($errors->any('end_date'))
 												<span>{{$errors->first('end_date')}}</span>
 											@endif
 										</div>
 									</div>
+								
+									
+
+									
+									<script>
+										function Enablewo(stillwork) {
+											var ddl=document.getElementById("FIN");
+											ddl.disabled=stillwork.checked ? true : false;
+											if(!ddl.disabled)
+											{
+												ddl.foucs();
+											}
+										}
+									</script>
 								</div>
 								<table>
 									<tr>

@@ -75,20 +75,20 @@
 					<div class="col-lg-9">
 						<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">
 							@if(Session::get('success'))
-								<div class="alert alert-success" style="font-size:20px">
+								<div class="alert alert-success" style="font-size:25px">
 									{{Session::get('success')}}
 								</div>
 							@endif
 							@if(Session::get('fail'))
-								<div class="alert alert-danger" style="font-size:20px">
+								<div class="alert alert-danger" style="font-size:25px">
 									{{Session::get('fail')}}
 								</div>
 							@endif  
 							<div>
 								<p>
 									 <h4>أهلاً و سهلاً  :  {{auth()->user()->name}} &nbsp&nbsp</h4> 
-									<li><a href="{{route('edu')}}"  style="color:#000080">انقر هنا: لإضافة تفاصيل سيرتك الذاتية  </a></li>
-									<li><a href="{{route('PersonalInfo.edit')}}"  style="color:#000080">انقر هنا: لتعديل  سيرتك الذاتية  </a></li>
+									<li><a href="{{route('edu')}}"  style="color:#000080;font-size:18px">انقر هنا: لإضافة تفاصيل سيرتك الذاتية  </a></li>
+									<li><a href="{{route('PersonalInfo.edit')}}"  style="color:#000080;font-size:18px">انقر هنا: لتعديل  سيرتك الذاتية  </a></li>
 					 			</p>
                             </div> 
 							
@@ -97,7 +97,7 @@
 									<div class="form-group">
 										<div class="dez-divider divider-2px bg-primary-dark mb-4 mt-0"></div>
 										<div class="icon-bx-wraper p-a30 center bg-gray radius-sm">
-											<div class="icon-md text-primary m-b20"> <a href="#" class="icon-cell text-primary"><i class="ti-desktop"></i></a> </div>
+											<div class="icon-md text-primary m-b20"><i class="ti-desktop"></i></div>
 											<div class="icon-content">
 												<h5 class="dlab-tilte text-uppercase">بناء سيرة ذاتية احترافية   </h5>
 												<p>  سيرتك الذاتية هي أول و أهم ما تحتاجه لبناء حياتك المهنية الناجحة، حيث إن كل الشركات و أصحاب الأعمال يحتاجون للاطلاع عليها قبل اتخاذ قرار التوظيف. علماً أن سيرتك الذاتية التي تبنيها على موقعنا هي الأكثر إقناعاً لهم بتوظيفك أنت</p>
@@ -110,7 +110,7 @@
 									<div class="form-group">
 										<div class="dez-divider divider-2px bg-primary-dark mb-4 mt-0"></div>
 										<div class="icon-bx-wraper p-a30 center bg-gray radius-sm">
-											<div class="icon-md text-primary m-b20"> <a href="#" class="icon-cell text-primary"><i class="ti-desktop"></i></a> </div>
+											<div class="icon-md text-primary m-b20"> <i class="ti-desktop"></i></div>
 												<div class="icon-content">
 													<h5 class="dlab-tilte text-uppercase"> بحث والتقدم لفرص  العمل   </h5>
 													<p>  سيرتك الذاتية تمكنك من التقدم مباشرة للشواغر بما يناسب امكانياتك وخبراتك. قم دوماً بالاطلاع على موقعنا وفرص العمل المعروضة عليه للحصول على آخر المستجدات </p>

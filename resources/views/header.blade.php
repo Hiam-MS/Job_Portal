@@ -19,7 +19,8 @@
 	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png')}}" />
 	<link href="{{ asset('https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css')}}" rel="stylesheet">
 	<link href="{{ asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css')}}" rel="stylesheet" />
-	
+    <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
 	<link href="{{ asset('https://printjs-4de6.kxcdn.com/print.min.css')}}" type="text/css" rel="stylesheet" />
 	
 	<!-- Fonts -->
@@ -193,14 +194,18 @@
 								
 							</li>
 							
+                            @if(auth::user())
+							    @if(auth()->user()->role == 'c' || auth()->user()->role == 'a')
+                                    <li>
+                                        <a href="{{ route('resuems') }}">السير الذاتية الحالية</i></a>
+                                    
+                                    </li>
+                                @endif
+                            @endif
+							
+							
 							<li>
-								<a href="{{ route('resuems') }}">السير الذاتية الحالية</i></a>
-							
-							</li>
-							
-							
-							<li>
-								<a href="/#aboutUs">  نبذة عن الموقع</i></a>
+								<a href="#">  نبذة عن الموقع</i></a>
 								
 							</li>
 							<li>
@@ -340,7 +345,8 @@
     </script>
     <!-- Momentjs -->
     <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js')}}"></script>
-
+<!-- Select2 -->
+<script src="{{asset('/plugins/select2/js/select2.full.min.js')}}"></script>
 @yield('javascript')
 
 

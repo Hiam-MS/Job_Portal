@@ -20,8 +20,12 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+span{
+	font-size:18px;
+	color:red;
+}
 </style>
-<div class="page-content bg-white">
+
     <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{ asset('images/banner/bnr1.jpg')}});">
 		<div class="container">
             <div class="dez-bnr-inr-entry">
@@ -97,7 +101,7 @@
 							@endif
 							@if(Session::get('fail'))
 								<div class="alert alert-danger" style="font-size:20px">
-									{{Session::get('success')}}
+									{{Session::get('fail')}}
 								</div>
 							@endif     
 						
@@ -112,9 +116,101 @@
                     @method('PUT')
                     
                     
-                    
+                    <div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label> المنصب الوظيفي <span>*</span></label>
+											<input type="text" class="form-control form-control-lg" placeholder="" name="Job_title"  value="{{ $Exp->Job_title }}" data-parsly-trigger="keyup">
+											@if($errors->any('Job_title'))
+												<span>{{$errors->first('Job_title')}}</span>
+											@endif
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label> اختصاص عملك<span>*</span></label>
+											<input type="text" class="form-control form-control-lg" placeholder="" name="job_Specialize" value="{{ $Exp->job_Specialize }}" data-parsly-trigger="keyup">
+											@if($errors->any('job_Specialize'))
+												<span>{{$errors->first('job_Specialize')}}</span>
+											@endif
+										</div>
+									</div>
+								</div>
+						
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label>   اسم الشركة <span>*</span></label>
+											<input type="text" class="form-control form-control-lg" placeholder="" name="company_name" value="{{ $Exp->company_name }}" data-parsly-trigger="keyup">
+											@if($errors->any('company_name'))
+												<span>{{$errors->first('company_name')}}</span>
+											@endif
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label>  المهام الوظيفية <span>*</span>  </label>
+											<textarea name="Responsibilities" id="Responsibilities" class="form-control" >{{ $Exp->Responsibilities }}</textarea>
+											@if($errors->any('Responsibilities'))
+												<span >{{$errors->first('Responsibilities')}}</span>
+											@endif
+										</div>
+									</div>
+								</div>
 
-						<div class="form-group">
+								<div class="row">
+									<div class="col-sm-4">
+										<div class="form-group">
+											<label>    تاريخ الالتحاق <span>*</span></label>
+											<input type="date" class="form-control form-control-lg" placeholder="" name="Start_date" value="{{ $Exp->Start_date }}"  data-parsly-trigger="keyup">
+											@if($errors->any('Start_date'))
+												<span>{{$errors->first('Start_date')}}</span>
+											@endif
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="form-group">
+											<label>     مازلت على رأس عملي</label>
+											<input type="checkbox" id="stillwork" onclick="Enablewo(this)" class="form-control form-control-lg" placeholder="" name="still_work[]" value="{{ $Exp->still_work }}" data-parsly-trigger="keyup">
+
+											
+											@if($errors->any('still_work'))
+												<span>{{$errors->first('still_work')}}</span>
+											@endif
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="form-group">
+											<label>    تاريخ الانتهاء <span></span></label>
+											<input type="date"  id ="FIN" class="form-control form-control-lg" placeholder="" name="end_date" value="{{ $Exp->end_date }}"data-parsly-trigger="keyup" enabled="enabled">
+											@if($errors->any('end_date'))
+												<span>{{$errors->first('end_date')}}</span>
+											@endif
+										</div>
+									</div>
+								
+									
+
+									
+									<script>
+										function Enablewo(stillwork) {
+											var ddl=document.getElementById("FIN");
+											ddl.disabled=stillwork.checked ? true : false;
+											if(!ddl.disabled)
+											{
+												ddl.foucs();
+											}
+										}
+									</script>
+								</div>
+								<table>
+									<tr>
+										<td><input type="button" value="رجوع" onclick="history.back()" class="btn btn-primary"></td>
+										<td><button type="submit" class="btn btn-primary">تعديل</button></td>
+									</tr>
+								</table>
+
+						<!-- <div class="form-group">
 							<label>   المنصب الوظيفي</label>
 							<input type="text" class="form-control" value="{{ $Exp->Job_title }}" name="Job_title" style="width:70%"  >
 							<span style="color:red"> @error('Job_title'){{$message}}@enderror</span>
@@ -160,7 +256,7 @@
 						<button type="submit" class="btn btn-primary" > تعديل</button>
   <form>
                         <input type="button" value="الغاء" onclick="history.back()" class="btn btn-primary">
-                        </form>
+                        </form> -->
 	
 					</form>
 						</div>

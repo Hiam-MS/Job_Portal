@@ -127,14 +127,15 @@ span{
 									<div class="form-group" >
 										<label>   الدرجة/ الشهادة<span>*</span></label>
 										<select name="Degree" class="form-control form-control-lg"  >
-											<option value="أقل من ثانوية عامة" {{(old('Degree') && old('Degree')=='أقل من ثانوية عامة' )?'selected':''}} selected>أقل من ثانوية عامة</option>
-											<option value="ثانوية عامة " {{(old('Degree') && old('Degree')=='ثانوية عامة' )?'selected':''}}>ثانوية عامة</option>
-											<option value="معهد متوسط" {{(old('Degree') && old('Degree')=='معهد متوسط' )?'selected':''}}>معهد متوسط</option>
-											<option value="بكالوريوس / اجازة" {{(old('Degree') && old('Degree')=='بكالوريوس / اجازة' )?'selected':''}}>بكالوريوس / اجازة</option>
-											<option value="دبلوم دراسات عليا" {{(old('Degree') && old('Degree')=='دبلوم دراسات عليا' )?'selected':''}}>دبلوم دراسات عليا</option>
-											<option value="ماجستير" {{(old('Degree') && old('Degree')=='ماجستير' )?'selected':''}}>ماجستير</option>
-											<option value="دكتوراه" {{(old('Degree') && old('Degree')=='دكتوراه' )?'selected':''}}>دكتوراه</option>
+											<option value="أقل من ثانوية عامة"{{$Edu->Degree =="أقل من ثانوية عامة" ? 'selected' : ''}}>أقل من ثانوية عامة</option>
+											<option value="ثانوية عامة " {{$Edu->Degree =="ثانوية عامة" ? 'selected' : ''}}>ثانوية عامة</option>
+											<option value="معهد متوسط" {{$Edu->Degree =="معهد متوسط" ? 'selected' : ''}}>معهد متوسط</option>
+											<option value="بكالوريوس / اجازة" {{$Edu->Degree =="بكالوريوس / اجازة" ? 'selected' : ''}}>بكالوريوس / اجازة</option>
+											<option value="دبلوم دراسات عليا" {{$Edu->Degree =="دبلوم دراسات عليا" ? 'selected' : ''}}>دبلوم دراسات عليا</option>
+											<option value="ماجستير" {{$Edu->Degree =="ماجستير" ? 'selected' : ''}}>ماجستير</option>
+											<option value="دكتوراه" {{$Edu->Degree =="دكتوراه" ? 'selected' : ''}}>دكتوراه</option>
 										</select>
+
 										@if($errors->any('Degree'))
 											<span style="color:red">{{$errors->first('Degree')}}</span>
 										@endif
@@ -143,6 +144,42 @@ span{
 							</div>
 
 							<div class="row">
+							
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label >     مازلت  قيد الدراسة</label>
+											<input type="checkbox" id="stillstudy"  class="form-control form-control-lg" placeholder="" name="still_study[]" value="{{$Edu->still_study }}" data-parsly-trigger="keyup">
+											
+										</div>
+									</div>
+								
+
+									<div class="col-sm-6" >
+										<div class="form-group" >
+											<label>     سنة التخرج <span></span></label>
+											<input type="date" class="form-control form-control-lg"  value="{{ $Edu->Graduation_year }}"  name="Graduation_year">
+											@if($errors->any('Graduation_year'))
+												<span>{{$errors->first('Graduation_year')}}</span>
+											@endif
+											
+										</div>
+									</div>
+								
+
+									
+									<script>
+										function Enableddl(stillstudy) {
+											var ddl=document.getElementById("DDL");
+											ddl.disabled=stillstudy.checked ? true : false;
+											if(!ddl.disabled)
+											{
+												ddl.foucs();
+											}
+										}
+									</script>
+									
+								</div><br>
+							<!-- <div class="row">
 								<div class="col-sm-3">
 								</div>
 								<div class="col-sm-6">
@@ -156,7 +193,7 @@ span{
 										@endif
 									</div>
 								</div>
-							</div>
+							</div> -->
 						
 							<table>
 								<tr>

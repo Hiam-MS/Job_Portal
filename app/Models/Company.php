@@ -15,5 +15,13 @@ class Company extends Model
     {
         return $this->hasMany(Job::class);
     }
+    function companyActivity() 
+    {
+    	return $this->belongsTo(CompanyActivity::class);
+    }
+    public function City()
+    {
+        return $this->belongsTo(City::class);
+    }
     
 }

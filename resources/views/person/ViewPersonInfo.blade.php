@@ -131,31 +131,41 @@
 								</tr>
 								<tr>
 									<th> الوضع  العائلي  </th>
-									@if($Person->gender == 'أنثى' )
-										@if( $Person->marital_status == 'عازب')
-											<td>عزباء</td>
-										@elseif($Person->marital_status == 'متزوج')
-											<td>متزوجة</td>
-										@elseif($Person->marital_status == 'مطلق')
-											<td>مطلقة</td>
-										@else($Person->marital_status == 'أرمل')
-											<td>أرملة</td>
-										@endif
+									@if($Person->marital_status == NULL)
+										<td>---</td>
 									@else
-										<td>{{$Person->marital_status}}</td>
+										@if($Person->gender == 'أنثى')
+											@if( $Person->marital_status == 'عازب')
+												<td>عزباء</td>
+											@elseif($Person->marital_status == 'متزوج')
+												<td>متزوجة</td>
+											@elseif($Person->marital_status == 'مطلق')
+												<td>مطلقة</td>
+											@else($Person->marital_status == 'أرمل')
+												<td>أرملة</td>
+											@endif
+										@else
+											<td>{{$Person->marital_status}}</td>
+										@endif
 									@endif
+								
 								</tr>
 								<tr>
 									<th> خدمة العلم </th>
-									@if($Person->gender == 'أنثى' )
-										<td>--</td>
+									@if($Person->military_service == NULL )
+										<td>---</td>
 									@else
-										<td> {{$Person->military_service}} </td>
+										@if($Person->gender == 'أنثى' )
+											<td>---</td>
+										@else
+											<td> {{$Person->military_service}} </td>
+										@endif
 									@endif
 								</tr>
 								<tr>
 									<th>  السكن الحالي   </th>
-									<td> {{$Person->Current_address}} </td>
+									<td>{{$Person->current_address}}</td>
+									
 								</tr>
 								<tr>
 									<th> الهاتف الارضي  </th>

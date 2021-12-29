@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\Company;
+use App\Models\CompanyActivity;
+use App\Models\City;
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\CompanyAddInformation;
 
 
@@ -18,12 +21,15 @@ class CompanyController extends Controller
     
     public function createProfile()
     {
-        return view('company.addProfile');
+        $activities=CompanyActivity::all();
+        $cities =City::all();
+        return view('company.addProfile',compact('activities','cities'));
     }
 
     public function showCompany()
     {
         $company=Company::all();
+        
 
         return view ('company.showCompany',compact('company'));
     }
@@ -36,8 +42,9 @@ class CompanyController extends Controller
     public function editCompanyProfile()
     {
         if(isset(auth()->user()->GetCompany)){
-        $company=auth()->user()->GetCompany;
-        return view('company.editProfile',compact('company'));
+            $company=auth()->user()->GetCompany;
+            $cities =City::all();
+            return view('company.editProfile',compact('company'));
         }
         else
         return redirect()->route('company.profile');
@@ -46,17 +53,16 @@ class CompanyController extends Controller
     public function updatCompanyProfile(Request $Request)
     {
         $company = auth()->user()->GetCompany;
-        
+        $activity=$Request->input('activity');
+        $city=$Request->input('city');
         $company->company_name=$Request->company_name;
         
         $company->email=$Request->email;
         $company->fixed_phone=$Request->fixed_phone;
         $company->fax_phone=$Request->fax_phone;
-        $company->location=$Request->location;
-        $company->company_specialist=$Request->company_specialist;
-        // $company->commercial_record=$Request->commercial_record;
-        // $company->industria_record=$Request->industria_record;
-        // $company->website=$Request->website;
+        // $company->location=$Request->location;
+        $company->city_id=$Request->city;
+        $company->activity_id=$Request->activity;
         $company->user_id= auth()->user()->id;
         
 
@@ -97,16 +103,14 @@ class CompanyController extends Controller
 
     public function storeProfile(Request $Request)
     {
-
-
-
+        
         $Request->validate([
             'company_name'=>'required|',
             'email'=>'required|email',
             'fixed_phone'=>'required|numeric',
             'fax_phone'=>'required|numeric',
-            'location'=>'required',
-            'company_specialist'=>'required',
+            // 'location'=>'required',
+            
             // 'commercial_record'=>'required|alpha_num|',
             // 'industria_record'=>'required|alpha_num',
             // 'website'=>'required|starts_with:www',
@@ -117,8 +121,8 @@ class CompanyController extends Controller
             'email.required'=>'بجب ادخال البريد الالكتروني للشركة  ',
             'fixed_phone.required'=>'بجب ادخال رقم الهاتف الأرضي ',
             'fax_phone.required'=>'بجب ادخال رقم  الفاكس ',
-            'location.required'=>'بجب ادخال عنوان الشركة   ',
-            'company_specialist.required'=>'بجب ادخال اختصاص عمل الشركة  ',
+            // 'location.required'=>'بجب ادخال عنوان الشركة   ',
+            
             // 'commercial_record.required'=>'بجب ادخال  السجل التجاري ',
             // 'industria_record.required'=>'بجب ادخال  السجل الصناعي  ',
             // 'website.required'=>'بجب ادخال موقع الانترنت للشركة  ',
@@ -132,8 +136,10 @@ class CompanyController extends Controller
             $company->email= $Request->input("email");
             $company->fixed_phone= $Request->input("fixed_phone");
             $company->fax_phone = $Request->input("fax_phone");
-            $company->location= $Request->input("location");
-            $company->company_specialist= $Request->input("company_specialist");
+            $company->city_id = $Request->input('city');
+            $company->activity_id = $Request->input('activity');
+              // $company->location= $Request->input("location");
+            // $company->company_specialist= $Request->input("company_specialist");
             // $company->company_name_en =  $Request->input("company_name_en");
             // $company->commercial_record= $Request->input("commercial_record");
             // $company->industria_record= $Request->input("industria_record");
@@ -222,12 +228,24 @@ class CompanyController extends Controller
     }
 
 
-    public function addCompanyInfo()
+    public function addCompanyInfo(Request $request)
     {
         if(isset(auth()->user()->GetCompany))
         {
-            $company = auth()->user()->GetCompany;
-            return view('company.additionalInfo',compact('company'));
+            // $company = auth()->user()->GetCompany;
+            $company_id = auth()->user()->GetCompany->id;
+            $activities=CompanyActivity::all();
+            $cities=City::all();
+            $activity=$request->input('activity');
+            $city=$request->input('city');
+            $company = DB::table('companies')
+
+            ->join('company_activities' , 'companies.activity_id' , '=', 'company_activities.activity_id')
+            ->join('cities' , 'companies.city_id' , '=', 'cities.city_id')->first();
+        
+
+
+            return view('company.additionalInfo',compact('company','activities','cities'));
         }
         else
         {

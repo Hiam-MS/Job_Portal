@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PersonEducation extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'edu_id';
 
 
     //Education belongs to one Person

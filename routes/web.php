@@ -33,6 +33,8 @@ Route::get('/', function () {
 });
 
 
+
+
 // Route::get('/','CompanyController@index')->name('index');
 Route::get('/JobCategory','JobCategoryController@showJobJobCategory');
 Auth::routes();
@@ -42,10 +44,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //     list jobs and job details
 Route::get('/job/details/{id}','JobsController@JobDetails')->name('JobDetails');
 Route::get('/job/showJobs','JobsController@showJob')->name('job');
-Route::get('job/records','JobsController@records')->name('job/records');;
-Route::get('view_resuem','PersonController@viewResuemForm')->name('resuems');
-// Route::get('view_resuems','PersonController@index2')->name('resuemss');
-Route::get('students/records','PersonController@records')->name('students/records');;
+Route::get('job/records','JobsController@records')->name('job/records');
+// Route::get('view_resuem','PersonController@viewResuemForm')->name('resuems');
+
+Route::get('students/records','PersonController@records')->name('students/records');
 
 
 Route::group(['middleware' => 'prevent-back-history'],function(){
@@ -98,9 +100,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['middleware' => 'role:company|admin'], function(){
     // view all resume and resume details
 
-    Route::get('Person/details/{id}','PersonController@ResuemDetails'); 
-
+    Route::get('Person/details/{id}','PersonController@ResuemDetails')->name('personDetail'); 
+    Route::get('view_resuem','PersonController@viewResuemForm')->name('resuems');
     Route::post('/resume/search','PersonController@searchResume')->name('search.Resume');
+    // Route::get('view_resuem','CompanyController@showPeople')->name('resuems');
 
     //
     });

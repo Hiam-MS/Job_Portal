@@ -8,7 +8,7 @@ use App\Models\Company;
 use App\Models\JobCategory;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-
+use App\Models\City;
 use Carbon\Carbon;
 
 class JobsController extends Controller
@@ -23,8 +23,12 @@ class JobsController extends Controller
         if(isset(auth()->user()->GetCompany))
         {
             $categories = JobCategory::all();
-            $company=auth()->user()->getCompany;
-            return view('job.addJob',compact('company','categories'));
+            $cities = City::all();
+            $company_id=auth()->user()->getCompany->id;
+            $company=DB::table('companies')->where('id', $company_id)
+            ->join('cities', 'companies.city_id', '=', 'cities.city_id')
+           ->first();
+            return view('job.addJob',compact('company','categories','cities'));
         }
         else
         {
@@ -40,7 +44,6 @@ class JobsController extends Controller
         {
             if(Auth()->user()->role == 'p')
             {
-                $company=auth()->user()->GetCompany;
                 $job = Job::find($id);
                 $person_id = auth()->user()->GetPerson->id;
 
@@ -53,26 +56,27 @@ class JobsController extends Controller
                 {
                     $result = 'exist';
                 }  
-                return view('job.jobDetails',compact('job','result','company'));
+                return view('job.jobDetails',compact('job','result'));
             }
           else
-            { $company=auth()->user()->GetCompany;
+            {
                 $job = Job::find($id);
             
             
-            return view('job.jobDetails',compact('job','company'));
+            return view('job.jobDetails',compact('job'));
           }
 
 
        
         } 
      
+       
         else
         {
-            $company=auth()->user()->GetCompany;
             $job = Job::find($id);
-            return view('job.jobDetails',compact('job','company'));
+            return view('job.jobDetails',compact('job'));
         }
+   
    
       
     }
@@ -80,85 +84,379 @@ class JobsController extends Controller
 
 
 
-    public function showJob(Request $request)
-    {
-        $categories = JobCategory::all();
-        $category = $request->input('category');
+//     public function showJob(Request $request)
+//     {
+//         $categories = JobCategory::all();
+//         $category = $request->input('category');
         
-      
-
-    //     if($request->has('male')){
-    //         $jobs = Job::where('gender', 'ذكر')
-    //         ->whereDate('end_job', '>', Carbon::today()->toDateString())
-    //         ->orderBy('created_at', 'desc')
-    //         ->paginate(10);
-    //    }
-    //    else if($request->has('femail')){
-    //         $jobs = Job::where('gender', 'أنثى')
-    //         ->whereDate('end_job', '>', Carbon::today()->toDateString())
-    //         ->orderBy('created_at', 'desc')
-    //         ->paginate(10);
-    //    }
-      if($request->has('category')) 
-        {
-            $jobs = Job::where('category_id', $category)
-            ->whereDate('end_job', '>', Carbon::today()->toDateString())
-            ->orderBy('created_at', 'desc')
-            ->paginate(10);
-        }
-        else
-        {
-            $jobs = Job::whereDate('end_job', '>', Carbon::today()->toDateString())->Where('status','=','accepted')->paginate(10);
-        }
+    
+//       if($request->has('category')) 
+//         { 
+//             $jobs = DB::table('jobs')->where('category_id', $category)
+//             ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+//             ->whereDate('end_job', '>', Carbon::today()->toDateString())
+//             ->orderBy('created_at', 'desc')
+//             ->paginate(10);
+//         }
+//     //     else
+//     //     {
+//     //         $jobs = DB::table('jobs')
+//     //         ->join('job_categories', 'jobs.category_id', '=', 'job_categories.id')
+//     //         // $jobs = DB::table('jobs')
+//     //         ->whereDate('end_job', '>', Carbon::today()->toDateString())->Where('status','=','accepted')->paginate(20);
+//     //     }
          
-        
+//     //     return view('job.showJobs',compact('jobs','category','categories'));
+//     //     // return view('job.showJobs');
 
-     
-        
-        return view('job.showJobs',compact('jobs','category','categories'));
-    // return view('job.showJobs');
+
+// else{
+//     $jobs = DB::table('jobs')
+//     ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+//     ->whereDate('end_job', '>', Carbon::today()->toDateString())->Where('status','=','accepted')->paginate(20);
+// }
+   
+//     return view('job.showJobs',compact('jobs','category','categories'));
+
+      
        
+//     }
+
+public function showJob(Request $request)
+{
+    $categories = JobCategory::all();
+    $cities=City::all();
+    $category = $request->input('category');
+    $city=$request->input('city');
+    $job_type=$request->input('job_type');
+
+
+    $search = $request->input('search');
+
+ 
+    // if($request->has('category') && $request->has('city') ) 
+    // {
+    //     if( $request->has('job_type')){
+    //         $jobs = Job::where('category_id', $category)->where('city',$city)->where('job_type',$job_type)
+    //         ->whereDate('end_job', '>', Carbon::today()->toDateString())
+    //         ->Where('status','=','accepted')
+    //         ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+    //         ->orderBy('created_at', 'desc')
+    //         ->paginate(10);
+    //     }
+    //     else{
+    //         $jobs = Job::where('category_id', $category)->where('city',$city)
+    //         ->whereDate('end_job', '>', Carbon::today()->toDateString())
+    //         ->Where('status','=','accepted')
+    //         ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+    //         ->orderBy('created_at', 'desc')
+    //         ->paginate(10);
+    //     }
+        
+    // }
+
+
+    // if($request->has('category')){
+    //     if($request->has('city'))
+    //     {
+    //         if($request->has('job_type'))
+    //         {
+    //             $jobs = Job::where('category_id', $category)->where('city', $city)->where('job_type', $job_type)
+    //             ->whereDate('end_job', '>', Carbon::today()->toDateString())
+    //             ->Where('status','=','accepted')
+    //             ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+    //             ->orderBy('created_at', 'desc')
+    //             ->paginate(10);
+    //         }else{
+    //             $jobs = Job::where('category_id', $category)->where('city', $city)
+    //             ->whereDate('end_job', '>', Carbon::today()->toDateString())
+    //             ->Where('status','=','accepted')
+    //             ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+    //             ->orderBy('created_at', 'desc')
+    //             ->paginate(10);
+    //         }
+           
+  
+
+        
+    // }
+    // elseif($request->has('city')){
+
+    //     $jobs = Job::where('city', $city)
+    //     ->whereDate('end_job', '>', Carbon::today()->toDateString())
+    //     ->Where('status','=','accepted')
+    //     ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+    //     ->orderBy('created_at', 'desc')
+    //     ->paginate(10);
+    // }
+    // elseif($request->has('job_type')){
+
+    //     $jobs = Job::where('job_type', $job_type)
+    //     ->whereDate('end_job', '>', Carbon::today()->toDateString())
+    //     ->Where('status','=','accepted')
+    //     ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+    //     ->orderBy('created_at', 'desc')
+    //     ->paginate(10);
+    // }
+ 
+    
+    
+    // elseif($request->has('city') && $category == NULL && $job_type == NULL){
+        
+    //     $jobs = Job::where('city', $city)
+    //     ->whereDate('end_job', '>', Carbon::today()->toDateString())
+    //     ->Where('status','=','accepted')
+    //     ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+    //     ->orderBy('created_at', 'desc')
+    //     ->paginate(10);
+    // }
+    
+
+   
+        if($request->has('category') && $job_type == NULL && $city == NULL){
+        
+        $jobs = Job::where('category_id', $category)
+        ->whereDate('end_job', '>', Carbon::today()->toDateString())
+        ->Where('status','=','accepted')
+        ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+        ->orderBy('created_at', 'desc')
+        ->paginate(10);
     }
+         elseif($request->has('category') && $request->has('city') && $job_type == NULL){
+        $jobs = Job::where('category_id', $category)->where('city', $city)
+        ->whereDate('end_job', '>', Carbon::today()->toDateString())
+        ->Where('status','=','accepted')
+        ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+        ->orderBy('created_at', 'desc')
+        ->paginate(10);
+
+    }
+    elseif($request->has('job_type') && $category == NULL && $city == NULL){
+        
+        $jobs = Job::where('job_type', $job_type)
+        ->whereDate('end_job', '>', Carbon::today()->toDateString())
+        ->Where('status','=','accepted')
+        ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+        ->orderBy('created_at', 'desc')
+        ->paginate(10);
+    }
+       elseif($request->has('city') && $category == NULL && $job_type == NULL){
+        
+        $jobs = Job::where('city', $city)
+        ->whereDate('end_job', '>', Carbon::today()->toDateString())
+        ->Where('status','=','accepted')
+        ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+        ->orderBy('created_at', 'desc')
+        ->paginate(10);
+    }
+    elseif($request->has('category') && $request->has('city') && $request->has('job_type')){
+        $jobs = Job::where('category_id', $category)->where('city', $city)->where('job_type', $job_type)
+        ->whereDate('end_job', '>', Carbon::today()->toDateString())
+        ->Where('status','=','accepted')
+        ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+        ->orderBy('created_at', 'desc')
+        ->paginate(10);
+
+    }
+else{
+    $jobs = Job::whereDate('end_job', '>', Carbon::today()->toDateString())->Where('status','=','accepted')->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+    ->orderBy("created_at", "desc")->paginate(15);
+}
+
+    // if($category !=NULL && $city !=NULL && $job_type !=NULL){
+    //    if($request->has('category')){
+
+    //    }else{
+    //    $jobs = Job::where('category_id', $category)
+    //     ->whereDate('end_job', '>', Carbon::today()->toDateString())
+    //     ->Where('status','=','accepted')
+    //     ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+    //     ->orderBy('created_at', 'desc')
+    //     ->paginate(10);
+    //    }
+
+
+
+
+   
+
+
+    // if($request->has('category')) 
+    // {
+    //     if($request->has('city') )
+    //     {
+    //         if($request->has('job_type'))
+    //         {
+    //             $jobs = Job::where('category_id', $category)->where('city',$city)->where('job_type',$job_type)
+    //             ->whereDate('end_job', '>', Carbon::today()->toDateString())
+    //             ->Where('status','=','accepted')
+    //             ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+    //             ->orderBy('created_at', 'desc')
+    //             ->paginate(10);
+    //         }
+    //         else
+    //         {
+    //             $jobs = Job::where('category_id', $category)->where('city',$city)
+    //             ->whereDate('end_job', '>', Carbon::today()->toDateString())
+    //             ->Where('status','=','accepted')
+    //             ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+    //             ->orderBy('created_at', 'desc')
+    //             ->paginate(10);
+    //         }
+    //     }
+    //     else
+    //     {
+    //         $jobs = Job::where('category_id', $category)
+    //         ->whereDate('end_job', '>', Carbon::today()->toDateString())
+    //         ->Where('status','=','accepted')
+    //         ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+    //         ->orderBy('created_at', 'desc')
+    //         ->paginate(10);
+    //     }
+    // }
+    // else
+    // {
+    //     $jobs = Job::whereDate('end_job', '>', Carbon::today()->toDateString())->Where('status','=','accepted')->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+    //     ->orderBy("created_at", "desc")->paginate(15);
+    // }
+
+    // if($request->has('category') && $category != 'NULL')
+    // {
+    //     $jobs=Job::select("*")->where('category_id','category')
+    //     ->whereDate('end_job', '>', Carbon::today()->toDateString())->Where('status','=','accepted')
+    //     ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+    //     ->orderBy("created_at", "desc")->paginate(15);
+    // }
+    // else
+    // {
+    //     $jobs=Job::select("*")
+    //     ->whereDate('end_job', '>', Carbon::today()->toDateString())->Where('status','=','accepted')
+    //     ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+    //     ->orderBy("created_at", "desc")->paginate(15);
+    // }
+    
+//  if($request->has('title') && $title != 'NULL') 
+// {
+//     if($request->has('category') && $category != 'NULL') {
+//         if($request->has('category') && $category != 'NULL') {
+
+//             $jobs = DB::table('jobs')->where('job_title' , $title)->where('category_id', $category)->where('city', $city)
+
+//             ->join('cities' , 'jobs.city_id' , '=', 'cities.city_id')
+//             ->whereDate('end_job', '>', Carbon::today()->toDateString())
+//             ->orderBy('created_at', 'desc')
+//             ->paginate(10);
+//         }
+//         else{
+//             $jobs = DB::table('jobs')->where('job_title' , $title)->where('category_id', $category)
+//             ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+//             ->whereDate('end_job', '>', Carbon::today()->toDateString())
+//             ->orderBy('created_at', 'desc')
+//             ->paginate(10);
+//         }
+          
+
+        
+//     }
+//     else{
+//         $jobs=Job::where('job_title' , $title)->paginate(5);
+//     }
+  
+// }
+//  else{
+    
+       
+
+//     $jobs=Job::select("*")
+//     ->whereDate('end_job', '>', Carbon::today()->toDateString())->Where('status','=','accepted')
+//     ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+//     ->orderBy("created_at", "desc")->paginate(10);
+
+// }
+
+
+    // if($request->has('category') && $category != 'NULL') 
+    // {
+    //     if($request->has('city') && $city != null) {
+    //         $jobs = Job::where('category_id', $category)
+    //         ->where(function ($query) use ($city) {
+    //                 $query->where('title', 'like', '%'.$search.'%')
+    //                       ->orWhere('body', 'like', '%'.$search.'%');
+    //         })->orderBy('created_at', 'desc')
+    //         ->paginate(5)
+    //         ->appends([
+    //             'category' => request('category'),
+    //             'city' => request('city')
+    //         ]);
+    //     }
+       
+        
+        
+       
+    // }
+    // else{
+    //     $jobs = DB::table('jobs')->where('category_id', $category)
+    //     ->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+    //     ->whereDate('end_job', '>', Carbon::today()->toDateString())
+    //     ->orderBy('created_at', 'desc')
+    //     ->paginate(10);
+    // }
+
+
+
+
+
+
+    // if($request->has('category') && $cat != 'all') {
+    //     if($request->has('search') && $search != null) {
+    //         $jobs = Job::where('category_id', $cat)
+    //         ->where(function ($query) use ($search) {
+    //                 $query->where('job_title', 'like', '%'.$search.'%')
+    //                       ;
+    //         })->orderBy('created_at', 'desc')
+    //         ->paginate(5)
+    //         ->appends([
+    //             'cat' => request('cat'),
+    //             'search' => request('search')
+    //         ]);
+    //     } else {
+    //         $jobs = Job::where('category_id', $cat)
+    //         ->orderBy('created_at', 'desc')
+    //         ->paginate(5)
+    //         ->appends([
+    //             'cat' => request('cat')
+    //         ]);
+    //     } 
+    // else {
+    //     $jobs = Job::where('job_title', 'like', '%'.$search.'%')
+     
+    //     ->orderby('created_at', 'desc')
+    //     ->paginate(5)
+    //     ->appends([
+    //         'search' => request('search')
+    //     ]);
+    // }
+    
+    return view('job.showJobs', compact('categories', 'jobs', 'category', 'search','cities','city'));
+}
 
     public function records(Request $request)
     {
-        if ($request->ajax()) {
-
-            if ($request->input('start_date') && $request->input('end_date')) {
-
-                $start_date = Carbon::parse($request->input('start_date'));
-                $end_date = Carbon::parse($request->input('end_date'));
-
-                if ($end_date->greaterThan($start_date)) {
-                    $jobs = Job::whereBetween('created_at', [$start_date, $end_date])->get();
-                } else {
-                    // $jobs = Job::latest()->get();
-                    $jobs = DB::table('jobs')
-       
-        
-        ->join('job_categories', 'jobs.category_id', '=', 'job_categories.id')
-        
-        ->whereDate('end_job', '>', Carbon::today()->toDateString())->Where('status','=','accepted')->get();
-                }
-            } else {
-
-                
-        $jobs = DB::table('jobs')
-       
-        
-        ->join('job_categories', 'jobs.category_id', '=', 'job_categories.id')
-        
-        ->whereDate('end_job', '>', Carbon::today()->toDateString())->Where('status','=','accepted')->get();
-                   
-        
-       
-                // $jobs = Job::latest()->get();
-            }
-
+        if ($request->ajax()) 
+        {
+            $categories = JobCategory::all();
+            $category = $request->input('category');
+            $jobs = DB::table('jobs')
+            ->join('job_categories', 'jobs.category_id', '=', 'job_categories.id')
+            // $jobs = DB::table('jobs')
+            ->whereDate('end_job', '>', Carbon::today()->toDateString())->Where('status','=','accepted')->get();
+         
             return response()->json([
                 'jobs' => $jobs
             ]);
-        } else {
+        } 
+        else 
+        {
             return response()->json([
                 'jobs' => $jobs
             ]);
@@ -179,7 +477,7 @@ class JobsController extends Controller
     { 
         $Request->validate([
             // 'category'=>'required',
-            // 'job_title'=>'required',
+            'job_title'=>'required',
             // 'number_of_employess'=>'required',
             // 'budget'=>'required',
             // 'job_requirement'=>'required',
@@ -187,10 +485,10 @@ class JobsController extends Controller
             // 'end_job'=>'required',
            
             // 'city'=>'required',
-            // 'gender'=>'required',
-            // 'military_service'=>'required',
-            // 'degree'=>'required',
-            // 'job_type'=>'required',
+            'gender'=>'required',
+            'military_service'=>'required',
+            'degree'=>'required',
+            'job_type'=>'required',
             
         ],[
             'job_title.required'=>'يجب ادخال المسمى الوظيفي لفرصة العمل',

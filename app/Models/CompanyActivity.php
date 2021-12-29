@@ -5,7 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CategoryJob extends Model
+class CompanyActivity extends Model
 {
     use HasFactory;
+    
+    public function Company()
+    {
+        return $this->hasMany(Company::class);
+    }
+
 }

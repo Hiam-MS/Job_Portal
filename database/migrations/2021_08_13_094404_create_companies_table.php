@@ -19,16 +19,17 @@ class CreateCompaniesTable extends Migration
             $table->string('email');
             $table->integer('fixed_phone');
             $table->integer('fax_phone');
-            $table->string('location');
-            $table->string('company_specialist');
+            // $table->string('location');
+            // $table->string('company_specialist');
             $table->string('commercial_record')->nullable();
             $table->string('industria_record')->nullable();
             $table->string('website')->nullable();
             $table->unsignedBigInteger('user_id')->unique();
-            $table->foreign('user_id')
-                    ->references('id')
-                    ->on('users')
-                    ->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('city_id');
+            $table->foreign('city_id')->references('city_id')->on('cities')->onDelete('cascade');
+            $table->unsignedBigInteger('activity_id');
+            $table->foreign('activity_id')->references('activity_id')->on('company_activities')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -102,7 +102,7 @@
 
                             <div class="">
 								<div class="icon-bx-wraper p-a30 center bg-gray radius-sm">
-									<div class="icon-md text-primary m-b20"> <a href="#" class="icon-cell text-primary"><i class="ti-desktop"></i></a> </div>
+									<div class="icon-md text-primary m-b20"> <i class="ti-desktop"></i></div>
 										<div class="icon-content">
 											<h5 class="dlab-tilte text-uppercase">إضافة معلومات الشركة   </h5>
 											<p>معلومات الشركة هي أول و أهم ما تحتاجه لتفعيل حسابك  ، حيث إن باحثين عن العمل يحتاجون للاطلاع عليها قبل اتخاذ قرار التقدم للعمل. علماً أن معلومات الشركة  التي تبنيها على موقعنا هي الأكثر إقناعاً لهم   </p>
@@ -112,7 +112,7 @@
 
 								<div class="">
 									<div class="icon-bx-wraper p-a30 center bg-gray radius-sm">
-										<div class="icon-md text-primary m-b20"> <a href="#" class="icon-cell text-primary"><i class="ti-image" ></i></a> </div>
+										<div class="icon-md text-primary m-b20"> <i class="ti-image" ></i> </div>
 											<div class="icon-content">
 												<h5 class="dlab-tilte text-uppercase">نشر فرصة عمل الكترونية</h5>
 												<p>يمكن للمؤسسات المسجلة على الموقع و بطريقة سهلة  نشر فرصة عمل الكترونياً, حيث  تمكّن الباحثين عن عمل من الوصول إاليها بسهولة و الاطلاع على تفاصيل هذا العمل بكل بساطة والتقدم لهذا العمل في حال توافرت الشروط المناسبة لهم</p>
@@ -122,7 +122,7 @@
 
 										<div class="">
 											<div class="icon-bx-wraper p-a30 center bg-gray radius-sm">
-												<div class="icon-md text-primary m-b20"> <a href="#" class="icon-cell text-primary"><i class="ti-search" ></i></a> </div>
+												<div class="icon-md text-primary m-b20"> <i class="ti-search" ></i></div>
 													<div class="icon-content">
 														<h5 class="dlab-tilte text-uppercase">   بحث عن موظفين</h5>
 														<p> هذه المنصة تمكّن المؤسسات من البحث عن موظفين مؤهلين في حال عدم نشر فرص عمل على الموقع والتواصل معهم مع الحصول على معلومات السير الذاتية الخاصة بهم  </p>
@@ -134,7 +134,7 @@
 
 										<div class="">
 											<div class="icon-bx-wraper p-a30 center bg-gray radius-sm">
-												<div class="icon-md text-primary m-b20"> <a href="#" class="icon-cell text-primary"><i class="ti-list" ></i></a> </div>
+												<div class="icon-md text-primary m-b20"> <i class="ti-list" ></i> </div>
 													<div class="icon-content">
 														<h5 class="dlab-tilte text-uppercase">    عرض فرص العمل المنشورة </h5>
 														<p> هذه المنصة تمكّن المؤسسات من البحث عن موظفين مؤهلين في حال عدم نشر فرص عمل على الموقع والتواصل معهم مع الحصول على معلومات السير الذاتية الخاصة بهم  </p>

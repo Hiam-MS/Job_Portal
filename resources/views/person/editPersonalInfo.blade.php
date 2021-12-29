@@ -165,10 +165,16 @@
 																	<div class="col-sm-4">
 																		<div class="form-group">
 																			<label> الجنس </label>
-																			<select name="gender" class="form-control form-control-lg"  value="{{ $person->gender }}">
-																			<option value="">{{ $person->gender }}</option>	
-																			<option value="انثى"  > انثى </option>
+																			<!-- <select name="gender" class="form-control form-control-lg"  value="{{ $person->gender }}">
+								
+																				<option value="انثى"  > انثى </option>
 																				<option value="ذكر"  > ذكر </option>
+								
+																			</select> -->
+																			<select name="gender" id="gender" class="form-control form-control-lg">
+																				<option value="أنثى"{{$person->gender =="أنثى" ? 'selected' : ''}}>أنثى</option>
+																				<option value="ذكر"{{$person->gender =="ذكر" ? 'selected' : ''}}>ذكر</option>
+																				
 																			</select>
 																			@if($errors->any('gender'))
 																				<span>{{$errors->first('gender')}}</span>
@@ -179,13 +185,19 @@
 																	<div class="col-sm-4">
 																		<div class="form-group">
 																		<label> خدمة العلم <span>*</span></label>
-                        					<select name="military_service" class="form-control  form-control-lg" data-parsly-trigger="keyup">
+                        					<!-- <select name="military_service" class="form-control  form-control-lg" data-parsly-trigger="keyup">
 												<option value="">{{ $person->military_service }}</option>
-												<!-- <option value="منتهية" {{(old('military_service') && old('military_service')=='منتهية' )?'selected':''}}>منتهية</option>
+												<option value="منتهية" {{(old('military_service') && old('military_service')=='منتهية' )?'selected':''}}>منتهية</option>
 												<option value="غير منتهية" {{(old('military_service') && old('military_service')=='غير منتهية' )?'selected':''}}>غير منتهية</option>
 												<option value="معفى" {{(old('military_service') && old('military_service')=='معفى' )?'selected':''}}>معفى</option>
-												<option value="*" {{(old('military_service') && old('military_service')=='*' )?'selected':''}}>*   </option> -->
-											</select> 
+												<option value="*" {{(old('military_service') && old('military_service')=='*' )?'selected':''}}>*   </option>
+											</select>  -->
+											<select name="military_service" id="military_service" class="form-control form-control-lg">
+																				<option value="منتهية"{{$person->military_service =="منتهية" ? 'selected' : ''}}>منتهية</option>
+																				<option value="غير منتهية"{{$person->military_service =="غير منتهية" ? 'selected' : ''}}>غير منتهية</option>
+																				<option value="معفى"{{$person->military_service =="معفى" ? 'selected' : ''}}>معفى</option>
+																				<option value="أنثى"{{$person->military_service =="أنثى" ? 'selected' : ''}}>أنثى</option>
+																			</select>
 																			@if($errors->any('military_service'))
 																				<span>{{$errors->first('military_service')}}</span>
 																			@endif
@@ -195,12 +207,18 @@
 																	<div class="col-sm-4">
 																		<div class="form-group">
 																			<label> الوضع العائلي <span>*</span></label>
-																			<select name="marital_status" class="form-control form-control-lg"   value="{{ $person->marital_status }}">
+																			<!-- <select name="marital_status" class="form-control form-control-lg"   value="{{ $person->marital_status }}">
 																				<option value="عازب/ة">عازب/ة</option>
 																				<option  value="متزوج/ة"> متزوج/ة</option>
 																				<option  value="مطلق/ة">مطلق/ة</option>
 																				<option  value="أرمل/ة">أرمل/ة </option>
-																			</select>	
+																			</select>	 -->
+																			<select name="marital_status" id="marital_status" class="form-control form-control-lg">
+																				<option value="عازب"{{$person->marital_status =="عازب" ? 'selected' : ''}}>عازب</option>
+																				<option value="متزوج"{{$person->marital_status =="متزوج" ? 'selected' : ''}}>متزوج</option>
+																				<option value="مطلق"{{$person->marital_status =="مطلق" ? 'selected' : ''}}>مطلق</option>
+																				<option value="أرمل"{{$person->marital_status =="أرمل" ? 'selected' : ''}}>أرمل</option>
+																			</select>
 																			@if($errors->any('marital_status'))
 																				<span>{{$errors->first('marital_status')}}</span>
 																			@endif
@@ -221,11 +239,15 @@
 
 																	<div class="col-sm-6">
 																		<div class="form-group">
-																			<label>مكان الولادة</label>
-																			<input type="text" class="form-control form-control-lg" placeholder=""  name="place_Of_b" value="{{ $person->place_Of_b }}"  data-parsly-trigger="keyup">
-																			@if($errors->any('place_Of_b'))
-																				<span>{{$errors->first('place_Of_b')}}</span>
-																			@endif
+																		<label>عنوان الاقامة الحالي<span style="color:red">(اختياري)</span></label>
+																		
+																		<select class="select2bs4 form-control form-control-lg" name="city" id="city" style="width:100%">
+																			@foreach ($cities as $city)
+																	
+																				<option value="{{$city->city_id}}" {{$city->city_id =="$person->ci_id" ? 'selected' : ''}}>{{$city->city_name}}</option>
+																			@endforeach
+																		</select>
+																			
 																		</div>
 																	</div>
 																</div>
@@ -245,13 +267,29 @@
 																		<div class="form-group" >
 																			<label>  اللغات <span>*</span></label><br>
 																			<select class="js-example-basic-multiple form-control form-control-lg" name="lang[]" multiple="multiple" >
-																				<option value="عربي" selected>عربي </option>	
+																			<option value="عربي" {{$person->lang =="عربي" ? 'selected' : ''}}>عربي</option>	
+																			<option value="عربي" >عربي </option>
+																				
+																		
 																				<option value="انكليزي">انكليزي</option>
 																				<option value="اسباني">اسباني</option>
 																				<option value="ايطالي">ايطالي</option>
 																				<option value="فرنسي">فرنسي</option>
 																				<option value="روسي">روسي</option>
 																			</select>
+
+																	
+																			<!-- <select name="lang[]"  class="select2 form-control form-control-lg" multiple="multiple" >
+																				<option value="عربي"{{$person->lang =="عربي" ? 'selected' : ''}}>عربي</option>
+																				<option value="انكليزي"{{$person->lang =="انكليزي" ? 'selected' : ''}}>انكليزي</option>
+																				<option value="اسباني"{{$person->lang =="اسباني" ? 'selected' : ''}}>اسباني</option>
+																				<option value="ايطالي"{{$person->lang =="ايطالي" ? 'selected' : ''}}>ايطالي</option>
+																				<option value="فرنسي"{{$person->lang =="فرنسي" ? 'selected' : ''}}>فرنسي</option>
+																				<option value="روسي"{{$person->lang =="روسي" ? 'selected' : ''}}>روسي</option>
+
+																			</select> -->
+																
+									</table>
 																			@if($errors->any('lang'))
 																				<span>{{$errors->first('lang')}}</span>
 																			@endif	
@@ -261,6 +299,10 @@
 
 									
 																<table>
+																	<tr >
+																	<p style="font-size:18px;; color:red"> ملاحظة:عند تعديل أي حقل يجب ضغط على زر الحفظ  قبل الانتقال للتالي</p> 
+																	</tr>
+												
 																	<tr>
 																		<td><form><input type="button" value="رجوع" onclick="history.back()" class="btn btn-primary"></form></td>
 																		<td><button type="submit" class="btn btn-primary">حفظ</button></td>
@@ -275,30 +317,56 @@
 															<form action="{{route('PersonUpdateInfo2')}}" method="POST" id="resume" style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right; padding-right:40px">
 																@csrf
 																@method('PUT')
-																<div class="form-group">
-																	<label>الهاتف الأرضي</label>
-																	<input type="text" class="form-control form-control-lg" placeholder="" name="fixed_phone" value="{{ $person->fixed_phone }}"  data-parsly-trigger="keyup">
-																	<span style="color:red"> @error('fixed_phone'){{$message}}@enderror</span>
+																<div class="row">
+																	<div class="col-sm-6">
+																		<div class="form-group">
+																			<label>الهاتف الأرضي <span style="color:red">(اختياري)</span></label>
+																			<input type="text" class="form-control form-control-lg" placeholder="" name="fixed_phone" value="{{ $person->fixed_phone }}"  data-parsly-trigger="keyup">
+																			<span style="color:red"> @error('fixed_phone'){{$message}}@enderror</span>
+																		</div>
+																	</div>
+																	<div class="col-sm-6">
+																		<div class="form-group">
+																			<label>عنوان البريد الالكتروني<span style="color:red">(اختياري)</span></label>
+																			<input type="email" class="form-control form-control-lg" placeholder="info@gmail.com" name="email" value="{{ $person->email }}"   data-parsly-trigger="keyup">
+																			<span style="color:red"> @error('email'){{$message}}@enderror</span>
+																		</div>
+																	</div>
 																</div>
-																<div class="form-group">
-																	<label>عنوان الاقامة الحالي</label>
-																	<input type="text" class="form-control form-control-lg" placeholder=""  name="Current_address" value="{{ $person->Current_address }}"  data-parsly-trigger="keyup">
-																	<span style="color:red"> @error('Current_address'){{$message}}@enderror</span>
-																</div>
-																<div class="form-group">
-																	<label>عنوان البريد الالكتروني</label>
-																	<input type="email" class="form-control form-control-lg" placeholder="info@gmail.com" name="email" value="{{ $person->email }}"   data-parsly-trigger="keyup">
-																	<span style="color:red"> @error('email'){{$message}}@enderror</span>
-																</div>
+																
+																<div class="row">
+																	<div class="col-sm-6">
+																		<div class="form-group">
+																		<label>مكان الولادة</label>
+																			<input type="text" class="form-control form-control-lg" placeholder=""  name="place_Of_b" value="{{ $person->place_Of_b }}"  data-parsly-trigger="keyup">
+																			@if($errors->any('place_Of_b'))
+																				<span>{{$errors->first('place_Of_b')}}</span>
+																			@endif
+
+														
+
+																			
+																			<!-- <input type="text" class="form-control form-control-lg" placeholder=""  name="Current_address" value="{{ $person->Current_address }}"  data-parsly-trigger="keyup"> -->
+																			
+					
+																			<span style="color:red"> @error('Current_address'){{$message}}@enderror</span>
+																		</div>
+																	</div>
 															
+																</div>
+																
+																
+
 																<table>
-																	<tr>
-																	<tr>
-																		<td><form action=""><input type="button" value="السابق" onclick="stepper.previous()" class="btn btn-primary"></form></td>
-																		<td><button class="btn btn-primary" >حفظ</button></td>
-																	</tr>
+																<tr>
+																	<p style="font-size:18px; color:red">ملاحظة عند الانتهاء من تعبئة الحقول يجب الضغط على زر الحفظ</p>
+																</tr>
+																		<tr>
+																			<td><form action=""><input type="button" value="السابق" onclick="stepper.previous()" class="btn btn-primary"></form></td>
+																			<td><button class="btn btn-primary" >حفظ</button></td>
+																		</tr>
 																		
-																	</tr>
+																	
 																</table>
 															</form>
 														</div>

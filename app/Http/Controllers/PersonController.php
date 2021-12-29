@@ -13,6 +13,7 @@ use App\Models\JobCategory;
 use App\Models\PersonCategory;
 use App\Models\ApplyedJob;
 use App\Models\PersonAdditionalInfo;
+use App\Models\City;
 use Illuminate\Support\Facades\Session;
 
 
@@ -30,7 +31,13 @@ class PersonController extends Controller
         if(isset(auth()->user()->GetPerson))
         {
             $Person = auth()->user()->GetPerson;
-            return view('person.ViewPersonInfo',compact('Person'));
+            $current_address=DB::table('people')
+              ->join('cities', 'people.ci_id', '=', 'cities.city_id');
+
+            // $Person=DB::tabel('people')
+            // ->join('person_education', 'people.id', '=', 'person_education.person_id');
+
+            return view('person.ViewPersonInfo',compact('Person','current_address'));
         }
         else
         {
@@ -75,11 +82,64 @@ class PersonController extends Controller
 
     public function viewResuemForm(Request $request)
     {
-        // if(isset($_GET['query'])){
+        $cities=City::all();
+        $degrees=PersonEducation::all();
+       
+       
+        $degree = $request->input('degree');
+        $city=$request->input('city');
+        $gender=$request->input('gender');
+
+
+    if($city != NULL && $city != NULL && $gender != NULL){
+        if($request->has('degree') && $city == NULL && $gender == NULL){
             
-        // $search_text= $_GET['query'];
-        // $Person= Person::where('name','LIKE','%'.$search_text.'%')->paginate(2);
-        // //$Person=appends($request->all());
+        $search_text= $_GET['degree'];
+        $Person= PersonEducation::where('degree_name','LIKE','%'.$search_text.'%')
+        ->join('people', 'person_education.person_id', '=', 'people.id')
+        ->join('cities', 'people.ci_id', '=', 'cities.city_id')
+        ->paginate(10);
+        // $Person=Person::join('cities', 'people.city_id', '=', 'cities.city_id')
+        // ->paginate(50);
+  
+    }
+    elseif($request->has('degree') && $request->has('city') && $gender == NULL){
+        $Person= PersonEducation::where('degree_name','LIKE',$degree)->where('ci_id',$city)
+        ->join('people', 'person_education.person_id', '=', 'people.id')
+        ->join('cities', 'people.ci_id', '=', 'cities.city_id')
+        ->paginate(10);
+    }
+    elseif($request->has('degree') && $request->has('city') && $request->has('gender')){
+        $Person= PersonEducation::where('degree_name','LIKE',$degree)->where('ci_id',$city)->where('gender',$gender)
+        ->join('people', 'person_education.person_id', '=', 'people.id')
+        ->join('cities', 'people.ci_id', '=', 'cities.city_id')
+        ->paginate(10);
+    }
+   elseif($request->has('city') && $degree == NULL && $gender == NULL){
+    $Person=Person::select("*")->where('ci_id',$city)
+    ->join('cities', 'people.ci_id', '=', 'cities.city_id')
+    ->join('person_education', 'people.id', '=', 'person_education.person_id')
+    ->paginate(50);
+       
+        
+    }
+    elseif($request->has('gender') && $degree == NULL && $city == NULL){
+        $Person=Person::select("*")->where('gender',$gender)
+        ->join('cities', 'people.ci_id', '=', 'cities.city_id')
+        ->join('person_education', 'people.id', '=', 'person_education.person_id')
+        ->paginate(50);
+           
+    }
+}
+    else{
+        $Person=Person::select("*")
+        ->join('cities', 'people.ci_id', '=', 'cities.city_id')
+        ->join('person_education', 'people.id', '=', 'person_education.person_id')
+        ->paginate(50);
+       
+
+    }
+        //$Person=appends($request->all());
         // return view('person.viewResuem',compact('Person'));
         // }else{
         //     $Person=Person::paginate(10);
@@ -105,9 +165,48 @@ class PersonController extends Controller
         //     return view('person.viewResuem',compact('Person'));
            
         // } 
-        // $Person=Person::select("*")->orderBy("created_at", "desc")->paginate(10);
-        $Person=Person::paginate(50);
-        return view('person.viewResuem',compact('Person'));
+        // $Person = Person::latest()->paginate(50);
+        // $ci =DB::table('people')
+        // ->join('cities', 'people.city_id', '=', 'cities.city_id');
+
+    // $Person=DB::table('people')
+    // ->join('cities', 'people.city_id', '=', 'cities.city_id')
+    // // ->join('person_education', 'people.id', '=', 'person_education.person_id')
+    // ->orderBy("Fname", "asc")->paginate(50);
+    
+
+
+        // $Person=Person::select("*")->paginate(50);
+        // $Person=Person::select("*")->orderBy("created_at", "asc")->paginate(50);
+
+
+    
+    
+    
+ 
+        // if($degree !=NULL && $city !=NULL && $gender !=NULL){
+        //     if($request->has('degree') && $city !=NULL && $gender !=NULL){
+
+        //     }else{
+        //         $Person = PersonEducation::where('degree_name', $degree)
+        //         ->join('people', 'person_education.person_id', '=', 'people.id')
+        //         ->orderBy('created_at', 'desc')
+        //         ->paginate(10);
+        //     }
+        // }else{
+        //     $Person=Person::join('cities', 'people.city_id', '=', 'cities.city_id')->paginate(10);
+        // }
+       
+          
+      
+       
+       
+      
+        return view('person.viewResuem',compact('Person','cities','degrees'));
+   
+       
+     
+        // return view('person.viewResuem',compact('Person','ci'));
     }
 
         //   search resume    //
@@ -118,6 +217,7 @@ class PersonController extends Controller
     {
         $Person = DB::table('people')
         ->join('person_education', 'people.id', '=', 'person_education.person_id')
+        ->join('cities', 'people.ci_id', '=', 'cities.city_id')
         ->where('degree_name','LIKE','%' . $request->get('serchQuest') . '%')->get();
         return json_encode( $Person);
     }
@@ -138,7 +238,8 @@ class PersonController extends Controller
         }
         else
         {
-            return view('person.addResume');
+            $cities=City::all();
+            return view('person.addResume',compact('cities'));
         }
     }
 
@@ -146,14 +247,14 @@ class PersonController extends Controller
     public function store(Request $Request)
     {
        $Request->validate([
-            'fname'=> ['required','string' , 'max:20'] ,
-            'father_name'=> ['required','string' , 'max:20'] ,
-            'Lname'=> ['required','string', 'max:20'] ,
+            'fname'=> ['required','alpha' , 'max:20'] ,
+            'father_name'=> ['required','alpha' , 'max:20'] ,
+            'Lname'=> ['required','alpha', 'max:20'] ,
             'gender'=> ['required'] ,
             'military_service'=> ['required'] ,
             'marital_status'=> ['required'] ,
             'dob'=> ['required','date'] ,
-            'place_Of_b'=> ['required','string'] ,
+            // 'place_Of_b'=> ['required','string'] ,
             // 'Current_address'=> ['required','string'] ,
             // 'fixed_phone'=> ['required','integer'] ,
             'mobile_number'=> ['required','string'] ,
@@ -161,6 +262,9 @@ class PersonController extends Controller
             'user_id'=>['unique:Person'] ,
           
         ],[
+            'fname.alpha' =>'يجب أن لا يحتوي حقل الاسم سوى على حروف.',
+            'father_name.alpha' =>'يجب أن لا يحتوي حقل الاسم سوى على حروف.',
+            'Lname.alpha' =>'يجب أن لا يحتوي حقل الاسم سوى على حروف.',
             'fname.required'=>'يجب تعبئة حقل الاسم',
             'father_name.required'=>'يجب  تعبئة  حقل اسم الأب',
             'Lname.required'=>'يجب تعبئة حقل الكنية  ',
@@ -168,7 +272,8 @@ class PersonController extends Controller
             'military_service.required'=>'يجب   اختيار حقل خدمة العلم ',
             'marital_status.required'=>'يجب  اختيار حقل الوضع العائلي   ',
             'dob.required'=>'يجب ادخال  حقل  تاريخ  الميلاد   ',
-            'place_Of_b.required'=>'يجب ادخال  حقل  مكان  الولادة   ',
+
+            // 'place_Of_b.required'=>'يجب ادخال  حقل  مكان  الولادة   ',
             'mobile_number.required'=>'يجب تعبئة حقل رقم الموبايل   ',
             'lang.required'=>'يجب  اختيار حقل  اللغة   ',
             // 'email.required'=>'يجب  ادخال البريد الالكتروني ',
@@ -183,7 +288,8 @@ class PersonController extends Controller
             $person->Lname = $Request->input("Lname");
             $person->gender= $Request->input("gender");
             $person->dob= $Request->input("dob");
-            $person->place_Of_b = $Request->input("place_Of_b");
+            $person->ci_id= $Request->input("city");
+            // $person->place_Of_b = $Request->input("place_Of_b");
             $person->marital_status= $Request->input("marital_status");
             $person->military_service= $Request->input("military_service");
             $person->mobile_number= $Request->input("mobile_number");
@@ -211,7 +317,17 @@ class PersonController extends Controller
         if(isset(auth()->user()->GetPerson))
         {
             $person = auth()->user()->GetPerson;
-            return view('person.editPersonalInfo',compact('person'));
+            $person_id = auth()->user()->GetPerson->id;
+            $cities = City::all();
+        
+
+
+            // $city_id=City::select("city_id")->where('id', $person_id)
+            // ->join('people', 'cities.city_id', '=', 'people.city_id')
+            // ;
+
+
+            return view('person.editPersonalInfo',compact('person','cities'));
         }
         else
         {
@@ -222,16 +338,39 @@ class PersonController extends Controller
     public function updatPersonalInfo(Request $Request)
     {
         $Request->validate([
-            // 'fname'=> ['required','string' , 'max:20'] ,
-            // 'father_name'=> ['required','string' , 'max:20'] ,
-            // 'Lname'=> ['required','string', 'max:20'] ,
-            // // 'email'=> ['required','string'] ,
-            // 'dob'=> ['required','date'] ,
-            // 'place_Of_b'=> ['required','string'] ,
+            'fname'=> ['required','alpha' , 'max:20'] ,
+            'father_name'=> ['required','alpha' , 'max:20'] ,
+            'Lname'=> ['required','alpha', 'max:20'] ,
+            'gender'=> ['required'] ,
+            'military_service'=> ['required'] ,
+            'marital_status'=> ['required'] ,
+            'dob'=> ['required','date'] ,
             
-            // // 'fixed_phone'=> ['required','integer'] ,
-            // // 'Current_address'=> ['required','string'] ,
-            // 'mobile_number'=> ['required','string'] ,
+            // 'place_Of_b'=> ['required','string'] ,
+            // 'Current_address'=> ['required','string'] ,
+            // 'fixed_phone'=> ['required','integer'] ,
+            'mobile_number'=> ['required','string'] ,
+            'lang'=>['required'] ,
+            'user_id'=>['unique:Person'] ,
+          
+        ],[
+            'fname.alpha' =>'يجب أن لا يحتوي حقل الاسم سوى على حروف.',
+            'father_name.alpha' =>'يجب أن لا يحتوي حقل الاسم سوى على حروف.',
+            'Lname.alpha' =>'يجب أن لا يحتوي حقل الاسم سوى على حروف.',
+            'fname.required'=>'يجب تعبئة حقل الاسم',
+            'father_name.required'=>'يجب  تعبئة  حقل اسم الأب',
+            'Lname.required'=>'يجب تعبئة حقل الكنية  ',
+            'gender.required'=>'يجب اختيار حقل الجنس  ',
+            'military_service.required'=>'يجب   اختيار حقل خدمة العلم ',
+            'marital_status.required'=>'يجب  اختيار حقل الوضع العائلي   ',
+            'dob.required'=>'يجب ادخال  حقل  تاريخ  الميلاد   ',
+            // 'place_Of_b.required'=>'يجب ادخال  حقل  مكان  الولادة   ',
+            'mobile_number.required'=>'يجب تعبئة حقل رقم الموبايل   ',
+            'lang.required'=>'يجب  اختيار حقل  اللغة   ',
+            // 'email.required'=>'يجب  ادخال البريد الالكتروني ',
+            //'national_number.required'=>'يجب  ادخال حقل الرقم الوطني  ',
+            // 'Current_address.required'=>'يجب  ادخال حقل  مكان الاقامة الحالي   ',
+            // 'fixed_phone.required'=>'يجب  تعبئة  حقل الهاتف الأرضي  ',
         ]);
 
             $person = auth()->user()->GetPerson;
@@ -241,7 +380,8 @@ class PersonController extends Controller
             $person->Lname = $Request->input("Lname");
             $person->gender= $Request->input("gender");
             $person->dob= $Request->input("dob");
-            $person->place_Of_b = $Request->input("place_Of_b");
+             $person->ci = $Request->input("city");
+            // $person->place_Of_b = $Request->input("place_Of_b");
             $person->marital_status= $Request->input("marital_status");
             $person->military_service= $Request->input("military_service");
             $person->mobile_number= $Request->input("mobile_number");
@@ -264,9 +404,11 @@ class PersonController extends Controller
 
     public function updatPersonalInfo2(Request $Request)
     {
+        
         $person = auth()->user()->GetPerson;
         $person->email =  $Request->input("email");
-        $person->Current_address= $Request->input("Current_address");
+       $person->place_Of_b = $Request->input("place_Of_b");
+        // $person->ci_id = $Request->input('city');
         $person->fixed_phone= $Request->input("fixed_phone");
         $person->user_id= auth()->user()->id;
         if($person)
@@ -297,7 +439,7 @@ class PersonController extends Controller
         $pid= $person->id;
 
         $person_cat = DB::table('job_categories')
-        ->join('person_categories', 'job_categories.id', '=', 'person_categories.category_id')
+        ->join('person_categories', 'job_categories.cat_id', '=', 'person_categories.category_id')
         ->where('person_categories.person_id', $pid)->get();
        
         return view('person.addResumeEdu',compact('person','jobCat','person_cat'));
@@ -321,10 +463,10 @@ class PersonController extends Controller
         $person =auth()->user()->GetPerson;
         $Request->validate([
             'degree_name'=> ['required','string'] ,
-            'Institution'=> ['required','string'] ,
-            'Degree'=> ['required','string'] ,
-            'Major'=> ['required','string'] ,
-            'person_id'=>['unique:Person'] ,
+            // 'Institution'=> ['required','string'] ,
+            // 'Degree'=> ['required','string'] ,
+            // 'Major'=> ['required','string'] ,
+            // 'person_id'=>['unique:Person'] ,
           
         ],[
             'degree_name.required'=>'يجب تعبئة حقل اسم الشهادة',
@@ -426,14 +568,8 @@ public function storePersonJobCat(Request $Request)
     public function DeletePersonEdu($id)
     {
         $res=PersonEducation::find($id)->delete();
-        if ($res)
-        {
-            return redirect()->back()->with('success', ' تم الحذف بنجاح');
-        }
-        else
-        {
-            return redirect()->back()->with('success', ' لم يتم الحذف يرجى المحاولة مرة ثانية');
-        }
+        return redirect()->back();
+       
     }
 
     public function DeletePersonCat($id)
@@ -445,14 +581,8 @@ public function storePersonJobCat(Request $Request)
             
         $pid= $person->id;
         $res=PersonCategory::where('person_id',$pid)->where('category_id',$id)->delete();
-        if ($res)
-        {
-            return redirect()->back()->with('success', ' تم الحذف بنجاح');
-        }
-        else
-        {
-            return redirect()->back()->with('success', ' لم يتم الحذف يرجى المحاولة مرة ثانية');
-        }
+        return redirect()->back();
+        
     }
 
 
@@ -472,36 +602,40 @@ public function updateEdu(Request $Request)
  {
 
     $person_id=auth()->user()->GetPerson->id;
-    
-    
+    // $Edu = PersonEducation::where('id' , $person_id);
 
-    
-      
-    // $Edu = PersonEducation::where('id' , $cid);
-    
-    // $Edu->degree_name=$Request->degree_name;
-    // $Edu->Institution=$Request->Institution;
-    // $Edu->Degree=$Request->Degree;
-    // $Edu->Major=$Request->Major;
-    // if($Request->has('still_study')){
-    //     $Edu->$still_study=$Request->still_study;
-    //     }
+    // $Edu->degree_name=$Request->input("degree_name");
+    // $Edu->Institution=$Request->input("Institution");
+    // $Edu->Degree=$Request->input("Degree");
+    // $Edu->Major=$Request->input("Major");
+    // if($Request->has('still_study'))
+    // {
+    //     $arrayTostring =implode(',',$Request->input('still_study'));
+    //     $Edu->still_study = $Request->input("still_study");
+    // }
     //     // if($Request->has('still_study')){
     //     //     $Edu->$still_study=$Request->still_study;
     //     // }
-    // $Edu->Graduation_year=$Request->Graduation_year;
-
+    // $Edu->Graduation_year=$Request->input("Graduation_year");
+    
+    //    if($Edu){
+    //      $Edu->save();
+    //     return redirect()->route('edu')->with('success','  تمّ التعديل بنجاح');
+    // }else{
+    //     return back()->withInput()->with('fail','هناك خطأ ما');
+    // }
+    
     $Edu = PersonEducation::where('id' , $person_id)
+    
        ->update([
         'degree_name' => $Request->input("degree_name"),
         'Institution' => $Request->input("Institution"),
         'Degree' => $Request->input("Degree"),
         'Major' => $Request->input("Major"),
-        'still_study' => $Request->input("still_study"),
+        // 'still_study' =>implode(',',$Request->input('still_study')),
         'Graduation_year' => $Request->input("Graduation_year"),
         'person_id' =>  auth()->user()->GetPerson->id,
-       
-        
+
        ]);
       
        if($Edu){

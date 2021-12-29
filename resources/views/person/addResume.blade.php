@@ -35,7 +35,8 @@
 							</div>
 						@endif
 						
-                			<br><h3 class="card-title">المعلومات الأساسية </h3><br>
+                		<br>
+						
               			
 						<form action="{{url('/resume/store')}}" method="POST" id="resume" >
 							@csrf
@@ -78,7 +79,7 @@
 											<label> الجنس <span>*</span></label>
 											<select name="gender" class="form-control  form-control-lg" data-parsly-trigger="keyup">
 												<option selected disabled >يرجى الاختيار</option>
-												<option value="انثى" {{(old('gender') && old('gender')=='انثى' )?'selected':''}}>انثى</option>
+												<option value="أنثى" {{(old('gender') && old('gender')=='أنثى' )?'selected':''}}>أنثى</option>
 												<option value="ذكر" {{(old('gender') && old('gender')=='ذكر' )?'selected':''}}>ذكر</option>
 											</select> 
 											@if($errors->any('gender'))
@@ -95,7 +96,7 @@
 												<option value="منتهية" {{(old('military_service') && old('military_service')=='منتهية' )?'selected':''}}>منتهية</option>
 												<option value="غير منتهية" {{(old('military_service') && old('military_service')=='غير منتهية' )?'selected':''}}>غير منتهية</option>
 												<option value="معفى" {{(old('military_service') && old('military_service')=='معفى' )?'selected':''}}>معفى</option>
-												<option value="أنثى" {{(old('military_service') && old('military_service')=='*' )?'selected':''}}>اختر اذا كنت انثى</option>
+												<option value="أنثى" {{(old('military_service') && old('military_service')=='أنثى' )?'selected':''}}>اختر اذا كنت أنثى</option>
 											</select> 
 											@if($errors->any('military_service'))
 												<span>{{$errors->first('military_service')}}</span>
@@ -133,8 +134,12 @@
 
 									<div class="col-sm-6">
                       					<div class="form-group">
-										  <label>مكان الولادة <span>*</span></label>
-										  <input type="text" class="form-control form-control-lg" placeholder=""  name="place_Of_b" value="{{old('place_Of_b')}}" data-parsly-trigger="keyup">
+										  <label>مكان الاقامة الحالي <span>*</span></label>
+										  <select class="form-control form-control-lg select2bs4" name="city" id="city">
+											@foreach ($cities as $city)
+												<option value="{{$city->city_id}}" {{(old('city') && old('city')==$city->city_id )?'selected':''}} >{{$city->city_name}}</option>
+											@endforeach
+										</select>
 
 											@if($errors->any('place_Of_b'))
 												<span>{{$errors->first('place_Of_b')}}</span>
@@ -147,7 +152,7 @@
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label>رقم الخليوي <span>*</span></label>
-											<input type="text" class="form-control form-control-lg" placeholder="0933333333"  name="mobile_number"  pattern="[0]{1}[9]{1}[0-9]{8}" value="{{ Auth::user()->mobile }}"  data-parsly-trigger="keyup">
+											<input type="text" class="form-control form-control-lg" placeholder="0933333333"  name="mobile_number"  pattern="[0]{1}[9]{1}[0-9]{8}" value="{{ Auth::user()->mobile }}"  data-parsly-trigger="keyup" readonly>
 											@if($errors->any('mobile_number'))
 												<span>{{$errors->first('mobile_number')}}</span>
 											@endif		
@@ -161,7 +166,9 @@
 												<option value="عربي" selected>عربي </option>	
 												<option value="انكليزي">انكليزي</option>
 												<option value="اسباني">اسباني</option>
-												<option value="ايطالي">ايطالي</option>
+																				<option value="ايطالي">ايطالي</option>
+																				<option value="فرنسي">فرنسي</option>
+																				<option value="روسي">روسي</option>
 												
 											</select>
 											@if($errors->any('lang'))
@@ -203,4 +210,35 @@
   <script>
       CKEDITOR.replace( 'article-ckeditor' );
   </script>
+
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+ 
+  
+  
+
+ 
+
+  
+  })
+
+
+
+ 
+ 
+
+
+
+
+
+
+</script> 
 @endsection
