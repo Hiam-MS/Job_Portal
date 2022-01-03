@@ -16,7 +16,7 @@ class CreateCompanyActivitiesTable extends Migration
         Schema::create('company_activities', function (Blueprint $table) {
             $table->bigIncrements('activity_id');
             $table->string('activity_name');
-            $table->timestamps();
+            
         });
     }
 

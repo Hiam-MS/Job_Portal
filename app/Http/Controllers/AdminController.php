@@ -53,8 +53,7 @@ class AdminController extends Controller
         $job = DB::table('jobs')->where('status', 'pending')->get();
         return view('admin.pending_job',compact('job'));
 
-     
-        return view('admin.pending_job',compact('job'));
+ 
 
 
     }
@@ -91,7 +90,68 @@ class AdminController extends Controller
         }
 
     }
-    
+
+    public function showCompany(){
+        
+        return view('admin.showCompany');
+    }
+    public function showPeople(){
+        
+        return view('admin.showPeople');
+    }
+    public function showJobs(){
+        
+        return view('admin.showPeople');
+    }
+    public function showCities(){
+        
+        return view('admin.showPeople');
+    }
+    public function showGovernorate(){
+        
+        return view('admin.showPeople');
+    }
+    public function showCompanyActivity(){
+        
+        return view('admin.showPeople');
+    }
+    public function showCategory(){
+        
+        return view('admin.showPeople');
+    }
+    public function addCategory(){
+        
+        return view('admin.showPeople');
+    }
+    public function addCompanyActivity(){
+        
+        return view('admin.showPeople');
+    }
+    public function addCity(){
+        
+        return view('admin.showPeople');
+    }
+    public function addGovernorate(){
+        
+        return view('admin.showPeople');
+    }
+    public function BanPeople(){
+
+        return view('admin.showPeople');
+    }
+    public function unBanPeople(){
+        
+        return view('admin.showPeople');
+    }
+    public function BanCompany(){
+
+        return view('admin.showPeople');
+    }
+    public function unBanCompany(){
+
+        return view('admin.showPeople');
+    }
+
 
 
     

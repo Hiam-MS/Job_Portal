@@ -21,7 +21,7 @@ class CreatePersonSkillsTable extends Migration
                     ->references('id')
                     ->on('people')
                     ->onDelete('cascade');
-            $table->timestamps();
+            
         });
     }
 

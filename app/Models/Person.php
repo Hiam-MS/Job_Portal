@@ -40,7 +40,7 @@ class Person extends Model
 
     public function City()
     {
-        return $this->belongsTo(City::class);
+        return $this->belongsTo(City::class,'ci_id');
     }
 
 

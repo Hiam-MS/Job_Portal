@@ -75,7 +75,7 @@
 					<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">				
 				
 						<h3 class="font-weight-600">  المعلومات الاساسية  </h5><br>
-							<table  id ="customers" dir="rtl" >
+							<!-- <table  id ="customers" dir="rtl" >
 								<tr>
 									<th > الاسم الكامل</th>
 									<td> {{$Person->Fname}} {{$Person->Father_name}} {{$Person->Lname}}</td>
@@ -127,8 +127,8 @@
 									@endif
 								</tr>
 								<tr>
-									<th>  السكن الحالي   </th>
-									<td> {{$Person->Current_address}} </td>
+									<th>  مكان الاقامة الحالي   </th>
+									<td> {{$Person->city->city_name}} </td>
 								</tr>
 								<tr>
 									<th> الهاتف الارضي  </th>
@@ -142,7 +142,94 @@
 									<th> البريد الالكتروني  </th>
 									<td> {{$Person->email}} </td>
 								</tr>
-							</table>
+							</table> -->
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<table id=customers>
+											<tr>
+												<th> الاسم الكامل</th>
+												<td> {{$Person->Fname}} {{$Person->Father_name}} {{$Person->Lname}}</td>
+											</tr>
+								
+											<tr>
+												<th> الجنس  </th>
+												<td>{{$Person->gender}}</td>
+											</tr>
+											@if($Person->dob != NULL)
+											<tr>
+												<th> تاريخ الميلاد  </th>
+												<td> {{$Person->dob}} </td>
+											</tr>
+											@endif
+											<tr>
+												<th> مكان الولادة  </th>
+												<td> {{$Person->place_Of_b}} </td>
+											</tr>
+											<tr>
+												<th> الوضع  العائلي  </th>
+												@if($Person->marital_status == NULL)
+													<td>---</td>
+												@else
+													@if($Person->gender == 'أنثى')
+														@if( $Person->marital_status == 'عازب')
+															<td>عزباء</td>
+														@elseif($Person->marital_status == 'متزوج')
+															<td>متزوجة</td>
+														@elseif($Person->marital_status == 'مطلق')
+															<td>مطلقة</td>
+														@else($Person->marital_status == 'أرمل')
+															<td>أرملة</td>
+														@endif
+													@else
+														<td>{{$Person->marital_status}}</td>
+													@endif
+												@endif
+											
+											</tr>
+										</table>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<table id=customers>
+											<tr>
+												<th> خدمة العلم </th>
+												@if($Person->military_service == NULL )
+													<td>---</td>
+												@else
+													@if($Person->gender == 'أنثى' )
+														<td>---</td>
+													@else
+														<td> {{$Person->military_service}} </td>
+													@endif
+												@endif
+											</tr>
+											<tr>
+												<th>  مكان الاقامة الحالي   </th>
+												<td>{{$Person->city->city_name}}</td>
+												
+											</tr>
+											@if($Person->fixed_phone != NULL)
+											<tr>
+												<th> الهاتف الارضي  </th>
+												<td> {{$Person->fixed_phone}} </td>
+											</tr>
+											@endif
+											<tr>
+												<th> رقم الموبايل  </th>
+												<td> {{$Person->mobile_number}} </td>
+											</tr>
+											@if($Person->email != NULL)
+											<tr>
+												<th> البريد الالكتروني  </th>
+												<td> {{$Person->email}} </td>
+											</tr>
+											@endif
+										</table>
+									</div>
+								</div>
+							</div>
 							
 							@if(count($Person->PersonEducation) > 0)
 								<div class="dez-divider divider-2px bg-primary-dark mb-4 mt-0"></div>

@@ -2,19 +2,7 @@
 @section('content')
 
 
-<style>
-    th, td 
-    {
-        border-bottom: 1px solid #ddd;
-    }
-    tr:hover 
-    {
-        background-color: grey;
-    }
 
-
-
-</style>
 
     <form action="" method="">
 

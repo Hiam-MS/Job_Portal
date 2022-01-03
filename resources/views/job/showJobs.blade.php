@@ -146,6 +146,7 @@
 		<td>
 			<button type="submit" class="btn btn-primary">بحث</button>
 		</td>
+		<td><form><input type="button" value="رجوع" onclick="history.back()" class="btn btn-primary"></form></td>
 	</tr>
 </form>
 </table>   

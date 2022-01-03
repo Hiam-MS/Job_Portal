@@ -76,14 +76,14 @@
 	<tr>
 		<td>الشهادة المطلوبة</td>
 		<td>
-			<select name ="degree" id="degree" class="select2bs4 form-control form-control-lg" >
+			<!-- <select name ="degree" id="degree" class="select2bs4 form-control form-control-lg" >
 			<option value=""></option>
 			@foreach($degrees as $d)
 					<option value="{{$d->degree_name}}">{{$d->degree_name}}</option>
 				@endforeach
 			
-			</select>
-			<!-- <input type="text" name="degree" id="degree"> -->
+			</select> -->
+			<input type="text" name="degree" id="degree" class=" form-control">
 
 
 		
@@ -95,9 +95,10 @@
 			<select name ="city" id="city" class="select2bs4 form-control form-control-lg" >
 				<option value=""></option>
 				@foreach($cities as $city)
-					<option value="{{$city->city_id}}">{{$city->city_name}}</option>
+					<option value="{{$city->city_name}}">{{$city->city_name}}</option>
 				@endforeach
 			</select>
+			<!-- <input type="text" name="city" id="city" class=" form-control"> -->
 		</td>
 		<td>الجنس</td>
 		<td>
@@ -111,6 +112,7 @@
 		<td>
 			<button type="submit" class="btn btn-primary">بحث</button>
 		</td>
+		<td><form><input type="button" value="رجوع" onclick="history.back()" class="btn btn-primary"></form></td>
 	</tr>
 </form>
 </table>   
@@ -125,6 +127,7 @@
 											<tr>
 												<th> الاسم</th>
 												<th>الشهادة</th>
+												<th>خبرة العمل</th>
 												<th>مكان الاقامة</th>
 												<th> الجنس</th>
 												<th>خيارات</th>
@@ -136,15 +139,25 @@
 													<tr>
 														<td>{{$item->Fname}} {{$item->Father_name}} {{$item->Lname}}</td>
 														
-														@if($item->degree_name != NULL)
-															<td>{{$item->degree_name}}</td>
-														@else
-															<td>لايوجد</td>
-														@endif
-					
+														<td>
+														@foreach($item->PersonEducation as $edu)
+															{{$edu['degree_name']}} <br>
+														@endforeach
+													
+														</td>
 														
-														<td> {{$item->city_name}} </td>
-														<td> {{$item->gender}} </td>
+														<td>
+														@foreach($item->PersonExperience as $jp)
+															{{$jp['Job_title']}} <br>
+														@endforeach
+														</td>
+														<td>
+															{{$item->city->city_name}}
+														</td>
+														<td>
+														{{$item->gender}}
+														</td>
+														<!-- <td> {{$item->gender}} </td> -->
 														<td>  	
 														<a href="{{route('personDetail',$item->id)}}" class="btn btn-primary"> <i class="ti-eye" style="size:25px"></i></a>
 														
