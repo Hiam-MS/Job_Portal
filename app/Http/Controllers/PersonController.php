@@ -91,7 +91,7 @@ class PersonController extends Controller
         $gender=$request->input('gender');
 
 
-    if($city != NULL && $city != NULL && $gender != NULL){
+   
         if($request->has('degree') && $city == NULL && $gender == NULL){
             
         $search_text= $_GET['degree'];
