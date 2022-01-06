@@ -26,7 +26,7 @@ class JobsController extends Controller
             $cities = City::all();
             $company_id=auth()->user()->getCompany->id;
             $company=DB::table('companies')->where('id', $company_id)
-            ->join('cities', 'companies.city_id', '=', 'cities.city_id')
+            ->join('cities', 'companies.cci_id', '=', 'cities.city_id')
            ->first();
             return view('job.addJob',compact('company','categories','cities'));
         }

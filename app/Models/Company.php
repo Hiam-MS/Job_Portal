@@ -17,11 +17,11 @@ class Company extends Model
     }
     function companyActivity() 
     {
-    	return $this->belongsTo(CompanyActivity::class);
+    	return $this->belongsTo(CompanyActivity::class,'act_id');
     }
     public function City()
     {
-        return $this->belongsTo(City::class);
+        return $this->belongsTo(City::class,'cci_id');
     }
     
 }

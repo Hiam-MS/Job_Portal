@@ -3,14 +3,16 @@
     @csrf
     
 
-<div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}});">
+<!-- <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}});">
     <div class="container">
         <div class="dez-bnr-inr-entry">
             <h1 class="text-white">لوحة التحكم </h1>
 		</div>
     </div>
-</div>
-     
+</div> -->
+
+		<p style="  background-image: linear-gradient(navy, gray);width:100%;height:150px">dcsdjsdncnsdcknsdkcnskdnc</p>
+
     <div class="content-block">
         <div class="section-full content-inner-2">
 			<div class="container">

@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Job;
+use App\Models\Company;
 use App\Models\Person;
 
 class AdminController extends Controller
@@ -91,9 +92,23 @@ class AdminController extends Controller
 
     }
 
-    public function showCompany(){
+    public function showCompany()
+    {
+        if(Auth()->user()->role == 'a'){
+            $companies=User::where(function ($query) {
+                $query->where('role', 'c')
+                      ->orWhere('role', 'd');
+                    })
+        ->orderBy('created_at', 'desc')
+        ->paginate(10);
         
-        return view('admin.showCompany');
+$com=Company::all();
+            return view ('admin.showCompany',compact('companies','com'));
+        }
+        else{
+            abort(403);
+        }
+        
     }
     public function showPeople(){
         

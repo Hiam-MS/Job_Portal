@@ -49,7 +49,7 @@
 
 </style>
 
-<div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}});">
+<div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}}); width:100%;height:200px" >
     <div class="container">
         <div class="dez-bnr-inr-entry">
             <h1 class="text-white"> السير الذاتية الحالية</h1>

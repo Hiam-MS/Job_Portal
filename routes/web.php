@@ -169,8 +169,8 @@ Route::group(['middleware' => 'auth'], function(){
 
     /**************Admin******************** */
     Route::group(['middleware' => 'role:admin'], function(){
-
-        Route::get('/company/show','CompanyController@showCompany')->name('company.show');
+        Route::get('/company/show','AdminController@showCompany')->name('company.show');
+        
         // Route::get('/country','AdminController@addCountry');
         // Route::get('/city/{id}','AdminController@addCity');
         Route::get('/admin/dashboard','AdminController@getDash')->name('admin.Dash');

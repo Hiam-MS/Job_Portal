@@ -61,8 +61,8 @@ class CompanyController extends Controller
         $company->fixed_phone=$Request->fixed_phone;
         $company->fax_phone=$Request->fax_phone;
         // $company->location=$Request->location;
-        $company->city_id=$Request->city;
-        $company->activity_id=$Request->activity;
+        $company->cci_id=$Request->city;
+        $company->act_id=$Request->activity;
         $company->user_id= auth()->user()->id;
         
 
@@ -136,8 +136,8 @@ class CompanyController extends Controller
             $company->email= $Request->input("email");
             $company->fixed_phone= $Request->input("fixed_phone");
             $company->fax_phone = $Request->input("fax_phone");
-            $company->city_id = $Request->input('city');
-            $company->activity_id = $Request->input('activity');
+            $company->cci_id = $Request->input('city');
+            $company->act_id = $Request->input('activity');
               // $company->location= $Request->input("location");
             // $company->company_specialist= $Request->input("company_specialist");
             // $company->company_name_en =  $Request->input("company_name_en");
@@ -240,8 +240,8 @@ class CompanyController extends Controller
             $city=$request->input('city');
             $company = DB::table('companies')
 
-            ->join('company_activities' , 'companies.activity_id' , '=', 'company_activities.activity_id')
-            ->join('cities' , 'companies.city_id' , '=', 'cities.city_id')->first();
+            ->join('company_activities' , 'companies.act_id' , '=', 'company_activities.activity_id')
+            ->join('cities' , 'companies.cci_id' , '=', 'cities.city_id')->first();
         
 
 

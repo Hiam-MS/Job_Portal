@@ -44,8 +44,8 @@
 #customers tr:hover {background-color: #ddd;}
 
 #customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   text-align: center;
   background-color: #4682B4;
   color: white;
