@@ -15,7 +15,7 @@ class Company extends Model
     {
         return $this->hasMany(Job::class);
     }
-    function companyActivity() 
+    function Activity() 
     {
     	return $this->belongsTo(CompanyActivity::class,'act_id');
     }

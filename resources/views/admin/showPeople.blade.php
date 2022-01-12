@@ -16,7 +16,7 @@
       
     <div class="col-md-10  my-5">
       
-        <h2 class="h2 text-primary">إدارة الشركات</h2><br>
+        <h2 class="h2 text-primary">إدارة الأشخاص</h2><br>
         <div class="card card-default text-white">
           <div class="tab-content text-muted p-3">
             <div class="tab-pane active" id="admin-tabs-1" role="tabpanel">
@@ -49,39 +49,48 @@
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th>اسم الشركة</th>
-                      <th>اختصاص الشركة</th>
-                      <th>مكان الشركة</th>  
-                      <th>ايميل</th>                                
+                      <th>الاسم الكامل </th>
+                      <th> الشهادة</th>
+                      <th>مكان الاقامة </th>  
+                      <th>رقم الموبايل</th>                                
                       <th></th>    
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($companies as $company)
+                    @foreach($people as $person)
                       <tr>
-                        <td> {{ $company->GetCompany->company_name}}  </td>
-                        <td> {{ $company->GetCompany->Activity->activity_name }} </td>
-                        <td> {{ $company->GetCompany->city->city_name }} </td>
-                        <td> {{ $company->GetCompany->email}} </td>
-                   
+                        <td> <a href="{{route('personDetail',$person->GetPerson->id)}}"> {{ $person->GetPerson->Fname}}  {{ $person->GetPerson->Father_name}}  {{ $person->GetPerson->Lname}}</a>  </td>
+
+                        @if($person->GetPerson->PersonEducation == NULL)
+                        <td>لايوجد</td>
+                        @else
+                        <td>
+                            @foreach( $person->GetPerson->PersonEducation as $edu)
+                                {{$edu['degree_name'] }} <br>
+                            @endforeach
+                        </td>
+                        @endif
+               
+                        <td>{{ $person->GetPerson->city->city_name}}</td>
+                        <td> {{ $person->GetPerson->mobile_number}}</td>
                         <td><h4>
-                          @if($company->role == 'c')
-                          <form action="{{route('BanComany',$company->id)}}" method="POST">
-        @csrf
-                            <button class="btn btn-danger banUsers" data-id="{{$company->id}}">حظر</button>
-</form>
-                            @elseif($company->role == 'd')
-                            <form action="{{route('unBanCompany',$company->id)}}" method="POST">
-        @csrf
-                              <button class="btn btn-success unbanFreelancer" data-id="{{$company->id}}">رفع الحظر</button>
-</form>
-                              @endif
+                            @if($person->role == 'p')
+                                <form action="{{route('BanPeople',$person->id)}}" method="POST">
+                                    @csrf
+                                    <button class="btn btn-danger banUsers" data-id="{{$person->id}}">حظر</button>
+                                </form>
+                            @elseif($person->role == 'e')
+                                <form action="{{route('unBanPeople',$person->id)}}" method="POST">
+                                    @csrf
+                                    <button class="btn btn-success unbanFreelancer" data-id="{{$person->id}}">رفع الحظر</button>
+                                </form>
+                            @endif
                         </h4></td>    
                       </tr>
                     @endforeach
                   </tbody>
                 </table>
-                <div class="ml-3"> {{$companies->links()}}</div>
+                <div class="ml-3"> {{$people->links()}}</div>
               </div>
             </div>
           </div>

@@ -11,7 +11,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\ExpController;
 use App\Http\Controllers\PAddController;
-
+use App\Http\Controllers\CityController;
 
 use Illuminate\Routing\Redirector;
 
@@ -169,7 +169,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     /**************Admin******************** */
     Route::group(['middleware' => 'role:admin'], function(){
-        Route::get('/company/show','AdminController@showCompany')->name('company.show');
+        Route::get('/company/show','AdminController@showCompany')->name('showCompany');
         
         // Route::get('/country','AdminController@addCountry');
         // Route::get('/city/{id}','AdminController@addCity');
@@ -177,7 +177,15 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/admin/pending_jobs','AdminController@pendingJob')->name('pendingJob');
         Route::post('/job/accepte_Job/{id}', 'AdminController@accepte_JobStatuse')->name('accepte_JobStatuse');
         Route::post('/job/denie_Job/{id}', 'AdminController@denied_JobStatuse')->name('denied_JobStatuse');
-        
+        Route::post('/company/ban/{id}', 'AdminController@BanCompany')->name('BanComany');
+        Route::post('/company/unban/{id}', 'AdminController@unBanCompany')->name('unBanCompany');
+        Route::get('/people/show','AdminController@showPeople')->name('people');
+        Route::post('/people/ban/{id}', 'AdminController@BanPeople')->name('BanPeople');
+        Route::post('/people/unban/{id}', 'AdminController@unBanPeople')->name('unBanPeople');
+
+        //___________________Cities Routes_________________________________
+        Route::get('/city/show', [CityController::class, 'showCitites'])->name('cities');
+        Route::get('/city/{id}/edit', [CityController::class, 'editCitites']);
     });
 
 

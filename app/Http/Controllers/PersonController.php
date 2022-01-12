@@ -377,7 +377,7 @@ class PersonController extends Controller
             $person->Lname = $Request->input("Lname");
             $person->gender= $Request->input("gender");
             $person->dob= $Request->input("dob");
-             $person->ci = $Request->input("city");
+             $person->ci_id = $Request->input("city");
             // $person->place_Of_b = $Request->input("place_Of_b");
             $person->marital_status= $Request->input("marital_status");
             $person->military_service= $Request->input("military_service");
@@ -489,7 +489,8 @@ class PersonController extends Controller
             $personEdu->person_id=  auth()->user()->GetPerson->id;
             $personEdu->save();
 
-            return redirect()->route('edu');
+            return back();
+            // return redirect()->route('edu');
         //    return redirect()->route('edu', ['id' => $id]);
           
  }

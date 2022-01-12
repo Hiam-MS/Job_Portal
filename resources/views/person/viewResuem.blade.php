@@ -139,25 +139,48 @@
 													<tr>
 														<td>{{$item->Fname}} {{$item->Father_name}} {{$item->Lname}}</td>
 														
-														<td>
-														@foreach($item->PersonEducation as $edu)
-															{{$edu['degree_name']}} <br>
-														@endforeach
-													
-														</td>
 														
+														@if($item->PersonEducation != NULL)
+															<td>
+															
+															@foreach($item->PersonEducation as $edu)
+															
+																{{$edu['degree_name']}} <br>
+															@endforeach
+														
+															</td>
+															
+														@else
+															<td>لايوجد</td>
+														@endif
+														
+
+														@if($item->PersonExperience == 'NULL')
+														<td>لايوجد</td>
+														@else
+														<td>
+														
+															@foreach($item->PersonExperience as $jp)
+															
+															{{$jp['Job_title']}} <br>
+															@endforeach
+														
+														</td>
+														@endif
+
+<!-- 
 														<td>
 														@foreach($item->PersonExperience as $jp)
-															{{$jp['Job_title']}} <br>
+															 <br>
 														@endforeach
-														</td>
+														</td> -->
 														<td>
 															{{$item->city->city_name}}
 														</td>
 														<td>
 														{{$item->gender}}
 														</td>
-														<!-- <td> {{$item->gender}} </td> -->
+														
 														<td>  	
 														<a href="{{route('personDetail',$item->id)}}" class="btn btn-primary"> <i class="ti-eye" style="size:25px"></i></a>
 														

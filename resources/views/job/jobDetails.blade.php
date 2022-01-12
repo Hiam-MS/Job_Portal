@@ -116,65 +116,40 @@ textarea.form-control{
 			<div class="col-lg-4">
 						<div class="sticky-top">
 							<div class="row">
-								<div class="col-lg-8 col-md-6">
+								<div class="col-lg-12 col-md-6">
 									<div class="m-b30">
-										<img src="{{asset('images/blog/grid/6.jpg')}}" alt="">
+									<img src="{{asset('images/blog/grid/6.jpg')}}" alt="">
 									</div>
 								</div>
 										
-								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" >
+								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
 									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
-										<h4 class="text-black font-weight-700 p-t10 m-b15"><a href="{{route('CompanyDash')}}" > لوحة التحكم<a></h4>
+										<h4 class="text-black font-weight-700 p-t10 m-b15">تفاصيل العمل</h4>
 										<ul>
-											@if(isset(auth()->user()->GetCompany))
-												<li>
-													<strong class="font-weight-700 text-black"> 
-														<a href="{{route('CompanyAdditionalInfo')}}" > عرض/ تعديل/اضافة معلومات أخرى   </a>
-													</strong><span class="text-black-light"> </span>
-												</li>
-												<li>
-													<strong class="font-weight-700 text-black">
-														<a href="{{route('addJob')}}" > نشر فرصة عمل جديدة </a>
-													</strong> 
-												</li>
-												<li>
-													<strong class="font-weight-700 text-black">
-														<a href="{{route('CompanyJob')}}" > عرض فرص العمل المنشورة  </a>
-													</strong>
-												</li>
-												<li>
-													<strong class="font-weight-700 text-black">
-														<a href="{{route('resuems')}}" >   عرض السير الذاتية المتاحة</a> 
-													 </strong>
-												</li>	
-												<li>
-													<strong class="font-weight-700 text-black">
-														<a href="{{route('CompanyEndJobs')}}" >   الوظائف المنتهية  </a>  
-													</strong>
-												</li>
-											@else
-												<li><strong class="font-weight-700 text-black"><li><a href="{{route('CompanyProfile')}}" > ادخال معلومات الشركة </a></li></strong> </li>
+											<li><i  class="ti-location-pin"></i><strong class="font-weight-700 text-black">العنوان: {{$job->city}} </strong><span class="text-black-light"> </span></li>
+											<li><i class="ti-money"></i><strong class="font-weight-700 text-black">الراتب : {{$job->budget}}</strong> </li>
+											<li><i class="ti-user"></i><strong class="font-weight-700 text-black">عدد الاشخاص المطلوبين:  {{$job->number_of_employess}} </strong></li>
+											
+											<br>
+															@if(auth::user())
+												@if(auth()->user()->role == 'a')
+												<li><strong class="font-weight-700 text-black">الحالة : {{$job->status}}</strong> </li>
+												@if($job->status == 'pending' | $job->status == 'denied')
 
+							<form action="/job/accepte_Job/{{$job->id}}" method="POST">
+											@csrf
+											<button id="viewApplyedJob" type="submit" class="btn btn-primary btn-block">موافقة على النشر</button>
+											</form>
 											@endif
-											<div class="dropdown " >
-												<li>
-													<strong class="font-weight-700 text-black"><h5 ><i class="fa fa-chevron-down"></i>      ادارة الحساب</h5></strong>
-												</li>
-											 	<div class="dropdown-content">
-											 		<ul>
-														<li><a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a></li>
-													</ul>
-													<ul>
-														<li><a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a></li>
-													</ul>
-													<ul>
-														<li><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a></li>
-													</ul>
-													<ul>
-														<li><a href="{{route('profile.delete')}}" >  حذف الحساب </a></li>
-													</ul>	
-									 			</div>
-											</div>
+											@if($job->status == 'pending' | $job->status == 'accepted')
+											<form action="/job/denie_Job/{{$job->id}}" method="POST">
+											@csrf
+											<button id="viewApplyedJob" type="submit" class="btn btn-primary btn-block w-100">عدم الموافقة على النشر</button>
+											</form>
+											@endif
+											@endif
+											@endif
+											
 										</ul>
 									</div>
 								</div>

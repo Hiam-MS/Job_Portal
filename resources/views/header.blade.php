@@ -171,6 +171,9 @@
 								@endif
 								@if(auth()->user()->role == 'a')
 								<li ><a  href="{{ asset('/admin/dashboard')}}" class="dez-page" > لوحة التحكم</a></li>
+                                <li><strong class="font-weight-700 text-black"> <a href="{{route('showCompany')}}" > إدارة الشركات </a></strong><span class="text-black-light"> </span></li>
+                                                <li><strong class="font-weight-700 text-black"><a href="{{route('people')}}" >   إدارة الأشخاص</a>  </strong></li>	
+												<li><strong class="font-weight-700 text-black"><a href="{{route('pendingJob')}}" >      وظائف معلقة</a>  </strong></li>	
 								@endif
 								@endif
 									<li><a  class="dez-page" href="{{ route('logout') }}" 

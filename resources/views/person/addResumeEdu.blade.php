@@ -166,7 +166,7 @@ p{
 								<div class="dez-divider divider-2px bg-primary-dark mb-4 mt-0"></div>
 							</form>
 
-							<h3> الشهادات التعليمية  </h3> <span>ملاحظة  اذا لم يكن لديك شهادة تعليمة قم بتعبئة حقل اسم الشهادة ب (لايوجد)</span><br>
+							<h3> الشهادات التعليمية  </h3> <br>
 							<form action="{{route('PersonStoreEdu')}}" method="POST" id="resume" >
 								@csrf
 								<div class="row">

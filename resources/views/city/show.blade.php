@@ -16,7 +16,7 @@
       
     <div class="col-md-10  my-5">
       
-        <h2 class="h2 text-primary">إدارة الشركات</h2><br>
+        <h2 class="h2 text-primary">إدارة المناطق</h2><br>
         <div class="card card-default text-white">
           <div class="tab-content text-muted p-3">
             <div class="tab-pane active" id="admin-tabs-1" role="tabpanel">
@@ -49,39 +49,31 @@
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th>اسم الشركة</th>
-                      <th>اختصاص الشركة</th>
-                      <th>مكان الشركة</th>  
-                      <th>ايميل</th>                                
+                      <th>المنطقة </th>
+                      
+                      <th>تابعة ل:</th>                                
                       <th></th>    
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($companies as $company)
+                    @foreach($cities as $city)
                       <tr>
-                        <td> {{ $company->GetCompany->company_name}}  </td>
-                        <td> {{ $company->GetCompany->Activity->activity_name }} </td>
-                        <td> {{ $company->GetCompany->city->city_name }} </td>
-                        <td> {{ $company->GetCompany->email}} </td>
-                   
-                        <td><h4>
-                          @if($company->role == 'c')
-                          <form action="{{route('BanComany',$company->id)}}" method="POST">
-        @csrf
-                            <button class="btn btn-danger banUsers" data-id="{{$company->id}}">حظر</button>
-</form>
-                            @elseif($company->role == 'd')
-                            <form action="{{route('unBanCompany',$company->id)}}" method="POST">
-        @csrf
-                              <button class="btn btn-success unbanFreelancer" data-id="{{$company->id}}">رفع الحظر</button>
-</form>
-                              @endif
-                        </h4></td>    
+                        
+                        <td>{{ $city->city_name}}</td>
+                       <td>{{ $city->governorate->gov_name}}</td>
+                       <td class="text-center"> <button class="btn btn-outline-primary" ><a href="/city/{{ $city->city_id }}/edit">Edit</a></button> </td>
+                       <td>
+                    
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-outline-danger" type="submit" >Delete</button>
+                
+                    </td>  
                       </tr>
                     @endforeach
                   </tbody>
                 </table>
-                <div class="ml-3"> {{$companies->links()}}</div>
+                <div class="ml-3"> {{$cities->links('layouts.paginationlinks')}}</div>
               </div>
             </div>
           </div>

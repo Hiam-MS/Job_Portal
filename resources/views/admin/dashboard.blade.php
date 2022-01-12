@@ -20,21 +20,19 @@
 					<div class="col-lg-4">
 						<div class="sticky-top">
 							<div class="row">
-								<div class="col-lg-12 col-md-6">
-									<div class="m-b30">
+								
 										
-									</div>
-								</div>
-										
-								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-12 col-md-6">
+								<div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="col-lg-9 col-md-6">
 									<div  class="widget bg-white p-lr20 p-t20  widget_getintuch radius-sm">
                                          <h4 class="text-black font-weight-700 p-t10 m-b15"><a href="{{route('admin.Dash')}}" > لوحة التحكم<a></h4>
                                             <ul>
 											
 										
-                                                <li><strong class="font-weight-700 text-black"> <a href="{{route('company.show')}}" > الشركات الحالية </a></strong><span class="text-black-light"> </span></li>
-                                                <li><strong class="font-weight-700 text-black"><a href="{{route('resuems')}}" >   عرض السير الذاتية المتاحة</a>  </strong></li>	
+                                                <li><strong class="font-weight-700 text-black"> <a href="{{route('showCompany')}}" > إدارة الشركات </a></strong><span class="text-black-light"> </span></li>
+                                                <li><strong class="font-weight-700 text-black"><a href="{{route('people')}}" >   إدارة الأشخاص</a>  </strong></li>	
+												<li><strong class="font-weight-700 text-black"><a href="{{route('pendingJob')}}" >إدارة الوظائف</a>  </strong></li>	
 												<li><strong class="font-weight-700 text-black"><a href="{{route('pendingJob')}}" >      وظائف معلقة</a>  </strong></li>	
+												<li><strong class="font-weight-700 text-black"><a href="{{route('cities')}}" >إدارة المناطق</a>  </strong></li>	
                                                
                                             </ul>
 									</div>

@@ -26,13 +26,13 @@ class CompanyController extends Controller
         return view('company.addProfile',compact('activities','cities'));
     }
 
-    public function showCompany()
-    {
-        $company=Company::all();
+    // public function showCompany()
+    // {
+    //     $company=Company::all();
         
 
-        return view ('company.showCompany',compact('company'));
-    }
+    //     return view ('company.showCompany',compact('company'));
+    // }
     public function viewProfile()
     {
         $company=auth()->user()->GetCompany;
@@ -233,18 +233,11 @@ class CompanyController extends Controller
         if(isset(auth()->user()->GetCompany))
         {
             // $company = auth()->user()->GetCompany;
-            $company_id = auth()->user()->GetCompany->id;
+            $company = auth()->user()->GetCompany;
             $activities=CompanyActivity::all();
             $cities=City::all();
             $activity=$request->input('activity');
             $city=$request->input('city');
-            $company = DB::table('companies')
-
-            ->join('company_activities' , 'companies.act_id' , '=', 'company_activities.activity_id')
-            ->join('cities' , 'companies.cci_id' , '=', 'cities.city_id')->first();
-        
-
-
             return view('company.additionalInfo',compact('company','activities','cities'));
         }
         else

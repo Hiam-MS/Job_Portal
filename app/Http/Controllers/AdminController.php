@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Job;
 use App\Models\Company;
 use App\Models\Person;
+use App\Models\Governorate;
+
 
 class AdminController extends Controller
 {
@@ -102,26 +104,82 @@ class AdminController extends Controller
         ->orderBy('created_at', 'desc')
         ->paginate(10);
         
-$com=Company::all();
-            return view ('admin.showCompany',compact('companies','com'));
+ 
+            return view ('admin.showCompany',compact('companies'));
         }
         else{
             abort(403);
         }
         
     }
+    public function BanCompany(Request $request){
+
+        $id = $request->id;
+    	$user = User::find($id);
+    	$user->role = 'd';
+    	$user->save();
+        return back();
+       
+    }
+    public function unBanCompany(Request $request){
+
+        $id = $request->id;
+    	$user = User::find($id);
+    	$user->role = 'c';
+    	$user->save();
+        return back();
+    }
+
     public function showPeople(){
+        if(Auth()->user()->role == 'a'){
+            $people=User::where(function ($query) {
+                $query->where('role', 'p')
+                      ->orWhere('role', 'e');
+                    })
+        ->orderBy('created_at', 'desc')
+        ->paginate(10);
         
-        return view('admin.showPeople');
+ 
+            return view ('admin.showPeople',compact('people'));
+        }
+        else{
+            abort(403);
+        }
+        
+    }
+    public function BanPeople(Request $request){
+        $id = $request->id;
+    	$user = User::find($id);
+    	$user->role = 'e';
+    	$user->save();
+        return back();
+       
+    }
+    public function unBanPeople(Request $request){
+        $id = $request->id;
+    	$user = User::find($id);
+    	$user->role = 'p';
+    	$user->save();
+        return back();
+       
     }
     public function showJobs(){
         
         return view('admin.showPeople');
     }
-    public function showCities(){
-        
-        return view('admin.showPeople');
-    }
+
+    // public function showCitites(){
+    //     if(Auth()->user()->role == 'a'){
+    //         $cities=City::paginate(30);
+    //     $governorates=Governorate::all();
+ 
+    //         return view ('admin.city.show',compact('cities'));
+    //     }
+    //     else{
+    //         abort(403);
+    //     }
+  
+    // }
     public function showGovernorate(){
         
         return view('admin.showPeople');
@@ -150,22 +208,8 @@ $com=Company::all();
         
         return view('admin.showPeople');
     }
-    public function BanPeople(){
-
-        return view('admin.showPeople');
-    }
-    public function unBanPeople(){
-        
-        return view('admin.showPeople');
-    }
-    public function BanCompany(){
-
-        return view('admin.showPeople');
-    }
-    public function unBanCompany(){
-
-        return view('admin.showPeople');
-    }
+  
+ 
 
 
 
