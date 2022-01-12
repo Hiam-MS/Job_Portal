@@ -69,10 +69,10 @@ class AdminController extends Controller
             
         if($job){
            
-            return redirect()->route('pendingJob')->with('success','  تمت القبول بنجاح');
+            return redirect()->back()->with('success','  تمّت عملية القبول بنجاح');
         }else{
             
-            return redirect()->route('pendingJob')->with('fail','  هناك خطأ ما');
+            return redirect()->back()->with('fail','  هناك خطأ ما');
         }
 
     }
@@ -86,10 +86,10 @@ class AdminController extends Controller
             
         if($job){
            
-            return redirect()->route('pendingJob')->with('success','  تمت القبول بنجاح');
+            return redirect()->back()->with('success','  تمّت عملية الرفض بنجاح');
         }else{
             
-            return redirect()->route('pendingJob')->with('fail','  هناك خطأ ما');
+            return redirect()->back()->with('fail','  هناك خطأ ما');
         }
 
     }
@@ -164,8 +164,17 @@ class AdminController extends Controller
        
     }
     public function showJobs(){
+        if(Auth()->user()->role == 'a'){
+            $jobs = Job::join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+            ->orderBy("created_at", "desc")->paginate(15);
         
-        return view('admin.showPeople');
+ 
+            return view ('admin.showJobs',compact('jobs'));
+        }
+        else{
+            abort(403);
+        }
+        
     }
 
     // public function showCitites(){

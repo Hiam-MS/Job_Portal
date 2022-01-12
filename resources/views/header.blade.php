@@ -106,7 +106,25 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+.btn-primary {background-image: linear-gradient(to right, #000046 0%, #1CB5E0  51%, #000046  100%)}
+         .btn-primary {
+            padding: 6px 6px;
+            width :75px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            box-shadow: 0 0 20px #eee;
+            border-radius: 10px;
+            display: block;
+          }
 
+          .btn-primary:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+          }
 </style>
 </head>
 <body id="bg">
@@ -153,7 +171,7 @@
 						<li class="active">
 						@guest
                             @if (Route::has('login'))
-                            <a href="{{ route('register') }}" class="btn btn-primary"><i class="fa fa-user"></i> تسجيل حساب</a>
+                            <a href="{{ route('register') }}" class="btn btn-primary" style=" width :150px;"><i class="fa fa-user"></i> تسجيل حساب</a>
 							@endif
 							@if (Route::has('register'))
                             <a href="{{ route('login') }}" class="btn btn-primary"><i class="fa fa-lock"></i>  دخول</a>

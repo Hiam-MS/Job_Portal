@@ -135,14 +135,16 @@ textarea.form-control{
 												@if(auth()->user()->role == 'a')
 												<li><strong class="font-weight-700 text-black">الحالة : {{$job->status}}</strong> </li>
 												@if($job->status == 'pending' | $job->status == 'denied')
-
-							<form action="/job/accepte_Job/{{$job->id}}" method="POST">
+												
+												
+							<form action="{{route('accepte_JobStatuse',$job->id)}}" method="POST">
 											@csrf
-											<button id="viewApplyedJob" type="submit" class="btn btn-primary btn-block">موافقة على النشر</button>
+											<button id="viewApplyedJob" type="submit" class="btn btn-primary btn-block w-100">موافقة على النشر</button>
 											</form>
 											@endif
 											@if($job->status == 'pending' | $job->status == 'accepted')
-											<form action="/job/denie_Job/{{$job->id}}" method="POST">
+											
+											<form action="{{route('denied_JobStatuse',$job->id)}}" method="POST">
 											@csrf
 											<button id="viewApplyedJob" type="submit" class="btn btn-primary btn-block w-100">عدم الموافقة على النشر</button>
 											</form>

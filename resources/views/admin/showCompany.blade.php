@@ -1,7 +1,27 @@
 @extends('header')
 @section('content')
 
+<style>
+            .btn-danger {background-image: linear-gradient(to right, #000000 0%, #e74c3c  51%, #000000  100%)}
+         .btn-danger{
+            padding: 6px 6px;
+            width :100px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            box-shadow: 0 0 20px #eee;
+            border-radius: 10px;
+            display: block;
+          }
 
+          .btn-danger:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+          }
+</style>
 <div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;" class="job-info-box">	
   <div class="row justify-content-center">
     @if(count($errors)>0)

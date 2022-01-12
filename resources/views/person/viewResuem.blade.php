@@ -46,7 +46,25 @@
 		font-size:20px;
 		} */
 
+		.btn-grad3 {background-image: linear-gradient(to right, #0575E6 0%, #021B79  51%, #0575E6  100%)}
+         .btn-grad3 {
+            padding: 6px 6px;
+            width :50px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            box-shadow: 0 0 20px #eee;
+            border-radius: 10px;
+            display: block;
+          }
 
+          .btn-grad3:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+          }
 </style>
 
 <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}}); width:100%;height:200px" >
@@ -182,7 +200,7 @@
 														</td>
 														
 														<td>  	
-														<a href="{{route('personDetail',$item->id)}}" class="btn btn-primary"> <i class="ti-eye" style="size:25px"></i></a>
+														<a href="{{route('personDetail',$item->id)}}" class="btn-grad3"> <i class="ti-eye" style="size:25px"></i></a>
 														
 														</td>
 													</tr>

@@ -183,6 +183,8 @@ Route::group(['middleware' => 'auth'], function(){
         Route::post('/people/ban/{id}', 'AdminController@BanPeople')->name('BanPeople');
         Route::post('/people/unban/{id}', 'AdminController@unBanPeople')->name('unBanPeople');
 
+
+        Route::get('/jobs/show','AdminController@showJobs')->name('jobs');
         //___________________Cities Routes_________________________________
         Route::get('/city/show', [CityController::class, 'showCitites'])->name('cities');
         Route::get('/city/{id}/edit', [CityController::class, 'editCitites']);
