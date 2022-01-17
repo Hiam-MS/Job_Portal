@@ -14,7 +14,7 @@ use App\Http\Controllers\PAddController;
 use App\Http\Controllers\CityController;
 
 use Illuminate\Routing\Redirector;
-
+use Jenssegers\Agent\Agent;
 
 
 /*
@@ -27,6 +27,8 @@ use Illuminate\Routing\Redirector;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 
 Route::get('/', function () {
     return view('index');

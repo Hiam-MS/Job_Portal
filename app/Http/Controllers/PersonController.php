@@ -95,39 +95,61 @@ class PersonController extends Controller
         if($request->has('degree') && $city == NULL && $gender == NULL){
             
       
-        $Person=Person::select("*")->where('degree_name','LIKE','%'.$degree.'%')
-        ->join('person_education', 'people.id', '=', 'person_education.person_id')
-        ->orderBy('created_at','desc')->paginate(50);
-    
-  
-        }
+        // $Person=Person::select("*")->where('degree_name','LIKE','%'.$degree.'%')
+        // ->join('person_education', 'people.id', '=', 'person_education.person_id')
+        // ->orderBy('people.created_at','desc')->paginate(50);
+        $Person = Person::with(['PersonEducation' => fn($query) => $query->where('degree_name','LIKE','%'.$degree.'%')])
+        ->whereHas('PersonEducation', fn ($query) => 
+        $query->where('degree_name','LIKE','%'.$degree.'%')
+        )
+        ->latest('people.created_at')
+        ->paginate(50);
+        }       
+       
 
-    if($request->has('degree') && $request->has('city') && $gender == NULL){
-        $Person=Person::select("*")->where('city_name','LIKE','%'.$city.'%')->where('degree_name','LIKE','%'.$degree.'%')
-        ->join('cities', 'people.ci_id', '=', 'cities.city_id')
-        ->join('person_education', 'people.id', '=', 'person_education.person_id')
-        ->orderBy('created_at','desc')->paginate(50);
+    elseif($request->has('degree') && $request->has('city') && $gender == NULL){
+        // $Person=Person::select("*")->where('city_name','LIKE','%'.$city.'%')->where('degree_name','LIKE','%'.$degree.'%')
+        // ->join('cities', 'people.ci_id', '=', 'cities.city_id')
+        // ->join('person_education', 'people.id', '=', 'person_education.person_id')
+        // ->orderBy('created_at','desc')->paginate(50);
+
+        $Person = Person::with(['PersonEducation' => fn($query) => $query->where('degree_name','LIKE','%'.$degree.'%')])
+        ->whereHas('PersonEducation', fn ($query) => 
+        $query->where('degree_name','LIKE','%'.$degree.'%'))
+        ->whereHas('City', fn ($query) => 
+        $query->where('city_name','LIKE','%'.$city.'%'))
+        ->latest('people.created_at')
+        ->paginate(50);
     }
     elseif($request->has('degree') && $request->has('city') && $request->has('gender')){
-        $Person=Person::select("*")->where('city_name','LIKE','%'.$city.'%')->where('degree_name','LIKE','%'.$degree.'%')->where('gender','LIKE','%'.$gender.'%')
-        ->join('cities', 'people.ci_id', '=', 'cities.city_id')
-        ->join('person_education', 'people.id', '=', 'person_education.person_id')
-        ->orderBy('created_at','desc')->paginate(50);
+        // $Person=Person::select("*")->where('city_name','LIKE','%'.$city.'%')->where('degree_name','LIKE','%'.$degree.'%')->where('gender','LIKE','%'.$gender.'%')
+        // ->join('cities', 'people.ci_id', '=', 'cities.city_id')
+        // ->join('person_education', 'people.id', '=', 'person_education.person_id')
+        // ->orderBy('created_at','desc')->paginate(50);
+        $Person = Person::with(['PersonEducation' => fn($query) => $query->where('degree_name','LIKE','%'.$degree.'%')])
+        ->whereHas('PersonEducation', fn ($query) => 
+        $query->where('degree_name','LIKE','%'.$degree.'%'))
+        ->whereHas('City', fn ($query) => 
+        $query->where('city_name','LIKE','%'.$city.'%'))
+        ->where('gender','LIKE','%'.$gender.'%')
+        ->latest('people.created_at')
+        
+        ->paginate(50);
     }
-   elseif($request->has('city') && $degree == NULL && $gender == NULL){
+//    elseif($request->has('city') && $degree == NULL && $gender == NULL){
 
-    $Person=Person::select("*")->where('city_name','LIKE','%'.$city.'%')
-    ->join('cities', 'people.ci_id', '=', 'cities.city_id')
-    ->join('person_education', 'people.id', '=', 'person_education.person_id')
-    ->orderBy('created_at','desc')->paginate(50);
+//     $Person=Person::select("*")->where('city_name','LIKE','%'.$city.'%')
+//     ->join('cities', 'people.ci_id', '=', 'cities.city_id')
+//     ->join('person_education', 'people.id', '=', 'person_education.person_id')
+//     ->orderBy('created_at','desc')->paginate(50);
        
         
-    }
-    elseif($request->has('gender') && $degree == NULL && $city == NULL){
-        $Person=Person::where('gender','LIKE','%'.$gender.'%')
-        ->orderBy('created_at','desc')->paginate(50);
+//     }
+//     elseif($request->has('gender') && $degree == NULL && $city == NULL){
+//         $Person=Person::where('gender','LIKE','%'.$gender.'%')
+//         ->orderBy('created_at','desc')->paginate(50);
            
-    }
+//     }
 
     else{
         $Person=Person::orderBy('created_at','desc')->paginate(50);
