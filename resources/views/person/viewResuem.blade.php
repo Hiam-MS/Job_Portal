@@ -148,14 +148,13 @@
 	</tr>
 </form>
 </table>    -->
-<form action="{{route('resuems')}}" method="GET">
-            <div class="row">
-                
+            <form action="{{route('resuems')}}" method="GET">
+                <div class="row">
+
                     <div class="col-sm-3 col-xs-12 mt-2">
                         <div class="form-group">
                             <label for="">الشهادة المطلوبة</label>
-                            <input type="text" class="form-control" placeholder="" name="degree"
-                                id="searchFreelancer">
+                            <input type="text" class="form-control" placeholder="" name="degree" id="searchFreelancer">
                         </div>
                     </div>
                     <div class="col-sm-3 col-xs-6 mt-2">
@@ -195,9 +194,9 @@
 
 
                     </div>
-              
-            </div>
-			</form>
+
+                </div>
+            </form>
         </div>
         <div style="margin: right 30px;align-content:flex-start;text-align: right;justify-content: right;"
             class="job-info-box">
@@ -217,25 +216,25 @@
                         <tbody>
                             @if(count($Person) > 0)
                             @foreach($Person as $item)
-							
+
                             <tr>
                                 <td>{{$item->Fname}} {{$item->Father_name}} {{$item->Lname}}</td>
 
-								
+
                                 @if($item->PersonEducation->count() == 0)
-								    <td>لا يوجد</td>
-								@else
+                                <td>لا يوجد</td>
+                                @else
                                 <td>
 
                                     @foreach($item->PersonEducation as $edu)
 
-                                        {{$edu['degree_name']}} <br>
+                                    {{$edu['degree_name']}} <br>
                                     @endforeach
 
                                 </td>
 
-                             
-                                
+
+
                                 @endif
 
 
@@ -286,7 +285,7 @@
 
 
 
-            <span>{{$Person->appends($_GET)->links('layouts.paginationlinks')}</span>
+            <span>{{$Person->appends($_GET)->links('layouts.paginationlinks')}}</span>
 
         </div>
 
@@ -340,27 +339,33 @@ $('body').on('keyup', '#search-resume', function() {
     $.ajax({
         method: 'POST',
         url: '{{ route("search.Resume")}}',
-        dataType: 'json',
-        data: {
-            '_token': '{{ csrf_token() }}',
-            serchQuest: serchQuest,
+                dataType: 'json',
+                data: {
+                '_token': '{{ csrf_token() }}',
+                serchQuest: serchQuest,
 
-        },
-        success: function(res) {
-            var tableRow = '';
-            $('#serch-result').html('');
+                },
+                success: function(res) {
+                var tableRow = '';
+                $('#serch-result').html('');
 
-            $.each(res, function(inde, value) {
-                tableRow = '<tr><td>' + value.Fname + ' ' + value.Father_name + ' ' + value
-                    .Lname + '</td><td>' + value.degree_name + '</td><td>' + value
-                    .city_name + '</td><td>' + value.gender +
-                    '</td><td><a href="Person/details/' + value.id +
-                    ' class="btn btn-primary"> تفاصيل</a></td> </tr>';
+                $.each(res, function(inde, value) {
+                tableRow = '<tr>
+                    <td>' + value.Fname + ' ' + value.Father_name + ' ' + value
+                        .Lname + '</td>
+                    <td>' + value.degree_name + '</td>
+                    <td>' + value
+                        .city_name + '</td>
+                    <td>' + value.gender +
+                        '</td>
+                    <td><a href="Person/details/' + value.id +
+                    ' class=" btn btn-primary"> تفاصيل</a></td>
+                </tr>';
                 $('#serch-result').append(tableRow);
-            })
-        }
-    });
-});
-</script>
+                })
+                }
+                });
+                });
+                </script>
 
-@endsection
+                @endsection
