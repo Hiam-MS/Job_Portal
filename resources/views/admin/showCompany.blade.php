@@ -135,7 +135,7 @@
                     @endforeach
                   </tbody>
                 </table>
-                <div class="ml-3"> {{$companies->links()}}</div>
+                <div class="ml-3"> {{$companies->appends($_GET)->links('layouts.paginationlinks')}}</div>
               </div>
             </div>
           </div>

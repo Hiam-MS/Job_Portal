@@ -233,7 +233,7 @@ h2 {
                                     @endif
                                 </tbody>
                             </table>
-                            <div class="ml-3"> {{$jobs->links()}}</div>
+                            <div class="ml-3"> {{$jobs->appends($_GET)->links('layouts.paginationlinks')}}</div>
                         </div>
                     </div>
                 </div>

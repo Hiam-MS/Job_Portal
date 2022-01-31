@@ -153,7 +153,7 @@
                     @endforeach
                   </tbody>
                 </table>
-                <div class="ml-3"> {{$people->links()}}</div>
+                <div class="ml-3"> {{$people->appends($_GET)->links('layouts.paginationlinks')}}</div>
               </div>
             </div>
           </div>
