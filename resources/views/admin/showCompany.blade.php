@@ -95,7 +95,7 @@
               
               </div>
               <div class="col-sm-2 col-xs-6 mt-2">
-                <button type="submit" class="btn btn-primary searchFreelancer w-100">رجوع</button>
+              <form action=""><input type="button" value="رجوع" onclick="history.back()" class="btn btn-primary w-100" ></form>
               
               </div>
             </div>
@@ -113,7 +113,7 @@
                   <tbody>
                     @foreach($companies as $company)
                       <tr>
-                        <td> {{ $company->GetCompany->company_name}}  </td>
+                        <td> <a href="{{route('showCompanyDetail',$company->GetCompany->id)}}">{{ $company->GetCompany->company_name}} </a> </td>
                         <td> {{ $company->GetCompany->Activity->activity_name }} </td>
                         <td> {{ $company->GetCompany->city->city_name }} </td>
                         <td> {{ $company->GetCompany->email}} </td>

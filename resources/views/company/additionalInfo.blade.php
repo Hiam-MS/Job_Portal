@@ -375,10 +375,5 @@
    
   })
  
-
-
-
-
-
 </script>
  @endsection

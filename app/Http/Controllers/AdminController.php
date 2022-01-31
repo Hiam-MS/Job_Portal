@@ -13,6 +13,7 @@ use App\Models\Job;
 use App\Models\Company;
 use App\Models\Person;
 use App\Models\Governorate;
+use App\Models\CompanyActivity;
 
 
 class AdminController extends Controller
@@ -220,7 +221,45 @@ class AdminController extends Controller
   
  
 
+    public function showCompanyDetail(Request $request){
+        if(Auth()->user()->role == 'a'){
+            $id = $request->id;
+            $company=Company::find($id);
+            $cities=City::all();
+            $activities=CompanyActivity::all();
+            return view('admin.company.companyDetail',compact('company','cities','activities'));
+        }
+        else{
+            abort(403);
+        }
+    }
 
+    public function updateCompanyDetail(Request $Request)
+    {
+        if(Auth()->user()->role == 'a'){
+            $id = $Request->id;
+            $companies=Company::find($id);
+
+            $activity=$Request->input('activity');
+            $city=$Request->input('city');
+            
+            $companies->company_name=$Request->company_name;
+            $companies->email=$Request->email;
+            $companies->fixed_phone=$Request->fixed_phone;
+            $companies->fax_phone=$Request->fax_phone;
+            $companies->cci_id=$Request->city;
+            $companies->act_id=$Request->activity;
+            $companies->industria_record=$Request->industria_record;
+            $companies->commercial_record=$Request->commercial_record;
+            $companies->website=$Request->website;
+           
+            $companies->save();
+            return back()->withInput();
+        }
+        else{
+            abort(403);
+        }
+    }
 
     
    
