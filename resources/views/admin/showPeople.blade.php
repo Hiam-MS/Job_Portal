@@ -129,43 +129,49 @@ h2 {
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($people as $person)
+                            @if(count($peopleDetail) > 0)
+                                @foreach($peopleDetail as $person)
                                 <tr>
-                                    <td> <a href="{{route('personDetail',$person->GetPerson->id)}}">
-                                            {{ $person->GetPerson->Fname}} {{ $person->GetPerson->Father_name}}
-                                            {{ $person->GetPerson->Lname}}</a> </td>
+                                    <td> <a href="{{route('showPeopleDetail',$person->id)}}">
+                                            {{ $person->Fname}} {{ $person->Father_name}}
+                                            {{ $person->Lname}}</a> </td>
 
-                                    @if($person->GetPerson->PersonEducation == NULL)
+                                    @if($person->PersonEducation == NULL)
                                     <td>لايوجد</td>
                                     @else
                                     <td>
-                                        @foreach( $person->GetPerson->PersonEducation as $edu)
+                                        @foreach( $person->PersonEducation as $edu)
                                         {{$edu['degree_name'] }} <br>
                                         @endforeach
                                     </td>
                                     @endif
 
-                                    <td>{{ $person->GetPerson->city->city_name}}</td>
-                                    <td> {{ $person->GetPerson->mobile_number}}</td>
+                                    <td>{{ $person->city->city_name}}</td>
+                                    <td> {{ $person->mobile_number}}</td>
                                     <td>
                                         <h4>
-                                            @if($person->role == 'p')
-                                            <form action="{{route('BanPeople',$person->id)}}" method="POST">
+                                            @if($person->users->role == 'p')
+                                            <form action="{{route('BanPeople',$person->users->id)}}" method="POST">
                                                 @csrf
                                                 <button class="btn btn-danger banUsers"
-                                                    data-id="{{$person->id}}">حظر</button>
+                                                    data-id="{{$person->users->id}}">حظر</button>
                                             </form>
-                                            @elseif($person->role == 'e')
-                                            <form action="{{route('unBanPeople',$person->id)}}" method="POST">
+                                            @elseif($person->users->role == 'e')
+                                            <form action="{{route('unBanPeople',$person->users->id)}}" method="POST">
                                                 @csrf
                                                 <button class="btn btn-success unbanFreelancer"
-                                                    data-id="{{$person->id}}">رفع الحظر</button>
+                                                    data-id="{{$person->users->id}}">رفع الحظر</button>
                                             </form>
                                             @endif
                                         </h4>
                                     </td>
                                 </tr>
                                 @endforeach
+                                @else
+                                <tr>
+                                    <td>لايوجد</td>
+                                </tr>
+                                @endif
                             </tbody>
                         </table>
                         <div class="ml-3"> {{$people->appends($_GET)->links('layouts.paginationlinks')}}</div>

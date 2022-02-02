@@ -104,9 +104,11 @@ class AdminController extends Controller
                     })
         ->orderBy('created_at', 'desc')
         ->paginate(10);
+        $comDetail=Company::orderBy('created_at', 'desc')
+        ->paginate(10);
         
  
-            return view ('admin.showCompany',compact('companies'));
+            return view ('admin.showCompany',compact('companies','comDetail'));
         }
         else{
             abort(403);
@@ -139,9 +141,11 @@ class AdminController extends Controller
                     })
         ->orderBy('created_at', 'desc')
         ->paginate(10);
+        $peopleDetail=Person::orderBy('created_at', 'desc')
+        ->paginate(50);
         
  
-            return view ('admin.showPeople',compact('people'));
+            return view ('admin.showPeople',compact('people','peopleDetail'));
         }
         else{
             abort(403);
@@ -255,6 +259,19 @@ class AdminController extends Controller
            
             $companies->save();
             return back()->withInput();
+        }
+        else{
+            abort(403);
+        }
+    }
+
+    public function showPeopleDetail(Request $request){
+        if(Auth()->user()->role == 'a'){
+            $id = $request->id;
+            $person=Person::find($id);
+            $cities=City::all();
+            
+            return view('admin.people.peopleDetail',compact('person','cities'));
         }
         else{
             abort(403);

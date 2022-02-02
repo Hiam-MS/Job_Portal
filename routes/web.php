@@ -175,6 +175,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/company/detail/{id}','AdminController@showCompanyDetail')->name('showCompanyDetail');
         Route::post('/company/update/{id}','AdminController@updateCompanyDetail')->name('updateCompanyDetail');
 
+        Route::get('/people/detail/{id}','AdminController@showPeopleDetail')->name('showPeopleDetail');
         // Route::get('/country','AdminController@addCountry');
         // Route::get('/city/{id}','AdminController@addCity');
         Route::get('/admin/dashboard','AdminController@getDash')->name('admin.Dash');

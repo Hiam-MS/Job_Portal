@@ -165,12 +165,6 @@
 																	<div class="col-sm-4">
 																		<div class="form-group">
 																			<label> الجنس </label>
-																			<!-- <select name="gender" class="form-control form-control-lg"  value="{{ $person->gender }}">
-								
-																				<option value="انثى"  > انثى </option>
-																				<option value="ذكر"  > ذكر </option>
-								
-																			</select> -->
 																			<select name="gender" id="gender" class="form-control form-control-lg">
 																				<option value="أنثى"{{$person->gender =="أنثى" ? 'selected' : ''}}>أنثى</option>
 																				<option value="ذكر"{{$person->gender =="ذكر" ? 'selected' : ''}}>ذكر</option>

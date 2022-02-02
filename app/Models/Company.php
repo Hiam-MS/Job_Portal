@@ -23,5 +23,9 @@ class Company extends Model
     {
         return $this->belongsTo(City::class,'cci_id');
     }
+    public function users()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
     
 }

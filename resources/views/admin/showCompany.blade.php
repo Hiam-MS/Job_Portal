@@ -111,31 +111,39 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($companies as $company)
+                  @if(count($comDetail) > 0)
+                    @foreach($comDetail as $com)
                       <tr>
-                        <td> <a href="{{route('showCompanyDetail',$company->GetCompany->id)}}">{{ $company->GetCompany->company_name}} </a> </td>
-                        <td> {{ $company->GetCompany->Activity->activity_name }} </td>
-                        <td> {{ $company->GetCompany->city->city_name }} </td>
-                        <td> {{ $company->GetCompany->email}} </td>
-                   
+                        <td> <a href="{{route('showCompanyDetail',$com->id)}}">{{ $com->company_name}} </a> </td>
+                        <td> {{ $com->Activity->activity_name }} </td>
+                        <td> {{ $com->city->city_name }} </td>
+                        
+                        <td> {{ $com->email}} </td>
+
                         <td><h4>
-                          @if($company->role == 'c')
-                          <form action="{{route('BanComany',$company->id)}}" method="POST">
+                          @if($com->users->role == 'c')
+                          <form action="{{route('BanComany',$com->users->id)}}" method="POST">
         @csrf
-                            <button class="btn btn-danger banUsers" data-id="{{$company->id}}">حظر</button>
+                            <button class="btn btn-danger banUsers" data-id="{{$com->users->id}}">حظر</button>
 </form>
-                            @elseif($company->role == 'd')
-                            <form action="{{route('unBanCompany',$company->id)}}" method="POST">
+                            @elseif($com->users->role == 'd')
+                            <form action="{{route('unBanCompany',$com->users->id)}}" method="POST">
         @csrf
-                              <button class="btn btn-success unbanFreelancer" data-id="{{$company->id}}">رفع الحظر</button>
+                              <button class="btn btn-success unbanFreelancer" data-id="{{$com->users->id}}">رفع الحظر</button>
 </form>
                               @endif
-                        </h4></td>    
+                        </h4></td>  
+                       
                       </tr>
                     @endforeach
+                    @else
+                    <tr>
+                      <td>لايوجد</td>
+                    </tr>
+                    @endif
                   </tbody>
                 </table>
-                <div class="ml-3"> {{$companies->appends($_GET)->links('layouts.paginationlinks')}}</div>
+                <div class="ml-3"> {{$comDetail->appends($_GET)->links('layouts.paginationlinks')}}</div>
               </div>
             </div>
           </div>

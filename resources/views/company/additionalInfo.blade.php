@@ -234,7 +234,7 @@
 																			<label>  العنوان  <span style="color:red">*</span></label>
 																			<select class="select2bs4 form-control form-control-lg" name="city" id="city" style="width:100%;">
 																				@foreach ($cities as $city)
-																					<option  value="{{$company->cci_id}}" {{$city->city_id =="$company->cci_id" ? 'selected' : ''}}>{{$city->city_name}}</option>
+																					<option  value="{{$city->city_id}}" {{$city->city_id =="$company->cci_id" ? 'selected' : ''}}>{{$city->city_name}}</option>
 																				@endforeach
 																			</select>
 																	
@@ -251,7 +251,7 @@
 																			<label>  اختصاص الشركة  <span style="color:red">*</span></label>
 																			<select class="select2bs4 form-control form-control-lg" name="activity" id="activity" style="width:100%">
 																				@foreach ($activities as $activity)
-																					<option value="{{$company->act_id}}" {{$activity->activity_id =="$company->act_id" ? 'selected' : ''}}>{{$activity->activity_name}}</option>
+																					<option value="{{$activity->activity_id}}" {{$activity->activity_id =="$company->act_id" ? 'selected' : ''}}>{{$activity->activity_name}}</option>
 																				@endforeach
 																			</select>
 																		</div>

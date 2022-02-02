@@ -94,6 +94,10 @@ class Person extends Model
         return static::where('id', '<', $this->id)->orderBy('id','desc')->first();
 
     }
+    public function users()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
 
 
 
