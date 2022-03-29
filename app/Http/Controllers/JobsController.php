@@ -26,7 +26,7 @@ class JobsController extends Controller
             $cities = City::all();
             $company_id=auth()->user()->getCompany->id;
             $company=DB::table('companies')->where('id', $company_id)
-            ->join('cities', 'companies.city_id', '=', 'cities.city_id')
+            ->join('cities', 'companies.cci_id', '=', 'cities.city_id')
            ->first();
             return view('job.addJob',compact('company','categories','cities'));
         }
@@ -259,8 +259,11 @@ public function showJob(Request $request)
 
     }
 else{
-    $jobs = Job::whereDate('end_job', '>', Carbon::today()->toDateString())->Where('status','=','accepted')->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
-    ->orderBy("created_at", "desc")->paginate(15);
+    $jobs = Job::Where('status','=','accepted')->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+    ->orderBy("created_at", "desc")->paginate(10);
+
+    // $jobs = Job::whereDate('end_job', '>', Carbon::today()->toDateString())->Where('status','=','accepted')->join('job_categories', 'jobs.category_id', '=', 'job_categories.cat_id')
+    // ->orderBy("created_at", "desc")->paginate(10);
 }
 
     // if($category !=NULL && $city !=NULL && $job_type !=NULL){

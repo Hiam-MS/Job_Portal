@@ -27,7 +27,7 @@ class UserController extends Controller
 
 $Request->validate([
             'name'=> ['required', 'string', 'max:255'] ,
-            'email'=>  'string|nullable|unique:users',
+            // 'email'=>  'string|nullable|unique:users',
             // 'mobile'=> ['required', 'string', 'max:10', 'unique:users'] ,
            
            
@@ -39,7 +39,7 @@ $Request->validate([
     $user = User::find(Auth::id());
 
     $user->name =  $Request->input("name");
-    $user->email  =  $Request->input("email");
+    // $user->email  =  $Request->input("email");
       // $user->mobile  = $Request->input("mobile");
     
     if($user){
@@ -106,20 +106,20 @@ $Request->validate([
     }
 
 // ************ Delete Profile *******************
-public function Deleteprofile()
-    {
-        $user = User::find(Auth::id());
+// public function Deleteprofile()
+//     {
+//         $user = User::find(Auth::id());
 
-         $res=$user->delete();
-         Auth::logout();
-  if ($res){
+//          $res=$user->delete();
+//          Auth::logout();
+//   if ($res){
     
-    return view('welcome');
-}else{
+//     return view('index');
+// }else{
     
-    return redirect()->back()->with('erorrDelteProfile', ' لم يتم الحذف يرجى المحاولة مرة ثانية');
+//     return redirect()->back()->with('erorrDelteProfile', ' لم يتم الحذف يرجى المحاولة مرة ثانية');
  
-  }
-}
+//   }
+// }
 
 }

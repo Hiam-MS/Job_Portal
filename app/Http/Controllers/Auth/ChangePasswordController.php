@@ -16,7 +16,7 @@ class ChangePasswordController extends Controller
 
     {
 
-        return view('auth.passwords.change');
+        return view('auth.password.change');
     }
 
 

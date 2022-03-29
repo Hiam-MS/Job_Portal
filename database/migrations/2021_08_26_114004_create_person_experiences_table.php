@@ -24,11 +24,11 @@ class CreatePersonExperiencesTable extends Migration
           
             $table->text('Responsibilities');
             $table->unsignedBigInteger('person_id');
-            $table->timestamps();
+           
             $table->foreign('person_id')->references('id')->on('people')->onDelete('cascade');
           
             
-           
+           $table->timestamps();
         });
     }
 

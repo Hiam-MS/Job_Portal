@@ -15,13 +15,17 @@ class Company extends Model
     {
         return $this->hasMany(Job::class);
     }
-    function companyActivity() 
+    function Activity() 
     {
-    	return $this->belongsTo(CompanyActivity::class);
+    	return $this->belongsTo(CompanyActivity::class,'act_id');
     }
     public function City()
     {
-        return $this->belongsTo(City::class);
+        return $this->belongsTo(City::class,'cci_id');
+    }
+    public function users()
+    {
+        return $this->belongsTo(User::class,'user_id');
     }
     
 }

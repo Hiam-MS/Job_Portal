@@ -54,15 +54,11 @@
 											<ul>
 												<li><a href="{{route('edit.form')}}" >   تعديل   اسم المستخدم</a> </li>
 											</ul>
-											<ul>
-												<li><a href="{{route('edit.formEmail')}}" >   تعديل   البريد الالكتروني </a> </li>
-											</ul>
+					
 											<ul>
 												<li><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a> </li>
 											</ul>
-											<ul>
-												<li><a href="{{route('profile.delete')}}" >  حذف الحساب </a> </li>
-											</ul>	
+											
 										</div>
 									</div><br> 
 								</div>
@@ -87,8 +83,12 @@
 							<div>
 								<p>
 									 <h4>أهلاً و سهلاً  :  {{auth()->user()->name}} &nbsp&nbsp</h4> 
-									<li><a href="{{route('edu')}}"  style="color:#000080;font-size:18px">انقر هنا: لإضافة تفاصيل سيرتك الذاتية  </a></li>
-									<li><a href="{{route('PersonalInfo.edit')}}"  style="color:#000080;font-size:18px">انقر هنا: لتعديل  سيرتك الذاتية  </a></li>
+									 <div class="row">
+<h5 ><p><a href="{{route('edu')}}" style="color:red"> ملاحظة:يفضل إضافة الشهادات والخبرات لزيادة فرصك بالحصول على العمل انقر هنا</a>  </p></h5><hr>
+
+</div>
+									<!-- <li><a href="{{route('edu')}}"  style="color:#000080;font-size:18px">انقر هنا: لإضافة تفاصيل سيرتك الذاتية  </a></li>
+									<li><a href="{{route('PersonalInfo.edit')}}"  style="color:#000080;font-size:18px">انقر هنا: لتعديل  سيرتك الذاتية  </a></li> -->
 					 			</p>
                             </div> 
 							

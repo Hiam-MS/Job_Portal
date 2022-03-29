@@ -19,7 +19,7 @@ class Job extends Model
     //Jobs has one Job category
     function jobCategory() 
     {
-    	return $this->belongsTo(JobCategory::class);
+    	return $this->belongsTo(JobCategory::class,'category_id');
     }
 
     //Job has many Person 

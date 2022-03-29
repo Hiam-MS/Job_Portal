@@ -20,7 +20,7 @@
 					@endif
            
             <div class="card card-default">
-                <div class="btn btn-primary"><h3 class="h3">  تغيير كلمة المرور</h3></div>
+                <div class="btn btn-primary" style="width:100%""><h3 class="h3">  تغيير كلمة المرور</h3></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('password.update') }}">

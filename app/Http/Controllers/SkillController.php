@@ -22,7 +22,7 @@ class SkillController extends Controller
         if($personSkill)
         {
             $personSkill->save();
-            return redirect()->route('edu')->with('success','  تمت الاضافة بنجاح');
+            return redirect()->back();
         }
         else
         {

@@ -91,9 +91,7 @@
 												<ul>
 													<li><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a></li>
 												</ul>
-												<ul>
-													<li><a href="{{route('profile.delete')}}" >  حذف الحساب </a></li>
-												</ul>	
+											
 											</div>
 										</div>
 									</ul>

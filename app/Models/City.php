@@ -14,7 +14,7 @@ class City extends Model
     //City belongs to a country
     public function Governorate()
     {
-        return $this->belongsTo(Governorate::class);
+        return $this->belongsTo(Governorate::class,'gove_id');
     }
     public function People()
     {

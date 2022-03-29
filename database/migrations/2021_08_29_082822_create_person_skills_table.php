@@ -22,6 +22,7 @@ class CreatePersonSkillsTable extends Migration
                     ->on('people')
                     ->onDelete('cascade');
             $table->timestamps();
+            
         });
     }
 

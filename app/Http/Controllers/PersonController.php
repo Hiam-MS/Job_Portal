@@ -90,52 +90,83 @@ class PersonController extends Controller
         $city=$request->input('city');
         $gender=$request->input('gender');
 
-
-    if($city != NULL && $city != NULL && $gender != NULL){
-        if($request->has('degree') && $city == NULL && $gender == NULL){
+        $exp=$request->input('exp');
+   
+        if($request->has('degree') && $city == NULL && $exp == NULL){
             
-        $search_text= $_GET['degree'];
-        $Person= PersonEducation::where('degree_name','LIKE','%'.$search_text.'%')
-        ->join('people', 'person_education.person_id', '=', 'people.id')
-        ->join('cities', 'people.ci_id', '=', 'cities.city_id')
-        ->paginate(10);
-        // $Person=Person::join('cities', 'people.city_id', '=', 'cities.city_id')
-        // ->paginate(50);
-  
-    }
-    elseif($request->has('degree') && $request->has('city') && $gender == NULL){
-        $Person= PersonEducation::where('degree_name','LIKE',$degree)->where('ci_id',$city)
-        ->join('people', 'person_education.person_id', '=', 'people.id')
-        ->join('cities', 'people.ci_id', '=', 'cities.city_id')
-        ->paginate(10);
-    }
-    elseif($request->has('degree') && $request->has('city') && $request->has('gender')){
-        $Person= PersonEducation::where('degree_name','LIKE',$degree)->where('ci_id',$city)->where('gender',$gender)
-        ->join('people', 'person_education.person_id', '=', 'people.id')
-        ->join('cities', 'people.ci_id', '=', 'cities.city_id')
-        ->paginate(10);
-    }
-   elseif($request->has('city') && $degree == NULL && $gender == NULL){
-    $Person=Person::select("*")->where('ci_id',$city)
-    ->join('cities', 'people.ci_id', '=', 'cities.city_id')
-    ->join('person_education', 'people.id', '=', 'person_education.person_id')
-    ->paginate(50);
+      
+        // $Person=Person::select("*")->where('degree_name','LIKE','%'.$degree.'%')
+        // ->join('person_education', 'people.id', '=', 'person_education.person_id')
+        // ->orderBy('people.created_at','desc')->paginate(50);
+        $Person = Person::with(['PersonEducation' => fn($query) => $query->where('degree_name','LIKE','%'.$degree.'%')])
+        ->whereHas('PersonEducation', fn ($query) => 
+        $query->where('degree_name','LIKE','%'.$degree.'%')
+        )
+        ->latest('people.created_at')
+        ->paginate(50);
+        }       
+       
+        if($request->has('exp') && $city == NULL && $degree == NULL){
+            
+      
+            // $Person=Person::select("*")->where('degree_name','LIKE','%'.$degree.'%')
+            // ->join('person_education', 'people.id', '=', 'person_education.person_id')
+            // ->orderBy('people.created_at','desc')->paginate(50);
+            $Person = Person::with(['PersonExperience' => fn($query) => $query->where('Job_title','LIKE','%'.$exp.'%')])
+            ->whereHas('PersonExperience', fn ($query) => 
+            $query->where('Job_title','LIKE','%'.$exp.'%')
+            )
+            ->latest('people.created_at')
+            ->paginate(50);
+            }
+    // elseif($request->has('degree') && $request->has('city') && $gender == NULL){
+    //     // $Person=Person::select("*")->where('city_name','LIKE','%'.$city.'%')->where('degree_name','LIKE','%'.$degree.'%')
+    //     // ->join('cities', 'people.ci_id', '=', 'cities.city_id')
+    //     // ->join('person_education', 'people.id', '=', 'person_education.person_id')
+    //     // ->orderBy('created_at','desc')->paginate(50);
+
+    //     $Person = Person::with(['PersonEducation' => fn($query) => $query->where('degree_name','LIKE','%'.$degree.'%')])
+    //     ->whereHas('PersonEducation', fn ($query) => 
+    //     $query->where('degree_name','LIKE','%'.$degree.'%'))
+    //     ->whereHas('City', fn ($query) => 
+    //     $query->where('city_name','LIKE','%'.$city.'%'))
+    //     ->latest('people.created_at')
+    //     ->paginate(50);
+    // }
+    // elseif($request->has('degree') && $request->has('city') && $request->has('gender')){
+    //     // $Person=Person::select("*")->where('city_name','LIKE','%'.$city.'%')->where('degree_name','LIKE','%'.$degree.'%')->where('gender','LIKE','%'.$gender.'%')
+    //     // ->join('cities', 'people.ci_id', '=', 'cities.city_id')
+    //     // ->join('person_education', 'people.id', '=', 'person_education.person_id')
+    //     // ->orderBy('created_at','desc')->paginate(50);
+    //     $Person = Person::with(['PersonEducation' => fn($query) => $query->where('degree_name','LIKE','%'.$degree.'%')])
+    //     ->whereHas('PersonEducation', fn ($query) => 
+    //     $query->where('degree_name','LIKE','%'.$degree.'%'))
+    //     ->whereHas('City', fn ($query) => 
+    //     $query->where('city_name','LIKE','%'.$city.'%'))
+    //     ->where('gender','LIKE','%'.$gender.'%')
+    //     ->latest('people.created_at')
+        
+    //     ->paginate(50);
+    // }
+//    elseif($request->has('city') && $degree == NULL && $gender == NULL){
+
+//     $Person=Person::select("*")->where('city_name','LIKE','%'.$city.'%')
+//     ->join('cities', 'people.ci_id', '=', 'cities.city_id')
+//     ->join('person_education', 'people.id', '=', 'person_education.person_id')
+//     ->orderBy('created_at','desc')->paginate(50);
        
         
-    }
-    elseif($request->has('gender') && $degree == NULL && $city == NULL){
-        $Person=Person::select("*")->where('gender',$gender)
-        ->join('cities', 'people.ci_id', '=', 'cities.city_id')
-        ->join('person_education', 'people.id', '=', 'person_education.person_id')
-        ->paginate(50);
+//     }
+//     elseif($request->has('gender') && $degree == NULL && $city == NULL){
+//         $Person=Person::where('gender','LIKE','%'.$gender.'%')
+//         ->orderBy('created_at','desc')->paginate(50);
            
-    }
-}
+//     }
+
     else{
-        $Person=Person::select("*")
-        ->join('cities', 'people.ci_id', '=', 'cities.city_id')
-        ->join('person_education', 'people.id', '=', 'person_education.person_id')
-        ->paginate(50);
+        $Person=Person::orderBy('created_at','desc')->paginate(50);
+       
+      
        
 
     }
@@ -247,9 +278,9 @@ class PersonController extends Controller
     public function store(Request $Request)
     {
        $Request->validate([
-            'fname'=> ['required','alpha' , 'max:20'] ,
-            'father_name'=> ['required','alpha' , 'max:20'] ,
-            'Lname'=> ['required','alpha', 'max:20'] ,
+            'fname'=> ['required','string' , 'max:20'] ,
+            'father_name'=> ['required','string' , 'max:20'] ,
+            'Lname'=> ['required','string', 'max:20'] ,
             'gender'=> ['required'] ,
             'military_service'=> ['required'] ,
             'marital_status'=> ['required'] ,
@@ -262,9 +293,9 @@ class PersonController extends Controller
             'user_id'=>['unique:Person'] ,
           
         ],[
-            'fname.alpha' =>'يجب أن لا يحتوي حقل الاسم سوى على حروف.',
-            'father_name.alpha' =>'يجب أن لا يحتوي حقل الاسم سوى على حروف.',
-            'Lname.alpha' =>'يجب أن لا يحتوي حقل الاسم سوى على حروف.',
+            'fname.string' =>'يجب أن لا يحتوي حقل الاسم سوى على حروف.',
+            'father_name.string' =>'يجب أن لا يحتوي حقل الاسم سوى على حروف.',
+            'Lname.string' =>'يجب أن لا يحتوي حقل الاسم سوى على حروف.',
             'fname.required'=>'يجب تعبئة حقل الاسم',
             'father_name.required'=>'يجب  تعبئة  حقل اسم الأب',
             'Lname.required'=>'يجب تعبئة حقل الكنية  ',
@@ -338,9 +369,9 @@ class PersonController extends Controller
     public function updatPersonalInfo(Request $Request)
     {
         $Request->validate([
-            'fname'=> ['required','alpha' , 'max:20'] ,
-            'father_name'=> ['required','alpha' , 'max:20'] ,
-            'Lname'=> ['required','alpha', 'max:20'] ,
+            'fname'=> ['required','string' , 'max:20'] ,
+            'father_name'=> ['required','string' , 'max:20'] ,
+            'Lname'=> ['required','string', 'max:20'] ,
             'gender'=> ['required'] ,
             'military_service'=> ['required'] ,
             'marital_status'=> ['required'] ,
@@ -354,9 +385,9 @@ class PersonController extends Controller
             'user_id'=>['unique:Person'] ,
           
         ],[
-            'fname.alpha' =>'يجب أن لا يحتوي حقل الاسم سوى على حروف.',
-            'father_name.alpha' =>'يجب أن لا يحتوي حقل الاسم سوى على حروف.',
-            'Lname.alpha' =>'يجب أن لا يحتوي حقل الاسم سوى على حروف.',
+            'fname.string' =>'يجب أن لا يحتوي حقل الاسم سوى على حروف.',
+            'father_name.string' =>'يجب أن لا يحتوي حقل الاسم سوى على حروف.',
+            'Lname.string' =>'يجب أن لا يحتوي حقل الاسم سوى على حروف.',
             'fname.required'=>'يجب تعبئة حقل الاسم',
             'father_name.required'=>'يجب  تعبئة  حقل اسم الأب',
             'Lname.required'=>'يجب تعبئة حقل الكنية  ',
@@ -380,7 +411,7 @@ class PersonController extends Controller
             $person->Lname = $Request->input("Lname");
             $person->gender= $Request->input("gender");
             $person->dob= $Request->input("dob");
-             $person->ci = $Request->input("city");
+             $person->ci_id = $Request->input("city");
             // $person->place_Of_b = $Request->input("place_Of_b");
             $person->marital_status= $Request->input("marital_status");
             $person->military_service= $Request->input("military_service");
@@ -463,8 +494,8 @@ class PersonController extends Controller
         $person =auth()->user()->GetPerson;
         $Request->validate([
             'degree_name'=> ['required','string'] ,
-            // 'Institution'=> ['required','string'] ,
-            // 'Degree'=> ['required','string'] ,
+            'Institution'=> ['required','string'] ,
+            'Degree'=> ['required','string'] ,
             // 'Major'=> ['required','string'] ,
             // 'person_id'=>['unique:Person'] ,
           
@@ -492,7 +523,8 @@ class PersonController extends Controller
             $personEdu->person_id=  auth()->user()->GetPerson->id;
             $personEdu->save();
 
-            return redirect()->route('edu');
+            return back();
+            // return redirect()->route('edu');
         //    return redirect()->route('edu', ['id' => $id]);
           
  }

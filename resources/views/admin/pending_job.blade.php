@@ -49,7 +49,7 @@
                                             <ul>
 											
 										
-                                                <li><strong class="font-weight-700 text-black"> <a href="{{route('company.show')}}" > الشركات الحالية </a></strong><span class="text-black-light"> </span></li>
+                                                <li><strong class="font-weight-700 text-black"> <a href="{{route('showCompany')}}" > الشركات الحالية </a></strong><span class="text-black-light"> </span></li>
                                                 <li><strong class="font-weight-700 text-black"><a href="{{route('resuems')}}" >   عرض السير الذاتية المتاحة</a>  </strong></li>	
                                                 <li><strong class="font-weight-700 text-black"><a href="{{route('pendingJob')}}" >      وظائف معلقة</a>  </strong></li>
 													

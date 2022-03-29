@@ -40,7 +40,7 @@ class Person extends Model
 
     public function City()
     {
-        return $this->belongsTo(City::class);
+        return $this->belongsTo(City::class,'ci_id');
     }
 
 
@@ -93,6 +93,10 @@ class Person extends Model
 
         return static::where('id', '<', $this->id)->orderBy('id','desc')->first();
 
+    }
+    public function users()
+    {
+        return $this->belongsTo(User::class,'user_id');
     }
 
 

@@ -34,7 +34,9 @@
            
             
             <div class="card card-default">
-                <div class="btn btn-primary" style="background-color:#200080"><h3 class="h3">تسجيل الدخول</h3></div>
+                <div class="btn-primary" style="background-color:#200080 ;width:100%"><h3 class="h3" style="color:white">تسجيل الدخول</h3>
+                
+            </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -82,7 +84,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary" style="background-color:#200080">
+                                <button type="submit" class="btn btn-primary" style="background-color:#200080 ;margin-right:175px">
                                     تسجيل
                                 </button>
 

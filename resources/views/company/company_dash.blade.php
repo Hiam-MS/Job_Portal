@@ -3,14 +3,16 @@
     @csrf
     
 
-<div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}});">
+<div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}}); width:100%;height:200px">
     <div class="container">
         <div class="dez-bnr-inr-entry">
             <h1 class="text-white">لوحة التحكم </h1>
 		</div>
     </div>
 </div>
-     
+
+	
+
     <div class="content-block">
         <div class="section-full content-inner-2">
 			<div class="container">
@@ -72,9 +74,7 @@
 													<ul>
 														<li><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a></li>
 													</ul>
-													<ul>
-														<li><a href="{{route('profile.delete')}}" >  حذف الحساب </a></li>
-													</ul>	
+													
 									 			</div>
 											</div>
 										</ul>
@@ -99,7 +99,10 @@
 							<div>
 								<h4 ><p>أهلاً و سهلاً : {{auth()->user()->name}} </p></h4><hr>
 							</div> 
+<div class="row">
+<h5 ><p><a href="{{route('addJob')}}" style="color:red">ملاحظة:من أجل ادراج شواغر العمل انقر هنا </a>  </p></h5><hr>
 
+</div>
                             <div class="">
 								<div class="icon-bx-wraper p-a30 center bg-gray radius-sm">
 									<div class="icon-md text-primary m-b20"> <i class="ti-desktop"></i></div>

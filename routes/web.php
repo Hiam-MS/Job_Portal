@@ -11,10 +11,10 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\ExpController;
 use App\Http\Controllers\PAddController;
-
+use App\Http\Controllers\CityController;
 
 use Illuminate\Routing\Redirector;
-
+use Jenssegers\Agent\Agent;
 
 
 /*
@@ -27,6 +27,8 @@ use Illuminate\Routing\Redirector;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 
 Route::get('/', function () {
     return view('index');
@@ -169,15 +171,28 @@ Route::group(['middleware' => 'auth'], function(){
 
     /**************Admin******************** */
     Route::group(['middleware' => 'role:admin'], function(){
+        Route::get('/company/show','AdminController@showCompany')->name('showCompany');
+        Route::get('/company/detail/{id}','AdminController@showCompanyDetail')->name('showCompanyDetail');
+        Route::post('/company/update/{id}','AdminController@updateCompanyDetail')->name('updateCompanyDetail');
 
-        Route::get('/company/show','CompanyController@showCompany')->name('company.show');
+        Route::get('/people/detail/{id}','AdminController@showPeopleDetail')->name('showPeopleDetail');
         // Route::get('/country','AdminController@addCountry');
         // Route::get('/city/{id}','AdminController@addCity');
         Route::get('/admin/dashboard','AdminController@getDash')->name('admin.Dash');
         Route::get('/admin/pending_jobs','AdminController@pendingJob')->name('pendingJob');
         Route::post('/job/accepte_Job/{id}', 'AdminController@accepte_JobStatuse')->name('accepte_JobStatuse');
         Route::post('/job/denie_Job/{id}', 'AdminController@denied_JobStatuse')->name('denied_JobStatuse');
-        
+        Route::post('/company/ban/{id}', 'AdminController@BanCompany')->name('BanComany');
+        Route::post('/company/unban/{id}', 'AdminController@unBanCompany')->name('unBanCompany');
+        Route::get('/people/show','AdminController@showPeople')->name('people');
+        Route::post('/people/ban/{id}', 'AdminController@BanPeople')->name('BanPeople');
+        Route::post('/people/unban/{id}', 'AdminController@unBanPeople')->name('unBanPeople');
+
+
+        Route::get('/jobs/show','AdminController@showJobs')->name('jobs');
+        //___________________Cities Routes_________________________________
+        Route::get('/city/show', [CityController::class, 'showCitites'])->name('cities');
+        Route::get('/city/{id}/edit', [CityController::class, 'editCitites']);
     });
 
 

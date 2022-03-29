@@ -87,9 +87,7 @@ p{
 											<ul>
 												<li><a href="{{route('password.change')}}" >    تغيير كلمة المرور</a> </li>
 											</ul>
-											<ul>
-												<li><a href="{{route('profile.delete')}}" >  حذف الحساب </a> </li>
-											</ul>	
+											
 										</div>
 									</div><br> 
 								</div>
@@ -166,7 +164,7 @@ p{
 								<div class="dez-divider divider-2px bg-primary-dark mb-4 mt-0"></div>
 							</form>
 
-							<h3> الشهادات التعليمية  </h3> <span>ملاحظة  اذا لم يكن لديك شهادة تعليمة قم بتعبئة حقل اسم الشهادة ب (لايوجد)</span><br>
+							<h3> الشهادات التعليمية  </h3> <br>
 							<form action="{{route('PersonStoreEdu')}}" method="POST" id="resume" >
 								@csrf
 								<div class="row">
@@ -257,7 +255,7 @@ p{
 								</div><br>
 								<table>
 									<tr>
-										<td><button type="submit"  class="btn btn-primary" > أضف شهادة تعليمية جديدة</button></td>
+										<td><button type="submit"  class="btn btn-primary" style="width:200px "> أضف شهادة تعليمية جديدة</button></td>
 									</tr>
 								</table>
 							</form>
@@ -304,7 +302,7 @@ p{
 												<span>{{$errors->first('name')}}</span>
 											@endif
 										</div><br><br>
-										<button type="submit" class="btn btn-primary" > أضف مهارة جديدة</button>
+										<button type="submit" class="btn btn-primary" style="width:200px "> أضف مهارة جديدة</button>
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group">
@@ -366,7 +364,7 @@ p{
 										</div>
 									</div>	
 								</div><br>
-								<button type="submit" class="btn btn-primary" > أضف دورة تدريبية جديدة</button>
+								<button type="submit" class="btn btn-primary" style="width:200px " > أضف دورة تدريبية جديدة</button>
 							</form><br>
 
 							<div class="dez-divider divider-2px bg-primary-dark mb-4 mt-0"></div>
@@ -463,7 +461,7 @@ p{
 								</div>
 								<table>
 									<tr>
-										<td><button type="submit" class="btn btn-primary">أضف خبرة عمل جديدة</button></td>
+										<td><button type="submit" class="btn btn-primary" style="width:200px ">أضف خبرة عمل جديدة</button></td>
 									</tr>
 								</table>
                    			</form>

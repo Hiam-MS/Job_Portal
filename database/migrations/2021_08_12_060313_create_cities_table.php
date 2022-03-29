@@ -17,8 +17,8 @@ class CreateCitiesTable extends Migration
            
             $table->bigIncrements('city_id');
             $table->string('city_name');
-            $table->unsignedBigInteger('governorate_id');
-            $table->foreign('governorate_id')->references('governorate_id')->on('governorates')->onDelete('cascade');
+            $table->unsignedBigInteger('gove_id');
+            $table->foreign('gove_id')->references('governorate_id')->on('governorates')->onDelete('cascade');
            
         });
     }

@@ -49,7 +49,7 @@
 
 </style>
 
-<div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}});">
+<div class="dez-bnr-inr overlay-black-middle" style="background-image:url({{asset('images/banner/bnr1.jpg')}});width:100%;height:200px">
     <div class="container">
         <div class="dez-bnr-inr-entry">
             <h1 class="text-white"> فرص العمل المنشورة</h1>
@@ -146,6 +146,7 @@
 		<td>
 			<button type="submit" class="btn btn-primary">بحث</button>
 		</td>
+		<td><form><input type="button" value="رجوع" onclick="history.back()" class="btn btn-primary"></form></td>
 	</tr>
 </form>
 </table>   
@@ -223,13 +224,15 @@
 											@endif
 										</tbody>
 									</table>
+								
+									<span>{{$jobs->appends($_GET)->links('layouts.paginationlinks')}}</span>	
 									
-									<span>{{$jobs->links('layouts.paginationlinks')}}</span>
-							
 							</div>
 						
 					
-							</div>	</div>
+							</div>
+							
+								</div>
 
 
 

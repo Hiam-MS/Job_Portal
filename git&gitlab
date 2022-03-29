@@ -1,0 +1,15 @@
+    Git
+       - version control system
+       -to locally track changes in your project/folder and push and pull changes from remote repositry like
+       (GitHub - BitBucket - GitLab).
+    
+    GitLab, GitHub, BitBucket
+        - Services that allow to host your project/ folder on a remote repositry & have additional features
+            to help in SDLC and CI, CD
+        -The features like : Managing , Sharing, Wiki(Documentation) , Bug Tracking 
+
+    SDLC: SOftware Development Life Cycle
+    CI: Continuous Integration
+    CD: Continuous Deployment
+
+    Step 1: Go to Gitlab.com and create account 
