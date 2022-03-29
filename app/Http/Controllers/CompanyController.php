@@ -238,10 +238,13 @@ class CompanyController extends Controller
             $cities=City::all();
             $activity=$request->input('activity');
             $city=$request->input('city');
+<<<<<<< HEAD
            
         
 
 
+=======
+>>>>>>> 739d530aac064e4ebe848619843028ee1c05253d
             return view('company.additionalInfo',compact('company','activities','cities'));
         }
         else

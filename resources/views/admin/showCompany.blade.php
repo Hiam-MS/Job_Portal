@@ -106,8 +106,12 @@
                       <th>اسم الشركة</th>
                       <th>اختصاص الشركة</th>
                       <th>مكان الشركة</th>  
+<<<<<<< HEAD
                       <th>ايميل</th>                 
                       <th>رقم الموبايل</th>                  
+=======
+                      <th>ايميل</th>                                
+>>>>>>> 739d530aac064e4ebe848619843028ee1c05253d
                       <th></th>    
                     </tr>
                   </thead>
@@ -118,8 +122,13 @@
                         <td> <a href="{{route('showCompanyDetail',$com->id)}}">{{ $com->company_name}} </a> </td>
                         <td> {{ $com->Activity->activity_name }} </td>
                         <td> {{ $com->city->city_name }} </td>
+<<<<<<< HEAD
                         <td> {{ $com->email}} </td>
                         <td> {{ $com->users->mobile}} </td>
+=======
+                        
+                        <td> {{ $com->email}} </td>
+>>>>>>> 739d530aac064e4ebe848619843028ee1c05253d
 
                         <td><h4>
                           @if($com->users->role == 'c')

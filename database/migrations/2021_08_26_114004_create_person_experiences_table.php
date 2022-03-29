@@ -27,8 +27,13 @@ class CreatePersonExperiencesTable extends Migration
            
             $table->foreign('person_id')->references('id')->on('people')->onDelete('cascade');
           
+<<<<<<< HEAD
             
            $table->timestamps();
+=======
+            $table->timestamps();
+           
+>>>>>>> 739d530aac064e4ebe848619843028ee1c05253d
         });
     }
 

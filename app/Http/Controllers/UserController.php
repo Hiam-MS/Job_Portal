@@ -114,8 +114,13 @@ $Request->validate([
 //          Auth::logout();
 //   if ($res){
     
+<<<<<<< HEAD
 //     return view('index');
 // }else{
+=======
+    return view('index');
+}else{
+>>>>>>> 739d530aac064e4ebe848619843028ee1c05253d
     
 //     return redirect()->back()->with('erorrDelteProfile', ' لم يتم الحذف يرجى المحاولة مرة ثانية');
  

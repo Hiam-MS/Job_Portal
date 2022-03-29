@@ -21,8 +21,12 @@ class CreatePersonCategoriesTable extends Migration
             $table->foreign('person_id')->references('id')->on('people')->onDelete('cascade');
             $table->foreign('category_id')->references('cat_id')->on('job_categories')->onDelete('cascade');
             $table->primary(['person_id', 'category_id']);
+<<<<<<< HEAD
             $table->timestamps();
             
+=======
+           
+>>>>>>> 739d530aac064e4ebe848619843028ee1c05253d
         });
     }
 
